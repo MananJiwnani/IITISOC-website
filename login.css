@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&display=swap');
+
+.navbar{
+    background-color: #27C4B1;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    padding: 15px 0;
+    /* justify-content: space-around; */
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navbar img{
+    padding-left: 80px;
+    padding-right: 10px;
+    height: 60px;
+}
+
+.heading{
+    display: inline;
+    font-size: 46px;
+    font-family: "Kameron", serif;
+    font-weight: bold;
+}
+
+.tabs{
+    display: flex;
+    gap: 50px;
+    /* justify-self: flex-end; */
+    font-family: "Kaisei HarunoUmi", serif;
+    margin-left: auto;
+    margin-right: 80px;
+    font-size: 24px;
+    font-family: bold;
+}
+
+.tabs a{
+    text-decoration: none;
+}
+
+.tabs a:hover{
+    color: rgb(0, 100, 100);
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    background-image: url("assets/register_bc.jpg");
+    background-position: center;
+    border-radius: 23px;
+    width: 65vw;
+    height: 450px;
+    box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login{
+    font-family: "Kaisei HarunoUmi", serif;
+    color: black;
+    font-size: 48px;
+    /* font-weight: 550; */
+    margin-top: 30px;
+}
+
+.form{
+    display: flex;
+    text-align: center;
+}
+
+.form input{
+    background-color: #418A7DF2;
+    color: white;
+    border-radius: 10px;
+    width: 300px;
+    height: 45px;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    font-family: "Kaisei HarunoUmi", serif;
+}
+
+input::placeholder{
+    color: #FFFFFF66;
+    font-family: "Kaisei HarunoUmi", serif;
+}
+
+.form label{
+    color: black;
+    font-size: 27px;
+    font-family: "Kaisei HarunoUmi", serif;
+}
+
+.email, .password{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+
+form button{
+    color: white;
+    background-color: #000000B3;
+    border:none;
+    border-radius: 17px;
+    height: 45px;
+    width: 200px;
+    margin-top: 50px;
+    margin-right: auto;
+    font-size: 24px;
+    font-family: "Kameron", serif;
+}
+
+button:hover{
+    background-color: #232222;
+    cursor: pointer;
+}

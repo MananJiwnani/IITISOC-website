@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&display=swap');
+
+.navbar{
+    background-color: #27C4B1;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+    padding: 15px 0;
+    /* justify-content: space-around; */
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navbar img{
+    padding-left: 80px;
+    padding-right: 10px;
+    height: 60px;
+}
+
+.heading{
+    display: inline;
+    font-size: 46px;
+    font-family: "Kameron", serif;
+    font-weight: bold;
+}
+
+.tabs{
+    display: flex;
+    gap: 50px;
+    /* justify-self: flex-end; */
+    font-family: "Kaisei HarunoUmi", serif;
+    margin-left: auto;
+    margin-right: 80px;
+    font-size: 24px;
+    font-family: bold;
+}
+
+.tabs a{
+    text-decoration: none;
+}
+
+.tabs a:hover{
+    color: rgb(0, 100, 100);
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    background-image: url("assets/register_bc.jpg");
+    background-position: center;
+    border-radius: 23px;
+    width: 65vw;
+    height: 500px;
+    box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.25);
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register{
+    font-family: "Kaisei HarunoUmi", serif;
+    color: black;
+    font-size: 50px;
+    /* font-weight: 550; */
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.form{
+    display: flex;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"]{
+    background-color: #418A7DF2;
+    color: white;
+    border-radius: 10px;
+    width: 350px;
+    height: 45px;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    font-family: "Kaisei HarunoUmi", serif;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input::placeholder{
+    color: #FFFFFF66;
+    font-family: "Kaisei HarunoUmi", serif;
+}
+
+.form label{
+    color: black;
+    font-size: 27px;
+    font-family: "Kaisei HarunoUmi", serif;
+}
+
+.name, .email, .contact, .password{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 25px;
+    justify-content: space-between;
+}
+
+form button{
+    color: white;
+    background-color: #000000B3;
+    border:none;
+    border-radius: 17px;
+    height: 45px;
+    width: 200px;
+    margin-top: 20px;
+    /* margin-right: auto; */
+    position: relative;
+    left: 90px;
+    font-size: 24px;
+    font-family: "Kameron", serif;
+}
+
+button:hover{
+    background-color: #232222;
+    cursor: pointer;
+}
+
+.role-selection{
+    display: flex;
+    justify-content: flex-end;
+    gap:20px;
+}
+
+.role-selection label{
+    background-color: #418A7DF2;
+    border-radius: 8px;
+    /* height: auto; */
+    display: inline-block;
+    width: fit-content;
+    padding: 6px 25px;
+    margin-top: 20px;
+    color: white;
+    font-family: "Kameron", serif;
+    font-weight: 550;
+    cursor: pointer;
+}
+
+.role-selection label:hover{
+    background-color: #397a6e;
+}
+
+.role-selection>label>input{
+    display: none;
+}
+
+.role-selection label span {
+    position: relative;
+    line-height: 22px;
+  }
+  
+   .role-selection label span:before,
+   .role-selection label span:after {
+    content: '';
+  }
+  
+   .role-selection label span:before {
+    /* border: 1px solid #222021; */
+    background-color: white;
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: center;
+}
+
+.role-selection label span:after {
+    background-image: url(assets/tick-icon.svg);
+    background-repeat: no-repeat;
+    /* border-radius: 3px; */
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    transition: 300ms;
+    opacity: 0;
+  }
+  
+  .role-selection input:checked+span:after {
+    opacity: 1;
+  }

@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&family=Kumbh+Sans:wght@100..900&display=swap');
+
+.navbar{
+    background-color: #27C4B1;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    padding: 15px 0;
+    /* justify-content: space-around; */
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navbar img{
+    padding-left: 80px;
+    padding-right: 10px;
+    height: 60px;
+}
+
+.heading{
+    display: inline;
+    font-size: 46px;
+    font-family: "Kameron", serif;
+    font-weight: bold;
+}
+
+.tabs{
+    display: flex;
+    gap: 50px;
+    /* justify-self: flex-end; */
+    font-family: "Kaisei HarunoUmi", serif;
+    margin-left: auto;
+    margin-right: 80px;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-family: bold;
+}
+
+.tabs a{
+    text-decoration: none;
+}
+
+.tabs a:hover{
+    color: rgb(0, 100, 100);
+}
+
+.section1{
+    background-image: url("assets/header_background.jpg");
+    width: 100vw;
+    height: 70vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.h2{
+    padding-top: 70px;
+    font-size: 38px;
+    width: 45vw;
+    font-weight: bold;
+    text-shadow: 1px 1px #1F5D52;
+
+    font-family: "Kumbh Sans", sans-serif;
+}
