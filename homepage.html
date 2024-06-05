@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RentEstate | Property in India | Rent or Post</title>
     <link rel="stylesheet" href="homepage.css">
 </head>
+
 <body>
     <div id="header">
         <div class="navbar">
-            <img src="assets/Logo.svg"></img>
+            <img src="assets/Logo.svg" alt="Logo">
             <div class="heading">RentEstate</div>
             <div class="tabs">
                 <a href="homepage.html" class="button">Home</a>
                 <a href="register.html" class="button">Register</a>
                 <a href="login.html" class="button">Login</a>
             </div>
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                ☰
+            </a>
         </div>
-        <div class="section1">
-            <div class="head h2">Not able to find a good place or troubling to find tenants..</div>
-            <div class="head h3">total property management of the most comfortable homes in india</div>
+        <div id="myLinks" class="overlay">
+            <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+            <a href="homepage.html" class="button">Home</a>
+            <a href="register.html" class="button">Register</a>
+            <a href="login.html" class="button">Login</a>
+        </div>
+        <div class="content">
+            <div class="section1">
+                <div class="head h2">Not able to find a good place or troubling to find tenants..</div>
+                <div class="head h3">Total property management of the most comfortable homes in India</div>
+            </div>
         </div>
     </div>
-    Hello guys
+
+    <script>
+        function toggleMenu() {
+            var overlay = document.getElementById("myLinks");
+            var content = document.querySelector(".content");
+            overlay.style.paddingTop="100px";
+            if (overlay.style.width === "30vw") {
+                overlay.style.width = "0";
+                content.classList.remove("blur");
+            } else {
+                overlay.style.width = "30vw";
+                content.classList.add("blur");
+            }
+        }
+    </script>
 </body>
+
 </html>
