@@ -1,0 +1,257 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+ body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&family=Kumbh+Sans:wght@100..900&display=swap');
+
+.navbar{
+    width:100%;
+    background-color: #27C4B1;
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    padding: 15px 0;
+    /* justify-content: space-around; */
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navbar img{
+    padding-left: 80px;
+    padding-right: 10px;
+    height: 60px;
+}
+
+.heading{
+    display: inline;
+    font-size: 46px;
+    font-family: "Kameron", serif;
+    font-weight: bold;
+}
+
+.tabs{
+    display: flex;
+    gap: 50px;
+   
+    font-family: "Kaisei HarunoUmi", serif;
+    margin-left: auto;
+    margin-right: 80px;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-family: bold;
+}
+
+.tabs a{
+    text-decoration: none;
+}
+
+.tabs a:hover{
+    color: rgb(0, 100, 100);
+}
+  
+ #vac_header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:60vh;
+    background-image:url('vacancies_bc.jpg') ;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+ }
+
+ 
+ #vac_header h1{
+    font-size: 50px;
+    font-family: "Kameron", serif;
+    font-weight: bold;
+    color: #0c5e54;
+ }
+  #vac_header h3{
+    width: 33%;
+    display: flex;
+    text-align: center;
+    font-size: 22px;
+    color:black;
+    font-family: "Kameron", serif;
+  }
+
+  #section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+   
+  .searchbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:60px;
+    background-color: #0A5184;
+  }
+
+  .filter{
+    margin:0% 1%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height:37px;
+     width:220px;
+     background-color: rgba(65, 121, 204, 0.4);
+     border-radius: 3px;
+  }
+   .filter #search_1{
+    width:24px;
+   }
+   .filter #search_2{
+    width:39px;
+   }
+   .filter #search_3{
+    width:51px;
+   }
+
+   .filter h3{
+    padding: 0px 20px;
+     text-align: center;
+     font-family: "Kameron", serif;
+     font-size: 20px;
+   }
+    #search_btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width:220px;
+        background-color: #AEFFF5;
+        border-radius: 3px;
+    }
+    #search_btn #search_logo{
+        width: 30px;
+    }
+    #search_btn h3{
+        font-family: "Kameron", serif;
+        padding: 0px 20px;
+        color:#0A5184;
+        font-weight: bold;
+    }
+
+/* listings starts here */
+
+   #listings{
+    width:100%;
+    height:auto;
+    display: grid;
+     grid-template-columns: 1fr 1fr;
+    align-items: center;
+   }
+
+   .property{
+    margin:20px 20px;
+    display: flex;
+    flex-direction: row;
+    margin: 20px 20px;
+    width:fit-content;
+    height: fit-content;
+    background-image:  linear-gradient( to right,#38E1CD,#A3FBF1);
+    border-top-left-radius: 60px ;
+    border-bottom-right-radius: 60px;
+   }
+   .mainText{
+     display: flex;
+     flex-direction: column;
+     width:80%;
+   }
+     .mainText{
+        margin: 2px 2px;
+         }
+   
+   .home_img{
+    height: 200px;
+    width: 200px;
+    background-image: url('home1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:4vh;
+    border-radius: 10px;
+   }
+
+   .common_properties{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:fit-content;
+    height:70px;
+    background-color: rgba(244, 255, 255,0.4);
+   }
+   .common_properties div{
+    margin:2px 4px;
+    width:fit-content;
+   }
+   .mainText div h3{
+    font-family: "Kameron", serif;
+    font-weight: bold;
+     font-size: 21px ;
+    color: black;
+    
+   }
+    .mainText div h4{
+        margin:0px 2px;
+        font-family: "Kameron", serif;
+        font-weight: normal;
+        font-size: 19px ;
+       color: #32655C;
+    }
+    .property_type{
+        display: flex;
+        flex-direction: row;
+    }
+    .address{
+        display: flex;
+        flex-direction: row;
+    }
+    .amenities{
+        display: flex;
+        flex-direction: row;
+    }
+    .pet_policy{
+        display: flex;
+        flex-direction: row;
+    }
+    .text{
+        height:fit-content;
+        width:100%;
+       background-color: rgba(224, 255, 255,0.2);
+    }
+
+    .btn{
+         height:30px;
+         width:160px;
+         background-color: #0c5e54;
+         border-radius: 5px;
+        
+    }
+    @media screen and (max-width: 1200px) and (min-width:900px) {
+         .property{
+                flex-direction: column;
+         }
+    }
+    @media screen and (max-width:900px) {
+        #listings{
+            grid-template-columns: 1fr;
+        }
+    }
