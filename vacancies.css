@@ -237,7 +237,10 @@
         width:100%;
        background-color: rgba(224, 255, 255,0.2);
     }
-
+     .buttons{
+        display: flex;
+        flex-direction: row;
+    }
     .btn{
          height:30px;
          width:160px;
@@ -254,4 +257,9 @@
         #listings{
             grid-template-columns: 1fr;
         }
+    }
+    @media screen and (max-width:560px){
+        .property{
+            flex-direction: column;
+     }
     }
