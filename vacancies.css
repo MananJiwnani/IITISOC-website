@@ -94,24 +94,33 @@
     width: 100%;
     box-sizing: border-box;
   }
-   
+             /* searchbar */
   .searchbar{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     width:100%;
-    height:60px;
+    height:50px;
     background-color: #0A5184;
   }
-
+  .fw{
+    width: min-content;
+    height: max-content;
+    margin:3px 7px;
+    display: flex;
+    flex-direction: column;
+  }
+   #filter{
+    display: flex;
+    flex-direction: row;
+   }
   .filter{
-    margin:0% 1%;
+    margin:0%;
      display: flex;
      justify-content: center;
      align-items: center;
-     height:37px;
-     width:220px;
+     height:40px;
+     width:max-content;
      background-color: rgba(65, 121, 204, 0.4);
      border-radius: 3px;
   }
@@ -139,6 +148,7 @@
         width:220px;
         background-color: #AEFFF5;
         border-radius: 3px;
+        margin:4px 2px;
     }
     #search_btn #search_logo{
         width: 30px;
@@ -149,7 +159,78 @@
         color:#0A5184;
         font-weight: bold;
     }
+       /* hidden blocks in search bar */
+       .location{
+           background-color: #b0ede6;
+           position: relative;
+           display: flex;
+           flex-direction: column;
+           width:100%;
+           margin: 3%;
+       }
+       .location select {
+        margin:0%;
+        width:100%;
+        font-family: "Kameron", serif;
+        font-weight: bold;
+        color:#08453d;
+       }
+         .location select option{
+            font-family: "Kameron", serif;
+            font-weight: bold;
+            color:#08453d;
+            height: min-content;
+            width:min-content;
+         }
 
+       .Property_type{
+        background-color: rgba(255, 255, 255, 0.95);
+        display: flex;
+        flex-direction: column;
+        width:100%;
+      position:relative;
+        margin:3%;
+        border-radius: 5px;
+        
+       }
+       .Property_type h3{
+        margin:1px;
+        background-color: #c9fcf6;
+        color:#0c5e54;
+       }
+       #Residencial{
+        flex-wrap: wrap;
+        display: flex;
+       }
+       #Commercial{
+        flex-wrap: wrap;
+        display: flex;
+       }
+       #OtherTypes{
+        display: flex;
+       }
+       .type{
+        margin:5px 5px;
+        background-color: rgba(150, 241, 241, 0.7);
+        border-radius: 3px;
+        color:#08453d;
+        font-size: 17px;
+       }
+          
+        .budget {
+            margin: 3%;
+            background-color: #c9fcf6;
+            position: relative;
+            width:100%;
+        }
+         .budget input{
+            font-family: "Kameron", serif;
+            font-weight: bold;
+            color:#08453d;
+            margin:3px;
+            width:90%;
+         }
+       
 /* listings starts here */
 
    #listings{
@@ -164,6 +245,7 @@
     margin:20px 20px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     margin: 20px 20px;
     width:fit-content;
     height: fit-content;
@@ -174,11 +256,11 @@
    .mainText{
      display: flex;
      flex-direction: column;
+     justify-content: center;
      width:80%;
+     margin: 2px 2px;
    }
-     .mainText{
-        margin: 2px 2px;
-         }
+    
    
    .home_img{
     height: 200px;
@@ -186,8 +268,8 @@
     background-image: url('home1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin:4vh;
     border-radius: 10px;
+    margin: 3vh;
    }
 
    .common_properties{
@@ -197,6 +279,7 @@
     width:fit-content;
     height:70px;
     background-color: rgba(244, 255, 255,0.4);
+    margin:2px 0px;
    }
    .common_properties div{
     margin:2px 4px;
@@ -237,29 +320,70 @@
         width:100%;
        background-color: rgba(224, 255, 255,0.2);
     }
-     .buttons{
+    .buttons{
         display: flex;
         flex-direction: row;
+        margin:0%;
+        padding: 0%;     
     }
     .btn{
          height:30px;
          width:160px;
          background-color: #0c5e54;
          border-radius: 5px;
-        
+         margin: 5px;
     }
-    @media screen and (max-width: 1200px) and (min-width:900px) {
+    @media screen and (max-width: 1240px) and (min-width:900px) {
          .property{
+            justify-content: center;
+            align-items: center;
+            min-width: fit-content;
                 flex-direction: column;
          }
+         .common_properties{
+            margin: 2px 45px;
+         }    
     }
     @media screen and (max-width:900px) {
         #listings{
             grid-template-columns: 1fr;
         }
     }
-    @media screen and (max-width:560px){
+    @media screen and (max-width:660px) {
+           .searchbar{
+            height:fit-content;
+            flex-direction: column;
+            align-items: center;
+           }
+           .fw{
+            justify-content: center;
+            align-items: center;
+            width:90%;
+           }
+           .filter{
+            width:100%;
+           }
+        #search_btn{
+             width:90%;
+        }
+        #property_type{
+            margin: 0%;
+            width:90%;
+            transform: translateY(80%) ;
+        }
+    }
+    @media screen and (max-width:600px){
         .property{
+            justify-content: center;
+            align-items: center;
+            min-width: fit-content;
             flex-direction: column;
      }
+       .common_properties{
+        margin: 2px 45px;
+     }     
+    }
+    .display{
+        margin:0%;
+        display : none;
     }

@@ -11,7 +11,7 @@
 <body>
     <div id="header">
         <div class="navbar">
-            <img src="assets/Logo.svg" alt="Logo">
+            <img src="assets/main_logo.svg" alt="Logo">
             <div class="heading">RentEstate</div>
             <div class="tabs">
                 <a href="homepage.html" class="button">Home</a>
@@ -32,8 +32,88 @@
             <div class="section1">
                 <div class="head h2">Not able to find a good place or troubling to find tenants..</div>
                 <div class="head h3">Total property management of the most comfortable homes in India</div>
+                <div class="searchbar">
+        
+                    <div class="fw">
+                         <div class="filter searchtext" id="location">
+                                 <img src="search_1.svg"  id="search_1">
+                                    <h3 class="search_text">Location</h3>
+                         </div>
+                        <div class="location display">
+                          <select name="city" id="city" class="select ">
+                            <option value="" selected>Select City</option>
+                            <option value="Indore">Indore</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Jaipur">Delhi</option>
+                            <option value="Chennai">Chennai</option>
+                          </select>
+                          <select name="state" id="state" class="select ">
+                            <option value="" selected>Select State</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Gujrat">Gujrat</option>
+                            <option value="Tamilnadu">Tamilnadu</option>
+                            <option value="Rajsthaan">Rajsthaan</option>
+                          </select>
+                          <select name="country" id="country" class="select ">
+                            <option value="India" selected>India</option>
+                          </select>
+                        </div>
+                    </div>
+        
+                     <div class="fw">
+                    <div class="filter searchtext" id="property">
+                        <img src="search_2.svg"  id="search_2">
+                        <h3 class="search_text">Property Type</h3>
+                        </div>
+                        <div class="Property_type display"  >
+                            <h3 class="Propertytype ">Residencial</h3>
+                            <div id="Residencial" > 
+                             <div class="type Residencial display" id="Residencial_1">flat</div>
+                             <div class="type Residencial display" id="Residencial_2">House/villa</div>
+                             <div class="type Residencial display" id="Residencial_3">1Bhk</div>
+                             <div class="type Residencial display" id="Residencial_4">2Bkh</div>
+                             <div class="type Residencial display" id="Residencial_5">3Bhk</div>
+                             <div class="type Residencial display" id="Residencial_6">4Bhk</div>
+                             <div class="type Residencial display" id="Residencial_7">5Bhk</div>
+                             <div class="type Residencial display" id="Residencial_8">5+Bhk</div>
+                           </div>
+                           <h3 class="Propertytype ">Commercial</h3>
+                           <div id="Commercial" >
+                            <div class="type Commercial display" id="commercial_1">OfficeSpace</div>
+                            <div class="type Commercial display" id="commercial_2">Shop/Showroom</div>
+                            <div class="type Commercial display" id="commercial_3">Indistruil Building</div>
+                           </div>
+                           <h3 class="Propertytype ">OtherTypes</h3>
+                           <div id="OtherTypes" >
+                            <div class="type OtherTypes display" id="others_1">Agricultural Land</div>
+                            <div class="type OtherTypes display" id="others_2"> Fram House </div>
+                           </div>
+                        </div> 
+                        </div>
+                    
+                      <div class="fw">
+                    <div class="filter searchtext" id="budget">
+                        <img src="search_3.svg"  id="search_3">
+                        <h3 class="search_text">Budget</h3>
+                    </div>
+                    <div class="budget display"> 
+                       <input type="number" name="min_budget" id="min_budget" placeholder="Min_Budget">
+                       <input type="number" name="max_budget" id="max_budget" placeholder="Max_Budget"> 
+                    </div>
+                    </div>
+        
+        
+                    <div id="search_btn">
+                        <img src="search_logo.svg"  id="search_logo">
+                        <h3 id="search">Search</h3>
+                    </div>
+                  </div>      
             </div>
         </div>
+
+
     </div>
 
     <script src="index.js"></script>
