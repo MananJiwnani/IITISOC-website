@@ -1,24 +1,36 @@
+  //  location 
  const p =document.getElementsByClassName('search_text')
- const  f =document.getElementsByClassName('select')
+ const  f =document.querySelector('.location')
      p[0].onclick =function(){
-      p[0].style.color = 'black'
-          for (const j of f) {
-             j.classList.toggle('display')
-          }
+             f.classList.toggle('display')
         }
+        const q =document.getElementById('city')
+        const k =document.getElementById('state')
+        const h =document.getElementById('country')
+          
+        function func(){
+          let loc = `${q.value}  ${k.value} ${h.value}`;
+          p[0].innerText = loc;
+        } 
+   
+             q.addEventListener('change',func);
+             k.addEventListener('change',func);
+             h.addEventListener('change',func);
+  //  property_types
            p[1].onclick = function(){
-           const a=  document.getElementsByClassName('Property_type')
-       for (const k of a) {
-           k.classList.toggle('display')
-          }
+           const Property_type=  document.querySelector('.Property_type')
+           Property_type.classList.toggle('display')
+          
+
+           
           z = document.getElementsByClassName('type');
           for (const j of z) {
             j.classList.add('display') 
           }         
            }
            
-//   for  property types 
-const property =document.getElementsByClassName('Property_type')
+
+const property =document.getElementsByClassName('Propertytype')
 let x;
          for (const i of property) {
              i.onclick = function(){
@@ -34,10 +46,19 @@ let x;
      
      for (const i of a) {
           i.onclick =function(){
-            i.style.color = 'white'
            let b = `${i.innerText}`
            let  c = `${i.parentElement.id}`
              d[1].innerText = `${c} ,${b}`;
           }
      }
         
+    //  budget
+    const budget =document.querySelector('.budget')
+      p[2].onclick = function(){
+        budget.classList.toggle('display');
+      } 
+           
+         
+
+
+     
