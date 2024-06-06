@@ -208,7 +208,7 @@ button:hover{
 }
 
 
-@media only screen and (max-width: 900px) and (min-width: 684px) {
+@media only screen and (max-width: 900px)  {
     .h2 {
         font-size: 26px;
         width: 60vw;
@@ -228,9 +228,28 @@ button:hover{
     .heading {
         font-size: 42px;
     }
+
+    .container {
+        width: 80vw;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .login {
+        font-size: 40px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 250px;
+    }
+
+    form button {
+        width: 150px;
+        font-size: 20px;
+    }
 }
 
-@media only screen and (max-width: 684px) and (min-width: 556px) {
+@media only screen and (max-width: 684px)  {
     .h2 {
         font-size: 22px;
         width: 60vw;
@@ -274,5 +293,45 @@ button:hover{
 
     .icon {
         display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90vw;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 190px;
+        font-size: 16px;
+        height: 35px;
+    }
+
+    .login {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .name, .email, .contact, .password{
+        /* margin-top: 10px; */
+        gap: 10px;
+    }
+
+    form button {
+        width: 130px;
+        height: 40px;
+        font-size: 16px;
+        padding: 10px;
+        left: 0;
+        margin-top: 40px;
+    }
+
+    .form label{
+        font-size:16px;
+    }
+
+    input{
+        font-size: 16px;
+        width: 200px;
     }
 }

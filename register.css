@@ -205,12 +205,13 @@
     background-position: center;
     border-radius: 23px;
     width: 65vw;
-    height: 500px;
+    /* height: 75vh; */
     box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.25);
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .register{
@@ -219,7 +220,7 @@
     font-size: 50px;
     /* font-weight: 550; */
     margin-top: 15px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .form{
@@ -344,3 +345,89 @@ button:hover{
   .role-selection input:checked+span:after {
     opacity: 1;
   }
+
+  @media (max-width: 900px) {
+    .container {
+        width: 80vw;
+        height: auto;
+    }
+
+    .register {
+        font-size: 40px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 250px;
+    }
+
+    form button {
+        width: 150px;
+        font-size: 20px;
+    }
+    
+    .role-selection label {
+        font-size: 14px;
+        padding: 4px 20px;
+    }
+
+    .role-selection label span:before {
+        position: relative;
+        top: 3px;
+    }
+    
+    .role-selection label span:after {
+        margin-top: auto;
+        top: 1px;
+      }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 92vw;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 190px;
+        font-size: 16px;
+        height: 35px;
+    }
+
+    .register {
+        font-size: 30px;
+    }
+    
+    .name, .email, .contact, .password{
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .role-selection {
+        flex-direction: column;
+        gap: 0px;
+        align-items: flex-end;
+        margin-top: 10px;
+    }
+
+    .role-selection label {
+        width: 88%;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    
+    form button {
+        width: 130px;
+        font-size: 16px;
+        padding: 10px 0;
+        left: 0;
+    }
+
+    .form label{
+        font-size:16px;
+    }
+
+    input{
+        font-size: 16px;
+        width: 200px;
+    }
+}
