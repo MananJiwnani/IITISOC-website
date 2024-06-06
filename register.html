@@ -8,17 +8,27 @@
 </head>
 <body>
     <div class="navbar">
-        <img src="assets/Logo.svg"></img>
+        <img src="assets/Logo.svg" alt="Logo">
         <div class="heading">RentEstate</div>
         <div class="tabs">
             <a href="homepage.html" class="button">Home</a>
             <a href="register.html" class="button">Register</a>
             <a href="login.html" class="button">Login</a>
         </div>
-    </div>  
-    <div class="body">  
-        <div class="container">
-            <div class="register">Register</div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            ☰
+        </a>
+    </div>
+    <div id="myLinks" class="overlay">
+        <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="homepage.html" class="button">Home</a>
+        <a href="register.html" class="button">Register</a>
+        <a href="login.html" class="button">Login</a>
+    </div> 
+    <div class="content">
+        <div class="body">  
+            <div class="container">
+                <div class="register">Register</div>
             <div class="form">
                 <form>
                     <div class="name">
@@ -54,5 +64,7 @@
             </div>
         </div>
     </div>  
+</div>
+    <script src="index.js"></script>
 </body>
 </html>
