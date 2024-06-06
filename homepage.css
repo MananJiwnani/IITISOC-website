@@ -67,7 +67,7 @@
 }
 
 .section1 {
-    background-image: url("assets/header_background.jpg");
+    background-image: url("header_background.jpg");
     width: 100vw;
     height: 70vh;
     text-align: center;
@@ -192,3 +192,170 @@
         display: block;
     }
 }
+   /* searchbar */
+.searchbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width:max-content;
+    margin:3%;
+    height:50px;
+    background-color: #0A5184;
+    border-radius: 10px;
+  }
+  .fw{
+    width: min-content;
+    height: max-content;
+    margin:3px 7px;
+    display: flex;
+    flex-direction: column;
+  }
+   #filter{
+    display: flex;
+    flex-direction: row;
+   }
+  .filter{
+    margin:0%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height:40px;
+     width:max-content;
+     background-color: rgba(65, 121, 204, 0.4);
+     border-radius: 3px;
+  }
+   .filter #search_1{
+    width:24px;
+   }
+   .filter #search_2{
+    width:39px;
+   }
+   .filter #search_3{
+    width:51px;
+   }
+
+   .filter h3{
+    padding: 0px 20px;
+     text-align: center;
+     font-family: "Kameron", serif;
+     font-size: 20px;
+   }
+    #search_btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width:220px;
+        background-color: #AEFFF5;
+        border-radius: 3px;
+        margin:4px 2px;
+    }
+    #search_btn #search_logo{
+        width: 30px;
+    }
+    #search_btn h3{
+        font-family: "Kameron", serif;
+        padding: 0px 20px;
+        color:#0A5184;
+        font-weight: bold;
+    }
+       /* hidden blocks in search bar */
+       .location{
+           background-color: #b0ede6;
+           position: relative;
+           display: flex;
+           flex-direction: column;
+           width:100%;
+           margin: 3%;
+       }
+       .location select {
+        margin:0%;
+        width:100%;
+        font-family: "Kameron", serif;
+        font-weight: bold;
+        color:#08453d;
+       }
+         .location select option{
+            font-family: "Kameron", serif;
+            font-weight: bold;
+            color:#08453d;
+            height: min-content;
+            width:min-content;
+         }
+
+       .Property_type{
+        background-color: rgba(255, 255, 255, 0.95);
+        display: flex;
+        flex-direction: column;
+        width:100%;
+      position:relative;
+        margin:3%;
+        border-radius: 5px;
+        
+       }
+       .Property_type h3{
+        margin:1px;
+        background-color: #c9fcf6;
+        color:#0c5e54;
+       }
+       #Residencial{
+        flex-wrap: wrap;
+        display: flex;
+       }
+       #Commercial{
+        flex-wrap: wrap;
+        display: flex;
+       }
+       #OtherTypes{
+        display: flex;
+       }
+       .type{
+        margin:5px 5px;
+        background-color: rgba(150, 241, 241, 0.7);
+        border-radius: 3px;
+        color:#08453d;
+        font-size: 17px;
+       }
+          
+        .budget {
+            margin: 3%;
+            background-color: #c9fcf6;
+            position: relative;
+            width:100%;
+        }
+         .budget input{
+            font-family: "Kameron", serif;
+            font-weight: bold;
+            color:#08453d;
+            margin:3px;
+            width:90%;
+         }
+         .display{
+            display: none;
+            margin:0%;
+         }
+           /* responsive searchbar */
+           @media screen and (max-width:700px) {
+            .searchbar{
+             height:fit-content;
+             flex-direction: column;
+             align-items: center;
+             width:90%;
+            }
+            .fw{
+             justify-content: center;
+             align-items: center;
+             width:90%;
+            }
+           .filter{
+            width:100%;
+           }
+         #search_btn{
+              width:90%;
+         }
+         #property_type{
+             margin: 0%;
+             width:90%;
+             transform: translateY(80%) ;
+         }
+     }
