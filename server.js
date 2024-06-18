@@ -151,7 +151,6 @@
   });
 
   // My properties page for owner to see his properties
-  // In the frontend manan/vasudha should access details from the json responce
   app.get('/myproperties', isAuthenticated, checkRole(owner), (req, res) => {
       res.render('myproperties.ejs');
   });
