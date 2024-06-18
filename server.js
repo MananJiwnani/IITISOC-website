@@ -336,38 +336,3 @@
   server.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`);
   });
-
-
-/*
-// Route to get a property by ID(i think we dont need this feature , because 
-// in "myproperties" page already all properties will be visible)
-app.get('/properties/:id', async (req, res) => {
-  try {
-    const property = await property.findById(req.params.id);
-    if (!property) {
-      return res.status(404).send('Property not found');
-    }
-    res.status(200).json(property);
-  } catch (error) {
-    res.status(405).send(error.message);
-  }
-});
-
-//Route to update a property(no need)
-app.put('/properties/:id', isAuthenticated, async (req, res) => {
-  try {
-    const property = await property.findById(req.params.id);
-    if (!property) {
-      return res.status(404).send('Property not found');
-    }
-    if (property.owner.toString() !== req.user._id.toString()) {
-      return res.status(403).send('You do not have permission to update this property');
-    }
-    Object.assign(property, req.body);
-    await property.save();
-    res.status(200).send('Property updated successfully');
-  } catch (error) {
-    res.status(402).send(error.message);
-  }
-})
-*/
