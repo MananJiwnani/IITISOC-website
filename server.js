@@ -72,25 +72,6 @@
     res.render('login.ejs');
   });
   
-  //submit button in login page should take to the home page
-  app.post('/login', checkNotAuthenticated, (req, res, next) => {
-    passport.authenticate('local', (error, user, info) => {
-      if (error) {
-        return next(error);
-      }
-      if (!user) {
-        return res.redirect('/login'); 
-      }
-      req.logIn(user, (error) => {
-        if (error) {
-          return next(error);
-        }
-        req.session.userId = user._id; 
-        return res.redirect('/');
-      });
-    })(req, res, next);
-  });
-  
   app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('register.ejs');
   });
