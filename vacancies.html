@@ -7,16 +7,25 @@
     <link rel="stylesheet" href="vacancies.css">
 </head>
 <body>
-        <nav class="navbar">
-            <img src="main_logo.svg"></img>
-            <div class="heading">RentEstate</div>
-            <div class="tabs">
-                <a href="homepage.html" class="button">Home</a>
-                <a href="register.html" class="button">Register</a>
-                <a href="login.html" class="button">Login</a>
-            </div>
-        </nav>
-
+    <div class="navbar">
+        <img src="assets/Logo.svg" alt="Logo">
+        <div class="heading">RentEstate</div>
+        <div class="tabs">
+            <a href="homepage.html" class="button">Home</a>
+            <a href="register.html" class="button">Register</a>
+            <a href="login.html" class="button">Login</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            ☰
+        </a>
+    </div>
+    <div id="myLinks" class="overlay">
+        <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="homepage.html" class="button">Home</a>
+        <a href="register.html" class="button">Register</a>
+        <a href="login.html" class="button">Login</a>
+    </div>
+    <div class="content">
         <div id="vac_header">
             <h1>Vacancies</h1>
             <h3>View the full list of available properties managed by RentEstate management</h3>
@@ -28,7 +37,7 @@
 
             <div class="fw">
                  <div class="filter searchtext">
-                         <img src="search_1.svg"  id="search_1">
+                     <img src="assets/search_1.svg"  id="search_1">
                             <h3 class="search_text">Location</h3>
                  </div>
                 <div class="location display">
@@ -39,30 +48,30 @@
                     <option value="Ahmedabad">Ahmedabad</option>
                     <option value="Jaipur">Delhi</option>
                     <option value="Chennai">Chennai</option>
-                  </select>
-                  <select name="state" id="state" class="select ">
+                </select>
+                <select name="state" id="state" class="select ">
                     <option value="" selected>Select State</option>
                     <option value="Madhya Pradesh">Madhya Pradesh</option>
                     <option value="Maharashtra">Maharashtra</option>
                     <option value="Gujrat">Gujrat</option>
                     <option value="Tamilnadu">Tamilnadu</option>
                     <option value="Rajsthaan">Rajsthaan</option>
-                  </select>
+                </select>
                   <select name="country" id="country" class="select ">
                     <option value="India" selected>India</option>
                   </select>
                 </div>
             </div>
 
-             <div class="fw">
+            <div class="fw">
             <div class="filter searchtext">
-                <img src="search_2.svg"  id="search_2">
+                <img src="assets/search_2.svg"  id="search_2">
                 <h3 class="search_text">Property Type</h3>
-                </div>
+            </div>
                 <div class="Property_type display"  >
                     <h3 class="Propertytype ">Residencial</h3>
                     <div id="Residencial" > 
-                     <div class="type Residencial display" id="Residencial_1">flat</div>
+                        <div class="type Residencial display" id="Residencial_1">flat</div>
                      <div class="type Residencial display" id="Residencial_2">House/villa</div>
                      <div class="type Residencial display" id="Residencial_3">1Bhk</div>
                      <div class="type Residencial display" id="Residencial_4">2Bkh</div>
@@ -70,10 +79,10 @@
                      <div class="type Residencial display" id="Residencial_6">4Bhk</div>
                      <div class="type Residencial display" id="Residencial_7">5Bhk</div>
                      <div class="type Residencial display" id="Residencial_8">5+Bhk</div>
-                   </div>
+                    </div>
                    <h3 class="Propertytype ">Commercial</h3>
                    <div id="Commercial" >
-                    <div class="type Commercial display" id="commercial_1">OfficeSpace</div>
+                       <div class="type Commercial display" id="commercial_1">OfficeSpace</div>
                     <div class="type Commercial display" id="commercial_2">Shop/Showroom</div>
                     <div class="type Commercial display" id="commercial_3">Indistruil Building</div>
                    </div>
@@ -85,31 +94,31 @@
                 </div> 
                 </div>
             
-              <div class="fw">
-            <div class="filter searchtext">
-                <img src="search_3.svg"  id="search_3">
-                <h3 class="search_text">Budget</h3>
-            </div>
-            <div class="budget display"> 
-               <input type="number" name="min_budget" id="min_budget" placeholder="Min_Budget">
+                <div class="fw">
+                    <div class="filter searchtext">
+                        <img src="assets/search_3.svg"  id="search_3">
+                        <h3 class="search_text">Budget</h3>
+                    </div>
+                    <div class="budget display"> 
+                        <input type="number" name="min_budget" id="min_budget" placeholder="Min_Budget">
                <input type="number" name="max_budget" id="max_budget" placeholder="Max_Budget"> 
             </div>
-            </div>
+        </div>
 
-
+        
             <div id="search_btn">
-                <img src="search_logo.svg"  id="search_logo">
+                <img src="assets/search_logo.svg"  id="search_logo">
                 <h3 id="search">Search</h3>
             </div>
-          </div>
-
-          
-
+        </div>
+        
+        
+        
              <div id="listings">
-
+                 
                  <div class="property">
-                    <div  class="home_img" ></div>
-                        <div class="mainText">
+                     <div  class="home_img" ></div>
+                     <div class="mainText">
                          <div class="common_properties">
                             <div class="rent">
                                 <h3>Rent</h3>
@@ -123,19 +132,19 @@
                                 <h3>Available</h3>
                                 <h4 class="availibility_value">Now</h4>
                             </div>
-                         </div>
+                        </div>
                          <div class="property_type">
                                <h3>Property Type</h3>
                                <h4 class="propety_type_value">Residencial</h4>
                                <h4 class="property_inner_type">villa/house</h4>
                          </div>
                          <div class="address">
-                            <h3>Adress</h3>
+                             <h3>Adress</h3>
                             <h4 class="address1">Simrol,</h4>
                             <h4 class="address2">Indore</h4>
                             <h4 class="address3">Madhya Pradesh</h4>
                             <h4>India</h4>
-                         </div>
+                        </div>
                          <div class="text">
                          <h4>Welcome to this stunning 5 bedroom, 2 bath Eichler in indore. 
                             This home boasts a remodeled kitchen with a large center island, 
@@ -143,13 +152,13 @@
                              cooktop. </h4>
                          </div>
                          <!-- <div class="amenities">
-                            <h3>Amenities</h3>
-                            <h4 class="amenities_value">cookstove,fridge,oven</h4>
-                         </div> -->
+                             <h3>Amenities</h3>
+                             <h4 class="amenities_value">cookstove,fridge,oven</h4>
+                            </div> -->
                          <!-- <div class="pet_policy">
                             <h3>Pet Policy</h3>
                             <h4 class="pet_policy_value">Dogs allowed</h4>
-                         </div> -->
+                        </div> -->
                           <div class="buttons">
                          <button class="btn">
                             <h3 style="color: white;">Apply Now</h3>
@@ -176,47 +185,48 @@
                                 <h3>Available</h3>
                                 <h4 class="availibility_value">Now</h4>
                             </div>
-                         </div>
+                        </div>
                          <div class="property_type">
                                <h3>Property Type</h3>
                                <h4 class="propety_type_value">Residencial</h4>
                                <h4 class="property_inner_type">villa/house</h4>
-                         </div>
+                            </div>
                          <div class="address">
                             <h3>Adress</h3>
                             <h4 class="address1">Simrol,</h4>
                             <h4 class="address2">Indore</h4>
                             <h4 class="address3">Madhya Pradesh</h4>
                             <h4>India</h4>
-                         </div>
+                        </div>
                          <div class="text">
-                         <h4>Welcome to this stunning 5 bedroom, 2 bath Eichler in indore. 
+                             <h4>Welcome to this stunning 5 bedroom, 2 bath Eichler in indore. 
                             This home boasts a remodeled kitchen with a large center island, 
                             luxury stainless steel appliances including double wall oven, and induction
-                             cooktop. </h4>
-                         </div>
-                         <!-- <div class="amenities">
+                            cooktop. </h4>
+                        </div>
+                        <!-- <div class="amenities">
                             <h3>Amenities</h3>
                             <h4 class="amenities_value">cookstove,fridge,oven</h4>
                          </div> -->
                          <!-- <div class="pet_policy">
-                            <h3>Pet Policy</h3>
-                            <h4 class="pet_policy_value">Dogs allowed</h4>
-                         </div> -->
-                          <div class="buttons">
-                         <button class="btn">
-                            <h3 style="color: white;">Apply Now</h3>
+                             <h3>Pet Policy</h3>
+                             <h4 class="pet_policy_value">Dogs allowed</h4>
+                            </div> -->
+                            <div class="buttons">
+                                <button class="btn">
+                                    <h3 style="color: white;">Apply Now</h3>
                          </button>
                          <button class="btn">
                             <h3 style="color:white">View Details</h3>
                          </button>
-                         </div>
-                     </div>
+                        </div>
+                    </div>
                  </div>      
                
              </div>
 
         </section>
+    </div>
    
      <script src="vacancies.js"></script>
 </body>
