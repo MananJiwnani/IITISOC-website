@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost:27017/userDb', { useNewUrlParser: true, us
 
 const propertySchema = new mongoose.Schema({
   owner: {
-    type: mongoose.Schema.Types.userId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
     required: true,
   },

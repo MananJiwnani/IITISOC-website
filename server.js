@@ -72,25 +72,6 @@
     res.render('login.ejs');
   });
   
-  //submit button in login page should take to the home page
-  app.post('/login', checkNotAuthenticated, (req, res, next) => {
-    passport.authenticate('local', (error, user, info) => {
-      if (error) {
-        return next(error);
-      }
-      if (!user) {
-        return res.redirect('/login'); 
-      }
-      req.logIn(user, (error) => {
-        if (error) {
-          return next(error);
-        }
-        req.session.userId = user._id; 
-        return res.redirect('/');
-      });
-    })(req, res, next);
-  });
-  
   app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('register.ejs');
   });
@@ -120,11 +101,11 @@
   });
   
   // Adding Properties
-  app.get('/addproperties', isAuthenticated, checkRole(owner), (req, res)=>{
+  app.get('/addproperties', checkAuthenticated, checkRole(owner), (req, res)=>{
     res.render('addproperties.ejs');
   });
 
-  app.post('/addproperties', isAuthenticated, checkRole(owner), async (req, res) => {
+  app.post('/addproperties', checkAuthenticated, checkRole(owner), async (req, res) => {
     try {
       const newProperty = new property({
         owner: req.session.userId, 
@@ -151,11 +132,11 @@
   });
 
   // My properties page for owner to see his properties
-  app.get('/myproperties', isAuthenticated, checkRole(owner), (req, res) => {
+  app.get('/myproperties', checkAuthenticated, checkRole(owner), (req, res) => {
       res.render('myproperties.ejs');
   });
 
-  app.get('/api/myproperties', isAuthenticated, checkRole(owner), async (req, res) => {
+  app.get('/api/myproperties', checkAuthenticated, checkRole(owner), async (req, res) => {
     try {
       const properties = await property.find({ owner: req.session.userId });
       res.status(200).json(properties);
@@ -164,7 +145,7 @@
     }
   });
   
-  app.post('/myproperties/:id', isAuthenticated, checkRole('owner'), async (req, res) => {
+  app.post('/myproperties/:id', checkAuthenticated, checkRole('owner'), async (req, res) => {
     try {
       const propertyId = req.params.id;
       const updatedProperty = await property.findByIdAndUpdate(
@@ -184,7 +165,7 @@
   // when user submits the search form in home page it redirects to vacancies page
   // next if someone is trying to access get request to vacancies path
   // server renders vacancies.ejs file which in turn calls /api/vacancies. 
-  app.post('/', isAuthenticated, (req, res) =>{
+  app.post('/', checkAuthenticated, (req, res) =>{
     try{
       const query = {};
       if (req.body.city) query.city = new RegExp(req.body.city, 'i');
@@ -206,12 +187,12 @@
     }
   });
 
-  app.get('/vacancies', isAuthenticated, (req, res) => {
+  app.get('/vacancies', checkAuthenticated, (req, res) => {
     const query = req.session.query || {};
     res.render('vacancies.ejs', {query});
   });
 
-  app.get('/api/vacancies', isAuthenticated, async (req, res) => {
+  app.get('/api/vacancies', checkAuthenticated, async (req, res) => {
     try {
       const query = req.session.query || {};
       const properties = await property.find(query);
@@ -222,7 +203,7 @@
     }
   });
 
-  app.post('/vacancies', isAuthenticated, (req, res) => {
+  app.post('/vacancies', checkAuthenticated, (req, res) => {
     try{
       const query = {};
       if (req.body.city) query.city = new RegExp(req.body.city, 'i');
@@ -244,7 +225,7 @@
     }
   })
 
-  app.post('/api/vacancies/:id', isAuthenticated, async (req, res) => {
+  app.post('/api/vacancies/:id', checkAuthenticated, async (req, res) => {
     try {
       const propertyId = req.params.id;
       const userId = req.session.userId; 
@@ -271,7 +252,7 @@
     }
   });
 
-  app.get('/dashboard', isAuthenticated, checkRole('owner'), async (req, res) => {
+  app.get('/dashboard', checkAuthenticated, checkRole('owner'), async (req, res) => {
     try {
       const notifications = await Notification.find({ userId: req.session.userId });
       res.render('dashboard', { notifications });
@@ -279,25 +260,7 @@
       res.status(500).send('Internal server error');
     }
   });
-/* 
-//Route to delete a property(this might be needed, 
-// when property gets rented we should remove this)
-  app.delete('/properties/:id', isAuthenticated, async (req, res) => {
-    try {
-      const property = await property.findById(req.params.id);
-      if (!property) {
-        return res.status(401).send('Property not found');
-      }
-      if (property.owner.toString() !== req.user._id.toString()) {
-        return res.status(400).send('You do not have permission to delete this property');
-      }
-      await property.remove();
-      res.status(200).send('Property deleted successfully');
-    } catch (error) {
-      res.status(400).send(error.message);
-    }
-  });
-*/
+
 
   //Authentication
   function checkAuthenticated(req, res, next) {
