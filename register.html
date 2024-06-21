@@ -61,6 +61,11 @@
                     </div>
                     <button><b>Get Started</b></button>
                 </form>
+
+                <% if (typeof error !== 'undefined' && error.length > 0) { %>
+                    <p style="color: red;"><%= error %></p> 
+                <% } %>
+                    
             </div>
         </div>
     </div>  
