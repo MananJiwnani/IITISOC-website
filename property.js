@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/userDb', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const propertySchema = new mongoose.Schema({
   owner: {
@@ -62,4 +61,4 @@ const propertySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('property', propertySchema);
+module.exports = mongoose.model('Property', propertySchema);
