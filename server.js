@@ -58,10 +58,7 @@
     }
     next()
   }
-  
-  // allow user to go to homepage even if he is not loggined
-  // but make sure that he wont be able to access the 
-  // vacancies page,owner portal,tenant portal.
+
   app.get('/', (req, res) => {
     res.render('home.ejs');
   });
