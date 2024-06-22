@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" href="tenant_portal.css">
+
+</head>
+
+<body>
+
+  <div class="navbar">
+    <img src="assets/Logo.svg" alt="Logo">
+    <div class="heading">RentEstate</div>
+    <div class="tabs">
+      <a href="homepage.html" class="button">Home</a>
+      <a href="vacancies.html" class="button">Vacancies</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      ☰
+    </a>
+  </div>
+  <div id="myLinks" class="overlay">
+    <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+    <a href="homepage.html" class="button">Home</a>
+    <a href="vacancies.html" class="button">Vacancies</a>
+  </div>
+  <section class="container">
+    <div class="sidebar">
+      <h3 class="feature">Tenant Portal</h3>
+      <ul class="main_feature">
+        <a href="#" class="feature">
+          <li>My properties</li>
+        </a>
+        <a href="#" class="feature">
+          <li>Add Properties</li>
+        </a>
+      </ul>
+
+      <h3 class="text">~TENANTS</h3>
+      <ul class="main_feature">
+        <a href="#" class="feature">
+          <li>My Tenants</li>
+        </a>
+        <a href="#" class="feature">
+          <li>Tenants Requests</li>
+        </a>
+        <a href="#" class="feature">
+          <li>Messeges</li>
+        </a>
+      </ul>
+
+      <h3 class="text">~ADMINSTRATION</h3>
+      <ul class="main_feature">
+        <a href="#" class="feature">
+          <li>Bank Acoounts</li>
+        </a>
+        <a href="#" class="feature">
+          <li>Reports</li>
+        </a>
+      </ul>
+
+      <h3 class="text">~TOOLS</h3>
+      <ul class="main_feature">
+        <a href="#" class="feature">
+          <li>Rent Estimate</li>
+        </a>
+      </ul>
+
+      <h3 class="text">~EXTRA</h3>
+      <ul class="main_feature">
+        <a href="#" class="feature">
+          <li>Settings</li>
+        </a>
+        <a href="#" class="feature">
+          <li>Help Centre</li>
+        </a>
+        <a href="#" class="feature">
+          <li>Contact Us</li>
+        </a>
+      </ul>
+    </div>
+    <div class="diff_features">
+      <div class="features_display My_properties">
+        <h1 class="MAIN_text">Rented Out Properties</h1>
+        <hr>
+        <div class="rented_properties">
+          <div class="property">
+            <div class="home_img"></div>
+
+            <div class="property_type">
+              <h3>Property Type</h3>
+              <div class="type">
+                <h4 class="propety_type_value">Residencial</h4>
+                <h4 class="property_inner_type">villa/house</h4>
+              </div>
+            </div>
+
+            <div class="address ">
+              <h3>Address</h3>
+              <div class="type">
+                <h4 class="address1">Simrol,</h4>
+                <h4 class="address2">Indore,</h4>
+                <h4 class="address3">Madhya Pradesh,</h4>
+                <h4>India</h4>
+              </div>
+            </div>
+
+            <!-- <div class="rent">
+                <h3>Rent</h3>
+                <h4 class="rent_value">1200$</h4>
+             </div> -->
+
+            <div class="tenant">
+              <h3>tenant</h3>
+              <h4 class="tenant_value">Manan Jiwnani</h4>
+            </div>
+            <a href="" class="details">More Details</a>
+          </div>
+        </div>
+        <h1 class="MAIN_text">Other Properties</h1>
+      </div>
+      <div class="feature_display display"></div>
+      <div class="feature_display display"></div>
+      <div class="feature_display display"></div>
+    </div>
+
+
+
+
+
+  </section>
+
+
+
+
+  <script src="tenant_portal.js"></script>
+</body>
+
+</html>
