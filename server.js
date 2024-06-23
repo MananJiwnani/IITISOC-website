@@ -67,12 +67,12 @@
     res.render('vacancies.ejs');
   });
   
-  app.get('/ownerportal',checkAuth, checkRole('owner'), (req, res) => {
-    res.render('ownerportal.ejs');
+  app.get('/owner_portal',checkAuth, checkRole('owner'), (req, res) => {
+    res.render('owner_portal.ejs');
   });
 
-  app.get('/tenantportal',checkAuth, checkRole('tenant'), (req, res) => {
-    res.render('tenantportal.ejs');
+  app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
+    res.render('tenant_portal.ejs');
   });
 
   //myprofie is in owner portal
