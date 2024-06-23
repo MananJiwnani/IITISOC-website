@@ -30,7 +30,7 @@
   
   app.set('view-engine','ejs');
   app.set('views','views');
-  app.use(express.static('public'));
+  app.use(express.static(path.join(__dirname,"../public")));
   
   app.use(express.urlencoded({ extended: true }));
   app.use(flash());

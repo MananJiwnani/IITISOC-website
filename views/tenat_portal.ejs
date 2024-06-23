@@ -11,18 +11,18 @@
     rel="stylesheet">
 
 
-  <link rel="stylesheet" href="owner_portal.css">
+  <link rel="stylesheet" href="stylesheets/tenant_portal.css">
 
 </head>
 
 <body>
 
   <div class="navbar">
-    <img src="assets/Logo.svg" alt="Logo">
+    <img src="../public/images/assets/Logo.svg" alt="Logo">
     <div class="heading">RentEstate</div>
     <div class="tabs">
-      <a href="homepage.html" class="button">Home</a>
-      <a href="vacancies.html" class="button">Vacancies</a>
+      <a href="homepage.ejs" class="button">Home</a>
+      <a href="vacancies.ejs" class="button">Vacancies</a>
     </div>
     <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
       ☰
@@ -30,15 +30,15 @@
   </div>
   <div id="myLinks" class="overlay">
     <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
-    <a href="homepage.html" class="button">Home</a>
-    <a href="vacancies.html" class="button">Vacancies</a>
+    <a href="homepage.ejs" class="button">Home</a>
+    <a href="vacancies.ejs" class="button">Vacancies</a>
   </div>
   <section class="container">
     <div class="sidebar">
-      <h3 class="feature">Owner Portal</h3>
+      <h3 class="feature">Tenant Portal</h3>
       <ul class="main_feature">
         <a href="#" class="feature">
-          <li>My Properties</li>
+          <li>My properties</li>
         </a>
         <a href="#" class="feature">
           <li>Add Properties</li>
@@ -51,17 +51,17 @@
           <li>My Tenants</li>
         </a>
         <a href="#" class="feature">
-          <li>Tenant Requests</li>
+          <li>Tenants Requests</li>
         </a>
         <a href="#" class="feature">
-          <li>Messages</li>
+          <li>Messeges</li>
         </a>
       </ul>
 
       <h3 class="text">~ADMINSTRATION</h3>
       <ul class="main_feature">
         <a href="#" class="feature">
-          <li>Bank Accounts</li>
+          <li>Bank Acoounts</li>
         </a>
         <a href="#" class="feature">
           <li>Reports</li>
@@ -142,7 +142,7 @@
 
 
 
-  <script src="owner_portal.js"></script>
+  <script src="javascripts/tenant_portal.js"></script>
 </body>
 
 </html>
