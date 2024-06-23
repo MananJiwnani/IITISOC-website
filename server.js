@@ -6,6 +6,7 @@
   const http = require('http');
   const app = express();
   const server = http.createServer(app);
+  const path=require('path');
 
   const bcrypt = require('bcrypt');
   const passport = require('passport');
@@ -14,11 +15,8 @@
   const methodOverride = require('method-override');
   const mongoose = require('mongoose');
 
-  const initializePassport = require('./passport');
-  mongoose.connect('mongodb://localhost:27017/userDb', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(() => {
+  // const initializePassport = require('./passport');
+  mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
     console.log('Connected to MongoDB');
   }).catch(err => {
     console.error('Failed to connect to MongoDB', err);
@@ -30,7 +28,7 @@
   
   app.set('view-engine','ejs');
   app.set('views','views');
-  app.use(express.static(path.join(__dirname,"../public")));
+  app.use(express.static(path.join(__dirname,'public')));
   
   app.use(express.urlencoded({ extended: true }));
   app.use(flash());
@@ -116,6 +114,11 @@
     req.session.user_id = user._id;
     res.redirect('/login')
 })
+
+app.get('/home', (req, res) => {
+  const error = req.flash('error');
+  res.render('home.ejs', { error });
+});
 
   app.post('/logout',checkAuth, (req, res) => {
     req.session.user_id = null;
@@ -208,7 +211,7 @@
 
   app.get('/vacancies',checkAuth, (req, res) => {
     const query = req.session.query || {};
-    res.render('vacancies.ejs');
+    res.render('/vacancies');
   });
 
   app.get('/api/vacancies',checkAuth, async (req, res) => {
