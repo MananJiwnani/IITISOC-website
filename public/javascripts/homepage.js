@@ -72,8 +72,8 @@ p[2].onclick = function () {
   budget.classList.toggle('display');
 }
 
-document.body.querySelector(".owner_portal").onclick = () => redirect("owner_portal.html");
-document.body.querySelector(".tenant_portal").onclick = () => redirect("tenant_portal.html");
+document.body.querySelector(".owner_portal").onclick = () => redirect("/owner_portal");
+document.body.querySelector(".tenant_portal").onclick = () => redirect("/tenant_portal");
 
 const redirect = (url) => {
   window.location.href = url;

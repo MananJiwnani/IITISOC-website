@@ -65,11 +65,11 @@
     res.render('vacancies.ejs');
   });
   
-  app.get('/owner_portal',checkAuth, checkRole('owner'), (req, res) => {
+  app.get('/owner_portal',checkAuth,  (req, res) => {
     res.render('owner_portal.ejs');
   });
 
-  app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
+  app.get('/tenant_portal',checkAuth,  (req, res) => {
     res.render('tenant_portal.ejs');
   });
 
