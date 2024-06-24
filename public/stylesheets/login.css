@@ -67,7 +67,7 @@
 }
 
 .section1 {
-    background-image: url("assets/header_background.jpg");
+    background-image: url("/images/header_background.jpg");
     width: 100vw;
     height: 70vh;
     text-align: center;
@@ -133,7 +133,7 @@
 }
 
 .container{
-    background-image: url("assets/register_bc.jpg");
+    background-image: url("/images/register_bc.jpg");
     background-position: center;
     border-radius: 23px;
     width: 65vw;

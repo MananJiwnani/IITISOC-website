@@ -69,7 +69,7 @@
 }
 
 .section1 {
-    background-image: url("assets/header_background.jpg");
+    background-image: url("/images/header_background.jpg");
     /* width: 100vw; */
     height: 63vh;
     text-align: center;
