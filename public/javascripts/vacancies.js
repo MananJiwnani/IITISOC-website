@@ -121,73 +121,25 @@ let x;
         });
     }
 
+    async function applyProperty(propertyId) {
+      try {
+          const response = await fetch(`/api/vacancies/${propertyId}`, {
+              method: 'POST'
+          });
+          if (!response.ok) {
+              throw new Error('Failed to apply for property');
+          }
+          alert('Application sent successfully');
+      } catch (error) {
+          console.error('Error applying for property:', error);
+          alert('Error applying for property');
+      }
+  }
+
     
     
     document.addEventListener('DOMContentLoaded', fetchProperties);
       
 
 
-      // const container = document.body.querySelector(".listings")
-
-      // const addCard = ()=>{
-      //     var newCard = document.createElement('div');
-      //     newCard.classList.add("grid_item")
-      //     newCard.innerHTML=`
-      //             <div class="card">
-      //               <div class="image">
-      //                   <img src="/images/home1.jpg" alt="Rental Property" class="card-img">
-      //               </div>
-      //               <div class="card-content">
-      //                   <h2 class="card-title">3 BHK Villa</h2>
-      //                   <p class="card-location">123 Main Street, Anytown, USA</p>
-      //                   <p class="card-price">$1,200/month</p>
-      //                   <!-- <p class="card-description">This beautiful family house has 3 bedrooms, 2 bathrooms, a spacious living room, and a modern kitchen.</p> -->
-      //                   <button onclick="viewdetails(this)" class="card-button">View Details</button>
-      //               </div>
-      //           </div>`
-      //             container.append(newCard)
       
-      // }
-      
-      
-      
-      
-      // function viewdetails(button) {
-      //     document.body.querySelector('.blur').style.filter = 'blur(5px)';
-      //     const card = button.closest('.card');
-      //     card.style.width = '80vw';
-      //     card.style.height = '60vh';
-      //     card.style.filter = 'blur(0)'
-      //     card.style.position= 'fixed'
-      //     // card.style.margin='auto'
-      //     // card.style.justifySelf = 'center'
-      //     card.style.transition = 'transform 0.3s, z-index 0s 0.3s';
-      //     card.style.zIndex = '1000';
-      // }
-      
-      // Optional: To reset the blur and scale effect on click outside the card
-      // document.addEventListener('click', (event)=> {
-      //     const isClickInsideCard = event.target.closest('.card');
-          
-      //     if (!isClickInsideCard) {
-      //         document.body.style.filter = '';
-      //         const cards = document.querySelectorAll('.card');
-      //         cards.forEach(card => {
-      //             card.style.transform = '';
-      //             card.style.zIndex = '';
-      //             card.style.width = '300px';
-      //             card.style.height = '';
-      //             card.style.position= ''
-      //             card.style.margin=''
-      //             card.style.justifySelf = ''
-      //         });
-      //     }
-      // });
-      
-      
-      // addCard();
-      // addCard();
-      // addCard();
-      // addCard();
-      // addCard();
-      // addCard();

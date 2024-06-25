@@ -11,7 +11,7 @@
         <h1><%= property.title %></h1>
     </header>
     <main>
-        <div class="card_details">
+        <div class="card">
             <p>PropertyId: <%= property._id %></p>
             <h2>Description: <%= property.description %></h2>
             <p>City: <%= property.city %></p>
@@ -33,6 +33,6 @@
             <button onclick="applyProperty('<%= property._id %>')">Apply Now</button>
         </div>
     </main>
-    <script src="/javascripts/property.js"></script>
+    <script src="/javascripts/vacancies.js"></script>
 </body>
 </html>
