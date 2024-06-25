@@ -29,6 +29,9 @@
         <div class="body">  
             <div class="container">
                 <div class="login">Login</div>
+                <% if (typeof error !== 'undefined' && error.length > 0) { %>
+                    <p style="color: red; font-size: 20px;"><%= error %></p> 
+                <% } %>
                 <div class="form login1">
                 <form action="/login" method="post">
                     <div class="email">
@@ -42,9 +45,6 @@
                     <button>Submit</button>
                 </form>
 
-                <% if (typeof error !== 'undefined' && error.length > 0) { %>
-                    <p style="color: red;"><%= error %></p> 
-                <% } %>
                     
             </div>
         </div>
