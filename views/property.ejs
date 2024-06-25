@@ -1,19 +1,38 @@
-<div class="card_details">
-    <p>PropertyId: ${property._id}</p>
-    <h2>Description: ${property.description}</h2>
-    <p>City: ${property.city}</p>
-    <p>State: ${property.state}</p>
-    <p>Country: ${property.country}</p>
-    <p>Owner-Name: ${property.ownerName}</p>
-    <p>Area: ${property.area}</p>
-    <p>PropertyType: ${property.propertyType}</p>
-    <p>SubCategory: ${property.subCategory}</p>
-    <p>Price: ${property.price}$</p>
-    <p>Address: ${property.address}</p>
-    <p>Amenities: ${property.amenities.join(', ')}</p>
-    <p>Rented-Out: ${property.rentedOut}</p>
-    <div class="property-images">
-        ${property.images.map(image => `<img src="${image}" alt="Property Image">`).join('')}
-    </div>
-    <button onclick="applyProperty('${property._id}')">Apply Now</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= property.title %></title>
+    <link rel="stylesheet" href="/stylesheets/property.css">
+</head>
+<body>
+    <header>
+        <h1><%= property.title %></h1>
+    </header>
+    <main>
+        <div class="card_details">
+            <p>PropertyId: <%= property._id %></p>
+            <h2>Description: <%= property.description %></h2>
+            <p>City: <%= property.city %></p>
+            <p>State: <%= property.state %></p>
+            <p>Country: <%= property.country %></p>
+            <p>Owner-Name: <%= property.ownerName %></p>
+            <p>Area: <%= property.area %></p>
+            <p>PropertyType: <%= property.propertyType %></p>
+            <p>SubCategory: <%= property.subCategory %></p>
+            <p>Price: <%= property.price %>$</p>
+            <p>Address: <%= property.address %></p>
+            <p>Amenities: <%= property.amenities.join(', ') %></p>
+            <p>Rented-Out: <%= property.rentedOut %></p>
+            <div class="property-images">
+                <% property.images.forEach(image => { %>
+                    <img src="<%= image %>" alt="Property Image">
+                <% }) %>
+            </div>
+            <button onclick="applyProperty('<%= property._id %>')">Apply Now</button>
+        </div>
+    </main>
+    <script src="/javascripts/property.js"></script>
+</body>
+</html>
