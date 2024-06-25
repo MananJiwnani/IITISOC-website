@@ -64,6 +64,10 @@
   app.get('/vacancies',checkAuth, (req, res) => {
     res.render('vacancies.ejs');
   });
+
+  app.get('/property',checkAuth, (req, res) => {
+    res.render('property.ejs');
+  });
   
   app.get('/owner_portal',checkAuth,  (req, res) => {
     res.render('owner_portal.ejs');
