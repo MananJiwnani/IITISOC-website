@@ -27,7 +27,10 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Role is required'],
         enum: ['owner', 'tenant'],
       }
+      
 })
+
+
 
 userSchema.statics.findAndValidate = async function (email, password) {
     const foundUser = await this.findOne({ email });

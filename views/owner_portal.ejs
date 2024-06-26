@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Owner Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -21,7 +21,7 @@
     <img src="/images/Logo.svg" alt="Logo">
     <div class="heading">RentEstate</div>
     <div class="tabs">
-      <a href="/" class="button">Home</a>
+      <a href="/loggedInHome" class="button">Home</a>
       <a href="/vacancies" class="button">Vacancies</a>
     </div>
     <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
@@ -30,7 +30,7 @@
   </div>
   <div id="myLinks" class="overlay">
     <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
-    <a href="/" class="button">Home</a>
+    <a href="home.ejs" class="button">Home</a>
     <a href="/vacancies" class="button">Vacancies</a>
   </div>
   <section class="container">
@@ -40,7 +40,7 @@
         <a href="#" class="feature">
           <li>My Properties</li>
         </a>
-        <a href="#" class="feature">
+        <a href="/addproperties" class="feature">
           <li>Add Properties</li>
         </a>
       </ul>
