@@ -254,6 +254,12 @@
       padding:1%;
       padding-top: 20px;
     }
+
+    .text{
+      color: #828282;
+      margin-top: 10px;
+    }
+
     .main_feature{
       width:100%;
       display: flex;
