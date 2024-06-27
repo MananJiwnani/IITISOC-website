@@ -250,7 +250,7 @@ body {
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    height: 110px;
+    height: 54px;
 }
 
 /* searchbar */
@@ -354,11 +354,12 @@ body {
     display: flex;
     flex-direction: column;
     width: 155px;
-   
+    z-index: 10;
+    
 }
-       .Property_type{
-        width:200px;
-       }
+.Property_type{
+    width:200px;
+}
 
 .location select,
 .Property_type select {
@@ -383,6 +384,7 @@ body {
     background-color: #c9fcf6;
     position: absolute;
     width: 155px;
+    z-index: 10;
 }
 
 .budget input {
