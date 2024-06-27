@@ -257,12 +257,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100vw;
+    width: max-content;
+    margin: 3%;
     height: 50px;
     background-color: #27C4B1;
+    border-radius: 10px;
     padding: 3px 5px;
     padding-bottom: 0px;
-    /* margin-bottom: 15px; */
+    margin-top: 5vh;
 }
 
 .fw {
@@ -287,6 +289,10 @@ body {
     width: max-content;
     background-color: #72E6DB;
     border-radius: 3px;
+}
+
+.searchtext {
+    cursor: pointer;
 }
 
 .search_text {
@@ -325,7 +331,7 @@ body {
     width: 220px;
     background-color: #158275;
     border-radius: 3px;
-    margin: 3px;
+    margin: 3px auto;
     cursor: pointer;
 }
 
@@ -341,7 +347,8 @@ body {
 }
 
 /* hidden blocks in search bar */
-.location {
+.location,
+.Property_type {
     background-color: #b0ede6;
     position: relative;
     display: flex;
@@ -350,7 +357,8 @@ body {
     margin: 3%;
 }
 
-.location select {
+.location select,
+.Property_type select {
     margin: 0%;
     width: 100%;
     font-family: "Kameron", serif;
@@ -358,51 +366,13 @@ body {
     color: #08453d;
 }
 
-.location select option {
+.location select option,
+.Property_type select option {
     font-family: "Kameron", serif;
     font-weight: bold;
     color: #08453d;
     height: min-content;
     width: min-content;
-}
-
-.Property_type {
-    background-color: rgba(255, 255, 255, 0.95);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-    margin: 3%;
-    border-radius: 5px;
-
-}
-
-.Property_type h3 {
-    margin: 1px;
-    background-color: #c9fcf6;
-    color: #0c5e54;
-}
-
-#Residencial {
-    flex-wrap: wrap;
-    display: flex;
-}
-
-#Commercial {
-    flex-wrap: wrap;
-    display: flex;
-}
-
-#Other {
-    display: flex;
-}
-
-.type {
-    margin: 5px 5px;
-    background-color: rgba(150, 241, 241, 0.7);
-    border-radius: 3px;
-    color: #08453d;
-    font-size: 17px;
 }
 
 .budget {
