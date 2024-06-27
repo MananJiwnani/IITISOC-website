@@ -367,7 +367,7 @@ input[type="file"] {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0%;
+  margin: 5px 0%;
   padding: 0%;
 }
 
@@ -381,7 +381,7 @@ input[type="file"] {
   height: 33px;
   font-size: 20px;
   border: none;
-  margin-right: 10%;
+  /* margin-right: 10%; */
   border-radius: 10px;
 }
 
@@ -395,11 +395,14 @@ input[type="file"] {
 }
 
 .select {
-  color: #052d29;
+  width: 440px;
+  display: flex;
+  gap: 10px;
 }
 
 .address{
   width: 440px;
+  padding: 0 10px;
 }
 
 /* .mimi {
