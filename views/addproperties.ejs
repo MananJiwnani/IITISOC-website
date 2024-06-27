@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="Add_properties.css">
+
+</head>
+<body>
+    
+    <nav class="navbar">
+        <img src="main_logo.svg" alt="Logo">
+        <div class="heading">RentEstate</div>
+        <div class="tabs">
+            <a href="homepage.html" class="button">Home</a>
+            <a href="vacancies.html" class="button">Vacancies</a>
+            <a href="" class="button">My Profile</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+          ☰
+        </a>
+    </nav>
+    <div id="myLinks" class="overlay">
+      <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+      <a href="homepage.html" class="button">Home</a>
+      <a href="vacancies.html" class="button">vacancies</a>
+      <a href="login.html" class="button">My Profile</a>
+    </div>
+     <section class="container">
+       <div class="sidebar">
+            <h3 class="feature" id="My_profile">My Profile</h3>
+            <ul class="main_feature" > 
+               <a href="#" class="feature" id="My_properties"><li>My properties</li></a>
+               <a href="#" class="feature" id="Add_properties"><li>Add Properties</li></a> 
+            </ul>
+
+            <h3 class="text">~TENANTS</h3>
+            <ul class="main_feature" >
+              <a href="#" class="feature" id="My_Tenants"><li>My Tenants</li></a>
+                <a href="#" class="feature" id="Tenants_requests"><li>Tenants Requests</li></a>
+                <a href="#" class="feature" id="Messeges"><li>Messeges</li></a>
+                </ul>
+                
+                <h3 class="text">~ADMINSTRATION</h3>
+                <ul class="main_feature" >
+                <a href="#" class="feature" id="Bank_accounts"><li>Bank Acoounts</li></a>
+                <a href="#" class="feature" id="Reports"><li>Reports</li></a>
+            </ul>
+
+            <h3 class="text">~TOOLS</h3>
+            <ul class="main_feature" >
+                    <a href="#" class="feature" id="Rent_estimates"><li>Rent Estimate</li></a>
+                    </ul>
+
+            <h3 class="text">~EXTRA</h3>
+            <ul class="main_feature" >
+              <a href="#" class="feature" id="Settings"><li>Settings</li></a>
+                    <a href="#" class="feature" id="Help_centre"><li>Help Centre</li></a>
+                    <a href="#" class="feature" id="Contact_us"><li>Contact Us</li></a>
+                    </ul>
+           </div> 
+           
+           
+
+
+       <div class="diff_features">
+         
+          
+            <div class="Add_properties feature_display">
+                     <form action="">
+                          <div class="image">
+                            <label for="Image" class="Image" >
+                              <img src="#" alt="Add Image Here" class="preview" >
+                            </label>
+                            <input type="file" name="Image" id="Image" accept="image/*">
+                          </div>
+                        <div class="inputs">
+                          <label for="rent">Rent</label>
+                          <input type="text" name="rent" id="Rent"  value="">
+                        </div>
+                        <!-- <div class="inputs">
+                          <label for="Area">Area</label>
+                          <input type="text" name="Area" id="Area" value="">
+                        </div> -->
+                          <div class="inputs" >
+                            <label for="Address">Address</label>
+                            <div class="chiki">
+                            <input type="text" id="address">
+                            <div class="mimi">
+                            <select name="city" id="city" class="select ">
+                              <option value="" selected>Select City</option>
+                              <option value="Indore">Indore</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Ahmedabad">Ahmedabad</option>
+                              <option value="Jaipur">Delhi</option>
+                              <option value="Chennai">Chennai</option>
+                            </select>
+                            <select name="state" id="state" class="select ">
+                              <option value="" selected>Select State</option>
+                              <option value="Madhya Pradesh">Madhya Pradesh</option>
+                              <option value="Maharashtra">Maharashtra</option>
+                              <option value="Gujrat">Gujrat</option>
+                              <option value="Tamilnadu">Tamilnadu</option>
+                              <option value="Rajsthaan">Rajsthaan</option>
+                            </select>
+                            <select name="country" id="country" class="select ">
+                              <option value="India" selected>India</option>
+                            </select>
+                            </div>
+                            </div>
+                          </div>
+                        <div class="inputs">
+                          <label for="Property_type">Property type</label>
+                              <select class="pclass" name="Property_type" id="Property_type">
+                                <option class="oclass" value="Residencial">Residencial 
+                                </option>
+                                <option class="oclass" value="Commercial">Commercial</option>
+                                <option class="oclass" value="Other">Other Types</option>
+                              </select>
+                              <select name="subtype" id="subtype">
+                                <option class="first" value="flat">flat</option>
+                                <option class="first" value="villa">villa</option>
+                                <option class="first" value="1Bhk">1Bhk</option>
+                                <option class="first" value="2Bkh">2Bkh</option>
+                                <option class="first" value="3Bhk">3Bhk</option>
+                                <option class="first" value="4Bhk">4Bhk</option>
+                                <option class="first" value="5Bhk">5Bhk</option>
+                                <option class="second" value="OfficeSpace">OfficeSpace</option>
+                                <option class="second" value="shop/Showroom">shop/Showroom</option>
+                                <option class="second" value="IndustrialBuilding">Industrial Building</option>
+                                <option class="third" value="AgriculturalLand">Agricultural Land</option>
+                                <option class="third" value="FarmHouse">Farm House</option>
+
+                              </select>
+                        </div>
+                        <div class="inputs">
+                          <label for="Amenities">Amenities</label>
+                          <input type="text" name="Amenities" id="Amenities" value="">
+                        </div>
+                        <div class="inputs">
+                          <label for="Text">Description</label>
+                          <input type="text" name="Text" id="Text" value="">
+                        </div>
+                        <div class="inputs">
+                          <label for="pet_policy">Pet policy </label>
+                          <input type="text" name="Pet_policy" id="Pet_policy" value="">
+                        </div>
+                        <div class="inputs">
+                          <label for="Availibility">Availibility</label>
+                          <input type="text" name="Availibility"  value=""  id="Availibility" >
+                        </div>
+                
+                        <button type="submit" >Submit</button>
+                     </form>
+            </div>
+            
+        
+              </div>
+             
+
+
+
+
+     </section>
+     
+    
+
+
+  <script  src="owner_Portal.js"></script>
+</body>
+</html>
+
+

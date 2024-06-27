@@ -43,6 +43,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
+// Authentication
+// function which returns next if the user is authenticated
 const checkAuth = (req, res, next) => {
   if (!req.session.user_id) {
       return res.redirect('/login')
@@ -50,13 +52,13 @@ const checkAuth = (req, res, next) => {
   next()
 }
 
+// function which returns next if the user is not authenticated
 const checkNotAuth = (req,res,next) => {
   if(req.session.user_id){
       return res.redirect('/')
   }
   next()
 }
-
 
 
 app.get('/', (req, res) => {
@@ -89,6 +91,7 @@ app.get('/login', (req, res) => {
   res.render('login.ejs', { error });
 });
 
+// Verifying the details filled by user in logi page using "findAndValidate"
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const foundUser = await User.findAndValidate(email, password);
@@ -113,6 +116,7 @@ app.get('/register', (req, res) => {
   res.render('register.ejs', { error });
 });
 
+// Saving the details and creating a new document/object in the 'User' collection
 app.post('/register', checkNotAuth, async (req, res) => {
   const { name, email, contact,password, role } = req.body;
   const user = new User({ name, email, contact, password, role })
@@ -122,7 +126,8 @@ app.post('/register', checkNotAuth, async (req, res) => {
   res.redirect('/login')
 })
 
-// Authorization
+// Authorization 
+// function which checks the role of user (owner/ tenant)
 function checkRole(role) {
 return function(req, res, next) {
     if (req.session.role ==req.body.role) {
@@ -133,8 +138,6 @@ return function(req, res, next) {
    }
 };
 }
-
-
 
 app.get('/home', (req, res) => {
 const error = req.flash('error');
@@ -147,7 +150,6 @@ app.post('/logout',checkAuth, (req, res) => {
 })
 
 app.get('/loggedInHome', (req, res) => {
- 
   res.render('loggedInHome.ejs');
 });
 
@@ -196,6 +198,7 @@ app.get('/api/myproperties',checkAuth, checkRole('owner'), async (req, res) => {
   }
 });
 
+// for updating the "rentedOut" status of that property
 app.post('/myproperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const propertyId = req.params.id;
@@ -212,7 +215,8 @@ app.post('/myproperties/:id',checkAuth, checkRole('owner'), async (req, res) => 
     res.status(500).send('Internal server error');
   }
 });
- 
+
+// post request in home page when user selects the filter options for seeing vacancies
 app.post('/',checkAuth, (req, res) =>{
   try{
     const query = {};
@@ -251,6 +255,7 @@ app.get('/api/vacancies',checkAuth, async (req, res) => {
   }
 });
 
+// post request in vacancies page when user selects the filter options for seeing vacancies
 app.post('/vacancies',checkAuth, (req, res) => {
   try{
     const query = {};
