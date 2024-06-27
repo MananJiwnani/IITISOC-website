@@ -18,10 +18,7 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: [true, 'subCategory is required'],
   },
-  area: {
-    type: String,
-    required: [true, 'area is required'],
-  },
+ 
   description: {
     type: String,
     required: [true, 'description is required'],
