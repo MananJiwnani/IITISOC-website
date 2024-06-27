@@ -323,35 +323,28 @@ h3 {
 }
 
 form {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-form div{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
-.inputs {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0%;
-  padding: 0%;
-}
+
 
 .Image {
   display: flex;
-  align-content: center;
-  width: 200px;
-  height: 120px;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 105px;
   background-color: #DFFFF9;
   border-radius: 10px;
   border: 2px solid #90D0FF;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 img {
@@ -369,15 +362,27 @@ input[type="file"] {
   display: none;
 }
 
+.inputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0%;
+  padding: 0%;
+}
+
 .inputs input {
   background-color: #418A7D;
   margin: 5px;
+  padding: 2px 10px;
+  box-sizing: border-box;
   color: rgba(255, 255, 255, 0.8);
   width: 440px;
-  height: 30px;
+  height: 33px;
   font-size: 20px;
-  /* font-weight: bold; */
+  border: none;
   margin-right: 10%;
+  border-radius: 10px;
 }
 
 .inputs label {
@@ -386,10 +391,15 @@ input[type="file"] {
   font-size: 22px;
   /* font-weight: bold; */
   margin-left: 15%;
+  width: 150px;
 }
 
 .select {
   color: #052d29;
+}
+
+.address{
+  width: 440px;
 }
 
 /* .mimi {
