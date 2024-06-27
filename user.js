@@ -31,7 +31,6 @@ const userSchema = new mongoose.Schema({
 })
 
 
-
 userSchema.statics.findAndValidate = async function (email, password) {
     const foundUser = await this.findOne({ email });
     if (!foundUser) {
