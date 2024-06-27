@@ -181,7 +181,7 @@
   .sidebar{
     height:700px;
     width: 350px;
-    background-image: url('side_background.jpg');
+    background-image: url('/images/side_background.jpg');
     background-repeat: no-repeat;
     background-size:116% 112%;
     background-position: center;
