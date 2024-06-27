@@ -250,6 +250,7 @@ body {
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+    height: 110px;
 }
 
 /* searchbar */
