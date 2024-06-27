@@ -347,13 +347,17 @@ body {
 /* hidden blocks in search bar */
 .location,
 .Property_type {
+    margin-top: 45px;
     background-color: #b0ede6;
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 3%;
+    width: 155px;
+   
 }
+       .Property_type{
+        width:200px;
+       }
 
 .location select,
 .Property_type select {
@@ -374,10 +378,10 @@ body {
 }
 
 .budget {
-    margin: 3%;
+    margin-top: 45px;
     background-color: #c9fcf6;
-    position: relative;
-    width: 100%;
+    position: absolute;
+    width: 155px;
 }
 
 .budget input {
@@ -588,6 +592,17 @@ body {
         margin: 0%;
         width: 90%;
         transform: translateY(80%);
+    }
+     .location,
+    .Property_type {
+        position: relative;
+        width: 100%;
+        margin: 0%;
+    }
+    .budget {
+        margin: 0%;
+        position: relative;
+        width: 100%;
     }
 }
 
