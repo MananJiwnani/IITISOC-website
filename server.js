@@ -154,11 +154,11 @@ app.get('/loggedInHome', (req, res) => {
 });
 
 // Adding Properties
-app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
-  res.render('addproperties.ejs');
+app.get('/addProperties',checkAuth, checkRole('owner'), (req, res)=>{
+  res.render('addProperties.ejs');
 });
 
-app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const newProperty = new Property({
       owner: req.session.user_id, 
