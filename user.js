@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
       
 })
 
-
+// checking if the user entered correct details 
 userSchema.statics.findAndValidate = async function (email, password) {
     const foundUser = await this.findOne({ email });
     if (!foundUser) {
@@ -40,6 +40,7 @@ userSchema.statics.findAndValidate = async function (email, password) {
     return isValid ? foundUser : false;
 }
 
+// hasing the password and saving it
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
     this.password = await bcrypt.hash(this.password, 12);
