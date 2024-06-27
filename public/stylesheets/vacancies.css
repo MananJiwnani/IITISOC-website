@@ -257,14 +257,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: max-content;
-    margin: 3%;
+    width: 100vw;
     height: 50px;
     background-color: #27C4B1;
-    border-radius: 10px;
     padding: 3px 5px;
     padding-bottom: 0px;
-    margin-top: 5vh;
+    /* margin-bottom: 15px; */
 }
 
 .fw {
@@ -289,10 +287,6 @@ body {
     width: max-content;
     background-color: #72E6DB;
     border-radius: 3px;
-}
-
-.searchtext {
-    cursor: pointer;
 }
 
 .search_text {
@@ -331,7 +325,7 @@ body {
     width: 220px;
     background-color: #158275;
     border-radius: 3px;
-    margin: 3px auto;
+    margin: 3px;
     cursor: pointer;
 }
 

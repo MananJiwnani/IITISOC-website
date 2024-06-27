@@ -62,11 +62,3 @@ const redirect = (url) => {
   window.location.href = url;
 }
 
-
-
-
-// document.body.addEventListener('click', ()=>{
-//   f.classList.remove('display');
-//   propertyType.classList.remove('display');
-//   budget.classList.remove('display');
-// })
