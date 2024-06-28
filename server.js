@@ -88,8 +88,8 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
 });
 
 //myprofie is in owner portal
-app.get('/myprofile',checkAuth, checkRole('owner'), (req, res) => {
-  res.render('myprofile.ejs');
+app.get('/myProperties',checkAuth, checkRole('owner'), (req, res) => {
+  res.render('myProperties.ejs');
 });
 
 app.get('/login', (req, res) => {
