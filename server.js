@@ -101,7 +101,7 @@ app.post('/login', async (req, res) => {
   if (foundUser) {
       req.session.user_id = foundUser._id;
       req.session.ROLE = foundUser.role;
-      res.redirect('/loggedInHome');
+      res.redirect('/');
   }
   else {
     const userExists = await User.findOne({ email });
