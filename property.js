@@ -10,10 +10,12 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: [true, 'owner name is required'],
   },
+
     propertyType: {
     type: String,
     required: [true, 'type is required'],
   },
+
     subCategory: {
     type: String,
     required: [true, 'bhk is required'],
@@ -32,12 +34,12 @@ const propertySchema = new mongoose.Schema({
 
   petPolicy: {
     type: String,
-    required: [true, 'pet policy is required'],
+    // required: [true, 'pet policy is required'],
   },
 
   carpetArea: {
     type: String,
-    required: [true, 'carpet area is required'],
+    // required: [true, 'carpet area is required'],
   },
 
   city: {
@@ -71,7 +73,7 @@ const propertySchema = new mongoose.Schema({
   images: [{
     type: String, // URLs of the images
     // required: [true, 'images are required'],
-    unique: true,
+    // unique: true,
   }],
   rentedOut: {
     type: Boolean,
