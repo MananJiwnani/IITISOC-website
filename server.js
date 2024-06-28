@@ -97,7 +97,8 @@ app.post('/login', async (req, res) => {
   const foundUser = await User.findAndValidate(email, password);
   if (foundUser) {
       req.session.user_id = foundUser._id;
-      res.render('loggedInHome.ejs');
+      req.session.ROLE = foundUser.role;
+      res.redirect('/loggedInHome');
   }
   else {
     const userExists = await User.findOne({ email });
@@ -121,7 +122,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
   const { name, email, contact,password, role } = req.body;
   const user = new User({ name, email, contact, password, role })
   await user.save();
-  req.session.role= role;
+  req.session.ROLE= role;
   req.session.user_id = user._id;
   res.redirect('/login')
 })
@@ -130,7 +131,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
 // function which checks the role of user (owner/ tenant)
 function checkRole(role) {
 return function(req, res, next) {
-    if (req.session.role ==req.body.role) {
+    if (req.session.ROLE ==role) {
         return next();
     }
    else{
@@ -144,7 +145,7 @@ const error = req.flash('error');
 res.render('home.ejs', { error });
 });
 
-app.post('/logout',checkAuth, (req, res) => {
+app.get('/logout',checkAuth, (req, res) => {
   req.session.user_id = null;
   res.redirect('/login');
 })
