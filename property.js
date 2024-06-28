@@ -34,12 +34,12 @@ const propertySchema = new mongoose.Schema({
 
   petPolicy: {
     type: String,
-    // required: [true, 'pet policy is required'],
+    required: [true, 'pet policy is required'],
   },
 
   carpetArea: {
     type: String,
-    // required: [true, 'carpet area is required'],
+    required: [true, 'carpet area is required'],
   },
 
   city: {
