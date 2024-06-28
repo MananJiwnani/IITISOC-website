@@ -151,7 +151,11 @@ const error = req.flash('error');
 res.render('home.ejs', { error });
 });
 
-app.get('/logout',checkAuth, (req, res) => {
+app.get('/logout', checkAuth, (req, res) => {
+  res.render('logout.ejs')
+})
+
+app.post('/logout',checkAuth, (req, res) => {
   req.session.user_id = null;
   res.redirect('/login');
 })
