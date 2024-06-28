@@ -8,15 +8,15 @@ const propertySchema = new mongoose.Schema({
   },
   ownerName: {
     type: String,
-    required: [true, 'ownerName is required'],
+    required: [true, 'owner name is required'],
   },
-  propertyType: {
+  type: {
     type: String,
-    required: [true, 'propertyType is required'],
+    required: [true, 'type is required'],
   },
-  subCategory: {
+  bhk: {
     type: String,
-    required: [true, 'subCategory is required'],
+    required: [true, 'bhk is required'],
   },
  
   description: {
@@ -31,21 +31,33 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: [true, 'state is required'],
   },
-  country: {
-    type: String,
-    required: [true, 'country is required'],
-  },
   address: {
     type: String,
     required: [true, 'address is required'],
   },
-  price: {
+  rent: {
     type: Number,
-    required: [true, 'price is required'],
+    required: [true, 'rent is required'],
   },
   amenities: [{
     type: String,
     required: [true, 'amenities are required'],
+  }],
+  petPolicy: [{
+    type: String,
+    required: [true, 'pet policy is required'],
+  }],
+  ownershipType: [{
+    type: String,
+    required: [true, 'type of ownership is required'],
+  }],
+  furnishedStatus: [{
+    type: String,
+    required: [true, 'furnished status is required'],
+  }],
+  propertyAge: [{
+    type: String,
+    required: [true, 'property age is required'],
   }],
   images: [{
     type: String, // URLs of the images

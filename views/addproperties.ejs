@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>RentEstate | Add Property</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -69,8 +69,8 @@
 
 
     <div class="diff_features">
-
-
+      
+      
       <div class="Add_properties feature_display">
         <form action="/addProperties" method="post">
           <div class="image">
@@ -80,8 +80,12 @@
             </label>
           </div>
           <div class="inputs">
+            <label for="ownerName">Owner Name</label>
+            <input type="text" name="ownerName" id="ownerName" value="">
+          </div>
+          <div class="inputs">
             <label for="rent">Rent</label>
-            <input type="text" name="rent" id="Rent" value="">
+            <input type="text" name="rent" id="rent" value="">
           </div>
           <div class="inputs address_div">
             <label for="address">Address</label>
@@ -109,7 +113,7 @@
           </div>
 
           <div class="inputs">
-            <label for="Property_type">Property type</label>
+            <label for="type">Property type</label>
             <div class="select">
               <select class="pclass" name="type" id="type">
                 <option value="" selected>Select Type</option>
@@ -127,38 +131,39 @@
             </div>
           </div>
           <div class="inputs">
-            <label for="Amenities">Amenities</label>
-            <input type="text" name="Amenities" id="Amenities" value="">
+            <label for="carpetArea">Carpet Area (sq ft)</label>
+            <input type="text" name="carpetArea" value="" id="carpetArea">
           </div>
           <div class="inputs">
-            <label for="Text">Description</label>
-            <input type="text" name="Text" id="Text" value="">
+            <label for="amenities">Amenities</label>
+            <input type="text" name="amenities" id="amenities" value="">
           </div>
           <div class="inputs">
-            <label for="pet_policy">Pet policy </label>
-            <input type="text" name="Pet_policy" id="Pet_policy" value="">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" value="">
           </div>
           <div class="inputs">
-            <label for="Availability">Availability</label>
-            <input type="text" name="Availability" value="" id="Availability">
+            <label for="propertyAge">Property Age </label>
+            <input type="text" name="propertyAge" id="propertyAge" value="">
+          </div>
+          <div class="inputs">
+            <label for="ownershipType">Type of Ownership</label>
+            <input type="text" name="ownershipType" id="ownershipType" value="">
+          </div>
+          <div class="inputs">
+            <label for="furnishedStatus">Furnished Status </label>
+            <input type="text" name="furnishedStatus" id="furnishedStatus" value="">
+          </div>
+          <div class="inputs">
+            <label for="petPolicy">Pet policy </label>
+            <input type="text" name="petPolicy" id="petPolicy" value="">
           </div>
 
           <button type="submit" id="submit">Submit</button>
         </form>
       </div>
-
-
     </div>
-
-
-
-
-
   </section>
-
-
-
-
   <script src="/javascripts/owner_portal.js"></script>
 </body>
 
