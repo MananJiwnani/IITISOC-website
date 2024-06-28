@@ -312,6 +312,7 @@
     border-radius: 3px;
     margin: 3px auto;
     cursor: pointer;
+    border: none;
 }
 
 #search_btn #search_logo {
