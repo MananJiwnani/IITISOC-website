@@ -73,7 +73,7 @@ app.get('/property',checkAuth, (req, res) => {
   res.render('property.ejs');
 });
 
-app.get('/owner_portal',checkAuth, checkOwner, async (req, res) => {
+app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
