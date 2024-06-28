@@ -1,44 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> RentEstate | LogOut</title>
+
     <style>
-        .form{
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .form {
+            background-image: url("/images/header_background.jpg");
             display: flex;
-            width: 60vw;
+            width: 650px;
             margin: auto;
             flex-direction: column;
-            margin-top: 25vh;
+            justify-content: center;
+            align-items: center;
+            margin-top: 27vh;
+            border-radius: 10px;
+            border: 1px solid black;
+            padding-top: 10px;
         }
-        .header{
-            background-color: #1f5d52;
-            color: white;
+
+        .header {
+            margin-bottom: 20px;
+            color: black;
             height: 90px;
+            width: fit-content;
             font-size: 38px;
-            display:flex;
+            font-family: "Kameron", serif;
+            font-weight: bold;
+            display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
-        .buttons{
+
+        .buttons {
             display: flex;
-            gap: 20vw;
+            gap: 40px;
             width: 100%;
-            height: 200px;
-            background-color: #a5f4eb9d;
             justify-content: center;
             align-items: center;
+            margin: 30px 0px;
         }
-        .buttons button{
-            height: 60px;
-            width: 15vw;
+
+        .buttons button {
+            height: 50px;
+            border-radius: 10px;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(22, 115, 115);
+            color: white;
+            font-size: 25px;
+            font-family: "Kameron", serif;
+            font-weight: bold;
+            margin: 5px 45px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width:780px) {
+            .form {
+                width: 80vw;
+                padding: 10px 10px;
+            }
+
+            .header {
+                font-size: 30px;
+            }
+
+            .buttons {
+                /* flex-direction: column; */
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .buttons button {
+                font-size: 22px;
+                width: 120px;
+            }
+        }
+
+        @media only screen and (max-width:550px) {
+            .buttons {
+                flex-direction: column;
+                margin-top: 20px;
+                gap: 5px;
+            }
+            .header{
+                font-size: 26px;
+                width: 90%;
+                margin-bottom: 0;
+            }
+            .buttons button{
+                height: 40px;
+                font-size: 20px;
+                width: 150px;
+            }
         }
     </style>
 </head>
+
 <body>
-    
+
     <div class="form">
         <div class="header">
             Are you sure you want to Log out?
@@ -49,7 +123,8 @@
             </form>
             <button onclick="window.location.href='/'">Cancel</button>
         </div>
-        
+
     </div>
 </body>
+
 </html>
