@@ -88,7 +88,7 @@ app.get('/myprofile',checkAuth, checkRole('owner'), (req, res) => {
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
-  res.render('login.ejs', { error });
+  res.render('login.ejs', { error }, {userId: req.session.user_id});
 });
 
 // Verifying the details filled by user in logi page using "findAndValidate"
@@ -114,7 +114,7 @@ app.post('/login', async (req, res) => {
 
 app.get('/register', (req, res) => {
   const error = req.flash('error');
-  res.render('register.ejs', { error });
+  res.render('register.ejs', { error }, {userId: req.session.user_id});
 });
 
 // Saving the details and creating a new document/object in the 'User' collection
