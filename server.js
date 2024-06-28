@@ -182,12 +182,20 @@ app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
       description: req.body.description,
       city: new RegExp(req.body.city, 'i'),
       state: new RegExp(req.body.state, 'i'),
-      country: new RegExp(req.body.country, 'i'),
+     
       address: req.body.address,
       price: req.body.price,
       amenities: req.body.amenities,
       images: req.body.images,
       rentedOut: false,
+      ownershipType: req.body.ownershipType,
+      furnishedStatus: req.body.furnishedStatus,
+      propertyAge: req.body.propertyAge,
+      petPolicy: req.body.petPolicy,
+
+      carpetArea: req.body.carpetArea,
+
+      
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
