@@ -73,15 +73,15 @@ app.get('/property',checkAuth, (req, res) => {
   res.render('property.ejs');
 });
 
-app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
+app.get('/owner_portal',checkAuth, checkOwner, async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
-    res.render('owner_portal', { owner });
+    res.render('owner_portal.ejs', { owner });
   } catch (error) {
       res.status(500).send('Internal server error');
     }
-});
+ });
 
 app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
