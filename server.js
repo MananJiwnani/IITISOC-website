@@ -62,11 +62,11 @@ const checkNotAuth = (req,res,next) => {
 
 
 app.get('/', (req, res) => {
-  res.render('home.ejs');
+  res.render('home.ejs', {userId: req.session.user_id});
 });
 
 app.get('/vacancies',checkAuth, (req, res) => {
-  res.render('vacancies.ejs');
+  res.render('vacancies.ejs', {userId: req.session.user_id});
 });
 
 app.get('/property',checkAuth, (req, res) => {
@@ -88,7 +88,7 @@ app.get('/myprofile',checkAuth, checkRole('owner'), (req, res) => {
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
-  res.render('login.ejs', { error });
+  res.render('login.ejs', { error }, {userId: req.session.user_id});
 });
 
 // Verifying the details filled by user in logi page using "findAndValidate"
@@ -114,7 +114,7 @@ app.post('/login', async (req, res) => {
 
 app.get('/register', (req, res) => {
   const error = req.flash('error');
-  res.render('register.ejs', { error });
+  res.render('register.ejs', { error }, {userId: req.session.user_id});
 });
 
 // Saving the details and creating a new document/object in the 'User' collection
@@ -140,7 +140,7 @@ return function(req, res, next) {
 };
 }
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
 const error = req.flash('error');
 res.render('home.ejs', { error });
 });
@@ -149,10 +149,6 @@ app.get('/logout',checkAuth, (req, res) => {
   req.session.user_id = null;
   res.redirect('/login');
 })
-
-app.get('/loggedInHome', (req, res) => {
-  res.render('loggedInHome.ejs');
-});
 
 // Adding Properties
 app.get('/addProperties',checkAuth, checkRole('owner'), (req, res)=>{
