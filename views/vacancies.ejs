@@ -13,9 +13,14 @@
         <img src="/images/Logo.svg" alt="Logo">
         <div class="heading">RentEstate</div>
         <div class="tabs">
-            <a href="/" class="button">Home</a>
-            <a href="/register" class="button">Register</a>
-            <a href="/login" class="button">Login</a>
+                <% if (userId) { %>
+                    <a href="/">Home</a>
+                    <a href="/logout">LogOut</a>
+                <% } else { %>
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                <% } %>
         </div>
         <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
             ☰
@@ -23,9 +28,14 @@
     </div>
     <div id="myLinks" class="overlay">
         <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
-        <a href="/" class="button">Home</a>
-        <a href="/register" class="button">Register</a>
-        <a href="/login" class="button">Login</a>
+                <% if (userId) { %>
+                    <a href="/">Home</a>
+                    <a href="/logout">LogOut</a>
+                <% } else { %>
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                <% } %>
     </div>
     <div class="content">
         <div id="vac_header">
