@@ -37,7 +37,7 @@
 
 
     <div class="sidebar">
-      <a href="/owner_portal"><h3 class="feature">My Profile</h3></a>
+      <a href="#"><h3 class="feature">My Profile</h3></a>
       <ul class="main_feature">
         <a href="/myproperties" class="feature">
           <li>My Properties</li>
@@ -67,11 +67,13 @@
     </div>
     
     <div class="myProfile">
-
-
-
-
-
+      <div class="owner-details">
+        <h1>Owner-Details</h1>       
+        <p><b>Name:</b> <%= owner.name %></p>
+        <p><b>Email:</b> <%= owner.email %></p>
+        <p><b>Contact:</b> <%= owner.contact %></p>
+        <p><b>Role:</b> <%= owner.role %></p>
+      </div>
     </div>
 
 
