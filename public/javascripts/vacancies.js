@@ -101,9 +101,9 @@ function displayProperties(properties) {
                     ${property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
                     </div>
                     <div class="card-content">
-                        <h2 class="card-title">${property.propertyType}</h2>
+                        <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
                         <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-                        <p class="card-price">$${property.price}/month</p>
+                        <p class="card-price">₹${property.price}/month</p>
                         <a href="/property"><button class="card-button">View Details</button></a>
                     </div>`;
 
