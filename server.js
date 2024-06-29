@@ -210,7 +210,7 @@ app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
 
 app.get('/api/myproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
-    const properties = await Property.find({ owner: req.session.user_id });
+    const properties = await properties.find({ owner: req.session.user_id });
     res.status(200).json(properties);
   } catch (error) {
     res.status(404).send(error.message);
