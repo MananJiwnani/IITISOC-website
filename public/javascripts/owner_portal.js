@@ -59,7 +59,7 @@ function toggleMenu() {
 
     async function fetchMyProperties() {
       try {
-          const response = await fetch('/api/myproperties');
+          const response = await fetch('/api/myProperties');
           if (!response.ok) {
               throw new Error('Failed to fetch properties');
           }
@@ -110,7 +110,7 @@ function toggleMenu() {
 
   async function rentOutProperty(propertyId) {
       try {
-          const response = await fetch(`/myproperties/${propertyId}`, {
+          const response = await fetch(`/myProperties/${propertyId}`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
