@@ -140,7 +140,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
   await user.save();
   req.session.ROLE= role;
   req.session.user_id = user._id;
-  res.redirect('/login')
+  res.redirect('/')
 })
 
 // Authorization 

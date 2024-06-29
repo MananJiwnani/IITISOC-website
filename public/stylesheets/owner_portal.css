@@ -380,33 +380,40 @@ hr {
   }
 }
 
-.myProfile{
+.myProfile {
   display: flex;
-  background-color: #206055;
+  background-color: #018d75;
   width: 600px;
   height: 220px;
   margin-top: 50px;
   margin-left: 50px;
-  border: 1px solid black;
+  border: 9px double #ffffff;
+  border-radius: 25px;
+  /* box-shadow: 6px 6px 20px #000000b0; */
 }
-.profile img{
+
+.profile img {
   width: 220px;
   height: auto;
+  filter: invert();
 }
-.profile{
+
+.profile {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 40%;
 }
-.owner-details{
+
+.owner-details {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.owner-details div, b{
+.owner-details div,
+b {
   color: white;
   font-size: 24px;
-  
+
 }
