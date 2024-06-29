@@ -82,11 +82,13 @@
       </div>
     </div>
 
-    <div>
-        <% if (message) { %>
-          <p style="color: red;"><%= message %></p> 
-        <% } %>
-    </div>
+    <% if (message) { %>
+    <script>
+      window.onload = function() {
+        alert('<%= message %>');
+      };
+    </script>
+  <% } %>
 
   </section>
 
