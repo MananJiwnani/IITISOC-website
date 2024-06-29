@@ -382,11 +382,12 @@ hr {
 
 .myProfile{
   display: flex;
-  background-color: lightgray;
+  background-color: #206055;
   width: 600px;
   height: 220px;
   margin-top: 50px;
   margin-left: 50px;
+  border: 1px solid black;
 }
 .profile img{
   width: 220px;
