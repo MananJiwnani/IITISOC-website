@@ -78,7 +78,10 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
     const message = req.query.message;
-    res.render('owner_portal.ejs', { owner, message });
+    res.render('owner_portal.ejs', { 
+      owner,
+      message: req.session.message
+    });
   } catch (error) {
       res.status(500).send('Internal server error');
     }
@@ -198,7 +201,8 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
-    res.redirect(`/owner_portal?message=${encodeURIComponent('Property added successfully')}`);
+    req.session.message = 'Property saved successfully';
+    res.redirect('/owner_portal');
   } catch (error) {
       res.status(403).send(error.message);
     }
