@@ -250,7 +250,7 @@ body {
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    height: 54px;
+    height: fit-content;
 }
 
 /* searchbar */
@@ -259,7 +259,7 @@ body {
     flex-direction: row;
     justify-content: center;
     width: 100vw;
-    height: 50px;
+    height: fit-content;
     background-color: #27C4B1;
     padding: 3px 5px;
     padding-bottom: 0px;
