@@ -81,7 +81,7 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
     delete req.session.message;
     res.render('owner_portal.ejs', { 
       owner,
-      message: req.session.message
+      message: 'Property added successfully'
     });
   } catch (error) {
       res.status(500).send('Internal server error');
