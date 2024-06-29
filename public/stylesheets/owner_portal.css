@@ -380,8 +380,32 @@ hr {
   }
 }
 
-
-.owner-details p, b{
-  color: black;
+.myProfile{
+  display: flex;
+  background-color: lightgray;
+  width: 600px;
+  height: 220px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+.profile img{
+  width: 220px;
+  height: auto;
+}
+.profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+.owner-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
+.owner-details div, b{
+  color: black;
+  font-size: 24px;
+  
+}
