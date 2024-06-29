@@ -192,14 +192,12 @@ app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
       furnishedStatus: req.body.furnishedStatus,
       propertyAge: req.body.propertyAge,
       petPolicy: req.body.petPolicy,
-
       carpetArea: req.body.carpetArea,
-
-      
+       
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
-    res.status(200).send('Property listed successfully');
+    res.redirect('/owner_portal');
   } catch (error) {
       res.status(403).send(error.message);
     }
