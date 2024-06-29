@@ -78,6 +78,7 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
     const message = req.query.message;
+    delete req.session.message;
     res.render('owner_portal.ejs', { 
       owner,
       message: req.session.message
