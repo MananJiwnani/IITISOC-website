@@ -87,10 +87,10 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
 });
 
-//myProperties is in owner portal
-app.get('/myProperties',checkAuth, checkRole('owner'), (req, res) => {
-  res.render('myProperties.ejs');
-});
+// myproperties is in owner portal
+// app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
+//   res.render('myproperties.ejs');
+// });
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
