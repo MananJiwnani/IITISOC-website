@@ -87,10 +87,10 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
 });
 
-//myProperties is in owner portal
-app.get('/myProperties',checkAuth, checkRole('owner'), (req, res) => {
-  res.render('myProperties.ejs');
-});
+// myproperties is in owner portal
+// app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
+//   res.render('myproperties.ejs');
+// });
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
@@ -167,11 +167,11 @@ app.post('/logout',checkAuth, (req, res) => {
 })
 
 // Adding Properties
-app.get('/addProperties',checkAuth, checkRole('owner'), (req, res)=>{
-  res.render('addProperties.ejs');
+app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
+  res.render('addproperties.ejs');
 });
 
-app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const newProperty = new Property({
       owner: req.session.user_id, 
@@ -192,14 +192,12 @@ app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
       furnishedStatus: req.body.furnishedStatus,
       propertyAge: req.body.propertyAge,
       petPolicy: req.body.petPolicy,
-
       carpetArea: req.body.carpetArea,
-
-      
+       
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
-    res.status(200).send('Property listed successfully');
+    res.redirect('/owner_portal');
   } catch (error) {
       res.status(403).send(error.message);
     }
@@ -212,7 +210,7 @@ app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
 
 app.get('/api/myproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
-    const properties = await Property.find({ owner: req.session.user_id });
+    const properties = await properties.find({ owner: req.session.user_id });
     res.status(200).json(properties);
   } catch (error) {
     res.status(404).send(error.message);
