@@ -167,11 +167,11 @@ app.post('/logout',checkAuth, (req, res) => {
 })
 
 // Adding Properties
-app.get('/addProperties',checkAuth, checkRole('owner'), (req, res)=>{
-  res.render('addProperties.ejs');
+app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
+  res.render('addproperties.ejs');
 });
 
-app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const newProperty = new Property({
       owner: req.session.user_id, 
@@ -192,14 +192,12 @@ app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
       furnishedStatus: req.body.furnishedStatus,
       propertyAge: req.body.propertyAge,
       petPolicy: req.body.petPolicy,
-
       carpetArea: req.body.carpetArea,
-
-      
+       
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
-    res.status(200).send('Property listed successfully');
+    res.redirect('/owner_portal');
   } catch (error) {
       res.status(403).send(error.message);
     }
