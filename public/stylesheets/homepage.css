@@ -392,12 +392,12 @@
     }
 
     .filter {
-        width: 100%;
+        width: 67vw;
     }
 
 
     #search_btn {
-        width: 70vw;
+        width: 67vw;
     }
 
     #property_type {
