@@ -172,7 +172,7 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
 
 app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
-    const newProperty = new Property({
+    const newProperty = new properties({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
       propertyType: new RegExp(req.body.propertyType, 'i'),
@@ -206,7 +206,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
-    const properties = await Property.find({ owner: req.session.user_id });
+    const properties = await properties.find({ owner: req.session.user_id });
     res.render('myproperties.ejs', { properties });
   } catch (err) {
     res.status(500).send(err);
