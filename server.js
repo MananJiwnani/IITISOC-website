@@ -200,6 +200,8 @@ app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
     res.status(200).send('Property listed successfully');
+    // res.redirect('/vacancies');
+    
   } catch (error) {
       res.status(403).send(error.message);
     }
@@ -212,7 +214,7 @@ app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
 
 app.get('/api/myproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
-    const properties = await Property.find({ owner: req.session.user_id });
+    const properties = await properties.find({ owner: req.session.user_id });
     res.status(200).json(properties);
   } catch (error) {
     res.status(404).send(error.message);
@@ -223,7 +225,7 @@ app.get('/api/myproperties',checkAuth, checkRole('owner'), async (req, res) => {
 app.post('/myproperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const propertyId = req.params.id;
-    const updatedProperty = await Property.findByIdAndUpdate(
+    const updatedProperty = await properties.findByIdAndUpdate(
       propertyId,
       { rentedOut: true },
       { new: true }
@@ -303,7 +305,7 @@ app.post('/api/vacancies/:id',checkAuth, async (req, res) => {
   try {
     const propertyId = req.params.id;
     const userId = req.session.user_id; 
-    const property = await Property.findById(propertyId);
+    const property = await properties.findById(propertyId);
 
     if (!property) {
       return res.status(404).send('Property not found');
