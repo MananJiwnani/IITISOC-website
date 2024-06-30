@@ -77,9 +77,10 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
+    const message =req.session.message;
     res.render('owner_portal.ejs', { 
       owner,
-      info: req.session.message
+      info: message
     });
   } catch (error) {
       res.status(500).send('Internal server error');
