@@ -77,7 +77,12 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
-    res.render('owner_portal.ejs', { owner });
+    const message =req.session.message;
+    delete req.session.message;
+    res.render('owner_portal.ejs', { 
+      owner,
+      info: message
+    });
   } catch (error) {
       res.status(500).send('Internal server error');
     }
@@ -85,11 +90,6 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
 
 app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
-});
-
-//myProperties is in owner portal
-app.get('/myProperties',checkAuth, checkRole('owner'), (req, res) => {
-  res.render('myProperties.ejs');
 });
 
 app.get('/login', (req, res) => {
@@ -135,8 +135,8 @@ app.post('/register', checkNotAuth, async (req, res) => {
   const user = new User({ name, email, contact, password, role })
   await user.save();
   req.session.ROLE= role;
-  req.session.user_id = user._id;
-  res.redirect('/login')
+  // req.session.user_id = user._id;
+  res.redirect('/')
 })
 
 // Authorization 
@@ -167,11 +167,11 @@ app.post('/logout',checkAuth, (req, res) => {
 })
 
 // Adding Properties
-app.get('/addProperties',checkAuth, checkRole('owner'), (req, res)=>{
-  res.render('addProperties.ejs');
+app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
+  res.render('addproperties.ejs');
 });
 
-app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const newProperty = new Property({
       owner: req.session.user_id, 
@@ -192,37 +192,40 @@ app.post('/addProperties',checkAuth, checkRole('owner'), async (req, res) => {
       furnishedStatus: req.body.furnishedStatus,
       propertyAge: req.body.propertyAge,
       petPolicy: req.body.petPolicy,
-
       carpetArea: req.body.carpetArea,
-
-      
+       
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
-    res.status(200).send('Property listed successfully');
-    // res.redirect('/vacancies');
-    
+    req.session.message = 'Property saved successfully';
+    res.redirect('/owner_portal');
   } catch (error) {
       res.status(403).send(error.message);
     }
 });
 
 // My properties page for owner to see his properties
-app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
-    res.render('myproperties.ejs');
+app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
+  try {
+    const properties = await Property.find({ owner: req.session.user_id });
+    res.render('myproperties.ejs', { properties });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+    // res.render('myproperties.ejs');
 });
 
-app.get('/api/myproperties',checkAuth, checkRole('owner'), async (req, res) => {
-  try {
-    const properties = await properties.find({ owner: req.session.user_id });
-    res.status(200).json(properties);
-  } catch (error) {
-    res.status(404).send(error.message);
-  }
-});
+// app.get('/api/myProperties',checkAuth, checkRole('owner'), async (req, res) => {
+//   try {
+//     const properties = await property.find({ owner: req.session.user_id });
+//     res.status(200).json(properties);
+//   } catch (error) {
+//     res.status(404).send(error.message);
+//   }
+// });
 
 // for updating the "rentedOut" status of that property
-app.post('/myproperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const propertyId = req.params.id;
     const updatedProperty = await properties.findByIdAndUpdate(

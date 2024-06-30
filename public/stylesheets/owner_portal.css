@@ -331,124 +331,6 @@ h3 {
   flex-wrap: wrap;
 }
 
-.property {
-
-  width: fit-content;
-  height: fit-content;
-  margin: 3%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 20px;
-  box-shadow: 7px 7px 10px rgba(6, 6, 6, 0.5);
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(126, 238, 245, 0.8), rgba(100, 234, 243, 1), rgba(40, 228, 217, 0.9), rgba(32, 197, 187, 0.78), rgba(27, 181, 172, 0.69), rgba(30, 154, 147, 0.87), rgba(16, 114, 114, 0.74));
-  transition: 2s;
-}
-
-.property:hover {
-  background-image: linear-gradient(rgba(126, 238, 245, 0.6), rgba(126, 238, 245, 0.6), rgba(126, 238, 245, 0.6), rgba(126, 238, 245, 0.6), rgba(126, 238, 245, 0.6), rgba(126, 238, 245, 0.8), rgba(126, 238, 245, 0.8), rgba(100, 234, 243, 1), rgba(100, 234, 243, 1), rgba(40, 228, 217, 0.9), rgba(32, 197, 187, 0.78), rgba(27, 181, 172, 0.69), rgba(30, 154, 147, 0.87), rgba(16, 114, 114, 0.74));
-}
-
-.property:hover .address,
-.property:hover .property_type,
-.property:hover .rent,
-.property:hover .tenant {
-  animation: translate 1s linear 1;
-  animation-fill-mode: forwards;
-
-}
-
-.property:hover .details {
-  animation: pop 1s linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes translate {
-  0% {
-    position: relative;
-  }
-
-  100% {
-    position: relative;
-    transform: translateY(-60px);
-  }
-}
-
-@keyframes pop {
-  0% {}
-
-  100% {
-    font-size: 19px;
-    transform: translateY(-60px);
-  }
-}
-
-.home_img {
-  height: 140px;
-  width: 100%;
-  background-image: url('/images/home1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 20px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  margin: 5px;
-  margin-top: 0%;
-  z-index: -2;
-}
-
-.property_type,
-.address,
-.rent,
-.tenant {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  width: 100%;
-  margin-left: 10%;
-}
-
-.type {
-  display: flex;
-  flex-wrap: wrap;
-  width: 60%;
-  position: relative;
-}
-
-.property h3 {
-  font-family: "Kameron", serif;
-  width: max-content;
-  color: black;
-  font-size: 17px;
-  font-weight: 500;
-  position: relative;
-}
-
-.property h4 {
-  color: #052d29;
-  font-size: 15px;
-  font-family: "Kameron", serif;
-  font-weight: 500;
-  position: relative;
-}
-
-.rent h4 {
-  margin-left: 5%;
-}
-
-.tenant h4 {
-  margin-left: 5%;
-}
-
-.details {
-  color: #052d29;
-  font-size: 15px;
-  font-family: "Kameron", serif;
-  font-weight: 500;
-  margin: 5px 5px;
-
-}
-
 .MAIN_text {
   color: #07443e;
   font-size: 40px;
@@ -496,4 +378,42 @@ hr {
     height: 90%;
     justify-content: center;
   }
+}
+
+.myProfile {
+  display: flex;
+  background-color: #018d75;
+  width: 600px;
+  height: 220px;
+  margin-top: 50px;
+  margin-left: 50px;
+  border: 9px double #ffffff;
+  border-radius: 25px;
+  /* box-shadow: 6px 6px 20px #000000b0; */
+}
+
+.profile img {
+  width: 220px;
+  height: auto;
+  filter: invert();
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+.owner-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.owner-details div,
+b {
+  color: white;
+  font-size: 24px;
+
 }

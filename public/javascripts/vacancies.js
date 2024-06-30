@@ -84,7 +84,7 @@ async function fetchProperties() {
 
 // display property func
 function displayProperties(properties) {
-    const propertiesList = document.getElementById('properties-list');
+    const propertiesList = document.querySelector('.listings');
     propertiesList.innerHTML = '';
 
     if (properties.length === 0) {
@@ -94,18 +94,20 @@ function displayProperties(properties) {
 
     properties.forEach(property => {
         const propertyItem = document.createElement('div');
-        propertyItem.className = 'property-item';
+        propertyItem.className = 'grid-item';
 
         propertyItem.innerHTML = `
-                <div class="image">
-                    ${property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
+                <div class="card">
+                    <div class="image">
+                        ${property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
                     </div>
                     <div class="card-content">
-                        <h2 class="card-title">${property.propertyType}</h2>
+                        <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
                         <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-                        <p class="card-price">$${property.price}/month</p>
+                        <p class="card-price">₹${property.price}/month</p>
                         <a href="/property"><button class="card-button">View Details</button></a>
-                    </div>`;
+                    </div>
+                </div>`;
 
         if (!property.rentedOut) {
             propertiesList.appendChild(propertyItem);

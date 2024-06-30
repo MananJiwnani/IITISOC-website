@@ -35,8 +35,10 @@
   </div>
   <section class="container">
     <div class="sidebar">
-      <a href="/owner_portal"><h3 class="feature">My Profile</h3></a>
       <ul class="main_feature">
+        <a href="/owner_portal" class="feature">
+          <li id="myProfile">My Profile</li>
+        </a>
         <a href="/myProperties" class="feature">
           <li>My Properties</li>
         </a>
@@ -70,26 +72,22 @@
       <div class="features_display My_properties">
         <h1 class="MAIN_text">Rented Out Properties</h1>
         <hr>
-        <div class="rented_properties">
-
+        <div id="rented-properties-list" class="listings">
+             
         </div>
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
-        <div class="other_properties"></div>
+        <div id="other-properties-list" class="listings">
+
+        </div>
       </div>
-      <div class="feature_display display"></div>
-      <div class="feature_display display"></div>
-      <div class="feature_display display"></div>
     </div>
-
-
-
-
 
   </section>
 
-
-
+  <script>
+    const properties = JSON.stringify(properties);
+  </script>
 
   <script src="javascripts/owner_portal.js"></script>
 </body>

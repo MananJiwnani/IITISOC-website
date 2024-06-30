@@ -37,12 +37,14 @@
 
 
     <div class="sidebar">
-      <a href="#"><h3 class="feature">My Profile</h3></a>
       <ul class="main_feature">
-        <a href="/myproperties" class="feature">
+        <a href="#" class="feature">
+          <li id="myProfile">My Profile</li>
+        </a>
+        <a href="/myProperties" class="feature">
           <li>My Properties</li>
         </a>
-        <a href="/addProperties" class="feature">
+        <a href="/addproperties" class="feature">
           <li>Add Properties</li>
         </a>
       </ul>
@@ -65,17 +67,28 @@
         </a>
       </ul>
     </div>
-    
-    <div class="myProfile">
-      <div class="owner-details">
-        <h1>Owner-Details</h1>       
-        <p><b>Name:</b> <%= owner.name %></p>
-        <p><b>Email:</b> <%= owner.email %></p>
-        <p><b>Contact:</b> <%= owner.contact %></p>
-        <p><b>Role:</b> <%= owner.role %></p>
+    <div class="diff_features">
+
+      <div class="myProfile">
+        <div class="profile">
+          <img src="/images/profile.png" alt="">
+        </div>
+        <div class="owner-details">
+          <div><b>Name:</b> <%= owner.name %></div>
+          <div><b>Email:</b> <%= owner.email %></div>
+          <div><b>Contact:</b> <%= owner.contact %></div>
+          <div><b>Role:</b> Owner</div>
+        </div>
       </div>
     </div>
 
+    <% if (info) { %>
+    <script>
+      window.onload = function() {
+        alert('<%= info %>');
+      };
+    </script>
+  <% } %>
 
   </section>
 
