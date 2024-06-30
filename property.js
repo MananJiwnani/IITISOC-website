@@ -11,17 +11,17 @@ const propertySchema = new mongoose.Schema({
     required: [true, 'owner name is required'],
   },
 
-    propertyType: {
+  propertyType: {
     type: String,
     required: [true, 'type is required'],
   },
 
-    subCategory: {
+  subCategory: {
     type: String,
     required: [true, 'bhk is required'],
   },
   
-   price: {
+  price: {
     type: Number,
     required: [true, 'price is required'],
   },
