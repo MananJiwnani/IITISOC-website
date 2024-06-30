@@ -134,7 +134,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
   const user = new User({ name, email, contact, password, role })
   await user.save();
   req.session.ROLE= role;
-  req.session.user_id = user._id;
+  // req.session.user_id = user._id;
   res.redirect('/')
 })
 
