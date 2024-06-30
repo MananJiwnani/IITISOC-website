@@ -57,20 +57,20 @@ function toggleMenu() {
     }
 
 
-    async function fetchMyProperties() {
-      try {
-          const response = await fetch('/api/myProperties');
-          if (!response.ok) {
-              throw new Error('Failed to fetch properties');
-          }
-          const properties = await response.json();
-          displayProperties(properties);
-      } catch (error) {
-          console.error('Error fetching properties:', error);
-          document.getElementById('rented-properties-list').innerText = 'Error fetching properties';
-          document.getElementById('other-properties-list').innerText = 'Error fetching properties';
-      }
-  }
+  //   async function fetchMyProperties() {
+  //     try {
+  //         const response = await fetch('/api/myProperties');
+  //         if (!response.ok) {
+  //             throw new Error('Failed to fetch properties');
+  //         }
+  //         const properties = await response.json();
+  //         displayProperties(properties);
+  //     } catch (error) {
+  //         console.error('Error fetching properties:', error);
+  //         document.getElementById('rented-properties-list').innerText = 'Error fetching properties';
+  //         document.getElementById('other-properties-list').innerText = 'Error fetching properties';
+  //     }
+  // }
 
   function displayProperties(properties) {
       const rentedPropertiesList = document.getElementById('rented-properties-list');
@@ -128,4 +128,6 @@ function toggleMenu() {
       }
   }
 
-  window.onload = fetchMyProperties;
+ window.onload = () => {
+  displayProperties(properties);
+ };
