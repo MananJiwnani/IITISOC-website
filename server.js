@@ -81,7 +81,7 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
     delete req.session.message;
     res.render('owner_portal.ejs', { 
       owner,
-      message: 'Property added successfully'
+      info: req.session.message
     });
   } catch (error) {
       res.status(500).send('Internal server error');
@@ -91,11 +91,6 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
 app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
 });
-
-// myproperties is in owner portal
-// app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
-//   res.render('myproperties.ejs');
-// });
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
