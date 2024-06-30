@@ -205,7 +205,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 });
 
 // My properties page for owner to see his properties
-app.get('/myproperties',checkAuth, checkRole('owner'), async(req, res) => {
+app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
     const properties = await Property.find({ owner: req.session.user_id });
     res.render('myproperties.ejs', { properties });
