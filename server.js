@@ -210,18 +210,23 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 });
 
 // My properties page for owner to see his properties
-app.get('/myProperties',checkAuth, checkRole('owner'), (req, res) => {
-    res.render('myproperties.ejs');
-});
-
-app.get('/api/myProperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
-    const properties = await property.find({ owner: req.session.user_id });
-    res.status(200).json(properties);
-  } catch (error) {
-    res.status(404).send(error.message);
+    const properties = await Property.find({ owner: req.session.user_id });
+    res.render('myproperties.ejs', { properties });
+  } catch (err) {
+    res.status(500).send(err);
   }
 });
+
+// app.get('/api/myProperties',checkAuth, checkRole('owner'), async (req, res) => {
+//   try {
+//     const properties = await property.find({ owner: req.session.user_id });
+//     res.status(200).json(properties);
+//   } catch (error) {
+//     res.status(404).send(error.message);
+//   }
+// });
 
 // for updating the "rentedOut" status of that property
 app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
