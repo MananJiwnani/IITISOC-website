@@ -69,9 +69,17 @@ app.get('/vacancies',checkAuth, (req, res) => {
   res.render('vacancies.ejs', {userId: req.session.user_id});
 });
 
-app.get('/property',checkAuth, (req, res) => {
-  res.render('property.ejs');
-});
+app.get('/property',checkAuth, async(req, res)=> {
+   try{
+   const properties=await Property.find();
+   res.render('property.ejs',{properties});
+   }
+   catch (error) {
+   res.status(500).send('Internal server error');
+  }
+      }  );
+   
+
 
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
@@ -212,7 +220,7 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
-    // res.render('myproperties.ejs');
+    
 });
 
 // app.get('/api/myProperties',checkAuth, checkRole('owner'), async (req, res) => {
@@ -228,7 +236,7 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
 app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const propertyId = req.params.id;
-    const updatedProperty = await properties.findByIdAndUpdate(
+    const updatedProperty = await Property.findByIdAndUpdate(
       propertyId,
       { rentedOut: true },
       { new: true }

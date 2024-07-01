@@ -3,36 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= property.title %></title>
+    <title>Property</title>
     <link rel="stylesheet" href="/stylesheets/property.css">
 </head>
 <body>
-    <header>
-        <h1><%= property.title %></h1>
-    </header>
-    <main>
-        <div class="card">
-            <p>PropertyId: <%= property._id %></p>
-            <h2>Description: <%= property.description %></h2>
-            <p>City: <%= property.city %></p>
-            <p>State: <%= property.state %></p>
-            <p>Country: <%= property.country %></p>
-            <p>Owner-Name: <%= property.ownerName %></p>
-            <p>Area: <%= property.area %></p>
-            <p>PropertyType: <%= property.propertyType %></p>
-            <p>SubCategory: <%= property.subCategory %></p>
-            <p>Price: <%= property.price %>$</p>
-            <p>Address: <%= property.address %></p>
-            <p>Amenities: <%= property.amenities.join(', ') %></p>
-            <p>Rented-Out: <%= property.rentedOut %></p>
-            <div class="property-images">
-                <% property.images.forEach(image => { %>
-                    <img src="<%= image %>" alt="Property Image">
-                <% }) %>
-            </div>
-            <button onclick="applyProperty('<%= property._id %>')">Apply Now</button>
-        </div>
-    </main>
-    <script src="/javascripts/vacancies.js"></script>
+
+    <% properties.forEach(Property=>{ %>
+        <li>
+          <h2><%= Property.propertyType %> - <%= Property.subCategory %></h2>
+          <p>Owner: <%= Property.ownerName %></p>
+          <p>Price: <%= Property.price %></p>
+          <p>Description: <%= Property.description %></p>
+          <p>City: <%= Property.city %></p>
+          <p>State: <%= Property.state %></p>
+          <p>Carpet Area: <%= Property.carpetArea %></p>
+          <p>Address: <%= Property.address %></p>
+          <p>Ownership Type :<%= Property.ownershipType %></p>
+          <p>Pet Policy: <%= Property.petPolicy %></p>
+          <p>Furnished Status: <%= Property.furnishedStatus %></p>
+          <p>Property Age: <%= Property.propertyAge %></p>
+          <p>Amenities: <%= Property.amenities %></p>
+          <p>Rented Out: <%= Property.rentedOut ? 'Yes' : 'No' %></p>
+          <div>
+           <p> <h3>Images:</h3><a><%=Property.images%></a></p>
+          
+          </div>
+        </li>
+      <% }) %>
+
+  
+
+  
 </body>
 </html>

@@ -85,22 +85,22 @@ function toggleMenu() {
           return;
       }
 
-      properties.forEach(property => {
+      properties.forEach(Property => {
           const propertyItem = document.createElement('div');
           propertyItem.className = 'property-item';
 
           propertyItem.innerHTML =`
                 <div class="image">
-                    ${property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
+                    ${Property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
                     </div>
                     <div class="card-content">
-                        <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
-                        <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-                        <p class="card-price">₹${property.price}/month</p>
+                        <h2 class="card-title">${Property.subCategory} ${Property.propertyType}</h2>
+                        <p class="card-location">${Property.address}, ${Property.city}, ${Property.state}</p>
+                        <p class="card-price">₹${Property.price}/month</p>
                         <a href="/property"><button class="card-button">View Details</button></a>
                     </div>`;
 
-          if (property.rentedOut) {
+          if (Property.rentedOut) {
               rentedPropertiesList.appendChild(propertyItem);
           } else {
               otherPropertiesList.appendChild(propertyItem);
