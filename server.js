@@ -143,8 +143,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
   const user = new User({ name, email, contact, password, role })
   await user.save();
   req.session.ROLE= role;
-  // req.session.user_id = user._id;
-  res.redirect('/')
+  res.redirect('/');
 })
 
 // Authorization 
@@ -206,6 +205,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
     req.session.message = 'Property saved successfully';
+    req.session.NAME= req.body.ownerName;
     res.redirect('/owner_portal');
     console.log('Property added successfully');
   } catch (error) {
@@ -216,7 +216,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
-    const rentals = await Property.find({ owner: req.session.user_id }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    const rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
     res.render('myproperties.ejs', { rentals });
   } catch (err) {
     res.status(500).send(err);
