@@ -38,7 +38,7 @@ const propertySchema = new mongoose.Schema({
   },
 
   carpetArea: {
-    type: String,
+    type: Number,
     required: [true, 'carpet area is required'],
   },
 
@@ -63,7 +63,7 @@ const propertySchema = new mongoose.Schema({
     required: [true, 'furnished status is required'],
   }],
   propertyAge: [{
-    type: String,
+    type: Number,
     required: [true, 'property age is required'],
   }],
   amenities: [{
