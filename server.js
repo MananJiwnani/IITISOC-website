@@ -189,7 +189,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
       
       description: req.body.description,
       city: req.body.city,
-      state: req.body.state, 'i'),
+      state: req.body.state,
      
       address: req.body.address,
       price: req.body.price,
@@ -222,15 +222,6 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   }
     
 });
-
-// app.get('/api/myProperties',checkAuth, checkRole('owner'), async (req, res) => {
-//   try {
-//     const properties = await property.find({ owner: req.session.user_id });
-//     res.status(200).json(properties);
-//   } catch (error) {
-//     res.status(404).send(error.message);
-//   }
-// });
 
 // for updating the "rentedOut" status of that property
 app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
