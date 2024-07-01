@@ -184,12 +184,12 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
-      propertyType: req.body.propertyType,
-      subCategory: req.body.subCategory,
+      propertyType: req.body.propertyType.toUpperCase(),
+      subCategory: req.body.subCategory.toUpperCase(),
       
       description: req.body.description,
-      city: req.body.city,
-      state: req.body.state,
+      city: req.body.city.toUpperCase(),
+      state: req.body.state.toUpperCase(),
      
       address: req.body.address,
       price: req.body.price,
