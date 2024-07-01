@@ -184,12 +184,12 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
-      propertyType: new RegExp(req.body.propertyType, 'i') : undefined,
-      subCategory: new RegExp(req.body.subCategory, 'i') : undefined,
+      propertyType: req.body.propertyType,
+      subCategory: req.body.subCategory,
       
       description: req.body.description,
-      city: new RegExp(req.body.city, 'i') : undefined,
-      state: new RegExp(req.body.state, 'i') : undefined,
+      city: req.body.city,
+      state: req.body.state, 'i'),
      
       address: req.body.address,
       price: req.body.price,
@@ -254,11 +254,11 @@ app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => 
 app.post('/',checkAuth, (req, res) =>{
   try{
     const query = {};
-    if (req.body.city) query.city = new RegExp(req.body.city, 'i');
-    if (req.body.state) query.state = new RegExp(req.body.state, 'i');
-    if (req.body.country) query.country = new RegExp(req.body.country, 'i');
-    if (req.body.propertyType) query.propertyType = new RegExp(req.body.propertyType, 'i');
-    if (req.body.subCategory) query.subCategory = new RegExp(req.body.subCategory, 'i');
+    if (req.body.city) query.city = req.body.city;
+    if (req.body.state) query.state = req.body.state;
+    if (req.body.country) query.country = req.body.country;
+    if (req.body.propertyType) query.propertyType = req.body.propertyType;
+    if (req.body.subCategory) query.subCategory = req.body.subCategory;
     
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
@@ -293,11 +293,11 @@ app.get('/api/vacancies',checkAuth, async (req, res) => {
 app.post('/vacancies',checkAuth, (req, res) => {
   try{
     const query = {};
-    if (req.body.city) query.city = new RegExp(req.body.city, 'i');
-    if (req.body.state) query.state = new RegExp(req.body.state, 'i');
-    if (req.body.country) query.country = new RegExp(req.body.country, 'i');
-    if (req.body.propertyType) query.propertyType = new RegExp(req.body.propertyType, 'i');
-    if (req.body.subCategory) query.subCategory = new RegExp(req.body.subCategory, 'i');
+    if (req.body.city) query.city = req.body.city;
+    if (req.body.state) query.state = req.body.state;
+    if (req.body.country) query.country = req.body.country;
+    if (req.body.propertyType) query.propertyType = req.body.propertyType;
+    if (req.body.subCategory) query.subCategory = req.body.subCategory;
 
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
