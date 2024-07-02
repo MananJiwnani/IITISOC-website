@@ -217,7 +217,8 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
     const rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
-    res.render('myproperties.ejs', { rentals });
+    const properties = JSON.stringify(rentals); 
+    res.render('myproperties.ejs', { properties });
   } catch (err) {
     res.status(500).send(err);
   }
