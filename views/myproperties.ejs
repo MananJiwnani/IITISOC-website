@@ -101,41 +101,9 @@
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const rentedPropertiesList = document.getElementById('rented-properties-list');
-      rentedPropertiesList.innerHTML = '';
-
-      const otherPropertiesList = document.getElementById('other-properties-list');
-      otherPropertiesList.innerHTML = '';
-
-      if (properties.length === 0) {
-        rentedPropertiesList.innerText = 'No properties found';
-        otherPropertiesList.innerText = 'No properties found';
-        return;
-      }
-
-      properties.forEach(property => {
-        const propertyItem = document.createElement('div');
-        propertyItem.className = 'property-item';
-
-          <div class="card-content">
-            <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
-            <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-            <p class="card-price">${property.price}/month</p>
-            <a href="/property"><button class="card-button">View Details</button></a>
-          </div>
-        `;
-
-        if (property.rentedOut) {
-          rentedPropertiesList.appendChild(propertyItem);
-        } else {
-          otherPropertiesList.appendChild(propertyItem);
-        }
-      });
-    });
+    
   </script>  
 
-  <script src="javascripts/owner_portal.js"></script>
+ 
 </body>
-
 </html>
