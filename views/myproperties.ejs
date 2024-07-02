@@ -100,15 +100,6 @@
         const propertyItem = document.createElement('div');
         propertyItem.className = 'property-item';
 
-        let imagesHTML = '';
-        property.images.forEach(image => {
-          imagesHTML += `<img src="${image}" alt="Property Image" class="card-img">`;
-        });
-
-        propertyItem.innerHTML = `
-          <div class="image">
-            ${imagesHTML}
-          </div>
           <div class="card-content">
             <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
             <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
