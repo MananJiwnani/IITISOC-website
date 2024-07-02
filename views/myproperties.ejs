@@ -90,13 +90,13 @@
       const otherPropertiesList = document.getElementById('other-properties-list');
       otherPropertiesList.innerHTML = '';
 
-      if (vacancies.length === 0) {
+      if (properties.length === 0) {
         rentedPropertiesList.innerText = 'No properties found';
         otherPropertiesList.innerText = 'No properties found';
         return;
       }
 
-      vacancies.forEach(property => {
+      properties.forEach(property => {
         const propertyItem = document.createElement('div');
         propertyItem.className = 'property-item';
 
