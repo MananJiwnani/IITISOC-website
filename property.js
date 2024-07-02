@@ -70,11 +70,11 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: [true, 'amenities are required'],
   }],
-  images: [{
+  image: {
     type: String, // URLs of the images
     // required: [true, 'images are required'],
     // unique: true,
-  }],
+  },
   rentedOut: {
     type: Boolean,
     default: false,
