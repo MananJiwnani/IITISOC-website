@@ -72,41 +72,41 @@ function toggleMenu() {
   //     }
   // }
 
-  function displayProperties(properties) {
-      const rentedPropertiesList = document.getElementById('rented-properties-list');
-      rentedPropertiesList.innerHTML = '';
+  // function displayProperties(properties) {
+  //     const rentedPropertiesList = document.getElementById('rented-properties-list');
+  //     rentedPropertiesList.innerHTML = '';
 
-      const otherPropertiesList = document.getElementById('other-properties-list');
-      otherPropertiesList.innerHTML = '';
+  //     const otherPropertiesList = document.getElementById('other-properties-list');
+  //     otherPropertiesList.innerHTML = '';
 
-      if (properties.length === 0) {
-          rentedPropertiesList.innerText = 'No properties found';
-          otherPropertiesList.innerText = 'No properties found';
-          return;
-      }
+  //     if (properties.length === 0) {
+  //         rentedPropertiesList.innerText = 'No properties found';
+  //         otherPropertiesList.innerText = 'No properties found';
+  //         return;
+  //     }
 
-      <% properties.forEach(Property => { %>
-          const propertyItem = document.createElement('div');
-          propertyItem.className = 'property-item';
+  //     <% properties.forEach(Property => { %>
+  //         const propertyItem = document.createElement('div');
+  //         propertyItem.className = 'property-item';
 
-          propertyItem.innerHTML =`
-                <div class="image">
-                    <%=Property.images.map(image => `<img src="<%=image%>" alt="Property Image" class="card-img">`).join('')%>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="card-title"><%=Property.subCategory%> <%=Property.propertyType%></h2>
-                        <p class="card-location"><%=Property.address%>, <%=Property.city%>, <%=Property.state%></p>
-                        <p class="card-price"><%=Property.price%>/month</p>
-                        <a href="/property"><button class="card-button">View Details</button></a>
-                    </div>`;
+  //         propertyItem.innerHTML =`
+  //               <div class="image">
+  //                   <%=Property.images.map(image => `<img src="<%=image%>" alt="Property Image" class="card-img">`).join('')%>
+  //                   </div>
+  //                   <div class="card-content">
+  //                       <h2 class="card-title"><%=Property.subCategory%> <%=Property.propertyType%></h2>
+  //                       <p class="card-location"><%=Property.address%>, <%=Property.city%>, <%=Property.state%></p>
+  //                       <p class="card-price"><%=Property.price%>/month</p>
+  //                       <a href="/property"><button class="card-button">View Details</button></a>
+  //                   </div>`;
 
-          <%if (Property.rentedOut) {%>
-              rentedPropertiesList.appendChild(propertyItem);
-          <%} else {%>
-              otherPropertiesList.appendChild(propertyItem);
-          <%}%>
-      });
-  }
+  //         <%if (Property.rentedOut) {%>
+  //             rentedPropertiesList.appendChild(propertyItem);
+  //         <%} else {%>
+  //             otherPropertiesList.appendChild(propertyItem);
+  //         <%}%>
+  //     });
+  // }
 
   async function rentOutProperty(propertyId) {
       try {
@@ -128,6 +128,6 @@ function toggleMenu() {
       }
   }
 
- window.onload = () => {
-  displayProperties(properties);
- };
+ // window.onload = () => {
+ //  displayProperties(properties);
+ // };
