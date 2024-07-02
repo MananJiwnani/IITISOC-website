@@ -73,9 +73,7 @@
         <h1 class="MAIN_text">Rented Out Properties</h1>
         <hr>
         <div id="rented-properties-list" class="listings">
-             <% properties.forEach(Property => { %>
-                <p> <%= Property.ownerName %> </p>
-             <% }) %>
+             
         </div>
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
@@ -88,7 +86,7 @@
   </section>
 
   <script>
-    const properties = JSON.stringify(rentals);
+    const properties = <%= JSON.stringify(properties) %>;
   </script>
 
   <script src="javascripts/owner_portal.js"></script>
