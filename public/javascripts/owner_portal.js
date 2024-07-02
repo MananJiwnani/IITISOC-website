@@ -102,6 +102,7 @@ function toggleMenu() {
 
           if (Property.rentedOut) {
               rentedPropertiesList.appendChild(propertyItem);
+              console.log("hello");
           } else {
               otherPropertiesList.appendChild(propertyItem);
           }
