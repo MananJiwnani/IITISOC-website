@@ -69,19 +69,27 @@ app.get('/vacancies',checkAuth, (req, res) => {
   res.render('vacancies.ejs', {userId: req.session.user_id});
 });
 
-app.get('/property',checkAuth, (req, res) => {
-  res.render('property.ejs');
-});
+app.get('/property',checkAuth, async(req, res)=> {
+   try{
+   const properties=await Property.find();
+   res.render('property.ejs',{properties});
+   }
+   catch (error) {
+   res.status(500).send('Internal server error');
+  }
+      }  );
+   
+
 
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
-    const message = req.query.message;
+    const message =req.session.message;
     delete req.session.message;
     res.render('owner_portal.ejs', { 
       owner,
-      message: 'Property added successfully'
+      info: message
     });
   } catch (error) {
       res.status(500).send('Internal server error');
@@ -91,11 +99,6 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
 app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
 });
-
-// myproperties is in owner portal
-// app.get('/myproperties',checkAuth, checkRole('owner'), (req, res) => {
-//   res.render('myproperties.ejs');
-// });
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
@@ -140,8 +143,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
   const user = new User({ name, email, contact, password, role })
   await user.save();
   req.session.ROLE= role;
-  req.session.user_id = user._id;
-  res.redirect('/')
+  res.redirect('/');
 })
 
 // Authorization 
@@ -181,12 +183,12 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
-      propertyType: new RegExp(req.body.propertyType, 'i'),
-      subCategory: new RegExp(req.body.subCategory, 'i'),
+      propertyType: req.body.propertyType.toUpperCase(),
+      subCategory: req.body.subCategory.toUpperCase(),
       
       description: req.body.description,
-      city: new RegExp(req.body.city, 'i'),
-      state: new RegExp(req.body.state, 'i'),
+      city: req.body.city.toUpperCase(),
+      state: req.body.state.toUpperCase(),
      
       address: req.body.address,
       price: req.body.price,
@@ -202,25 +204,24 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
-    req.session.message = 'Property saved successfully!';
+    req.session.message = 'Property saved successfully';
+    req.session.NAME= req.body.ownerName;
     res.redirect('/owner_portal');
+    console.log('Property added successfully');
   } catch (error) {
       res.status(403).send(error.message);
     }
 });
 
 // My properties page for owner to see his properties
-app.get('/myProperties',checkAuth, checkRole('owner'), (req, res) => {
-    res.render('myproperties.ejs');
-});
-
-app.get('/api/myProperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
-    const properties = await property.find({ owner: req.session.user_id });
-    res.status(200).json(properties);
-  } catch (error) {
-    res.status(404).send(error.message);
+    const rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']); 
+    res.render('myproperties.ejs', { properties: rentals });
+  } catch (err) {
+    res.status(500).send(err);
   }
+    
 });
 
 // for updating the "rentedOut" status of that property
@@ -245,11 +246,11 @@ app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => 
 app.post('/',checkAuth, (req, res) =>{
   try{
     const query = {};
-    if (req.body.city) query.city = new RegExp(req.body.city, 'i');
-    if (req.body.state) query.state = new RegExp(req.body.state, 'i');
-    if (req.body.country) query.country = new RegExp(req.body.country, 'i');
-    if (req.body.propertyType) query.propertyType = new RegExp(req.body.propertyType, 'i');
-    if (req.body.subCategory) query.subCategory = new RegExp(req.body.subCategory, 'i');
+    if (req.body.city) query.city = req.body.city;
+    if (req.body.state) query.state = req.body.state;
+    if (req.body.country) query.country = req.body.country;
+    if (req.body.propertyType) query.propertyType = req.body.propertyType;
+    if (req.body.subCategory) query.subCategory = req.body.subCategory;
     
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
@@ -284,11 +285,11 @@ app.get('/api/vacancies',checkAuth, async (req, res) => {
 app.post('/vacancies',checkAuth, (req, res) => {
   try{
     const query = {};
-    if (req.body.city) query.city = new RegExp(req.body.city, 'i');
-    if (req.body.state) query.state = new RegExp(req.body.state, 'i');
-    if (req.body.country) query.country = new RegExp(req.body.country, 'i');
-    if (req.body.propertyType) query.propertyType = new RegExp(req.body.propertyType, 'i');
-    if (req.body.subCategory) query.subCategory = new RegExp(req.body.subCategory, 'i');
+    if (req.body.city) query.city = req.body.city;
+    if (req.body.state) query.state = req.body.state;
+    if (req.body.country) query.country = req.body.country;
+    if (req.body.propertyType) query.propertyType = req.body.propertyType;
+    if (req.body.subCategory) query.subCategory = req.body.subCategory;
 
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
@@ -307,7 +308,7 @@ app.post('/api/vacancies/:id',checkAuth, async (req, res) => {
   try {
     const propertyId = req.params.id;
     const userId = req.session.user_id; 
-    const property = await Property.findById(propertyId);
+    const property = await properties.findById(propertyId);
 
     if (!property) {
       return res.status(404).send('Property not found');

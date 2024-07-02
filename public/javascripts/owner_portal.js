@@ -57,20 +57,20 @@ function toggleMenu() {
     }
 
 
-    async function fetchMyProperties() {
-      try {
-          const response = await fetch('/api/myProperties');
-          if (!response.ok) {
-              throw new Error('Failed to fetch properties');
-          }
-          const properties = await response.json();
-          displayProperties(properties);
-      } catch (error) {
-          console.error('Error fetching properties:', error);
-          document.getElementById('rented-properties-list').innerText = 'Error fetching properties';
-          document.getElementById('other-properties-list').innerText = 'Error fetching properties';
-      }
-  }
+  //   async function fetchMyProperties() {
+  //     try {
+  //         const response = await fetch('/api/myProperties');
+  //         if (!response.ok) {
+  //             throw new Error('Failed to fetch properties');
+  //         }
+  //         const properties = await response.json();
+  //         displayProperties(properties);
+  //     } catch (error) {
+  //         console.error('Error fetching properties:', error);
+  //         document.getElementById('rented-properties-list').innerText = 'Error fetching properties';
+  //         document.getElementById('other-properties-list').innerText = 'Error fetching properties';
+  //     }
+  // }
 
   function displayProperties(properties) {
       const rentedPropertiesList = document.getElementById('rented-properties-list');
@@ -85,23 +85,24 @@ function toggleMenu() {
           return;
       }
 
-      properties.forEach(property => {
+      properties.forEach(Property => {
           const propertyItem = document.createElement('div');
           propertyItem.className = 'property-item';
 
           propertyItem.innerHTML =`
                 <div class="image">
-                    ${property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
+                    ${Property.images.map(image => `<img src="${image}" alt="Property Image" class="card-img">`).join('')}
                     </div>
                     <div class="card-content">
-                        <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
-                        <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-                        <p class="card-price">₹${property.price}/month</p>
+                        <h2 class="card-title">${Property.subCategory} ${Property.propertyType}</h2>
+                        <p class="card-location">${Property.address}, ${Property.city}, ${Property.state}</p>
+                        <p class="card-price">₹${Property.price}/month</p>
                         <a href="/property"><button class="card-button">View Details</button></a>
                     </div>`;
 
-          if (property.rentedOut) {
+          if (Property.rentedOut) {
               rentedPropertiesList.appendChild(propertyItem);
+              console.log("hello");
           } else {
               otherPropertiesList.appendChild(propertyItem);
           }
@@ -128,4 +129,6 @@ function toggleMenu() {
       }
   }
 
-  window.onload = fetchMyProperties;
+ window.onload = () => {
+  displayProperties(properties);
+ };

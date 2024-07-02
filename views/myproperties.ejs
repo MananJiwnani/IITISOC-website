@@ -39,7 +39,7 @@
         <a href="/owner_portal" class="feature">
           <li id="myProfile">My Profile</li>
         </a>
-        <a href="/#" class="feature">
+        <a href="/myProperties" class="feature">
           <li>My Properties</li>
         </a>
         <a href="/addProperties" class="feature">
@@ -73,7 +73,7 @@
         <h1 class="MAIN_text">Rented Out Properties</h1>
         <hr>
         <div id="rented-properties-list" class="listings">
-
+             
         </div>
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
@@ -83,14 +83,11 @@
       </div>
     </div>
 
-
-
-
-
   </section>
 
-
-
+  <script>
+    const properties = <%= JSON.stringify(properties) %>;
+  </script>
 
   <script src="javascripts/owner_portal.js"></script>
 </body>
