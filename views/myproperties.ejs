@@ -70,29 +70,7 @@
         <h1 class="MAIN_text">Rented Out Properties</h1>
         <hr>
         <div id="rented-properties-list" class="listings">
-        properties.forEach(property => {
-        if(property.rentedOut){
-        const propertyItem = document.createElement('div');
-        propertyItem.className = 'property-item';
-
-        let imagesHTML = '';
-        property.images.forEach(image => {
-          imagesHTML += `<img src="${image}" alt="Property Image" class="card-img">`;
-        });
-
-        propertyItem.innerHTML = `
-          <div class="image">
-            ${imagesHTML}
-          </div>
-          <div class="card-content">
-            <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
-            <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-            <p class="card-price">${property.price}/month</p>
-            <a href="/property"><button class="card-button">View Details</button></a>
-          </div>
-        `;
-         }
-        });
+        
         </div>
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
