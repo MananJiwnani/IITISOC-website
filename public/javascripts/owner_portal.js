@@ -128,6 +128,6 @@ function toggleMenu() {
       }
   }
 
- // window.onload = () => {
- //  displayProperties(properties);
- // };
+ window.onload = () => {
+  displayProperties(properties);
+ };
