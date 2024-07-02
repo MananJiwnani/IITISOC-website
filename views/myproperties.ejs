@@ -84,7 +84,16 @@
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
         <div id="other-properties-list" class="listings">
-             
+              <% properties.forEach(property => { %>
+                 <% if (!property.rentedOut) { %>
+                    <div class="property-item">
+                    <h2 class="card-title"><%=property.subCategory%> <%=property.propertyType%> </h2>
+                    <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
+                    <p class="card-price"><%=property.price%>/month</p>
+                    <a href="/property"><button class="card-button">View Details</button></a> 
+                    </div>
+                 <% } %>
+              <% } %>             
         </div>
       </div>
     </div>
