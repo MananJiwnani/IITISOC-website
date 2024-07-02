@@ -10,52 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="stylesheets/owner_portal.css">
-  
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const properties = <%= JSON.stringify(properties) %>;
-
-      const rentedPropertiesList = document.getElementById('rented-properties-list');
-      rentedPropertiesList.innerHTML = '';
-
-      const otherPropertiesList = document.getElementById('other-properties-list');
-      otherPropertiesList.innerHTML = '';
-
-      if (properties.length === 0) {
-        rentedPropertiesList.innerText = 'No properties found';
-        otherPropertiesList.innerText = 'No properties found';
-        return;
-      }
-
-      properties.forEach(property => {
-        const propertyItem = document.createElement('div');
-        propertyItem.className = 'property-item';
-
-        let imagesHTML = '';
-        property.images.forEach(image => {
-          imagesHTML += `<img src="${image}" alt="Property Image" class="card-img">`;
-        });
-
-        propertyItem.innerHTML = `
-          <div class="image">
-            ${imagesHTML}
-          </div>
-          <div class="card-content">
-            <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
-            <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
-            <p class="card-price">${property.price}/month</p>
-            <a href="/property"><button class="card-button">View Details</button></a>
-          </div>
-        `;
-
-        if (property.rentedOut) {
-          rentedPropertiesList.appendChild(propertyItem);
-        } else {
-          otherPropertiesList.appendChild(propertyItem);
-        }
-      });
-    });
-    </script>
 </head>
 
 <body>
@@ -125,13 +79,54 @@
         </div>
       </div>
     </div>
-
+  
   </section>
 
-   
   <script>
-    
-  </script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const properties = <%= JSON.stringify(properties) %>;
+
+      const rentedPropertiesList = document.getElementById('rented-properties-list');
+      rentedPropertiesList.innerHTML = '';
+
+      const otherPropertiesList = document.getElementById('other-properties-list');
+      otherPropertiesList.innerHTML = '';
+
+      if (properties.length === 0) {
+        rentedPropertiesList.innerText = 'No properties found';
+        otherPropertiesList.innerText = 'No properties found';
+        return;
+      }
+
+      properties.forEach(property => {
+        const propertyItem = document.createElement('div');
+        propertyItem.className = 'property-item';
+
+        let imagesHTML = '';
+        property.images.forEach(image => {
+          imagesHTML += `<img src="${image}" alt="Property Image" class="card-img">`;
+        });
+
+        propertyItem.innerHTML = `
+          <div class="image">
+            ${imagesHTML}
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">${property.subCategory} ${property.propertyType}</h2>
+            <p class="card-location">${property.address}, ${property.city}, ${property.state}</p>
+            <p class="card-price">${property.price}/month</p>
+            <a href="/property"><button class="card-button">View Details</button></a>
+          </div>
+        `;
+
+        if (property.rentedOut) {
+          rentedPropertiesList.appendChild(propertyItem);
+        } else {
+          otherPropertiesList.appendChild(propertyItem);
+        }
+      });
+    });
+  </script>  
 
   <script src="javascripts/owner_portal.js"></script>
 </body>
