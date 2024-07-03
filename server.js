@@ -295,16 +295,16 @@ app.get('/api/vacancies',checkAuth, async (req, res) => {
 app.post('/vacancies',checkAuth, (req, res) => {
   try{
     const query = {};
-    if (req.body.city) query.city = req.body.city;
-    if (req.body.state) query.state = req.body.state;
-    if (req.body.country) query.country = req.body.country;
-    if (req.body.propertyType) query.propertyType = req.body.propertyType;
-    if (req.body.subCategory) query.subCategory = req.body.subCategory;
+    if (req.body.city) query.city = req.body.city.toUpperCase();
+    if (req.body.state) query.state = req.body.state.toUpperCase();
+    if (req.body.country) query.country = req.body.country.toUpperCase();
+    if (req.body.propertyType) query.propertyType = req.body.propertyType.toUpperCase();
+    if (req.body.subCategory) query.subCategory = req.body.subCategory.toUpperCase();
 
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
-      if (req.body.min_budget) query.price.$gte = parseInt(req.body.min_budget);
-      if (req.body.max_budget) query.price.$lte = parseInt(req.body.max_budget);
+      if (req.body.min_budget) query.price.$gte = parseInt(req.body.min_budget, 10);
+      if (req.body.max_budget) query.price.$lte = parseInt(req.body.max_budget, 10);
     }
   
     req.session.query = query;
