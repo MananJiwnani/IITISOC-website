@@ -65,8 +65,16 @@ app.get('/', (req, res) => {
   res.render('home.ejs', {userId: req.session.user_id});
 });
 
-app.get('/vacancies',checkAuth, (req, res) => {
-  res.render('vacancies.ejs', {userId: req.session.user_id});
+app.get('/vacancies',checkAuth, async(req, res) => {
+  try{
+    let vacancies = await Property.find({req.session.query}).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    res.render('vacancies.ejs', {
+      userId: req.session.user_id,
+      properties: vacancies
+    });
+  } catch(err){
+    res.status(500).send(err);
+  }
 });
 
 app.get('/property',checkAuth, async(req, res)=> {
