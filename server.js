@@ -67,7 +67,8 @@ app.get('/', (req, res) => {
 
 app.get('/vacancies',checkAuth, async(req, res) => {
   try{
-    let vacancies = await Property.find({req.session.query}).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    const query = req.session.query || {};
+    let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
     res.render('vacancies.ejs', {
       userId: req.session.user_id,
       properties: vacancies
