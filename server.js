@@ -65,8 +65,17 @@ app.get('/', (req, res) => {
   res.render('home.ejs', {userId: req.session.user_id});
 });
 
-app.get('/vacancies',checkAuth, (req, res) => {
-  res.render('vacancies.ejs', {userId: req.session.user_id});
+app.get('/vacancies',checkAuth, async(req, res) => {
+  try{
+    const query = req.session.query || {};
+    let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    res.render('vacancies.ejs', {
+      userId: req.session.user_id,
+      properties: vacancies
+    });
+  } catch(err){
+    res.status(500).send(err);
+  }
 });
 
 app.get('/property',checkAuth, async(req, res)=> {
@@ -216,7 +225,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
-    const rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    let rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
     // rentals = JSON.stringify(rentals);
     res.render('myproperties.ejs', { properties: rentals });
   } catch (err) {
@@ -255,8 +264,8 @@ app.post('/',checkAuth, (req, res) =>{
     
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
-      if (req.body.min_budget) query.price.$gte = parseInt(req.body.min_budget);
-      if (req.body.max_budget) query.price.$lte = parseInt(req.body.max_budget);
+      if (req.body.min_budget) query.price.$gte = parseInt(req.body.min_budget, 10);
+      if (req.body.max_budget) query.price.$lte = parseInt(req.body.max_budget, 10);
     }
 
     req.session.query = query;
