@@ -1,38 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property</title>
-    <link rel="stylesheet" href="/stylesheets/property.css">
-</head>
-<body>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property</title>
+  <link rel="stylesheet" href="/stylesheets/property.css">
+</head>
+
+<body>
+  <div class="card">
     <% properties.forEach(Property=>{ %>
-        <li>
-          <h2><%= Property.propertyType %> - <%= Property.subCategory %></h2>
-          <p>Owner: <%= Property.ownerName %></p>
-          <p>Price: <%= Property.price %></p>
-          <p>Description: <%= Property.description %></p>
-          <p>City: <%= Property.city %></p>
-          <p>State: <%= Property.state %></p>
-          <p>Carpet Area: <%= Property.carpetArea %></p>
-          <p>Address: <%= Property.address %></p>
-          <p>Ownership Type :<%= Property.ownershipType %></p>
-          <p>Pet Policy: <%= Property.petPolicy %></p>
-          <p>Furnished Status: <%= Property.furnishedStatus %></p>
-          <p>Property Age: <%= Property.propertyAge %></p>
-          <p>Amenities: <%= Property.amenities %></p>
-          <p>Rented Out: <%= Property.rentedOut ? 'Yes' : 'No' %></p>
-          <div>
-           <p> <h3>Images:</h3><a><%=Property.images%></a></p>
-          
-          </div>
-        </li>
+      <li>
+        <h2>
+          <%= Property.propertyType %> - <%= Property.subCategory %>
+        </h2>
+        <p>Owner: <%= Property.ownerName %>
+        </p>
+        <p>Price: <%= Property.price %>
+        </p>
+        <p>Description: <%= Property.description %>
+        </p>
+        <p>City: <%= Property.city %>
+        </p>
+        <p>State: <%= Property.state %>
+        </p>
+        <p>Carpet Area: <%= Property.carpetArea %>
+        </p>
+        <p>Address: <%= Property.address %>
+        </p>
+        <p>Ownership Type :<%= Property.ownershipType %>
+        </p>
+        <p>Pet Policy: <%= Property.petPolicy %>
+        </p>
+        <p>Furnished Status: <%= Property.furnishedStatus %>
+        </p>
+        <p>Property Age: <%= Property.propertyAge %>
+        </p>
+        <p>Amenities: <%= Property.amenities %>
+        </p>
+        <p>Rented Out: <%= Property.rentedOut ? 'Yes' : 'No' %>
+        </p>
+        <div>
+          <p>
+          <h3>Images:</h3><a>
+            <%=Property.images%>
+          </a></p>
+
+        </div>
+      </li>
       <% }) %>
 
-  
 
-  
+
+
+  </div>
 </body>
+
 </html>
