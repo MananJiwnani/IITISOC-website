@@ -262,7 +262,7 @@ body {
     height: fit-content;
     background-color: #27C4B1;
     padding: 3px 5px;
-    padding-bottom: 0px;
+    padding-bottom: 3px;
 }
 
 .searchtext{
