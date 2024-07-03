@@ -216,13 +216,8 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
-<<<<<<< HEAD
-    var rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
-    rentals = JSON.stringify(rentals);
-=======
-    const rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    let rentals = await Property.find({ ownerName: req.session.NAME }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
     // rentals = JSON.stringify(rentals);
->>>>>>> 605c0f1016c3cfa47320cf229840595758b8c3c6
     res.render('myproperties.ejs', { properties: rentals });
   } catch (err) {
     res.status(500).send(err);
