@@ -133,16 +133,25 @@
             </div>
             <% properties.forEach(property => { %>
                  <% if (!property.rentedOut) { %>
-                    <div class="property-item">
-                    <h2 class="card-title"><%=property.subCategory%> <%=property.propertyType%> </h2>
-                    <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
-                    <p class="card-price"><%=property.price%>/month</p>
-                    <a href="/property"><button class="card-button">View Details</button></a> 
+                    <div class="grid_item">
+                        <div class="card">
+                            <div class="image">
+                                <img src="/images/home2.jpg" alt="Rental Property" class="card-img">
+                        </div>
+                        <div class="card-content">
+                            <div class="property-item">
+                                <h2 class="card-title"><%=property.subCategory%> <%=property.propertyType%> </h2>
+                                <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
+                                <p class="card-price">₹<%=property.price%>/month</p>
+                                <a href="/property" target="_blank"><button class="card-button">View Details</button></a> 
+                            </div>
+                        </div>
                     </div>
-                 <% } %>
-            <% }) %>  
-        </div>
-
+                </div>
+                    <% } %>
+                    <% }) %>  
+                </div>
+                
         <script src="/javascripts/vacancies.js"></script>
 </body>
 

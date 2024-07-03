@@ -442,7 +442,7 @@ body {
     flex-direction: column;
     background-color: #31e4d0;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     width: 270px;
     overflow: hidden;
     transition: transform 0.3s;
@@ -450,7 +450,7 @@ body {
 
 .card-img {
     width: 100%;
-    height: auto;
+    height: 150px;
     border-radius: 8px;
 }
 
@@ -459,7 +459,7 @@ body {
 }
 
 .card-content {
-    padding: 20px;
+    padding: 15px;
     padding-top: 0;
 }
 
@@ -473,7 +473,7 @@ body {
 .card-price {
     color: #000000;
     margin: 5px 0;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .card-button , .buttons button{
