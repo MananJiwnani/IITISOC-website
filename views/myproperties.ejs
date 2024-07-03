@@ -91,6 +91,7 @@
                     <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
                     <p class="card-price"><%=property.price%>/month</p>
                     <a href="/property"><button class="card-button">View Details</button></a> 
+                    <button onclick="confirmRentOutProperty('<%= property._id %>')">RENT IT</button>
                     </div>
                  <% } %>
               <% }) %>             
@@ -101,7 +102,32 @@
   </section>
 
   <script>
-    
+      async function rentOutProperty(propertyId) {
+        try {
+            const response = await fetch(`/myproperties/${propertyId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                alert('Property Rented Out successfully');
+                fetchMyProperties();
+            } else {
+                alert('Failed to mark Property As Rented');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while renting out the property');
+          }
+      }
+
+      function confirmRentOutProperty(propertyId) {
+          const confirmation = confirm('DO YOU WANT TO RENT OUT THE PROPERTY?');
+          if (confirmation) {
+             rentOutProperty(propertyId);
+          }
+      }
   </script>  
 
  
