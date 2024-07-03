@@ -264,8 +264,8 @@ app.post('/',checkAuth, (req, res) =>{
     
     if (req.body.min_budget || req.body.max_budget) {
       query.price = {};
-      if (req.body.min_budget) query.price.$gte = parseInt(req.body.min_budget);
-      if (req.body.max_budget) query.price.$lte = parseInt(req.body.max_budget);
+      if (req.body.min_budget) query.price.$gte = parseInt(req.body.min_budget, 10);
+      if (req.body.max_budget) query.price.$lte = parseInt(req.body.max_budget, 10);
     }
 
     req.session.query = query;
