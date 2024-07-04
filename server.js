@@ -214,7 +214,6 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
     req.session.message = 'Property saved successfully';
-    req.session.NAME= req.body.ownerName;
     res.redirect('/owner_portal');
     console.log('Property added successfully');
   } catch (error) {
