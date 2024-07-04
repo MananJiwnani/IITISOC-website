@@ -66,9 +66,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/vacancies',checkAuth, async(req, res) => {
-  if(!req.session.user_id){
-    req.session.authenticate= 'You should Login first to be able to access this page';
-  }
   try{
     const query = req.session.query || {};
     let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
@@ -114,12 +111,9 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
-  const auth = req.session.authenticate;
-  delete req.session.authenticate;
   res.render('login.ejs', { 
     error,
-    userId: req.session.user_id,
-    auth: auth
+    userId: req.session.user_id
   });
 });
 
