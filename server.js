@@ -237,6 +237,7 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
 app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const propertyId = req.params.id;
+    console.log(`Received request to rent out property with ID: ${propertyId}`);
     const updatedProperty = await Property.findByIdAndUpdate(
       propertyId,
       { rentedOut: true },
