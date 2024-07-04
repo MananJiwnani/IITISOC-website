@@ -103,6 +103,7 @@
 
   <script>
       async function rentOutProperty(propertyId) {
+        console.log('Renting out property with ID:', propertyId);
         try {
             const response = await fetch(`/myProperties/${propertyId}`, {
                 method: 'POST',
@@ -123,6 +124,7 @@
       }
 
       function confirmRentOutProperty(propertyId) {
+          console.log('Confirming rent out for property ID:', propertyId);
           const confirmation = confirm('DO YOU WANT TO RENT OUT THE PROPERTY?');
           if (confirmation) {
              rentOutProperty(propertyId);
