@@ -234,6 +234,16 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
 });
 
 // for updating the "rentedOut" status of that property
+app.post('/markAsRented', checkAuth, checkRole('owner'), async (req, res) => {
+  try {
+    const propertyId = req.body.propertyId;
+    await Property.findByIdAndUpdate(propertyId, { rentedOut: true });
+    res.redirect('/myProperties'); 
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 app.post('/myProperties/:id',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const propertyId = req.params.id;
