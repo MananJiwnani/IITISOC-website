@@ -91,7 +91,7 @@
                     <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
                     <p class="card-price"><%=property.price%>/month</p>
                     <a href="/property"><button class="card-button">View Details</button></a> 
-                    <button onclick="confirmRentOutProperty('<%= property._id %>')">RENT IT</button>
+                    <button onclick="confirmRentOut('<%= property._id %>')">RENT IT</button>
                     </div>
                  <% } %>
               <% }) %>             
