@@ -91,9 +91,10 @@
                     <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
                     <p class="card-price">₹<%=property.price%>/month</p>
                     <a href="/property"><button class="card-button">View Details</button></a> 
-                    <button onclick="confirmRentOutProperty('<%= property._id %>')">RENT IT</button>
-                    <button onclick="this.parentElement.querySelector('.rentedOut').innerText = 'true'">RENT</button>
-
+                    <form action="/markAsRented" method="POST" style="display:inline;">
+                      <input type="hidden" name="propertyId" value="<%= property._id %>">
+                      <button type="submit" class="rent-button">RENT IT</button>
+                    </form>
                     </div>
                  <% } %>
               <% }) %>             
