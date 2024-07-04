@@ -89,12 +89,12 @@
                     <div class="property-item">
                     <h2 class="card-title"><%=property.subCategory%> <%=property.propertyType%> </h2>
                     <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
-                    <p class="card-price"><%=property.price%>/month</p>
+                    <p class="card-price">₹<%=property.price%>/month</p>
                     <a href="/property"><button class="card-button">View Details</button></a> 
                     <button onclick="confirmRentOutProperty('<%= property._id %>')">RENT IT</button>
                     <button onclick="this.parentElement.querySelector('.rentedOut').innerText = 'true'">RENT</button>
-                    
-                  </div>
+
+                    </div>
                  <% } %>
               <% }) %>             
         </div>
@@ -105,7 +105,6 @@
 
   <script>
       async function rentOutProperty(propertyId) {
-        console.log('Renting out property with ID:', propertyId);
         try {
             const response = await fetch(`/myProperties/${propertyId}`, {
                 method: 'POST',
@@ -126,7 +125,6 @@
       }
 
       function confirmRentOutProperty(propertyId) {
-          console.log('Confirming rent out for property ID:', propertyId);
           const confirmation = confirm('DO YOU WANT TO RENT OUT THE PROPERTY?');
           if (confirmation) {
              rentOutProperty(propertyId);
