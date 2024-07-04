@@ -275,21 +275,16 @@ app.post('/',checkAuth, (req, res) =>{
   }
 });
 
-app.get('/vacancies',checkAuth, (req, res) => {
-  const query = req.session.query || {};
-  res.render('vacancies.ejs');
-});
+// app.get('/api/vacancies',checkAuth, async (req, res) => {
+//   try {
+//     const query = req.session.query || {};
+//     const properties = await Property.find(query);
 
-app.get('/api/vacancies',checkAuth, async (req, res) => {
-  try {
-    const query = req.session.query || {};
-    const properties = await Property.find(query);
-
-    res.status(200).json(properties);
-  } catch (error) {
-    res.status(404).send(error.message);
-  }
-});
+//     res.status(200).json(properties);
+//   } catch (error) {
+//     res.status(404).send(error.message);
+//   }
+// });
 
 // post request in vacancies page when user selects the filter options for seeing vacancies
 app.post('/vacancies',checkAuth, (req, res) => {
