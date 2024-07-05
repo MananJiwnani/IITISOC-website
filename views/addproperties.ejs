@@ -72,7 +72,14 @@
 
     <div class="diff_features">
       
-      
+     //
+<form action="/addproperties" method="POST" enctype="multipart/form-data">
+    <!-- Other property fields -->
+    <input type="file" name="image" accept="image/png, image/jpeg">
+    <button type="submit">Add Property</button>
+</form>
+
+     //
       <div class="Add_properties feature_display">
         <form action="/addproperties" method="post">
           <div class="image">
@@ -80,6 +87,9 @@
               <img src="#" alt="Add Image" class="preview">
               <input type="file" name="image" id="Image" accept="image/*">
             </label>
+          </div>
+          <div>
+            <input type="file" name="image" accept="image/png, image/jpeg">             
           </div>
           <div class="inputs">
             <label for="ownerName">Owner Name</label>
