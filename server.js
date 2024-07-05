@@ -225,7 +225,7 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
   try {
     const newProperty = new Property({
       owner: req.session.user_id, 
