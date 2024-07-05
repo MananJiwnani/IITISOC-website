@@ -19,7 +19,7 @@ const mongoose = require('mongoose');
 
 const Grid = require("gridfs-stream");
 const connection = require("./db");
-const storage = require("./storage");
+const upload = require("./storage");
 
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
@@ -40,7 +40,7 @@ conn.once("open", function () {
     gfs.collection("photos");
 });
 
-app.use("/file", storage);
+app.use("/file", upload);
 
 app.get("/file/:filename", async (req, res) => {
     try {
