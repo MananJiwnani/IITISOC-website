@@ -17,7 +17,10 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-// const initializePassport = require('./passport');
+const Grid = require("gridfs-stream");
+const connection = require("./db");
+const upload = require("./storage");
+
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
@@ -28,6 +31,38 @@ mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
 const User = require('./user');
 const Property = require('./property');
 
+let gfs;
+connection();
+
+const conn = mongoose.connection;
+conn.once("open", function () {
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection("photos");
+});
+
+// app.use("/file", upload);
+
+app.get("/file/:filename", async (req, res) => {
+    try {
+        const file = await gfs.files.findOne({ filename: req.params.filename });
+        const readStream = gfs.createReadStream(file.filename);
+        readStream.pipe(res);
+    } catch (error) {
+        res.send("not found");
+    }
+});
+
+app.delete("/file/:filename", async (req, res) => {
+    try {
+        await gfs.files.deleteOne({ filename: req.params.filename });
+        res.send("success");
+    } catch (error) {
+        console.log(error);
+        res.send("An error occured.");
+    }
+});
+
+// 
 app.set('view-engine','ejs');
 app.set('views','views');
 app.use(express.static(path.join(__dirname,'public')));
@@ -195,8 +230,14 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
   try {
+      if (req.image) {
+        const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
+        req.body.image = [imgUrl];
+      } else {
+          return res.status(400).send("You must select a file.");
+      }
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
