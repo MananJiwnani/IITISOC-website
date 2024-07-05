@@ -19,7 +19,7 @@ const mongoose = require('mongoose');
 
 const Grid = require("gridfs-stream");
 const connection = require("./db");
-const upload = require("./storage");
+const storage = require("./storage");
 
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
