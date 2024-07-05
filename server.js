@@ -7,6 +7,8 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 const path=require('path');
+const {Server}=require("socket.io");
+const io=new Server(server);
 
 const bcrypt = require('bcrypt');
 const passport = require('passport');
@@ -182,6 +184,7 @@ app.post('/logout',checkAuth, (req, res) => {
   res.redirect('/login');
 })
 
+
 // Adding Properties
 app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
@@ -334,11 +337,27 @@ app.post('/api/vacancies/:id',checkAuth, async (req, res) => {
   }
 });
 
+io.on("connection",function(socket) {
 
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    console.log(`User with ID: ${socket.id} joined room: ${data}`);
+  });
 
+  socket.on("newUser",function (name,room){
+   socket.to(room).emit("update", name + " joined the conversation");
+   console.log(`User Connected: ${socket.id}`);
+  });
 
+  socket.on("exitUser", function(name, room) {
+    socket.to(room).emit("update", name + " left the conversation");
+  });
 
+  socket.on("chat", function(message, room) {
+    socket.to(room).emit("chat", message);
+  });
 
+});
 
 server.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
