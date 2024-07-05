@@ -7,6 +7,8 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 const path=require('path');
+const {Server}=require("socket.io");
+const io=new Server(server);
 
 const bcrypt = require('bcrypt');
 const passport = require('passport');
@@ -15,7 +17,11 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-// const initializePassport = require('./passport');
+const Grid = require("gridfs-stream");
+const { GridFsStorage } = require('multer-gridfs-storage');
+const connection = require("./db");
+const upload = require("./storage");
+
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
@@ -26,6 +32,38 @@ mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
 const User = require('./user');
 const Property = require('./property');
 
+let gfs;
+connection();
+
+const conn = mongoose.connection;
+conn.once("open", function () {
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection("photos");
+});
+
+// app.use("/file", upload);
+
+app.get("/file/:filename", async (req, res) => {
+    try {
+        const file = await gfs.files.findOne({ filename: req.params.filename });
+        const readStream = gfs.createReadStream(file.filename);
+        readStream.pipe(res);
+    } catch (error) {
+        res.send("not found");
+    }
+});
+
+app.delete("/file/:filename", async (req, res) => {
+    try {
+        await gfs.files.deleteOne({ filename: req.params.filename });
+        res.send("success");
+    } catch (error) {
+        console.log(error);
+        res.send("An error occured.");
+    }
+});
+
+// 
 app.set('view-engine','ejs');
 app.set('views','views');
 app.use(express.static(path.join(__dirname,'public')));
@@ -138,6 +176,11 @@ app.post('/login', async (req, res) => {
   }
 }) 
 
+app.get('/message',checkAuth, (req, res) => {
+  res.render('message.ejs');
+});
+
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   res.render('register.ejs', { 
@@ -182,13 +225,20 @@ app.post('/logout',checkAuth, (req, res) => {
   res.redirect('/login');
 })
 
+
 // Adding Properties
 app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
   try {
+      if (req.image) {
+        const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
+        req.body.image = [imgUrl];
+      } else {
+          return res.status(400).send("You must select a file.");
+      }
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
@@ -334,11 +384,27 @@ app.post('/api/vacancies/:id',checkAuth, async (req, res) => {
   }
 });
 
+io.on("connection",function(socket) {
 
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    console.log(`User with ID: ${socket.id} joined room: ${data}`);
+  });
 
+  socket.on("newUser",function (name,room){
+   socket.to(room).emit("update", name + " joined the conversation");
+   console.log(`User Connected: ${socket.id}`);
+  });
 
+  socket.on("exitUser", function(name, room) {
+    socket.to(room).emit("update", name + " left the conversation");
+  });
 
+  socket.on("chat", function(message, room) {
+    socket.to(room).emit("chat", message);
+  });
 
+});
 
 server.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
