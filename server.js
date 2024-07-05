@@ -17,7 +17,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-const upload = require("./routes/upload");
+const upload = require("./upload");
 const Grid = require("gridfs-stream");
 const connection = require("./db");
 
