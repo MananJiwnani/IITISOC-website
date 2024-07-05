@@ -227,7 +227,7 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
 
 app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
   try {
-      if (req.file) {
+      if (req.image) {
         const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
         req.body.image = [imgUrl];
       } else {
