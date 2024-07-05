@@ -18,6 +18,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 const Grid = require("gridfs-stream");
+const { GridFsStorage } = require('multer-gridfs-storage');
 const connection = require("./db");
 const upload = require("./storage");
 
