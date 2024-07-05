@@ -240,7 +240,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), async (req, res) => {
       address: req.body.address,
       price: req.body.price,
       amenities: req.body.amenities,
-      image: req.body.image,
+      image: req.file ? [req.file.filename] : [],
       rentedOut: false,
       ownershipType: req.body.ownershipType,
       furnishedStatus: req.body.furnishedStatus,
