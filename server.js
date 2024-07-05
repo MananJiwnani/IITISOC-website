@@ -140,6 +140,11 @@ app.post('/login', async (req, res) => {
   }
 }) 
 
+app.get('/message',checkAuth, (req, res) => {
+  res.render('message.ejs');
+});
+
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   res.render('register.ejs', { 
