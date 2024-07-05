@@ -40,7 +40,7 @@ conn.once("open", function () {
     gfs.collection("photos");
 });
 
-app.use(upload);
+app.use("/file", storage);
 
 app.get("/file/:filename", async (req, res) => {
     try {
