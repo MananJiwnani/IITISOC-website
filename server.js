@@ -17,9 +17,9 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-const upload = require("./upload");
 const Grid = require("gridfs-stream");
 const connection = require("./db");
+const upload = require("./storage");
 
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
@@ -225,8 +225,14 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
+app.post('/addproperties',checkAuth, checkRole('owner'), upload.single("image"), async (req, res) => {
   try {
+      if (req.file) {
+        const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
+        req.body.image = [imgUrl];
+      } else {
+          return res.status(400).send("You must select a file.");
+      }
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
@@ -240,7 +246,7 @@ app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'),
       address: req.body.address,
       price: req.body.price,
       amenities: req.body.amenities,
-      image: req.file ? [req.file.filename] : [],
+      image: req.body.image,
       rentedOut: false,
       ownershipType: req.body.ownershipType,
       furnishedStatus: req.body.furnishedStatus,
