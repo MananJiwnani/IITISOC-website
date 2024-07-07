@@ -80,12 +80,3 @@ async function rentOutProperty(propertyId) {
 }
 
 
-const toggleContainer = () => {
-    const sidebar = document.querySelector('.sidebar');
-    const dF = document.querySelector('.diff_features');
-    const nav =document.getElementById('nav');
-    nav.addEventListener('click', ()=>{
-        sidebar.style.display='';
-        dF.style.display='none';
-    })
-  };
