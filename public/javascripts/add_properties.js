@@ -31,6 +31,33 @@ for (const i of features) {
 }
 
 
+// preview image 
+const x = document.querySelector('#Image');
+let y;
+let reader;
+let u;
+x.addEventListener('change', function () {
+    reader = new FileReader();
+    reader.onload = () => {
+        y = reader.result;
+        const j = document.querySelector('.preview')
+        j.src = y;
+        j.classList.add('img')
+        u = document.querySelector('.Image')
+        u.style.backgroundImage = "url ('" + j.src + "')"
+    }
+    reader.readAsDataURL(x.files[0]);
+})
+
+
+
+function changeBackground(image) {
+    document.getElementById('display').innerHTML = "";
+    document.getElementById('display').style.backgroundImage = "url('" + image.src + "')";
+    document.getElementById('display').style.backgroundSize = "cover";
+    document.getElementById('display').style.backgroundPosition = "center center";
+}
+
 
 async function rentOutProperty(propertyId) {
     try {
@@ -53,7 +80,6 @@ async function rentOutProperty(propertyId) {
 }
 
 
-//   togglemenu for sidebar
     const s =document.querySelector('.side');
     const sidebar = document.querySelector('.sidebar');
     const dF = document.querySelector('.diff_features');
@@ -63,3 +89,4 @@ async function rentOutProperty(propertyId) {
        sidebar.classList.toggle("dis");
        s.classList.toggle("fit");
     })
+  
