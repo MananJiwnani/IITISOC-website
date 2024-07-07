@@ -345,41 +345,6 @@ hr {
 
 }
 
-@media screen and (max-width : 700px) and (min-width: 550px) {
-  .sidebar {
-    width: 33%;
-    margin: 0%;
-  }
-
-  .feature {
-    font-size: 16px;
-  }
-
-  .feature li {
-    margin: 0%;
-  }
-
-  .MAIN_text {
-    font-size: 33px;
-  }
-}
-
-@media screen and (max-width : 550px) {
-  .diff_features {
-    display: none;
-  }
-
-  .sidebar {
-    width: 100vw;
-    height: 90vh;
-  }
-
-  .container {
-    height: 90%;
-    justify-content: center;
-  }
-}
-
 .myProfile {
   display: flex;
   background-color: #018d75;
@@ -416,4 +381,72 @@ b {
   color: white;
   font-size: 24px;
 
+}
+  
+@media only screen and (max-width:981px){
+  .myProfile{
+    margin-left: 20px;
+    width: auto;
+    margin-right: 20px;
+  }
+  .owner-details div,
+  b {
+    font-size: 18px;
+    padding-right: 5px;
+  }
+  .feature{
+    font-size: 16px;
+    width: 70%;
+    margin-left: 0;
+  }
+  .feature li{
+    margin-left: 15%;
+  }
+  .sidebar{
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width:730px){
+  .diff_features{
+    justify-content: center;
+    height: 90vh;
+  }
+  .myProfile{
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+  }
+  .owner-details{
+    gap: 10px;
+  }
+  .owner-details div,
+  b {
+    font-size: 16px;
+  }
+  .feature{
+    font-size: 14px;
+    width: 70%;
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width:556px) {
+  .sidebar{
+    display: none;
+  }
+  .diff_features{
+    height:90vh;
+    padding-top: 30px;
+  }
+}
+
+#nav{
+  position: absolute;
+  left: 20px;
+  top: 120px;
+}
+#nav img{
+  height: 30px;
 }
