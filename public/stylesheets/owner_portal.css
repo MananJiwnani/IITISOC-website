@@ -243,7 +243,7 @@
 
 .sidebar {
   height: 90vh;
-  width: 350px;
+  width: 300px;
   background-image: url('/images/side_background.jpg');
   background-repeat: no-repeat;
   background-size: 116% 112%;
@@ -388,6 +388,10 @@ b {
     margin-left: 20px;
     width: auto;
     margin-right: 20px;
+    padding: 0 5px;
+  }
+  .profile img{
+    width: 200px;
   }
   .owner-details div,
   b {
@@ -403,7 +407,7 @@ b {
     margin-left: 15%;
   }
   .sidebar{
-    width: 300px;
+    width: 230px;
   }
 }
 
@@ -443,8 +447,9 @@ b {
 @media only screen and (max-width:556px) {
   .sidebar{
     display: none;
-    width:90%;
+    width:94%;
     margin:7px 7px;
+    padding-top: 50px;
   }
   .diff_features{
     height:90vh;
