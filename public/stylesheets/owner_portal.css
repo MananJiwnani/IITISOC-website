@@ -431,22 +431,45 @@ b {
     margin-left: 0;
   }
 }
+#sidebar_icon{
+  position: absolute;
+  left: 20px;
+  top: 120px;
+}
+#sidebar_icon img{
+  height: 30px;
+}
 
 @media only screen and (max-width:556px) {
   .sidebar{
     display: none;
+    width:90%;
+    margin:7px 7px;
   }
   .diff_features{
     height:90vh;
     padding-top: 30px;
   }
+  
 }
 
-#nav{
-  position: absolute;
-  left: 20px;
-  top: 120px;
+@media screen and (min-width:556px){
+   #sidebar_icon{
+    display: none;
+   }
 }
-#nav img{
-  height: 30px;
+ .side{
+  width:100%;
+  display: flex;
+  justify-content: center;
+ }
+
+.display{
+  display: none;
 }
+ .dis{
+  display: flex;
+ }
+ .fit{
+  max-width: fit-content;
+ }
