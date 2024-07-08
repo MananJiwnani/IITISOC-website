@@ -180,6 +180,9 @@ app.get('/message',checkAuth, (req, res) => {
   res.render('message.ejs');
 });
 
+app.get('/my_tenants',checkAuth, (req, res) => {
+  res.render('my_tenants.ejs');
+});
 
 app.get('/register', (req, res) => {
   const error = req.flash('error');
