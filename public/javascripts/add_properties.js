@@ -32,11 +32,11 @@ for (const i of features) {
 
 
 // preview image 
-const x = document.querySelector('#Image');
+const xP = document.querySelector('#Image');
 let y;
 let reader;
 let u;
-x.addEventListener('change', function () {
+xP.addEventListener('change', function () {
     reader = new FileReader();
     reader.onload = () => {
         y = reader.result;
@@ -46,7 +46,7 @@ x.addEventListener('change', function () {
         u = document.querySelector('.Image')
         u.style.backgroundImage = "url ('" + j.src + "')"
     }
-    reader.readAsDataURL(x.files[0]);
+    reader.readAsDataURL(xP.files[0]);
 })
 
 
@@ -80,13 +80,28 @@ async function rentOutProperty(propertyId) {
 }
 
 
-    const s =document.querySelector('.side');
-    const sidebar = document.querySelector('.sidebar');
-    const dF = document.querySelector('.diff_features');
-    const nav =document.getElementById('sidebar_icon');
-    nav.addEventListener('click', ()=>{
-       dF.classList.toggle("display");
-       sidebar.classList.toggle("dis");
-       s.classList.toggle("fit");
-    })
-  
+  //   togglemenu for sidebar
+  const s =document.querySelector('.side');
+  const sidebar = document.querySelector('.sidebar');
+  const dF = document.querySelector('.diff_features');
+  const nav =document.getElementById('sidebar_icon');
+  const i= document.querySelector('.icon1');
+  nav.addEventListener('click', ()=>{
+     dF.classList.toggle("display");
+     sidebar.classList.toggle("animate");
+     s.classList.toggle("fit");
+     i.classList.toggle("anime2");
+ 
+  })
+    const body =document.querySelector('body')
+
+const x= document.querySelector('#Add_p');
+ 
+
+     x.onclick = function(){  
+       sidebar.classList.remove("animate") ;
+        dF.classList.remove("display");
+         s.classList.add("fit");
+         i.classList.toggle("anime2");
+ }
+ 
