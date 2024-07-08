@@ -319,7 +319,7 @@ h3 {
   background: rgba(167, 241, 241, 0.5);
   width: 100%;
   display: flex;
-  z-index: -2;
+
 }
 
 
@@ -443,7 +443,10 @@ h3 {
     box-shadow: 5px 5px 29px -5px rgba(0, 0, 0, 0.605);
     background-position: -22px -24px;
     background-size: 312px;
-
+    transition: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    z-index: 1;
    }
 
     .circle{
@@ -453,7 +456,8 @@ h3 {
     background-color: #27C4B1;
     border: 3px solid #7BE6D3;
     margin: auto;
-    margin-top: 36px;
+    margin-top: 30px;
+    margin-bottom: 0px;
     color: white;
     font-size: 26px;
     display: flex;
@@ -461,7 +465,7 @@ h3 {
     align-items: center;
     }
     .textbox{
-      margin:2px 0px;
+      margin:1px 0px;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -473,41 +477,87 @@ h3 {
       font-optical-sizing: auto;
       font-weight: bold;
       font-style: normal;
-      font-size: 14px;
+      font-size: 16px;
       color: black;
       margin: 0px 6px;
       text-align: center;
      }
      .textbox h4{
       font-family: "Kameron", serif;
-      font-size: 12px;
+      font-size: 14px;
       color: #164E47;
       text-align: center;
       font-weight: 500;
      }
+
+
+       .hoverbox{
+        width:250px;
+        height:52px;
+        transition: all;
+        transition-duration: 1s;
+        transition-timing-function: ease-in;
+        background-image: linear-gradient(rgba(255, 255, 255, 0),rgba(17, 225, 201, 0.374),rgba(17, 225, 201, 0.448));
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top:315px;
+        z-index: -1;
+        clip-path: polygon(0% 85%, 100% 21%, 100% 100%, 0% 100%);
+       }
+
+    
+       .view h3{
+        color: rgba(0, 0, 0, 0);
+        transition: all;
+        transition-duration: 1s;
+       }
+
       #view{
-        color: #1F5D52;
-        background-color: #0ef5d978;
+        color: #ffffff00;
+        background-color: #20a5ba00;
         font-family: "Kameron", serif;
         border: none;
         width: 50px;
         border-radius: 3px;
         height: 18px;
         margin-left: 8px;
+        transition: all;
+        transition-duration: 1s;
     }
       
       .sendMsg button{
-        color: #164E47;
+        color: #ffffff00;
         font-family: "Kameron", serif;
         margin-left: 130px;
         font-size: 12px;
-        background-color: #0ef5d978;
+        background-color: #20a5ba00;
         border: none;
         border-radius: 3px;
         width: 100px;
         height: 20px;
         margin-bottom: 5px;
+        transition: all;
+        transition-duration: 1s;
       }
        
-      
+      .tenant:hover .hoverbox {
+        position:absolute;
+        height:250px;
+        transform: translateY(-198px);
+        clip-path: polygon(0% 36%, 100% 21%, 100% 100%, 0% 100%);
+      }  
+       
+       .tenant:hover .view h3{
+        color:black;
+       }
+        .tenant:hover #view{
+          color: #ffffff;
+          background-color: #20a5ba;
+        }
+        .tenant:hover .sendMsg button{
+          color: #ffffff;
+          background-color: #20a5ba;
+         
+        }
    
