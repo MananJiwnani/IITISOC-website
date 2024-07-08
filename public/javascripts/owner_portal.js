@@ -32,6 +32,8 @@ for (const i of features) {
 
 
 
+
+
 async function rentOutProperty(propertyId) {
     try {
         const response = await fetch(`/myProperties/${propertyId}`, {
@@ -52,14 +54,28 @@ async function rentOutProperty(propertyId) {
     }
 }
 
-
-//   togglemenu for sidebar
+    //   togglemenu for sidebar
     const s =document.querySelector('.side');
     const sidebar = document.querySelector('.sidebar');
     const dF = document.querySelector('.diff_features');
     const nav =document.getElementById('sidebar_icon');
+    const i= document.querySelector('.icon1');
     nav.addEventListener('click', ()=>{
        dF.classList.toggle("display");
-       sidebar.classList.toggle("dis");
+       sidebar.classList.toggle("animate");
        s.classList.toggle("fit");
+       i.classList.toggle("anime2");
+   
     })
+      const body =document.querySelector('body')
+
+  const x= document.querySelector('#myProfile');
+   
+
+       x.onclick = function(){  
+         sidebar.classList.remove("animate") ;
+          dF.classList.remove("display");
+           s.classList.add("fit");
+           i.classList.toggle("anime2");
+   }
+   
