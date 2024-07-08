@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+     <!-- NAVBAR -->
   <div class="navbar">
     <img src="/images/Logo.svg" alt="Logo">
     <div class="heading">RentEstate</div>
@@ -28,12 +28,18 @@
       ☰
     </a>
   </div>
+       
   <div id="myLinks" class="overlay">
     <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
     <a href="/" class="button">Home</a>
     <a href="/vacancies" class="button">Vacancies</a>
   </div>
+
+                
   <section class="container">
+        <!-- SIDEBAR -->
+        <div class="side fit">
+
     <div class="sidebar">
       <ul class="main_feature">
         <a href="/owner_portal" class="feature">
@@ -43,7 +49,7 @@
           <li>My Properties</li>
         </a>
         <a href="#" class="feature">
-          <li>Add Properties</li>
+          <li id="Add_p">Add Properties</li>
         </a>
       </ul>
 
@@ -67,11 +73,16 @@
         </a>
       </ul>
     </div>
-
-
+      
+    <div id="sidebar_icon">
+      <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+    </div>
+       
+        </div>
 
     <div class="diff_features">
 
+           <!-- ADD PROPERTIES HTML -->
       <div class="Add_properties feature_display">
         <form action="/addproperties" method="post" enctype="multipart/form-data">
           <div class="image">
@@ -167,6 +178,8 @@
           <button type="submit" id="submit">Submit</button>
         </form>
       </div>
+
+
     </div>
   </section>
   <script src="/javascripts/add_properties.js"></script>
