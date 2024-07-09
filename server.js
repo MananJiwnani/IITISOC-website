@@ -36,9 +36,15 @@ let gfs;
 connection();
 
 const conn = mongoose.connection;
+// conn.once("open", function () {
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection("photos");
+// });
+
 conn.once("open", function () {
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection("photos");
+  gfs = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: 'photos'
+  });
 });
 
 app.use("/file", (req, res, next) => {
