@@ -41,7 +41,15 @@ conn.once("open", function () {
     gfs.collection("photos");
 });
 
-// app.use("/file", upload);
+app.use("/file", (req, res, next) => {
+  upload.single('image')(req, res, function (err) {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err.message);
+    }
+    next();
+  });
+});
 
 app.get("/file/:filename", async (req, res) => {
     try {
