@@ -22,11 +22,19 @@ const { GridFsStorage } = require('multer-gridfs-storage');
 const connection = require("./db");
 const upload = require("./storage");
 
-mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
+// mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
+//   console.log('Connected to MongoDB');
+// }).catch(err => {
+//   console.error('Failed to connect to MongoDB', err);
+//   process.exit(1);
+// });
+mongoose.connect('mongodb://localhost:27017/userDb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('Failed to connect to MongoDB', err);
-  process.exit(1);
 });
 
 const User = require('./user');
