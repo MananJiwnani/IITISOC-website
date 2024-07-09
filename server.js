@@ -242,24 +242,70 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
+// app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
+//   try {
+//       if (req.image) {
+//         const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
+//         req.body.image = [imgUrl];
+//       } else {
+//           return res.status(400).send("You must select a file.");
+//       }
+//     const newProperty = new Property({
+//       owner: req.session.user_id, 
+//       ownerName: req.body.ownerName,
+//       propertyType: req.body.propertyType.toUpperCase(),
+//       subCategory: req.body.subCategory.toUpperCase(),
+      
+//       description: req.body.description,
+//       city: req.body.city.toUpperCase(),
+//       state: req.body.state.toUpperCase(),
+     
+//       address: req.body.address,
+//       price: req.body.price,
+//       amenities: req.body.amenities,
+//       image: req.body.image,
+//       rentedOut: false,
+//       ownershipType: req.body.ownershipType,
+//       furnishedStatus: req.body.furnishedStatus,
+//       propertyAge: req.body.propertyAge,
+//       petPolicy: req.body.petPolicy,
+//       carpetArea: req.body.carpetArea,
+       
+//     });
+//     const savedProperty = await newProperty.save();
+//     req.session.propertyId = savedProperty._id;
+//     req.session.message = 'Property saved successfully';
+//     res.redirect('/owner_portal');
+//     console.log('Property added successfully');
+//   } catch (error) {
+//       res.status(403).send(error.message);
+//     }
+// });
+
+app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
+  upload.single('image')(req, res, function (err) {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err.message);
+    }
+    next();
+  });
+}, async (req, res) => {
   try {
-      if (req.image) {
-        const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
-        req.body.image = [imgUrl];
-      } else {
-          return res.status(400).send("You must select a file.");
-      }
+    if (req.file) {
+      const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
+      req.body.image = [imgUrl];
+    } else {
+      return res.status(400).send("You must select a file.");
+    }
     const newProperty = new Property({
       owner: req.session.user_id, 
       ownerName: req.body.ownerName,
       propertyType: req.body.propertyType.toUpperCase(),
       subCategory: req.body.subCategory.toUpperCase(),
-      
       description: req.body.description,
       city: req.body.city.toUpperCase(),
       state: req.body.state.toUpperCase(),
-     
       address: req.body.address,
       price: req.body.price,
       amenities: req.body.amenities,
@@ -270,7 +316,6 @@ app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'),
       propertyAge: req.body.propertyAge,
       petPolicy: req.body.petPolicy,
       carpetArea: req.body.carpetArea,
-       
     });
     const savedProperty = await newProperty.save();
     req.session.propertyId = savedProperty._id;
@@ -278,8 +323,8 @@ app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'),
     res.redirect('/owner_portal');
     console.log('Property added successfully');
   } catch (error) {
-      res.status(403).send(error.message);
-    }
+    res.status(403).send(error.message);
+  }
 });
 
 // My properties page for owner to see his properties
