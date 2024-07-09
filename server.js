@@ -77,6 +77,8 @@ app.delete("/file/:filename", async (req, res) => {
     }
 });
 
+const paymentRoute = require('./routes/paymentRoute');
+app.use('/',paymentRoute);
 // 
 app.set('view-engine','ejs');
 app.set('views','views');
