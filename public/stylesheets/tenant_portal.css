@@ -240,9 +240,17 @@
       display: flex;
       flex-direction: row;
    }
+           /* CSS FOR SIDEBAR */
+
+           .side{
+            width:100%;
+            display: flex;
+            justify-content: center;
+           }
+
     .sidebar{
       height:90vh;
-      width: 350px;
+      width: 300px;
       background-image: url('/images/side_background.jpg');
       background-repeat: no-repeat;
       background-size:116% 112%;
@@ -303,7 +311,7 @@
         background: rgba(167, 241, 241,0.5);
         width:100%;
         display: flex;
-        z-index: -2;
+        
        }
       .features_display{
           display: flex;
@@ -431,32 +439,98 @@
           width:75%;
   
         }
-          @media screen and (max-width : 700px) and (min-width: 550px){
-             .sidebar{
-               width:33%;
-               margin:0%;
-             }
-             .feature{
-              font-size: 16px;
-             }
-             .feature li{
-              margin:0%;
-             }
-             .MAIN_text{
-              font-size: 33px;
-             }
-          }
-          @media screen and (max-width : 550px) {
-            .diff_features{
-              display: none;
-            }
-            .sidebar{
-              width:100vw;
-              height:90vh;
-            }
-            .container{
-              height: 90%;
-              justify-content: center;
-            }
-          }
+          
+@media only screen and (max-width:981px){
   
+  .feature{
+    font-size: 16px;
+    width: 70%;
+    margin-left: 0;
+  }
+  .feature li{
+    margin-left: 15%;
+  }
+  .sidebar{
+    width: 230px;
+  }
+}
+
+
+@media only screen and (max-width:556px) {
+  .sidebar{
+    display: none;
+    width:94%;
+    padding-top: 50px;
+  }
+  .diff_features{
+    height:90vh;
+    padding-top: 30px;
+  }
+  
+}
+
+#sidebar_icon{
+  position: absolute;
+  left: 20px;
+  top: 120px;
+  height: 40px;
+  width: 40px;
+}
+#sidebar_icon img{
+  height: 30px;
+}
+
+
+ @media screen and (min-width:556px){
+   #sidebar_icon{
+    display: none;
+   }
+ }
+
+ 
+
+.display{
+  display: none;
+}
+ .dis{
+  display: flex;
+ }
+ .fit{
+  max-width: fit-content;
+ }
+   .animate{
+    display: flex;
+    animation-name: sidebar;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+    animation-delay: 0s;
+   }
+  
+@keyframes sidebar{
+  from{
+   transform: translateX(-500px);
+  }
+  to{
+   transform:translateX(0px);
+  }
+}
+  .anime2{
+    animation-name: side;
+    animation: side 1s 1 forwards, rotate 1s ease-out forwards;
+   
+  }
+   @keyframes rotate{
+     from{
+     }
+     to{
+      transform: rotate(180deg) translateX(-80vw);
+     }
+   }
+   @keyframes side{
+    from{
+    }
+    to{
+   transform: translateX(-80vw);
+    }
+  }
