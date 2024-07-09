@@ -327,7 +327,7 @@ app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
       carpetArea: req.body.carpetArea,
     });
     const savedProperty = await newProperty.save();
-    // req.session.propertyId = savedProperty._id;
+    req.session.propertyId = savedProperty._id;
     req.session.message = 'Property saved successfully';
     res.redirect('/owner_portal');
     console.log('Property added successfully');
