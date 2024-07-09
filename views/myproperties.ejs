@@ -70,6 +70,10 @@
         <h1 class="MAIN_text">Rented Out Properties</h1>
         <hr>
         <div id="rented-properties-list" class="listings">
+              <% if(properties.length == 0) { %> 
+                 <p> NO PROPERTIES AVAILABLE </p>
+              <% } %>
+
               <% properties.forEach(property => { %>
                  <% if (property.rentedOut) { %>
                     <div class="property-item">
@@ -84,6 +88,10 @@
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
         <div id="other-properties-list" class="listings">
+              <% if(properties.length == 0) { %> 
+                 <p> NO PROPERTIES AVAILABLE </p>
+              <% } %>
+
               <% properties.forEach(property => { %>
                  <% if (!property.rentedOut) { %>
                     <div class="property-item">
