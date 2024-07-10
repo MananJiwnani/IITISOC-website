@@ -8,7 +8,8 @@ const Razorpay = require('razorpay');
 
 const renderProductPage = async(req,res)=>{
     try {
-        res.render('vacancies.ejs');
+        const userId = req.session.userId || null;
+        res.render('vacancies.ejs', { userId });
     } catch (error) {
         console.log(error.message);
     }
