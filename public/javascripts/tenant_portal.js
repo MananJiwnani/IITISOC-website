@@ -11,8 +11,6 @@ function toggleMenu() {
     }
 }
 
-
-
 async function rentOutProperty(propertyId) {
     try {
         const response = await fetch(`/myProperties/${propertyId}`, {

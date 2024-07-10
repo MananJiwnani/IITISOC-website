@@ -11,7 +11,7 @@
     rel="stylesheet">
 
 
-  <link rel="stylesheet" href="stylesheets/my_owners.css">
+  <link rel="stylesheet" href="stylesheets/tenant_properties.css">
 
 </head>
 
@@ -40,12 +40,12 @@
     <div class="side fit">   
 
     <div class="sidebar">
-    
+     
       <ul class="main_feature">
         <a href="/tenant_portal" class="feature">
           <li>My Profile</li>
         </a>
-        <a href="/tenant_properties" class="feature">
+        <a href="#" class="feature">
           <li>My properties</li>
         </a>
         <a href="/vacancies" class="feature">
@@ -55,7 +55,7 @@
 
       <h3 class="text">~Owners</h3>
       <ul class="main_feature">
-        <a href="#" class="feature">
+        <a href="/my_owners" class="feature">
           <li>My Owners</li>
         </a>
         <button  class="feature"> 
@@ -70,57 +70,63 @@
   
    </div>
 
+
     <div class="diff_features">
-          <!-- MY PROFILE HTML -->
-      <div class="myTenants">
+      
+      <div class="features_display My_properties">
+        <h1 class="MAIN_text">Rented Out Properties</h1>
+        <hr>
+        <div class="rented_properties">
+          <div class="property">
+            <div class="home_img"></div>
 
-         <div class="tenant">
-           <div class="circle">MJ</div>
-
-           <div class="textbox">
-            <h3>Name</h3>
-            <h4>Manan Jiwnani</h4>
-           </div>
-
-           <div class="textbox">
-            <h3>Email</h3>
-            <h4>njfwe@gmail.com</h4>
-           </div>
-
-           <div class="textbox">
-            <h3>Contact No.</h3>
-            <h4>7984227146</h4>
-           </div>
-
-           <div class="textbox">
-            <h3>Property Id</h3>
-            <h4>1@345</h4>
-           </div>
-
-           
-           <div class="textbox view">
-             <h3>Property Details</h3>
-             <button id="view">view</button>
-            </div>
-            
-            <div class="sendMsg">
-              <button>Send Messege</button>
-            </div>
-            
-            <div class="hoverbox">
+            <div class="property_type">
+              <h3>Property Type</h3>
+              <div class="type">
+                <h4 class="propety_type_value">Residencial</h4>
+                <h4 class="property_inner_type">villa/house</h4>
               </div>
-         </div>
-        
-      </div>
+            </div>
 
+            <div class="address ">
+              <h3>Address</h3>
+              <div class="type">
+                <h4 class="address1">Simrol,</h4>
+                <h4 class="address2">Indore,</h4>
+                <h4 class="address3">Madhya Pradesh,</h4>
+                <h4>India</h4>
+              </div>
+            </div>
+
+            <!-- <div class="rent">
+                <h3>Rent</h3>
+                <h4 class="rent_value">1200$</h4>
+             </div> -->
+
+            <div class="tenant">
+              <h3>tenant</h3>
+              <h4 class="tenant_value">Manan Jiwnani</h4>
+            </div>
+            <a href="" class="details">More Details</a>
+          </div>
+        </div>
+        <h1 class="MAIN_text">Other Properties</h1>
+      </div>
+      <div class="feature_display display"></div>
+      <div class="feature_display display"></div>
+      <div class="feature_display display"></div>
     </div>
+
+
+
+
 
   </section>
 
 
 
 
-  <script src="javascripts/my_owners.js"></script>
+  <script src="javascripts/tenant_properties.js"></script>
 </body>
 
 </html>
