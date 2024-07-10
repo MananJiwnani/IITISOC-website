@@ -31,7 +31,7 @@
     <a href="/vacancies" class="button">Vacancies</a>
   </div>
   <section class="container">
-    <div class="sidebar">
+    <div class="sidebar" id="mp_sidebar">
       <ul class="main_feature">
         <a href="/owner_portal" class="feature">
           <li id="myProfile">My Profile</li>
@@ -64,83 +64,108 @@
         </a>
       </ul>
     </div>
-    
+
     <div class="diff_features">
       <div class="features_display My_properties">
         <h1 class="MAIN_text">Rented Out Properties</h1>
         <hr>
         <div id="rented-properties-list" class="listings">
-              <% if(properties.length == 0) { %> 
-                 <p> NO PROPERTIES AVAILABLE </p>
-              <% } %>
+          <% if(properties.length==0) { %>
+            <p> NO PROPERTIES AVAILABLE </p>
+            <% } %>
 
-              <% properties.forEach(property => { %>
-                 <% if (property.rentedOut) { %>
+              <% properties.forEach(property=> { %>
+                <% if (property.rentedOut) { %>
+                  <div class="grid_item">
                     <div class="property-item">
-                    <h2 class="card-title"><%=property.subCategory%> <%=property.propertyType%> </h2>
-                    <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
-                    <p class="card-price">₹<%=property.price%>/month</p>
-                    <a href="/property"><button class="card-button">View Details</button></a> 
+                      <div class="image">
+                        <img src="/images/home1.jpg" alt="Rental Property" class="card-img">
+                      </div>
+                      <div class="card-content">
+                        <h2 class="card-title">
+                          <%=property.subCategory%>
+                            <%=property.propertyType%>
+                        </h2>
+                        <p class="card-location">
+                          <%=property.address%>, <%=property.city%>, <%=property.state%>
+                        </p>
+                        <p class="card-price">₹<%=property.price%>/month</p>
+                        <a href="/property"><button class="card-button">View Details</button></a>
+                      </div>
                     </div>
-                 <% } %>
-              <% }) %>
+                  </div>
+                  <% } %>
+                    <% }) %>
         </div>
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
         <div id="other-properties-list" class="listings">
-              <% if(properties.length == 0) { %> 
-                 <p> NO PROPERTIES AVAILABLE </p>
-              <% } %>
+          <% if(properties.length==0) { %>
+            <p> NO PROPERTIES AVAILABLE </p>
+            <% } %>
 
-              <% properties.forEach(property => { %>
-                 <% if (!property.rentedOut) { %>
+              <% properties.forEach(property=> { %>
+                <% if (!property.rentedOut) { %>
+                  <div class="grid_item">
                     <div class="property-item">
-                    <h2 class="card-title"><%=property.subCategory%> <%=property.propertyType%> </h2>
-                    <p class="card-location"><%=property.address%>, <%=property.city%>, <%=property.state%></p>
-                    <p class="card-price">₹<%=property.price%>/month</p>
-                    <a href="/property"><button class="card-button">View Details</button></a> 
-                    <form action="/markAsRented" method="POST" style="display:inline;">
-                      <input type="hidden" name="propertyId" value="<%= property._id %>">
-                      <button type="submit" class="rent-button">RENT IT</button>
-                    </form>
+                      <div class="image">
+                        <img src="/images/home1.jpg" alt="Rental Property" class="card-img">
+                      </div>
+                      <div class="card-content">
+                        <h2 class="card-title">
+                          <%=property.subCategory%>
+                            <%=property.propertyType%>
+                        </h2>
+                        <p class="card-location">
+                          <%=property.address%>, <%=property.city%>, <%=property.state%>
+                        </p>
+                        <p class="card-price">₹<%=property.price%>/month</p>
+                        <a href="/property"><button class="card-button">View Details</button></a>
+                        <form action="/markAsRented" method="POST" style="display:inline;">
+                          <input type="hidden" name="propertyId" value="<%= property._id %>">
+                          <button type="submit" class="rent-button">RENT IT</button>
+                        </form>
+                      </div>
                     </div>
-                 <% } %>
-              <% }) %>             
+                  </div>
+                  <% } %>
+                    <% }) %>
         </div>
       </div>
     </div>
-  
+
   </section>
 
   <script>
-      async function rentOutProperty(propertyId) {
-        try {
-            const response = await fetch(`/myProperties/${propertyId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (response.ok) {
-                alert('Property Rented Out successfully');
-                location.reload();
-            } else {
-                alert('Failed to mark Property As Rented');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred while renting out the property');
+    async function rentOutProperty(propertyId) {
+      try {
+        const response = await fetch(`/myProperties/${propertyId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
           }
+        });
+        if (response.ok) {
+          alert('Property Rented Out successfully');
+          location.reload();
+        } else {
+          alert('Failed to mark Property As Rented');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while renting out the property');
       }
+    }
 
-      function confirmRentOutProperty(propertyId) {
-          const confirmation = confirm('DO YOU WANT TO RENT OUT THE PROPERTY?');
-          if (confirmation) {
-             rentOutProperty(propertyId);
-          }
+    function confirmRentOutProperty(propertyId) {
+      const confirmation = confirm('DO YOU WANT TO RENT OUT THE PROPERTY?');
+      if (confirmation) {
+        rentOutProperty(propertyId);
       }
-  </script>  
+    }
+  </script>
 
- 
+
 </body>
+
 </html>
