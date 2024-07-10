@@ -311,7 +311,7 @@
         background: rgba(167, 241, 241,0.5);
         width:100%;
         display: flex;
-        
+         z-index: 1;
        }
       .features_display{
           display: flex;
@@ -343,7 +343,7 @@
         }
   
          .property:hover{
-          background-image: linear-gradient(rgba(126,238,245,0.6),rgba(126,238,245,0.6),rgba(126,238,245,0.6),rgba(126,238,245,0.6),rgba(126,238,245,0.6),rgba(126,238,245,0.8), rgba(126,238,245,0.8),rgba(100,234,243,1),rgba(100,234,243,1),rgba(40,228,217,0.9),rgba(32,197,187,0.78),rgba(27,181,172,0.69),rgba(30,154,147,0.87),rgba(16,114,114,0.74));
+          background-image: linear-gradient(rgba(126,238,245,0.3),rgba(126,238,245,0.4),rgba(126,238,245,0.4),rgba(126,238,245,0.5),rgba(126,238,245,0.6),rgba(126,238,245,0.8), rgba(126,238,245,0.8),rgba(100,234,243,1),rgba(100,234,243,1),rgba(40,228,217,0.9),rgba(32,197,187,0.78),rgba(27,181,172,0.69),rgba(30,154,147,0.87),rgba(16,114,114,0.74));
         }
          .property:hover .address , .property:hover .property_type ,.property:hover .rent ,.property:hover .tenant {
           animation: translate 1s linear 1 ;
@@ -360,7 +360,7 @@
              }
              100%{
               position: relative;
-              transform: translateY(-60px);
+              transform: translateY(-60px) ;
              }
            }
             @keyframes pop {
@@ -407,7 +407,7 @@
           position: relative;
        }
        .property h4{
-          color: #052d29;
+          color: #000000;
           font-size: 15px;
           font-family: "Kameron", serif;
           font-weight: 500;
