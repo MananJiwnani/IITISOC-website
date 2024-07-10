@@ -1,4 +1,5 @@
 const Razorpay = require('razorpay'); 
+const Property = require('./property');
 // const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
 
 // const razorpayInstance = new Razorpay({
@@ -8,8 +9,13 @@ const Razorpay = require('razorpay');
 
 const renderProductPage = async(req,res)=>{
     try {
-        const userId = req.session.userId || null;
-        res.render('vacancies.ejs', { userId });
+        const query = req.session.query || {};
+        let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+        const userId = req.session.user_id || null;
+        res.render('vacancies.ejs', {
+            userId,
+            properties: vacancies
+        });
     } catch (error) {
         console.log(error.message);
     }
