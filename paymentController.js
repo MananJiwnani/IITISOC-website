@@ -13,9 +13,8 @@ const renderProductPage = async(req,res)=>{
     try {
         const query = req.session.query || {};
         let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
-        const userId = req.session.user_id || null;
         res.render('vacancies.ejs', {
-            userId,
+            userId: req.session.user_id,
             properties: vacancies
         });
     } catch (error) {
