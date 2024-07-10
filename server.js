@@ -213,6 +213,14 @@ app.get('/my_tenants',checkAuth, (req, res) => {
   res.render('my_tenants.ejs');
 });
 
+app.get('/my_owners',checkAuth, (req, res) => {
+  res.render('my_owners.ejs');
+});
+ 
+app.get('/tanant_req',checkAuth, (req, res) => {
+  res.render('tanant_req.ejs');
+});
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   res.render('register.ejs', { 

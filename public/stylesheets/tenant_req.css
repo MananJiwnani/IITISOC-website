@@ -434,7 +434,7 @@ h3 {
    .tenant{
     width:250px;
     height:250px;
-    background-image:url('/images/tenants_bg.svg') ;
+    background-image:url('/images/tenant_req_bg.svg') ;
     background-repeat: no-repeat;
     margin:20px 20px;
     display:flex;
@@ -503,7 +503,7 @@ h3 {
         position: absolute;
         top:315px;
         z-index: -1;
-        clip-path: polygon(0% 85%, 100% 21%, 100% 100%, 0% 100%);
+         clip-path: ellipse(40% 100% at 100% 100%);
        }
 
     
@@ -545,7 +545,7 @@ h3 {
         position:absolute;
         height:250px;
         transform: translateY(-198px);
-        clip-path: polygon(0% 36%, 100% 21%, 100% 100%, 0% 100%);
+        clip-path: ellipse(136% 89% at 100% 100%);
       }  
        
        .tenant:hover .view h3{
