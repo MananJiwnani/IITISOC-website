@@ -10,44 +10,46 @@
 
 <body>
   <div class="card">
-    <% properties.forEach(Property=>{ %>
+   
         <h2>
-          <%= Property.propertyType %> - <%= Property.subCategory %>
+          <%= property.propertyType %> - <%= property.subCategory %>
         </h2>
-        <p>Owner: <%= Property.ownerName %>
+       
+        <p>Owner: <%= property.ownerName %>
         </p>
-        <p>Price: <%= Property.price %>
+        <p>Price: <%= property.price %>
         </p>
-        <p>Description: <%= Property.description %>
+        <p>Description: <%= property.description %>
         </p>
-        <p>City: <%= Property.city %>
+        <p>City: <%= property.city %>
         </p>
-        <p>State: <%= Property.state %>
+        <p>State: <%= property.state %>
         </p>
-        <p>Carpet Area: <%= Property.carpetArea %>
+        <p>Carpet Area: <%= property.carpetArea %>
         </p>
-        <p>Address: <%= Property.address %>
+        <p>Address: <%= property.address %>
         </p>
-        <p>Ownership Type :<%= Property.ownershipType %>
+        <p>Ownership Type :<%= property.ownershipType %>
         </p>
-        <p>Pet Policy: <%= Property.petPolicy %>
+        <p>Pet Policy: <%= property.petPolicy %>
         </p>
-        <p>Furnished Status: <%= Property.furnishedStatus %>
+        <p>Furnished Status: <%= property.furnishedStatus %>
         </p>
-        <p>Property Age: <%= Property.propertyAge %>
+        <p>Property Age: <%= property.propertyAge %>
         </p>
-        <p>Amenities: <%= Property.amenities %>
+        <p>Amenities: <%= property.amenities %>
         </p>
-        <p>Rented Out: <%= Property.rentedOut ? 'Yes' : 'No' %>
+        <p>Rented Out: <%= property.rentedOut ? 'Yes' : 'No' %>
         </p>
         <div>
           <p>
           <h3>Images:</h3><a>
-            <%=Property.images%>
+            <%=property.images%>
           </a></p>
 
         </div>
-      <% }) %>
+        
+     
 
 
 
