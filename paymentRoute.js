@@ -12,7 +12,7 @@ payment_route.set('view engine','ejs');
 payment_route.set('views',path.join(__dirname, 'views'));
 
 
-payment_route.get('/', paymentController.renderProductPage);
+payment_route.get('/vacancies', paymentController.renderProductPage);
 payment_route.post('/createOrder', paymentController.createOrder);
 
 module.exports = payment_route;
