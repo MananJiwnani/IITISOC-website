@@ -217,6 +217,10 @@ app.get('/tanant_req',checkAuth, (req, res) => {
   res.render('tanant_req.ejs');
 });
 
+app.get('/tenant_properties',checkAuth, (req, res) => {
+  res.render('tenant_properties.ejs');
+});
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   res.render('register.ejs', { 
