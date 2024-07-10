@@ -43,7 +43,7 @@
      
       <ul class="main_feature">
         <a href="#" class="feature">
-          <li>My Profile</li>
+          <li id="myProfile">My Profile</li>
         </a>
         <a href="/tenant_properties" class="feature">
           <li>My properties</li>
@@ -78,22 +78,15 @@
           <img src="/images/profile.png" alt="">
         </div>
         <div class="owner-details">
-          <div><b>Name:</b> <%= tenant.name %></div>
-          <div><b>Email:</b> <%= tenant.email %></div>
-          <div><b>Contact:</b> <%= tenant.contact %></div>
+          <div><b>Name:</b>Vasudha</div>
+          <div><b>Email:</b> vasudha@gmail.com</div>
+          <div><b>Contact:</b> 7984227146</div>
           <div><b>Role:</b> Tenant</div>
         </div>
       </div>
     </div>
     
-     <% if (info) { %>
-    <script>
-      window.onload = function() {
-        alert('<%= info %>');
-      };
-    </script>
-  <% } %>
-
+   
 
 
 
