@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentEstate | Tenant Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" href="stylesheets/tenant_portal.css">
+
+</head>
+
+<body>
+
+  <div class="navbar">
+    <img src="/images/Logo.svg" alt="Logo">
+    <div class="heading">RentEstate</div>
+    <div class="tabs">
+      <a href="/" class="button">Home</a>
+      <a href="/vacancies" class="button">Vacancies</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      ☰
+    </a>
+  </div>
+
+  <div id="myLinks" class="overlay">
+    <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+    <a href="/" class="button">Home</a>
+    <a href="/vacancies" class="button">Vacancies</a>
+  </div>
+
+  <section class="container">
+
+    <div class="side fit">   
+
+    <div class="sidebar">
+     
+      <ul class="main_feature">
+        <a href="#" class="feature">
+          <li>My Profile</li>
+        </a>
+        <a href="/tenant_properties" class="feature">
+          <li>My properties</li>
+        </a>
+        <a href="/vacancies" class="feature">
+          <li>Find Vacancies</li>
+        </a>
+      </ul>
+
+      <h3 class="text">~Owners</h3>
+      <ul class="main_feature">
+        <a href="/my_owners" class="feature">
+          <li>My Owners</li>
+        </a>
+        <button  class="feature"> 
+          <a href="/message" class="feature"> <li>Messages</li></a>
+         </button>
+      </ul>
+    </div>
+
+    <div id="sidebar_icon">
+      <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+    </div>
+  
+   </div>
+
+
+       <div class="diff_features">
+          <!-- MY PROFILE HTML -->
+      <div class="myProfile">
+        <div class="profile">
+          <img src="/images/profile.png" alt="">
+        </div>
+        <div class="owner-details">
+          <div><b>Name:</b> <%= tenant.name %></div>
+          <div><b>Email:</b> <%= tenant.email %></div>
+          <div><b>Contact:</b> <%= tenant.contact %></div>
+          <div><b>Role:</b> Tenant</div>
+        </div>
+      </div>
+    </div>
+    
+     <% if (info) { %>
+    <script>
+      window.onload = function() {
+        alert('<%= info %>');
+      };
+    </script>
+  <% } %>
+
+
+
+
+  </section>
+
+
+
+
+  <script src="javascripts/tenant_portal.js"></script>
+</body>
+
+</html>
