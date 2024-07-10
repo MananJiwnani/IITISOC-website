@@ -9,7 +9,7 @@ payment_route.use(bodyParser.urlencoded({ extended:false }));
 
 
 payment_route.set('view engine','ejs');
-payment_route.set('views',path.join(__dirname, '../views'));
+payment_route.set('views',path.join(__dirname, 'views'));
 
 
 payment_route.get('/', paymentController.renderProductPage);
