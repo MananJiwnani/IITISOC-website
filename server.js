@@ -88,51 +88,18 @@ const Property = require('./property');
 // });
 
 
-// var multer = require('multer');
+const multer = require('multer');
 
-// var storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, 'uploads')
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.fieldname + '-' + Date.now())
-//     }
-// });
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
  
-// var upload = multer({ storage: storage });
- 
-// app.get('/', (req, res) => {
-//     imgSchema.find({})
-//     .then((data, err)=>{
-//         if(err){
-//             console.log(err);
-//         }
-//         res.render('imagepage',{items: data})
-//     })
-// });
- 
- 
-// app.post('/', upload.single('image'), (req, res, next) => {
- 
-//     var obj = {
-//         name: req.body.name,
-//         desc: req.body.desc,
-//         img: {
-//             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-//             contentType: 'image/png'
-//         }
-//     }
-//     imgSchema.create(obj)
-//     .then ((err, item) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             // item.save();
-//             res.redirect('/');
-//         }
-//     });
-// });
+var upload = multer({ storage: storage });
 
 const paymentRoute = require('./paymentRoute');
 app.use('/vacancies', paymentRoute);
@@ -320,55 +287,23 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
-  upload.single('image')(req, res, function (err) {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err.message);
-    }
-    next();
-  });
-}, async (req, res) => {
-  try {
-    if (req.file) {
-      const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
-      req.body.image = [imgUrl];
-    } else {
-      return res.status(400).send("You must select a file.");
-    }
-    const newProperty = new Property({
-      owner: req.session.user_id, 
-      ownerName: req.body.ownerName,
-      propertyType: req.body.propertyType.toUpperCase(),
-      subCategory: req.body.subCategory.toUpperCase(),
-      description: req.body.description,
-      city: req.body.city.toUpperCase(),
-      state: req.body.state.toUpperCase(),
-      address: req.body.address,
-      price: req.body.price,
-      amenities: req.body.amenities,
-      image: req.body.image,
-      rentedOut: false,
-      ownershipType: req.body.ownershipType,
-      furnishedStatus: req.body.furnishedStatus,
-      propertyAge: req.body.propertyAge,
-      petPolicy: req.body.petPolicy,
-      carpetArea: req.body.carpetArea,
-    });
-    const savedProperty = await newProperty.save();
-    req.session.propertyId=savedProperty._id;
-   
-
-    req.session.message = 'Property saved successfully';
-    res.redirect('/owner_portal');
-    console.log('Property added successfully');
-  } catch (error) {
-    res.status(403).send(error.message);
-  }
-});
-
-// app.post('/addproperties', upload.single('image'), (req, res, next) => {
-//   const obj = {
+// app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
+//   upload.single('image')(req, res, function (err) {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send(err.message);
+//     }
+//     next();
+//   });
+// }, async (req, res) => {
+//   try {
+//     if (req.file) {
+//       const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
+//       req.body.image = [imgUrl];
+//     } else {
+//       return res.status(400).send("You must select a file.");
+//     }
+//     const newProperty = new Property({
 //       owner: req.session.user_id, 
 //       ownerName: req.body.ownerName,
 //       propertyType: req.body.propertyType.toUpperCase(),
@@ -380,27 +315,59 @@ app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
 //       price: req.body.price,
 //       amenities: req.body.amenities,
 //       image: req.body.image,
+//       rentedOut: false,
 //       ownershipType: req.body.ownershipType,
 //       furnishedStatus: req.body.furnishedStatus,
 //       propertyAge: req.body.propertyAge,
 //       petPolicy: req.body.petPolicy,
 //       carpetArea: req.body.carpetArea,
-//       image: {
-//         data: fs.readFileSync(path.join(__dirname, 'uploads', req.file.filename)),
-//         contentType: req.file.mimetype
-//       },
-//       rentedOut: false,
-//   };
+//     });
+//     const savedProperty = await newProperty.save();
+//     req.session.propertyId=savedProperty._id;
+   
 
-//   Property.create(obj, (err, item) => {
-//     if (err) {
-//       console.log(err);
-//       res.status(500).send('Error saving property');
-//     } else {
-//       res.redirect('/owner_portal');
-//     }
-//   });
+//     req.session.message = 'Property saved successfully';
+//     res.redirect('/owner_portal');
+//     console.log('Property added successfully');
+//   } catch (error) {
+//     res.status(403).send(error.message);
+//   }
 // });
+
+app.post('/addproperties', upload.single('image'), (req, res, next) => {
+  const obj = {
+      owner: req.session.user_id, 
+      ownerName: req.body.ownerName,
+      propertyType: req.body.propertyType.toUpperCase(),
+      subCategory: req.body.subCategory.toUpperCase(),
+      description: req.body.description,
+      city: req.body.city.toUpperCase(),
+      state: req.body.state.toUpperCase(),
+      address: req.body.address,
+      price: req.body.price,
+      amenities: req.body.amenities,
+      image: req.body.image,
+      ownershipType: req.body.ownershipType,
+      furnishedStatus: req.body.furnishedStatus,
+      propertyAge: req.body.propertyAge,
+      petPolicy: req.body.petPolicy,
+      carpetArea: req.body.carpetArea,
+      image: {
+        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+        contentType: req.file.mimetype
+      },
+      rentedOut: false,
+  };
+
+  Property.create(obj, (err, item) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error saving property');
+    } else {
+      res.redirect('/owner_portal');
+    }
+  });
+});
 
 app.get('/vacancies/:id', checkAuth, async (req, res) => {
   try {
