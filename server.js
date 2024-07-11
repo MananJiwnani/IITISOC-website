@@ -153,7 +153,7 @@ app.get('/property',checkAuth, async(req, res)=> {
    catch (error) {
    res.status(500).send('Internal server error');
   }
-      }  );
+});
    
 
 
@@ -170,7 +170,7 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   } catch (error) {
       res.status(500).send('Internal server error');
     }
- });
+});
 
 app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
   res.render('tenant_portal.ejs');
