@@ -5,6 +5,8 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const http = require('http');
 const app = express();
+const bodyParser = require('body-parser');
+const fs = require('fs');
 const server = http.createServer(app);
 const path=require('path');
 const {Server}=require("socket.io");
@@ -40,50 +42,97 @@ mongoose.connect('mongodb://localhost:27017/userDb', {
 const User = require('./user');
 const Property = require('./property');
 
-let gfs;
-connection();
+// let gfs;
+// connection();
 
-const conn = mongoose.connection;
+// const conn = mongoose.connection;
+// // conn.once("open", function () {
+// //     gfs = Grid(conn.db, mongoose.mongo);
+// //     gfs.collection("photos");
+// // });
+
 // conn.once("open", function () {
-//     gfs = Grid(conn.db, mongoose.mongo);
-//     gfs.collection("photos");
+//   gfs = new mongoose.mongo.GridFSBucket(conn.db, {
+//     bucketName: 'photos'
+//   });
 // });
 
-conn.once("open", function () {
-  gfs = new mongoose.mongo.GridFSBucket(conn.db, {
-    bucketName: 'photos'
-  });
-});
+// app.use("/file", (req, res, next) => {
+//   upload.single('image')(req, res, function (err) {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send(err.message);
+//     }
+//     next();
+//   });
+// });
 
-app.use("/file", (req, res, next) => {
-  upload.single('image')(req, res, function (err) {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err.message);
-    }
-    next();
-  });
-});
+// app.get("/file/:filename", async (req, res) => {
+//     try {
+//         const file = await gfs.files.findOne({ filename: req.params.filename });
+//         const readStream = gfs.createReadStream(file.filename);
+//         readStream.pipe(res);
+//     } catch (error) {
+//         res.send("not found");
+//     }
+// });
 
-app.get("/file/:filename", async (req, res) => {
-    try {
-        const file = await gfs.files.findOne({ filename: req.params.filename });
-        const readStream = gfs.createReadStream(file.filename);
-        readStream.pipe(res);
-    } catch (error) {
-        res.send("not found");
-    }
-});
+// app.delete("/file/:filename", async (req, res) => {
+//     try {
+//         await gfs.files.deleteOne({ filename: req.params.filename });
+//         res.send("success");
+//     } catch (error) {
+//         console.log(error);
+//         res.send("An error occured.");
+//     }
+// });
 
-app.delete("/file/:filename", async (req, res) => {
-    try {
-        await gfs.files.deleteOne({ filename: req.params.filename });
-        res.send("success");
-    } catch (error) {
-        console.log(error);
-        res.send("An error occured.");
-    }
-});
+
+// var multer = require('multer');
+
+// var storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'uploads')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '-' + Date.now())
+//     }
+// });
+ 
+// var upload = multer({ storage: storage });
+ 
+// app.get('/', (req, res) => {
+//     imgSchema.find({})
+//     .then((data, err)=>{
+//         if(err){
+//             console.log(err);
+//         }
+//         res.render('imagepage',{items: data})
+//     })
+// });
+ 
+ 
+// app.post('/', upload.single('image'), (req, res, next) => {
+ 
+//     var obj = {
+//         name: req.body.name,
+//         desc: req.body.desc,
+//         img: {
+//             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+//             contentType: 'image/png'
+//         }
+//     }
+//     imgSchema.create(obj)
+//     .then ((err, item) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             // item.save();
+//             res.redirect('/');
+//         }
+//     });
+// });
 
 const paymentRoute = require('./paymentRoute');
 app.use('/vacancies', paymentRoute);
