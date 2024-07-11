@@ -353,7 +353,7 @@ app.post('/addproperties', upload.single('image'), (req, res, next) => {
       petPolicy: req.body.petPolicy,
       carpetArea: req.body.carpetArea,
       image: {
-        data: fs.readFileSync(path.join(__dirname, 'uploads')),
+        data: fs.readFileSync(path.join(__dirname, 'uploads', req.file.filename)),
         contentType: req.file.mimetype
       },
       rentedOut: false,
