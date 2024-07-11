@@ -338,39 +338,70 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
 //   }
 // });
 
-app.post('/addproperties', upload.single('image'), (req, res, next) => {
-  const obj = {
-      owner: req.session.user_id, 
-      ownerName: req.body.ownerName,
-      propertyType: req.body.propertyType.toUpperCase(),
-      subCategory: req.body.subCategory.toUpperCase(),
-      description: req.body.description,
-      city: req.body.city.toUpperCase(),
-      state: req.body.state.toUpperCase(),
-      address: req.body.address,
-      price: req.body.price,
-      amenities: req.body.amenities,
-      image: req.body.image,
-      ownershipType: req.body.ownershipType,
-      furnishedStatus: req.body.furnishedStatus,
-      propertyAge: req.body.propertyAge,
-      petPolicy: req.body.petPolicy,
-      carpetArea: req.body.carpetArea,
-      image: {
-        data: fs.readFileSync(path.join(__dirname, 'uploads', req.file.filename)),
-        contentType: req.file.mimetype
-      },
-      rentedOut: false,
-  };
+app.post('/addproperties', upload.single('image'), async (req, res, next) => {
+//   try{
+//    const obj = {
+//       owner: req.session.user_id, 
+//       ownerName: req.body.ownerName,
+//       propertyType: req.body.propertyType.toUpperCase(),
+//       subCategory: req.body.subCategory.toUpperCase(),
+//       description: req.body.description,
+//       city: req.body.city.toUpperCase(),
+//       state: req.body.state.toUpperCase(),
+//       address: req.body.address,
+//       price: req.body.price,
+//       amenities: req.body.amenities,
+//       image: req.body.image,
+//       ownershipType: req.body.ownershipType,
+//       furnishedStatus: req.body.furnishedStatus,
+//       propertyAge: req.body.propertyAge,
+//       petPolicy: req.body.petPolicy,
+//       carpetArea: req.body.carpetArea,
+//       image: {
+//         data: fs.readFileSync(path.join(__dirname, 'uploads', req.file.filename)),
+//         contentType: req.file.mimetype
+//       },
+//       rentedOut: false,
+//   };
 
-  Property.create(obj, (err, item) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('Error saving property');
-    } else {
-      res.redirect('/owner_portal');
+//   Property.create(obj, (err, item) => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).send('Error saving property');
+//     } else {
+//       res.redirect('/owner_portal');
+//     }
+//   });
+// });
+    try {
+        const filePath = path.join(__dirname, 'uploads', req.file.filename);
+        
+        var obj = {
+            ownerName: req.body.ownerName,
+            price: req.body.price,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            propertyType: req.body.propertyType,
+            subCategory: req.body.subCategory,
+            carpetArea: req.body.carpetArea,
+            amenities: req.body.amenities,
+            description: req.body.description,
+            propertyAge: req.body.propertyAge,
+            ownershipType: req.body.ownershipType,
+            furnishedStatus: req.body.furnishedStatus,
+            petPolicy: req.body.petPolicy,
+            image: {
+                data: fs.readFileSync(filePath),
+                contentType: req.file.mimetype
+            }
+        };
+        await Property.create(obj);
+        res.redirect('/owner_portal');
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error saving property.");
     }
-  });
 });
 
 app.get('/vacancies/:id', checkAuth, async (req, res) => {
