@@ -320,8 +320,6 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-
-
 app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
   upload.single('image')(req, res, function (err) {
     if (err) {
@@ -368,6 +366,41 @@ app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
     res.status(403).send(error.message);
   }
 });
+
+// app.post('/addproperties', upload.single('image'), (req, res, next) => {
+//   const obj = {
+//       owner: req.session.user_id, 
+//       ownerName: req.body.ownerName,
+//       propertyType: req.body.propertyType.toUpperCase(),
+//       subCategory: req.body.subCategory.toUpperCase(),
+//       description: req.body.description,
+//       city: req.body.city.toUpperCase(),
+//       state: req.body.state.toUpperCase(),
+//       address: req.body.address,
+//       price: req.body.price,
+//       amenities: req.body.amenities,
+//       image: req.body.image,
+//       ownershipType: req.body.ownershipType,
+//       furnishedStatus: req.body.furnishedStatus,
+//       propertyAge: req.body.propertyAge,
+//       petPolicy: req.body.petPolicy,
+//       carpetArea: req.body.carpetArea,
+//       image: {
+//         data: fs.readFileSync(path.join(__dirname, 'uploads', req.file.filename)),
+//         contentType: req.file.mimetype
+//       },
+//       rentedOut: false,
+//   };
+
+//   Property.create(obj, (err, item) => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).send('Error saving property');
+//     } else {
+//       res.redirect('/owner_portal');
+//     }
+//   });
+// });
 
 app.get('/vacancies/:id', checkAuth, async (req, res) => {
   try {
