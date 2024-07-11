@@ -22,7 +22,7 @@ const mongoose = require('mongoose');
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 const connection = require("./db");
-const upload = require("./storage");
+// const upload = require("./storage");
 
 // mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
 //   console.log('Connected to MongoDB');
