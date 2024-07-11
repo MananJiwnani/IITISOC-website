@@ -323,7 +323,7 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-    z-index: -2;
+   
   }
   
   .features_display {
