@@ -92,6 +92,7 @@ if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
 }
 
+app.use('/uploads', express.static(uploadDir));
 const multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -312,7 +313,8 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
             petPolicy: req.body.petPolicy,
             image: {
                 data: fs.readFileSync(filePath),
-                contentType: req.file.mimetype
+                contentType: req.file.mimetype,
+                path: `/uploads/${req.file.filename}`
             }
         };
         await Property.create(obj);
