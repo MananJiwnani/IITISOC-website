@@ -11,28 +11,6 @@ function toggleMenu() {
     }
 }
 
-//    different features 
-// let features = document.querySelectorAll('.feature');
-// let display;
-// let z;
-// for (const i of features) {
-//     i.onclick = function () {
-//         for (const j of features) {
-//             display = `.${j.id}`
-//             z = document.querySelector(display);
-//             if (j === i) {
-//                 z.classList.remove('feature_display');
-//             }
-//             else {
-//                 z.classList.add('feature_display');
-//             }
-//         }
-//     }
-// }
-
-
-
-
 
 async function rentOutProperty(propertyId) {
     try {

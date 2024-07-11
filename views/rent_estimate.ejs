@@ -11,7 +11,7 @@
         rel="stylesheet">
 
 
-    <link rel="stylesheet" href="stylesheets/addProperties.css">
+    <link rel="stylesheet" href="stylesheets/rent_estimate.css">
 
 </head>
 
@@ -80,24 +80,26 @@
 
         <div class="diff_features">
             <div class="form">
-                <form>
+                <form action="/rent_estimate" method="get">
                     <div class="select">
-                        <select class="pclass" name="propertyType" id="type">
+                        <label for="propertyTypeRE">Property Type</label>
+                        <select class="pclass" name="propertyTypeRE" id="propertyTypeRE">
                             <option value="" selected>Select Type</option>
                             <option value="Flat">Flat</option>
                             <option value="Villa">Villa</option>
                         </select>
                     </div>
                     <div class="inputs">
-                        <label for="rent">Current Property Price</label>
-                        <input type="number" name="price" id="rent" value="">
-                      </div>
+                        <label for="currentPrice">Current Property Price</label>
+                        <input type="number" name="currentPrice" id="currentPrice" value="">
+                    </div>
+                    <button id="submit">Submit</button>
                 </form>
             </div>
 
     </section>
 
-    <script src="javascripts/rent_estimate.js"></script>
+    <script src="javascripts/owner_portal.js"></script>
 </body>
 
 </html>
