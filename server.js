@@ -87,6 +87,10 @@ const Property = require('./property');
 //     }
 // });
 
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
 
 const multer = require('multer');
 
