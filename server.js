@@ -22,7 +22,7 @@ const mongoose = require('mongoose');
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 const connection = require("./db");
-const upload = require("./storage");
+// const upload = require("./storage");
 
 // mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
 //   console.log('Connected to MongoDB');
@@ -87,52 +87,24 @@ const Property = require('./property');
 //     }
 // });
 
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
 
-// var multer = require('multer');
+app.use('/uploads', express.static(uploadDir));
+const multer = require('multer');
 
-// var storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, 'uploads')
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.fieldname + '-' + Date.now())
-//     }
-// });
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
  
-// var upload = multer({ storage: storage });
- 
-// app.get('/', (req, res) => {
-//     imgSchema.find({})
-//     .then((data, err)=>{
-//         if(err){
-//             console.log(err);
-//         }
-//         res.render('imagepage',{items: data})
-//     })
-// });
- 
- 
-// app.post('/', upload.single('image'), (req, res, next) => {
- 
-//     var obj = {
-//         name: req.body.name,
-//         desc: req.body.desc,
-//         img: {
-//             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-//             contentType: 'image/png'
-//         }
-//     }
-//     imgSchema.create(obj)
-//     .then ((err, item) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             // item.save();
-//             res.redirect('/');
-//         }
-//     });
-// });
+var upload = multer({ storage: storage });
 
 const paymentRoute = require('./paymentRoute');
 app.use('/vacancies', paymentRoute);
@@ -324,53 +296,37 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-
-
-app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
-  upload.single('image')(req, res, function (err) {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err.message);
+app.post('/addproperties', upload.single('image'), async (req, res, next) => {
+    try {
+        const filePath = path.join(__dirname, 'uploads', req.file.filename);
+        
+        var obj = {
+            ownerName: req.body.ownerName,
+            price: req.body.price,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            propertyType: req.body.propertyType,
+            subCategory: req.body.subCategory,
+            carpetArea: req.body.carpetArea,
+            amenities: req.body.amenities,
+            description: req.body.description,
+            propertyAge: req.body.propertyAge,
+            ownershipType: req.body.ownershipType,
+            furnishedStatus: req.body.furnishedStatus,
+            petPolicy: req.body.petPolicy,
+            image: {
+                data: fs.readFileSync(filePath),
+                contentType: req.file.mimetype,
+                path: `/uploads/${req.file.filename}`
+            }
+        };
+        await Property.create(obj);
+        res.redirect('/owner_portal');
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error saving property.");
     }
-    next();
-  });
-}, async (req, res) => {
-  try {
-    if (req.file) {
-      const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
-      req.body.image = [imgUrl];
-    } else {
-      return res.status(400).send("You must select a file.");
-    }
-    const newProperty = new Property({
-      owner: req.session.user_id, 
-      ownerName: req.body.ownerName,
-      propertyType: req.body.propertyType.toUpperCase(),
-      subCategory: req.body.subCategory.toUpperCase(),
-      description: req.body.description,
-      city: req.body.city.toUpperCase(),
-      state: req.body.state.toUpperCase(),
-      address: req.body.address,
-      price: req.body.price,
-      amenities: req.body.amenities,
-      image: req.body.image,
-      rentedOut: false,
-      ownershipType: req.body.ownershipType,
-      furnishedStatus: req.body.furnishedStatus,
-      propertyAge: req.body.propertyAge,
-      petPolicy: req.body.petPolicy,
-      carpetArea: req.body.carpetArea,
-    });
-    const savedProperty = await newProperty.save();
-    req.session.propertyId=savedProperty._id;
-   
-
-    req.session.message = 'Property saved successfully';
-    res.redirect('/owner_portal');
-    console.log('Property added successfully');
-  } catch (error) {
-    res.status(403).send(error.message);
-  }
 });
 
 app.get('/vacancies/:id', checkAuth, async (req, res) => {

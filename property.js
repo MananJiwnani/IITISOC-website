@@ -72,7 +72,8 @@ const propertySchema = new mongoose.Schema({
   }],
   image: {
     data: Buffer,
-    contentType: String
+    contentType: String,
+    path: String
   },
   rentedOut: {
     type: Boolean,
