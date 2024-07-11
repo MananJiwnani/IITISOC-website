@@ -240,6 +240,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
 }
 
 /* CSS FOR SIDEBAR */
@@ -320,6 +321,7 @@ h3 {
 .diff_features {
   background: rgba(167, 241, 241, 0.5);
   width: 100%;
+  min-height: 100vh;
   display: flex;
   z-index: -2;
 }
@@ -723,4 +725,9 @@ b {
     font-size: 28px;
   }
 }
+
+
+
+
+/* rent estimate */
 

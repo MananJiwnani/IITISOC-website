@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentEstate | Owner Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="stylesheets/owner_portal.css">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="/images/Logo.svg" alt="Logo">
+        <div class="heading">RentEstate</div>
+        <div class="tabs">
+            <a href="/" class="button">Home</a>
+            <a href="/vacancies" class="button">Vacancies</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            ☰
+        </a>
+    </div>
+
+    <div id="myLinks" class="overlay">
+        <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="/" class="button">Home</a>
+        <a href="/vacancies" class="button">Vacancies</a>
+    </div>
+
+    <section class="container">
+
+        <div class="side fit">
+
+            <div class="sidebar">
+                <ul class="main_feature">
+                    <a href="#" class="feature">
+                        <li id="myProfile">My Profile</li>
+                    </a>
+                    <a href="/myProperties" class="feature">
+                        <li>My Properties</li>
+                    </a>
+                    <a href="/addproperties" class="feature">
+                        <li>Add Properties</li>
+                    </a>
+                </ul>
+                <h3 class="text">~TENANTS</h3>
+                <ul class="main_feature">
+                    <a href="/my_tenants" class="feature">
+                        <li>My Tenants</li>
+                    </a>
+                    <a href="/tenant_req" class="feature">
+                        <li>Tenant Requests</li>
+                    </a>
+                    <a href="/message" class="feature">
+                        <li>Messages</li>
+                    </a>
+                </ul>
+                <h3 class="text">~TOOLS</h3>
+                <ul class="main_feature">
+                    <a href="#" class="feature">
+                        <li>Rent Estimate</li>
+                    </a>
+                </ul>
+            </div>
+
+            <div id="sidebar_icon">
+                <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+            </div>
+
+        </div>
+
+
+        <div class="diff_features">
+            <div class="form">
+                <form>
+                    <div class="select">
+                        <select class="pclass" name="propertyType" id="type">
+                            <option value="" selected>Select Type</option>
+                            <option value="Flat">Flat</option>
+                            <option value="Villa">Villa</option>
+                        </select>
+                    </div>
+                    <div class="price">
+                        <input type="text">
+                    </div>
+                    <div class="inputs">
+                        <label for="rent">Rent</label>
+                        <input type="number" name="price" id="rent" value="">
+                      </div>
+                </form>
+            </div>
+
+    </section>
+
+    <script src="javascripts/rent_estimate.js"></script>
+</body>
+
+</html>

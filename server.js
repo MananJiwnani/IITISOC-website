@@ -262,8 +262,12 @@ app.get('/my_owners',checkAuth, (req, res) => {
   res.render('my_owners.ejs');
 });
  
-app.get('/tanant_req',checkAuth, (req, res) => {
-  res.render('tanant_req.ejs');
+app.get('/tenant_req',checkAuth, (req, res) => {
+  res.render('tenant_req.ejs');
+});
+
+app.get('/rent_estimate',checkAuth, (req, res) => {
+  res.render('rent_estimate.ejs');
 });
 
 app.get('/tenant_properties',checkAuth, (req, res) => {
