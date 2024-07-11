@@ -128,22 +128,18 @@ app.get('/', (req, res) => {
   res.render('home.ejs', {userId: req.session.user_id});
 });
 
-// app.get('/vacancies',checkAuth, async(req, res) => {
-//   try{
-//     const query = req.session.query || {};
-//     let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
-//     res.render('vacancies.ejs', {
-//       userId: req.session.user_id,
-//       properties: vacancies
-//     });
-//   } catch(err){
-//     res.status(500).send(err);
-//   }
-// });
-
-app.get('/vacancies', checkAuth, (req, res, next) => {
-  next();
-}, paymentRoute);
+app.get('/vacancies',checkAuth, async(req, res) => {
+  try{
+    const query = req.session.query || {};
+    let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+    res.render('vacancies.ejs', {
+      userId: req.session.user_id,
+      properties: vacancies
+    });
+  } catch(err){
+    res.status(500).send(err);
+  }
+});
 
 app.get('/property',checkAuth, async(req, res)=> {
    try{
@@ -153,7 +149,7 @@ app.get('/property',checkAuth, async(req, res)=> {
    catch (error) {
    res.status(500).send('Internal server error');
   }
-});
+      }  );
    
 
 
@@ -221,6 +217,10 @@ app.get('/tanant_req',checkAuth, (req, res) => {
   res.render('tanant_req.ejs');
 });
 
+app.get('/tenant_properties',checkAuth, (req, res) => {
+  res.render('tenant_properties.ejs');
+});
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   res.render('register.ejs', { 
@@ -271,45 +271,7 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-// app.post('/addproperties',checkAuth, checkRole('owner'), upload.single('image'), async (req, res) => {
-//   try {
-//       if (req.image) {
-//         const imgUrl = `http://localhost:3000/file/${req.file.filename}`;
-//         req.body.image = [imgUrl];
-//       } else {
-//           return res.status(400).send("You must select a file.");
-//       }
-//     const newProperty = new Property({
-//       owner: req.session.user_id, 
-//       ownerName: req.body.ownerName,
-//       propertyType: req.body.propertyType.toUpperCase(),
-//       subCategory: req.body.subCategory.toUpperCase(),
-      
-//       description: req.body.description,
-//       city: req.body.city.toUpperCase(),
-//       state: req.body.state.toUpperCase(),
-     
-//       address: req.body.address,
-//       price: req.body.price,
-//       amenities: req.body.amenities,
-//       image: req.body.image,
-//       rentedOut: false,
-//       ownershipType: req.body.ownershipType,
-//       furnishedStatus: req.body.furnishedStatus,
-//       propertyAge: req.body.propertyAge,
-//       petPolicy: req.body.petPolicy,
-//       carpetArea: req.body.carpetArea,
-       
-//     });
-//     const savedProperty = await newProperty.save();
-//     req.session.propertyId = savedProperty._id;
-//     req.session.message = 'Property saved successfully';
-//     res.redirect('/owner_portal');
-//     console.log('Property added successfully');
-//   } catch (error) {
-//       res.status(403).send(error.message);
-//     }
-// });
+
 
 app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
   upload.single('image')(req, res, function (err) {
@@ -347,7 +309,9 @@ app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
       carpetArea: req.body.carpetArea,
     });
     const savedProperty = await newProperty.save();
-    req.session.propertyId = savedProperty._id;
+    req.session.propertyId=savedProperty._id;
+   
+
     req.session.message = 'Property saved successfully';
     res.redirect('/owner_portal');
     console.log('Property added successfully');
@@ -355,6 +319,22 @@ app.post('/addproperties', checkAuth, checkRole('owner'), (req, res, next) => {
     res.status(403).send(error.message);
   }
 });
+
+app.get('/vacancies/:id', checkAuth, async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    const properties = await Property.findById(propertyId);
+    
+    if (!properties) {
+      return res.status(404).send('Property not found');
+    }
+
+    res.render('property.ejs', { property: properties});
+  } catch (error) {
+    res.status(500).send('Internal server error');
+  }
+});
+
 
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
@@ -454,20 +434,7 @@ app.post('/vacancies',checkAuth, (req, res) => {
   }
 })
 
-app.post('/api/vacancies/:id',checkAuth, async (req, res) => {
-  try {
-    const propertyId = req.params.id;
-    const userId = req.session.user_id; 
-    const property = await properties.findById(propertyId);
 
-    if (!property) {
-      return res.status(404).send('Property not found');
-    }
-    res.status(200).send('Application sent successfully');
-  } catch (error) {
-    res.status(500).send('Internal server error');
-  }
-});
 
 io.on("connection",function(socket) {
 

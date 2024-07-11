@@ -143,7 +143,7 @@
                                 <div class="property-item">
                                     <h2 class="card-title">
                                         <%=property.subCategory%>
-                                        <%=property.propertyType%>
+                                            <%=property.propertyType%>
                                     </h2>
                                     <p class="card-location">
                                         <%=property.address%>, <%=property.city%>, <%=property.state%>
@@ -151,13 +151,6 @@
                                     <p class="card-price">₹<%=property.price%>/month</p>
                                     <a href="/property" target="_blank"><button class="card-button">View
                                             Details</button></a>
-
-                                    <form class="pay-form">
-                                        <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
-                                        <input type="hidden" name="price" value="<%=property.price%>">
-                                        <input type="submit" value="PAY NOW" class="card-button">
-                                    </form>
-                               
                                 </div>
                             </div>
                         </div>
