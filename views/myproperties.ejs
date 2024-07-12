@@ -49,17 +49,17 @@
         <a href="/my_tenants" class="feature">
           <li>My Tenants</li>
         </a>
-        <a href="/tanant_req" class="feature">
+        <a href="/tenant_req" class="feature">
           <li>Tenant Requests</li>
         </a>
-        <a href="#" class="feature">
+        <a href="/message" class="feature">
           <li>Messages</li>
         </a>
       </ul>
 
       <h3 class="text">~TOOLS</h3>
       <ul class="main_feature">
-        <a href="#" class="feature">
+        <a href="/rent_estimate" class="feature">
           <li>Rent Estimate</li>
         </a>
       </ul>
@@ -79,7 +79,7 @@
                   <div class="grid_item">
                     <div class="property-item">
                       <div class="image">
-                        <img src="/images/home1.jpg" alt="Rental Property" class="card-img">
+                        <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
                       </div>
                       <div class="card-content">
                         <h2 class="card-title">
@@ -109,7 +109,7 @@
                   <div class="grid_item">
                     <div class="property-item">
                       <div class="image">
-                        <img src="/images/home1.jpg" alt="Rental Property" class="card-img">
+                        <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
                       </div>
                       <div class="card-content">
                         <h2 class="card-title">

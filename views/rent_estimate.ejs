@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentEstate | Owner Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="stylesheets/rent_estimate.css">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="/images/Logo.svg" alt="Logo">
+        <div class="heading">RentEstate</div>
+        <div class="tabs">
+            <a href="/" class="button">Home</a>
+            <a href="/vacancies" class="button">Vacancies</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            ☰
+        </a>
+    </div>
+
+    <div id="myLinks" class="overlay">
+        <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="/" class="button">Home</a>
+        <a href="/vacancies" class="button">Vacancies</a>
+    </div>
+
+    <section class="container">
+
+        <div class="side fit">
+
+            <div class="sidebar">
+                <ul class="main_feature">
+                    <a href="#" class="feature">
+                        <li id="myProfile">My Profile</li>
+                    </a>
+                    <a href="/myProperties" class="feature">
+                        <li>My Properties</li>
+                    </a>
+                    <a href="/addproperties" class="feature">
+                        <li>Add Properties</li>
+                    </a>
+                </ul>
+                <h3 class="text">~TENANTS</h3>
+                <ul class="main_feature">
+                    <a href="/my_tenants" class="feature">
+                        <li>My Tenants</li>
+                    </a>
+                    <a href="/tenant_req" class="feature">
+                        <li>Tenant Requests</li>
+                    </a>
+                    <a href="/message" class="feature">
+                        <li>Messages</li>
+                    </a>
+                </ul>
+                <h3 class="text">~TOOLS</h3>
+                <ul class="main_feature">
+                    <a href="#" class="feature">
+                        <li>Rent Estimate</li>
+                    </a>
+                </ul>
+            </div>
+
+            <div id="sidebar_icon">
+                <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+            </div>
+
+        </div>
+
+
+        <div class="diff_features">
+            <div class="form">
+                <form id="rent_estimate">
+                    <div class="select">
+                        <label for="propertyTypeRE">Property Type</label>
+                        <select class="pclass" name="propertyTypeRE" id="propertyTypeRE">
+                            <option value="" selected>Select Type</option>
+                            <option value="Flat">Flat</option>
+                            <option value="Villa">Villa</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <label for="location">Location</label>
+                        <select class="pclass" name="location" id="location">
+                            <option value="" selected>Select Type</option>
+                            <option value="Metropolitan City">Metropolitan City</option>
+                            <option value="Tier 2 City">Tier 2 City</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <label for="age">Property Age</label>
+                        <select class="pclass" name="age" id="age">
+                            <option value="" selected>Select Type</option>
+                            <option value="0-1 yrs">0-1 yrs</option>
+                            <option value="1-2 yrs">1-2 yrs</option>
+                            <option value="2-3 yrs">2-3 yrs</option>
+                            <option value="3-4 yrs">3-4 yrs</option>
+                            <option value="4 yrs+">4 yrs+</option>
+                        </select>
+                    </div>
+                    <div class="inputs">
+                        <label for="currentPrice">Current Property Price</label>
+                        <input type="number" name="currentPrice" id="currentPrice" value="">
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+    </section>
+
+    <script src="javascripts/owner_portal.js"></script>
+</body>
+
+</html>
