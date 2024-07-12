@@ -470,7 +470,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 90%;
+  width: 100%;
   max-width: 450px;
   
 }
@@ -480,13 +480,9 @@ form label{
 }
 
 .form label,
-.diff_features div,
-input {
+.diff_features div {
   color: black;
-  font-family: "Playfair Display", serif;
-  font-weight: bold;
-  font-style: normal;
-  color: black;
+  font-size: 24px;
 }
 
 
@@ -497,16 +493,27 @@ select , option{
 
 input, select{
   width: 150px;
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+}
+input{
+  padding-left: 5px;
+  box-sizing: border-box;
 }
 
 button{
-  width: 100px;
-  color: black;
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-  color: black;
+  background-color: #2e8a79;
+  height: 40px;
+  width: 150px;
+  margin: 10px;
+  margin-right: 0;
+  border-radius: 5px;
+  border: none;
+  align-self: flex-end;
+  font-size: 18px;
+  padding: 0 15px;
+  cursor: pointer;
 }
 
 .select, .inputs{
@@ -515,3 +522,28 @@ button{
   justify-content: space-between;
 }
 
+.RE{
+  font-size: 30px;
+  color: black;
+}
+
+@media only screen and (max-width:780px){
+  form label{
+    font-size: 14px;
+  }
+  .box{
+    margin: 50px 20px;
+  }
+  input, select, button{
+    width: 130px;
+  }
+}
+
+@media only screen and (max-width:556px){
+  form label{
+    font-size: 14px;
+  }
+  .box{
+    margin: 50px 35px;
+  }
+}
