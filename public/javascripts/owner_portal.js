@@ -74,7 +74,7 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
     console.log(typeof(yield));
 
     if (propertyType === 'Flat') {
-        if (location === 'Metropolitan Cities') {
+        if (location === 'Metropolitan City') {
             switch (age) {
                 case '0-1 yrs':
                     yield = 3.00;
@@ -92,7 +92,7 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
                     yield = 2.50;
                     break;
             }
-        } else if (location === 'Tier 2 Cities') {
+        } else if (location === 'Tier 2 City') {
             switch (age) {
                 case '0-1 yrs':
                     yield = 3.50;
@@ -112,7 +112,7 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
             }
         }
     } else if (propertyType === 'Villa') {
-        if (location === 'Metropolitan Cities') {
+        if (location === 'Metropolitan City') {
             switch (age) {
                 case '0-1 yrs':
                     yield = 2.50;
@@ -130,7 +130,7 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
                     yield = 2.25;
                     break;
             }
-        } else if (location === 'Tier 2 Cities') {
+        } else if (location === 'Tier 2 City') {
             switch (age) {
                 case '0-1 yrs':
                     yield = 3.00;
@@ -151,10 +151,6 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
         }
     }
     console.log(yield)
-
-    // Calculate estimated rent
     const rent = (currentPrice* yield) / 1200;
-    
-    // Display estimated rent to user
     alert(`Estimated Rent: ${rent.toFixed(0)}`); // Displaying rent rounded to 0 decimal places
 });
