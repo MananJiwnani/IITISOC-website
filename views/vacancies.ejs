@@ -122,26 +122,22 @@
             <% properties.forEach(property=> { %>
                 <% if (!property.rentedOut) { %>
                     <div class="grid_item">
-                        <div class="card">
-                            <div class="image">
-                                <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
-                            </div>
-                            <div class="card-content">
-                                <div class="property-item">
-                                    <h2 class="card-title">
-                                        <%=property.subCategory%>
-                                        <%=property.propertyType%>
-                                    </h2>
-                                    <p class="card-location">
-                                        <%=property.address%>, <%=property.city%>, <%=property.state%>
-                                    </p>
-                                    <p class="card-price">₹<%=property.price%>/month</p>
-                                    <a href="/vacancies/<%=property._id%>" target="_blank"><button class="card-button">View
-                                            Details</button></a>
+                        <div class="property-item">
 
-                                    <button>Contact Owner</button>
-                                </div>
-                            </div>
+                             <img src="<%= property.image.path %>" alt="Property Image" class="img">
+                             <div class="bg"></div>
+                            <div class="card-content">
+                                    <h2 class="card-title">
+                                    <%=property.subCategory%>
+                                      <%=property.propertyType%>
+                                     </h2>
+                                   <p class="card-location">
+                                   <%=property.address%>, <%=property.city%>, <%=property.state%>
+                                    </p>
+                                  <p class="card-price">₹<%=property.price%>/month</p>
+                            <a href="/vacancies/<%=property._id%>" class="prop"><button class="card-button">View Details</button></a>
+                          </div> 
+                          
                         </div>
                     </div>
                     <% } %>
