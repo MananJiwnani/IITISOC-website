@@ -76,12 +76,14 @@
 
               <% properties.forEach(property=> { %>
                 <% if (property.rentedOut) { %>
-                  <div class="grid_item">
-                    <div class="property-item">
-                      <div class="image">
-                        <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
-                      </div>
-                      <div class="card-content">
+
+
+
+
+                  <div class="card">
+                    <img src="<%= property.image.path %>" alt="Property Image" class="img">
+                    <div class="bg"></div>
+                            <div class="card-content">
                         <h2 class="card-title">
                           <%=property.subCategory%>
                             <%=property.propertyType%>
@@ -90,28 +92,32 @@
                           <%=property.address%>, <%=property.city%>, <%=property.state%>
                         </p>
                         <p class="card-price">₹<%=property.price%>/month</p>
-                        <a href="/property"><button class="card-button">View Details</button></a>
+                        <a href="/property" class="prop"><button class="card-button">View Details</button></a>
                       </div>
-                    </div>
+             
                   </div>
+                 
                   <% } %>
                     <% }) %>
         </div>
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
+
         <div id="other-properties-list" class="listings">
+
           <% if(properties.length==0) { %>
             <p> NO PROPERTIES AVAILABLE </p>
             <% } %>
 
               <% properties.forEach(property=> { %>
                 <% if (!property.rentedOut) { %>
+
                   <div class="grid_item">
-                    <div class="property-item">
-                      <div class="image">
-                        <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
-                      </div>
-                      <div class="card-content">
+                  <div class="property-item">
+                  
+                    <img src="<%= property.image.path %>" alt="Property Image" class="img">
+                    <div class="bg"></div>
+                            <div class="card-content">
                         <h2 class="card-title">
                           <%=property.subCategory%>
                             <%=property.propertyType%>
@@ -120,14 +126,17 @@
                           <%=property.address%>, <%=property.city%>, <%=property.state%>
                         </p>
                         <p class="card-price">₹<%=property.price%>/month</p>
-                        <a href="/property"><button class="card-button">View Details</button></a>
+                        <a href="/vacancies/<%=property._id%>" class="prop"><button class="card-button">View Details</button></a>
                         <form action="/markAsRented" method="POST" style="display:inline;">
                           <input type="hidden" name="propertyId" value="<%= property._id %>">
-                          <button type="submit" class="rent-button">RENT IT</button>
+                         
                         </form>
                       </div>
-                    </div>
+             
                   </div>
+                  </div>
+
+                  
                   <% } %>
                     <% }) %>
         </div>
