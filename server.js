@@ -174,7 +174,7 @@ app.get('/property',checkAuth, async(req, res)=> {
    
 
 
-app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
+app.get('/owner_portal',checkAuth, checkRole('owner'), async(req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
@@ -189,8 +189,14 @@ app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
     }
 });
 
-app.get('/tenant_portal',checkAuth, checkRole('tenant'), (req, res) => {
-  res.render('tenant_portal.ejs');
+app.get('/tenant_portal',checkAuth, checkRole('tenant'), async(req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const tenant = await User.findById(userId);
+    res.render('tenant_portal.ejs', {tenant});
+  } catch (error) {
+      res.status(500).send('Internal server error');
+    }
 });
 
 app.get('/login', (req, res) => {
