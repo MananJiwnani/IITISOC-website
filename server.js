@@ -301,6 +301,7 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
         const filePath = path.join(__dirname, 'uploads', req.file.filename);
         
         var obj = {
+            owner: req.session.user_id,
             ownerName: req.body.ownerName,
             price: req.body.price,
             address: req.body.address,
