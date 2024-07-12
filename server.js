@@ -301,13 +301,14 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
         const filePath = path.join(__dirname, 'uploads', req.file.filename);
         
         var obj = {
+            owner: req.session.user_id,
             ownerName: req.body.ownerName,
             price: req.body.price,
             address: req.body.address,
-            city: req.body.city,
-            state: req.body.state,
-            propertyType: req.body.propertyType,
-            subCategory: req.body.subCategory,
+            city: req.body.city.toUpperCase(),
+            state: req.body.state.toUpperCase(),
+            propertyType: req.body.propertyType.toUpperCase(),
+            subCategory: req.body.subCategory.toUpperCase(),
             carpetArea: req.body.carpetArea,
             amenities: req.body.amenities,
             description: req.body.description,
