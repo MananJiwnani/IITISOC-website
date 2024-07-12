@@ -79,12 +79,14 @@
 
 
         <div class="diff_features">
-            <div class="form">
-                <form id="rent_estimate">
+            <div class="box">
+
+                <div class="form">
+                    <form id="rent_estimate">
                     <div class="select">
                         <label for="propertyTypeRE">Property Type</label>
                         <select class="pclass" name="propertyTypeRE" id="propertyTypeRE">
-                            <option value="" selected>Select Type</option>
+                            <option value="" selected>Select</option>
                             <option value="Flat">Flat</option>
                             <option value="Villa">Villa</option>
                         </select>
@@ -92,7 +94,7 @@
                     <div class="select">
                         <label for="location">Location</label>
                         <select class="pclass" name="location" id="location">
-                            <option value="" selected>Select Type</option>
+                            <option value="" selected>Select</option>
                             <option value="Metropolitan City">Metropolitan City</option>
                             <option value="Tier 2 City">Tier 2 City</option>
                         </select>
@@ -100,7 +102,7 @@
                     <div class="select">
                         <label for="age">Property Age</label>
                         <select class="pclass" name="age" id="age">
-                            <option value="" selected>Select Type</option>
+                            <option value="" selected>Select</option>
                             <option value="0-1 yrs">0-1 yrs</option>
                             <option value="1-2 yrs">1-2 yrs</option>
                             <option value="2-3 yrs">2-3 yrs</option>
@@ -115,6 +117,10 @@
                     <button type="submit">Submit</button>
                 </form>
             </div>
+            <div class="RE">
+                Estimated Rent: <p class="rent"></p>
+            </div>
+        </div>
 
     </section>
 

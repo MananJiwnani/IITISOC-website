@@ -152,5 +152,7 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
     }
     console.log(yield)
     const rent = (currentPrice* yield) / 1200;
-    alert(`Estimated Rent: ${rent.toFixed(0)}`); // Displaying rent rounded to 0 decimal places
+    const RE = document.querySelector(".RE");
+    const p = RE.querySelector(".rent");
+    RE.innerHTML = `Estimated Rent: ₹${rent}/month`;
 });
