@@ -133,7 +133,42 @@ app.get('/property',checkAuth, async(req, res)=> {
    res.status(500).send('Internal server error');
   }
       }  );
-   
+
+app.post('/createOrder',checkAuth, async(req, res)=> {
+  try {
+    const price = req.body.price*100
+    const options = {
+        price: price,
+        currency: 'INR',
+        receipt: 'razorUser@gmail.com'
+    }
+
+    razorpayInstance.orders.create(options, 
+        (err, order)=>{
+            if(!err){
+                res.status(200).send({
+                    success:true,
+                    msg:'PAYMENT DONE',
+                    order_id:order.id,
+                    price:price,
+                    key_id:RAZORPAY_ID_KEY,
+                    product_name:req.body.name,
+                    contact:"9515350605",
+                    name: "Tanmai Sai",
+                    email: "tanmaisaich@gmail.com"
+                });
+            }
+            else{
+                res.status(400).send({success:false,msg:'Something went wrong!'});
+            }
+        }
+    );
+
+  } catch (error) {
+    console.log(error.message);
+    }
+});    
+
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
