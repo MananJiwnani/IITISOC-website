@@ -68,7 +68,7 @@
         <hr>
         <div id="rented-properties-list" class="listings">
           <% if(properties.length==0) { %>
-            <p> NO PROPERTIES AVAILABLE </p>
+            <p style="text-align: center; color: black;"> NO PROPERTIES AVAILABLE </p>
             <% } %>
 
               <% properties.forEach(property=> { %>
@@ -100,10 +100,10 @@
         <h1 class="MAIN_text">Other Properties</h1>
         <hr>
 
-        <div id="other-properties-list" class="listings">
+        <div id="other-properties-list" class="listings"">
 
           <% if(properties.length==0) { %>
-            <p> NO PROPERTIES AVAILABLE </p>
+            <p style="text-align: center; color: black;"> NO PROPERTIES AVAILABLE </p>
             <% } %>
 
               <% properties.forEach(property=> { %>
