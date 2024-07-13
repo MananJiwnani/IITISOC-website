@@ -136,9 +136,9 @@ app.get('/property',checkAuth, async(req, res)=> {
 
 app.post('/createOrder',checkAuth, async(req, res)=> {
   try {
-    const price = req.body.price*100
+    const amount = req.body.price*100
     const options = {
-        price: price,
+        amount: amount,
         currency: 'INR',
         receipt: 'razorUser@gmail.com'
     }
@@ -150,7 +150,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
                     success:true,
                     msg:'PAYMENT DONE',
                     order_id:order.id,
-                    price:price,
+                    amount: amount,
                     key_id:RAZORPAY_ID_KEY,
                     product_name:req.body.name,
                     contact:"9515350605",
