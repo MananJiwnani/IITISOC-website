@@ -493,17 +493,21 @@ select , option{
   cursor: pointer;
 }
 
-input, select{
-  width: 150px;
+input, select, textarea{
   border-radius: 5px;
   border: 1px solid black;
   color: black;
   height: 28px;
-}
-input,select{
   width: 190px;
   padding-left: 5px;
   box-sizing: border-box;
+}
+
+textarea{
+  height:60px;
+  font-size: 13px;
+  padding-top: 5px;
+  resize: none;
 }
 
 button{
@@ -558,7 +562,7 @@ button{
   .box{
     margin: 30px 25px;
   }
-  input, select{
+  input, select, textarea{
     width: 145px;
   }
 }
@@ -581,7 +585,7 @@ button{
     .box{
       max-width: 750px;
     }
-    input, select{
+    input, select, textarea{
       width: 330px;
     }
     .select{
