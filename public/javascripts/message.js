@@ -1,23 +1,32 @@
 (function() {
   const app = document.querySelector(".app");
   const socket = io();
+  
 
   let uname;
   let roomid;
-
+  fetch('/api/username')
+  .then(response => response.json())
+  .then(data => {
+    uname = data.uname;
+  })
+  .catch(error => {
+    console.error('Error fetching username:', error);
+  });
+  
   // Handle user joining
   app.querySelector(".join-screen #join-user").addEventListener("click", function() {
-    let name = app.querySelector(".join-screen #username").value;
+    
      roomid = app.querySelector(".join-screen #roomid").value;
-    if (name.length == 0 || roomid.length == 0) {
+    if (roomid.length == 0) {
       return;
     }
-    uname = name;
+  
     const button1=document.getElementById("join-user");
     button1.addEventListener("click",function(){
-      if (name !== "" && roomid !== "") {
+      if (roomid !== "") {
             socket.emit("join_room", roomid);
-            socket.emit("newUser", name, roomid);
+            socket.emit("newUser", uname, roomid);
             app.querySelector(".join-screen").classList.remove("active");
             app.querySelector(".chat-screen").classList.add("active");
           }

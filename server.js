@@ -30,10 +30,7 @@ const connection = require("./db");
 //   console.error('Failed to connect to MongoDB', err);
 //   process.exit(1);
 // });
-mongoose.connect('mongodb://localhost:27017/userDb', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
+mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('Failed to connect to MongoDB', err);
@@ -201,8 +198,10 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), async(req, res) => {
 
 app.get('/login', (req, res) => {
   const error = req.flash('error');
+  const uname=req.session.username;
   res.render('login.ejs', { 
     error,
+    uname,
     userId: req.session.user_id
   });
 });
@@ -214,6 +213,8 @@ app.post('/login', async (req, res) => {
   if (foundUser) {
       req.session.user_id = foundUser._id;
       req.session.ROLE = foundUser.role;
+      req.session.username=foundUser.name;
+
       res.redirect('/');
   }
   else {
@@ -228,8 +229,11 @@ app.post('/login', async (req, res) => {
   }
 }) 
 
-app.get('/message',checkAuth, (req, res) => {
-  res.render('message.ejs');
+app.get('/message',checkAuth,async(req, res) => {
+  const uname=req.session.username;
+  res.render('message.ejs',{
+    uname,
+  });
 });
 
 app.get('/my_tenants',checkAuth, (req, res) => {
@@ -254,9 +258,12 @@ app.get('/tenant_properties',checkAuth, (req, res) => {
 
 app.get('/register', (req, res) => {
   const error = req.flash('error');
+  const uname=req.session.username;
   res.render('register.ejs', { 
     error,
-    userId: req.session.user_id
+    uname,
+    userId: req.session.user_id,
+   
   });
 });
 
@@ -266,6 +273,7 @@ app.post('/register', checkNotAuth, async (req, res) => {
   const user = new User({ name, email, contact, password, role })
   await user.save();
   req.session.ROLE= role;
+  req.session.username=name;
   res.redirect('/');
 })
 
@@ -329,6 +337,7 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
             }
         };
         await Property.create(obj);
+        req.session.message = 'Property saved successfully';
         res.redirect('/owner_portal');
     } catch (err) {
         console.log(err);
@@ -449,23 +458,27 @@ app.post('/vacancies',checkAuth, (req, res) => {
       res.status(404).send(error.message);
   }
 })
+app.get('/api/username', checkAuth, (req, res) => {
+  const uname = req.session.username;
+  res.json({ uname });
+});
 
 
 
 io.on("connection",function(socket) {
-
+  
   socket.on("join_room", (data) => {
     socket.join(data);
     console.log(`User with ID: ${socket.id} joined room: ${data}`);
   });
 
-  socket.on("newUser",function (name,room){
-   socket.to(room).emit("update", name + " joined the conversation");
+  socket.on("newUser",function (uname,room){
+   socket.to(room).emit("update", uname + " joined the conversation");
    console.log(`User Connected: ${socket.id}`);
   });
 
-  socket.on("exitUser", function(name, room) {
-    socket.to(room).emit("update", name + " left the conversation");
+  socket.on("exitUser", function(uname, room) {
+    socket.to(room).emit("update", uname + " left the conversation");
   });
 
   socket.on("chat", function(message, room) {
