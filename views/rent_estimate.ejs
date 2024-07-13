@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentEstate | Owner Portal</title>
+    <title>RentEstate | Rent Estimate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -41,7 +41,7 @@
 
             <div class="sidebar">
                 <ul class="main_feature">
-                    <a href="#" class="feature">
+                    <a href="/owner_portal" class="feature">
                         <li id="myProfile">My Profile</li>
                     </a>
                     <a href="/myProperties" class="feature">
@@ -55,9 +55,6 @@
                 <ul class="main_feature">
                     <a href="/my_tenants" class="feature">
                         <li>My Tenants</li>
-                    </a>
-                    <a href="/tenant_req" class="feature">
-                        <li>Tenant Requests</li>
                     </a>
                     <a href="/message" class="feature">
                         <li>Messages</li>
@@ -111,15 +108,15 @@
                         </select>
                     </div>
                     <div class="inputs">
-                        <label for="currentPrice">Current Property Price</label>
+                        <label for="currentPrice">Property Price</label>
                         <input type="number" name="currentPrice" id="currentPrice" value="">
                     </div>
                     <button type="submit">Submit</button>
                 </form>
             </div>
-            <div class="RE">
-                Estimated Rent: <p class="rent"></p>
-            </div>
+            <span class="RE">
+                Estimated Rent:
+            </span>
         </div>
 
     </section>

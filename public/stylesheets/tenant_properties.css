@@ -322,123 +322,254 @@
           border-top-right-radius: 30px;
           border-bottom-left-radius:30px ;
       }
+       
+      .listings {
+        width: 100vw;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        grid-row-gap: 40px;
+        padding-left: 30px;
+        padding-right: 30px;
+        justify-content: center;
+        position: relative;
+    }
+
+      .grid_item {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .card, .property-item {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        border-radius: 10px;
+        width: 250px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+    
+    .card{
+        background-color: azure;
+        width: 250px;
+        height: fit-content;
+        margin:0px 27px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 5px 20px 0px #00000094;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
       
-      .rented_properties{
-          display: flex;
-          width:100%;
-          flex-wrap: wrap;
       }
-        .property{
-         
-          width:fit-content;
-          height:fit-content;
-          margin:3%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          border-radius: 20px;
-          box-shadow: 7px 7px 10px rgba(6, 6, 6,0.5);
-          background-image: linear-gradient(rgba(255, 255, 255, 0),rgba(255,255,255,0),rgba(255,255,255,0),rgba(255,255,255,0),rgba(255,255,255,0), rgba(126,238,245,0.8),rgba(100,234,243,1),rgba(40,228,217,0.9),rgba(32,197,187,0.78),rgba(27,181,172,0.69),rgba(30,154,147,0.87),rgba(16,114,114,0.74));
-          transition: 2s ;
+      
+      .bg{
+        background-color: aqua;
+        width:250px;
+        height:8px;
+        position: relative;
+      }
+      .img{
+        width:250px;
+        border-radius: 10px 10px 0px 0px;
+        height:160px;
+      }
+      
+      .card-content {
+        padding-top: 7px;
+      }
+      
+      .card-title {
+       font-size: 24px;
+       margin: 0;
+       color: #000000;
+       padding-left: 15px;
+      }
+      
+      .card-location,
+      .card-price {
+       color: #000000;
+       margin: 5px 0;
+       font-size: 16px;
+       padding-left: 15px;
+      }
+      .prop{
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+      width:100%;
+      }
+      .propie{
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        width:100%;
+      }
+      .card-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 17px;
+      font-size: 16px;
+      font-weight: bold;
+      width:100%;
+      }
+       .Contact{
+        background-color: #19e7e7;
+        color: #fff;
+        border: none;
+        padding: 7px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+        font-weight: bold;
+        width:100%;
+       }
+       
+      .card-button:hover {
+      background-color: #1e5997;
+      }
+      
+      
+    
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .card, .property-item {
+            max-width: 90%;
         }
-  
-         .property:hover{
-          background-image: linear-gradient(rgba(126,238,245,0.3),rgba(126,238,245,0.4),rgba(126,238,245,0.4),rgba(126,238,245,0.5),rgba(126,238,245,0.6),rgba(126,238,245,0.8), rgba(126,238,245,0.8),rgba(100,234,243,1),rgba(100,234,243,1),rgba(40,228,217,0.9),rgba(32,197,187,0.78),rgba(27,181,172,0.69),rgba(30,154,147,0.87),rgba(16,114,114,0.74));
+    
+        .card-content {
+            padding: 15px;
         }
-         .property:hover .address , .property:hover .property_type ,.property:hover .rent ,.property:hover .tenant {
-          animation: translate 1s linear 1 ;
-          animation-fill-mode: forwards;
-          
-         }
-         .property:hover .details{
-          animation : pop 1s linear ;
-          animation-fill-mode: forwards;
-         }
-           @keyframes translate{
-             0%{
-                 position:relative;
-             }
-             100%{
-              position: relative;
-              transform: translateY(-60px) ;
-             }
-           }
-            @keyframes pop {
-                 0%{
-                    
-                 }
-                 100%{
-                    font-size: 19px;
-                    transform: translateY(-60px);
-                 }
-            }
-        .home_img{
-          height: 140px;
-          width: 100%;
-          background-image: url('/images/home1.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          border-radius: 20px;
-          border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-           margin: 5px;
-           margin-top: 0%;
-           z-index: -2;
-         }
-       .property_type , .address , .rent , .tenant{
-          display :flex;
-          flex-direction: row;
-          justify-content:left;
-          width:100%;
-          margin-left: 10%;
-       }
-         .type{
-          display: flex;
-          flex-wrap: wrap;
-          width:60%;
-          position: relative;
-         }
-       .property h3{
-          font-family: "Kameron", serif;
-          width:max-content;
-          color: black;
-          font-size: 17px;
-          font-weight:500;
-          position: relative;
-       }
-       .property h4{
-          color: #000000;
-          font-size: 15px;
-          font-family: "Kameron", serif;
-          font-weight: 500;
-          position: relative;
-       }
-       .rent h4{
-          margin-left: 5%;
-       }
-       .tenant h4{
-          margin-left: 5%;
-       }
-       .details{
-          color: #052d29;
-          font-size: 15px;
-          font-family: "Kameron", serif;
-          font-weight: 500;
-          margin:5px 5px;
-          
-       }
-       .MAIN_text{
-          color: #07443e;
-          font-size: 40px;
-          text-align: center;
-          font-family: "Kameron", serif;
-          font-weight: bold;
-          margin:7px;
-       }
-        hr{
-          width:75%;
-  
+    
+        .card-title {
+            font-size: 1.2em;
         }
+    
+        .card-description {
+            font-size: 0.9em;
+        }
+    
+        .card-button {
+            padding: 8px 16px;
+        }
+    }
+    
+    
+    
+    
+    @media screen and (max-width: 1200px) and (min-width:950px) {
+        .property {
+            justify-content: center;
+            align-items: center;
+            min-width: fit-content;
+            flex-direction: column;
+        }
+    
+        .common_properties {
+            margin: 2px 45px;
+        }
+    
+        .listings {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+    
+    @media screen and (min-width:1600px) {
+        .listings {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+    }
+    
+    @media screen and (max-width:950px) {
+        .listings {
+            grid-template-columns: 1fr 1fr;
+        }
+    
+        .card, .property-item {
+            width: 280px;
+        }
+    }
+    
+    @media screen and (max-width:630px) {
+        .listings {
+            grid-template-columns: 1fr;
+        }
+    
+        .card, .property-item {
+            width: 300px;
+        }
+    }
+    
+    @media screen and (max-width:800px) {
+        .searchbar {
+            height: fit-content;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 3px;
+        }
+    
+        .fw {
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+        }
+    
+        .filter {
+            width: 100%;
+        }
+    
+        #search_btn {
+            width: 90%;
+        }
+    
+        #property_type {
+            margin: 0%;
+            width: 90%;
+            transform: translateY(80%);
+        }
+         .location,
+        .Property_type {
+            position: relative;
+            width: 100%;
+            margin: 0%;
+        }
+        .budget {
+            margin: 0%;
+            position: relative;
+            width: 100%;
+        }
+    }
+    
+    @media screen and (max-width:600px) {
+        .property {
+            justify-content: center;
+            align-items: center;
+            min-width: fit-content;
+            flex-direction: column;
+        }
+    
+        .common_properties {
+            margin: 2px 45px;
+        }
+    }
+    
+    .display {
+        margin: 0%;
+        display: none;
+    }
+    
+
+
+
           
 @media only screen and (max-width:981px){
   
