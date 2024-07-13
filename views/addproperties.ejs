@@ -83,7 +83,7 @@
       <div class="Add_properties feature_display">
         <form action="/addproperties" method="post" enctype="multipart/form-data">
 
-          <div>
+          <div class="inputs">
             <label for="photo">Upload Image</label>
             <input type="file" id="photo" name="image" value="">
           </div>
@@ -95,33 +95,15 @@
             <label for="rent">Rent</label>
             <input type="number" name="price" id="rent" value="">
           </div>
-          <div class="inputs address_div">
-            <label for="address">Address</label>
-            <div class="address">
+          <div class="inputs">
+              <label for="address">Address</label>
               <input type="text" name="address" id="address">
-              <div class="select">
-                <input type="text" name="city" id="city" placeholder="City">
-                <input type="text" name="state" id="state" placeholder="State">
-                <!-- <select name="city" id="city" class="select_city ">
-                  <option value="" selected>Select City</option>
-                  <option value="Indore">Indore</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Ahmedabad">Ahmedabad</option>
-                  <option value="Jaipur">Delhi</option>
-                  <option value="Chennai">Chennai</option>
-                </select>
-                <select name="state" id="state" class="select_state ">
-                  <option value="" selected>Select State</option>
-                  <option value="Madhya Pradesh">Madhya Pradesh</option>
-                  <option value="Maharashtra">Maharashtra</option>
-                  <option value="Gujrat">Gujrat</option>
-                  <option value="Tamilnadu">Tamilnadu</option>
-                  <option value="Rajsthaan">Rajsthaan</option>
-                </select> -->
-              </div>
-            </div>
           </div>
-
+          <!-- <div class="inputs">
+            <input type="text" name="city" id="city" placeholder="City">
+            <input type="text" name="state" id="state" placeholder="State">
+          </div>
+          
           <div class="inputs">
             <label for="type">Property type</label>
             <div class="select">
@@ -139,7 +121,7 @@
                 <option value="4 BHK+">4 BHK+</option>
               </select>
             </div>
-          </div>
+          </div> -->
           <div class="inputs">
             <label for="carpetArea">Carpet Area (sq ft)</label>
             <input type="number" name="carpetArea" value="" id="carpetArea">
