@@ -284,6 +284,10 @@
     padding-left: 10px;
 }
 
+#city, #state, #min_budget, #max_budget{
+    color: black;
+}
+
 .filter #search_2 {
     width: 39px;
     padding-left: 10px;
@@ -328,7 +332,8 @@
 
 /* hidden blocks in search bar */
 .location,
-.Property_type {
+.Property_type,
+.budget {
     background-color: #b0ede6;
     position: relative;
     display: flex;
@@ -355,20 +360,20 @@
     width: min-content;
 }
 
-.budget {
+/* .budget {
     margin: 3%;
     background-color: #c9fcf6;
     position: relative;
     width: 100%;
-}
+} */
 
-.budget input {
+/* .budget input {
     font-family: "Kameron", serif;
     font-weight: bold;
     color: #08453d;
     margin: 3px;
     width: 90%;
-}
+} */
 
 .display {
     display: none;

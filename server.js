@@ -39,51 +39,6 @@ mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
 const User = require('./user');
 const Property = require('./property');
 
-// let gfs;
-// connection();
-
-// const conn = mongoose.connection;
-// // conn.once("open", function () {
-// //     gfs = Grid(conn.db, mongoose.mongo);
-// //     gfs.collection("photos");
-// // });
-
-// conn.once("open", function () {
-//   gfs = new mongoose.mongo.GridFSBucket(conn.db, {
-//     bucketName: 'photos'
-//   });
-// });
-
-// app.use("/file", (req, res, next) => {
-//   upload.single('image')(req, res, function (err) {
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).send(err.message);
-//     }
-//     next();
-//   });
-// });
-
-// app.get("/file/:filename", async (req, res) => {
-//     try {
-//         const file = await gfs.files.findOne({ filename: req.params.filename });
-//         const readStream = gfs.createReadStream(file.filename);
-//         readStream.pipe(res);
-//     } catch (error) {
-//         res.send("not found");
-//     }
-// });
-
-// app.delete("/file/:filename", async (req, res) => {
-//     try {
-//         await gfs.files.deleteOne({ filename: req.params.filename });
-//         res.send("success");
-//     } catch (error) {
-//         console.log(error);
-//         res.send("An error occured.");
-//     }
-// });
-
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
@@ -104,7 +59,14 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const paymentRoute = require('./paymentRoute');
+const Razorpay = require('razorpay');
 app.use('/vacancies', paymentRoute);
+
+const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
+const razorpayInstance = new Razorpay({
+    key_id: RAZORPAY_ID_KEY,
+    key_secret: RAZORPAY_SECRET_KEY
+});
 
 // 
 app.set('view-engine','ejs');
@@ -169,9 +131,7 @@ app.get('/property',checkAuth, async(req, res)=> {
   }
       }  );
    
-
-
-app.get('/owner_portal',checkAuth, checkRole('owner'), async(req, res) => {
+app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);

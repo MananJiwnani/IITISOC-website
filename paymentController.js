@@ -1,13 +1,12 @@
 const session = require('express-session');
 const Razorpay = require('razorpay'); 
 const Property = require('./property');
+const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
 
-// const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
-
-// const razorpayInstance = new Razorpay({
-//     key_id: RAZORPAY_ID_KEY,
-//     key_secret: RAZORPAY_SECRET_KEY
-// });
+const razorpayInstance = new Razorpay({
+    key_id: RAZORPAY_ID_KEY,
+    key_secret: RAZORPAY_SECRET_KEY
+});
 
 const renderProductPage = async(req,res)=>{
     try {
@@ -39,7 +38,7 @@ const createOrder = async(req,res)=>{
                         msg:'PAYMENT DONE',
                         order_id:order.id,
                         price:price,
-//                         key_id:RAZORPAY_ID_KEY,
+                        key_id:RAZORPAY_ID_KEY,
                         product_name:req.body.name,
                         contact:"9515350605",
                         name: "Tanmai Sai",

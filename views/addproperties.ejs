@@ -16,7 +16,7 @@
 </head>
 
 <body>
-     <!-- NAVBAR -->
+  <!-- NAVBAR -->
   <div class="navbar">
     <img src="/images/Logo.svg" alt="Logo">
     <div class="heading">RentEstate</div>
@@ -28,64 +28,64 @@
       ☰
     </a>
   </div>
-       
+
   <div id="myLinks" class="overlay">
     <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
     <a href="/" class="button">Home</a>
     <a href="/vacancies" class="button">Vacancies</a>
   </div>
 
-                
+
   <section class="container">
-        <!-- SIDEBAR -->
-        <div class="side fit">
+    <!-- SIDEBAR -->
+    <div class="side fit">
 
-    <div class="sidebar">
-      <ul class="main_feature">
-        <a href="/owner_portal" class="feature">
-          <li id="myProfile">My Profile</li>
-        </a>
-        <a href="/myProperties" class="feature">
-          <li>My Properties</li>
-        </a>
-        <a href="#" class="feature">
-          <li id="Add_p">Add Properties</li>
-        </a>
-      </ul>
+      <div class="sidebar">
+        <ul class="main_feature">
+          <a href="/owner_portal" class="feature">
+            <li id="myProfile">My Profile</li>
+          </a>
+          <a href="/myProperties" class="feature">
+            <li>My Properties</li>
+          </a>
+          <a href="#" class="feature">
+            <li id="Add_p">Add Properties</li>
+          </a>
+        </ul>
 
-      <h3 class="text">~TENANTS</h3>
-      <ul class="main_feature">
-        <a href="/my_tenants" class="feature">
-          <li>My Tenants</li>
-        </a>
-        <a href="/message" class="feature">
-          <li>Messages</li>
-        </a>
-      </ul>
+        <h3 class="text">~TENANTS</h3>
+        <ul class="main_feature">
+          <a href="/my_tenants" class="feature">
+            <li>My Tenants</li>
+          </a>
+          <a href="/message" class="feature">
+            <li>Messages</li>
+          </a>
+        </ul>
 
-      <h3 class="text">~TOOLS</h3>
-      <ul class="main_feature">
-        <a href="/rent_estimate" class="feature">
-          <li>Rent Estimate</li>
-        </a>
-      </ul>
+        <h3 class="text">~TOOLS</h3>
+        <ul class="main_feature">
+          <a href="/rent_estimate" class="feature">
+            <li>Rent Estimate</li>
+          </a>
+        </ul>
+      </div>
+
+      <div id="sidebar_icon">
+        <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+      </div>
+
     </div>
-      
-    <div id="sidebar_icon">
-      <img src="/images/sidebar-icon.png" alt="error" class="icon1">
-    </div>
-       
-        </div>
 
     <div class="diff_features">
 
-           <!-- ADD PROPERTIES HTML -->
+      <!-- ADD PROPERTIES HTML -->
       <div class="Add_properties feature_display">
         <form action="/addproperties" method="post" enctype="multipart/form-data">
 
           <div>
             <label for="photo">Upload Image</label>
-            <input type="file" id="photo" name="image" value="">             
+            <input type="file" id="photo" name="image" value="">
           </div>
           <div class="inputs">
             <label for="ownerName">Owner Name</label>
@@ -100,7 +100,9 @@
             <div class="address">
               <input type="text" name="address" id="address">
               <div class="select">
-                <select name="city" id="city" class="select_city ">
+                <input type="text" name="city" id="city" placeholder="City">
+                <input type="text" name="State" id="state" placeholder="State">
+                <!-- <select name="city" id="city" class="select_city ">
                   <option value="" selected>Select City</option>
                   <option value="Indore">Indore</option>
                   <option value="Mumbai">Mumbai</option>
@@ -115,7 +117,7 @@
                   <option value="Gujrat">Gujrat</option>
                   <option value="Tamilnadu">Tamilnadu</option>
                   <option value="Rajsthaan">Rajsthaan</option>
-                </select>
+                </select> -->
               </div>
             </div>
           </div>

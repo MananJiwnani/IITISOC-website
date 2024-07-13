@@ -304,6 +304,10 @@ body {
     padding-left: 10px;
 }
 
+#city, #state, #min_budget, #max_budget{
+    color: black;
+}
+
 .filter #search_2 {
     width: 39px;
     padding-left: 10px;
@@ -348,7 +352,8 @@ body {
 
 /* hidden blocks in search bar */
 .location,
-.Property_type {
+.Property_type,
+.budget {
     margin-top: 45px;
     background-color: #b0ede6;
     position: absolute;
@@ -380,7 +385,7 @@ body {
     width: min-content;
 }
 
-.budget {
+/* .budget {
     margin-top: 45px;
     background-color: #c9fcf6;
     position: absolute;
@@ -394,7 +399,7 @@ body {
     color: #08453d;
     margin: 3px;
     width: 90%;
-}
+} */
 
 .display {
     display: none;
