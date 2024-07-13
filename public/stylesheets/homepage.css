@@ -256,7 +256,7 @@
     transition:all;
     transition-duration: 0.5s;
 }
-@media screen and (min-width:890px) {
+/* @media screen and (min-width:890px) {
     
     .fw:hover .filter{
       background-color: #82e8ffd4 ;
@@ -269,7 +269,7 @@
         transform: scale(1.1);
      }
    }
-     }
+     } */
 
 
 #filter {
