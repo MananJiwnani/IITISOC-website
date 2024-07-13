@@ -284,6 +284,10 @@
     padding-left: 10px;
 }
 
+#city, #state{
+    color: black;
+}
+
 .filter #search_2 {
     width: 39px;
     padding-left: 10px;
