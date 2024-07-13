@@ -62,7 +62,14 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const paymentRoute = require('./paymentRoute');
+const Razorpay = require('razorpay');
 app.use('/vacancies', paymentRoute);
+
+const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
+const razorpayInstance = new Razorpay({
+    key_id: RAZORPAY_ID_KEY,
+    key_secret: RAZORPAY_SECRET_KEY
+});
 
 // 
 app.set('view-engine','ejs');
@@ -127,9 +134,7 @@ app.get('/property',checkAuth, async(req, res)=> {
   }
       }  );
    
-
-
-app.get('/owner_portal',checkAuth, checkRole('owner'), async(req, res) => {
+app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
     const owner = await User.findById(userId);
