@@ -431,6 +431,7 @@ h3 {
     flex-direction: row;
     flex-wrap: wrap;
    padding-left: 3vw;
+   padding-top: 20px;
    }
    .tenant{
     overflow: hidden;
