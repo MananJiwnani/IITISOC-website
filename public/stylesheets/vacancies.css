@@ -374,6 +374,7 @@ body {
     font-family: "Kameron", serif;
     font-weight: bold;
     color: #08453d;
+    cursor: pointer;
 }
 
 .location select option,
