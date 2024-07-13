@@ -364,6 +364,10 @@ h3 {
     height: 100%;
   }
 
+  .sidebar{
+    width: 200px;
+  }
+
   .feature {
     font-size: 14px;
     width: 70%;
@@ -463,20 +467,15 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin: 50px;
+  margin: 25px 50px;
+  max-width: 600px;
 }
 
-#rent_estimate{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 450px;
-  
-}
 
 form label{
   font-size: 22px;
+  position: relative;
+  top: 1px;
 }
 
 .form label,
@@ -484,7 +483,9 @@ form label{
   color: black;
   font-size: 24px;
 }
-
+#small{
+  font-size: 16px;
+}
 
 
 select , option{
@@ -497,8 +498,10 @@ input, select{
   border-radius: 5px;
   border: 1px solid black;
   color: black;
+  height: 28px;
 }
-input{
+input,select{
+  width: 190px;
   padding-left: 5px;
   box-sizing: border-box;
 }
@@ -512,15 +515,24 @@ button{
   border-radius: 5px;
   border: none;
   align-self: flex-end;
+  justify-self: flex-end;
   font-size: 18px;
   padding: 0 15px;
   cursor: pointer;
 }
 
-.select, .inputs{
+.inputs{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.select{
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  justify-self: flex-end;
 }
 
 .RE{
@@ -529,22 +541,35 @@ button{
 }
 
 @media only screen and (max-width:780px){
-  form label{
+  .form label{
+    font-size: 18px;
+  }
+  #small{
     font-size: 14px;
   }
   .box{
-    margin: 50px 20px;
+    margin: 30px 25px;
   }
-  input, select, button{
-    width: 130px;
+  input, select{
+    width: 145px;
   }
 }
 
 @media only screen and (max-width:556px){
-  form label{
-    font-size: 14px;
+  .form label{
+    font-size: 17px;
+  }
+  /* .diff_features{
+    align-items: center;
+
+  } */
+  #small{
+    font-size: 12px;
   }
   .box{
-    margin: 50px 35px;
+    margin: 50px 10%;
+  }
+  input, select{
+    height: 25px;
   }
 }
