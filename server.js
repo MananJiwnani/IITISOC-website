@@ -107,7 +107,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const paymentRoute = require('./paymentRoute');
-app.use(paymentRoute);
+app.use('/vacancies', paymentRoute);
 
 // 
 app.set('view-engine','ejs');
@@ -149,18 +149,18 @@ app.get('/', (req, res) => {
   res.render('home.ejs', {userId: req.session.user_id});
 });
 
-app.get('/vacancies',checkAuth, async(req, res) => {
-  try{
-    const query = req.session.query || {};
-    let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
-    res.render('vacancies.ejs', {
-      userId: req.session.user_id,
-      properties: vacancies
-    });
-  } catch(err){
-    res.status(500).send(err);
-  }
-});
+// app.get('/vacancies',checkAuth, async(req, res) => {
+//   try{
+//     const query = req.session.query || {};
+//     let vacancies = await Property.find(query).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
+//     res.render('vacancies.ejs', {
+//       userId: req.session.user_id,
+//       properties: vacancies
+//     });
+//   } catch(err){
+//     res.status(500).send(err);
+//   }
+// });
 
 app.get('/property',checkAuth, async(req, res)=> {
    try{
