@@ -159,7 +159,8 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
                 });
             }
             else{
-                res.status(400).send({success:false,msg:'Something went wrong!'});
+              console.error('Error creating Razorpay order:', err);
+              res.status(400).send({success:false,msg:'Something went wrong!'});
             }
         }
     );

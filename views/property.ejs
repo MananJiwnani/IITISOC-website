@@ -50,8 +50,8 @@
         </div>
         <div>
           <form class="pay-form" action="/createOrder" method="POST">
-            <input type="text" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
-            <input type="text" name="price" value="<%=property.price%>">
+            <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
+            <input type="hidden" name="price" value="<%=property.price%>">
             <input type="submit" value="PAY NOW" class="card-button">
           </form>
         </div>
