@@ -526,7 +526,7 @@ button{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 .select{
   display: flex;
@@ -535,9 +535,17 @@ button{
   justify-self: flex-end;
 }
 
-.RE{
-  font-size: 30px;
-  color: black;
+.end{
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 7px;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
 
 @media only screen and (max-width:780px){
@@ -559,17 +567,41 @@ button{
   .form label{
     font-size: 17px;
   }
-  /* .diff_features{
-    align-items: center;
-
-  } */
-  #small{
-    font-size: 12px;
+    #small{
+      font-size: 12px;
+    }
+    .box{
+      margin: 50px 10%;
+    }
+    input, select{
+      height: 25px;
+    }
   }
-  .box{
-    margin: 50px 10%;
-  }
-  input, select{
-    height: 25px;
-  }
+  @media only screen and (min-width:981px) {
+    .box{
+      max-width: 750px;
+    }
+    input, select{
+      width: 330px;
+    }
+    .select{
+      gap: 20px;
+      width: 330px;
+      flex-direction: row;
+      justify-self: flex-end;
+    }
+    .select input{
+      width: 100%;
+    }
+    select{
+      width: 100%;
+    }
+    .end{
+      justify-content: flex-end;
+      width: 100%;
+      margin-top: 7px;
+    }
+    .end input{
+      width: 155px;
+    }
 }
