@@ -65,6 +65,8 @@
 
 </html>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
   $(document).ready(function(){
     $('.pay-form').submit(function(e){
@@ -80,7 +82,7 @@
           if(res.success){
             var options = {
               "key": ""+res.key_id+"",
-              "price": ""+res.price+"",
+              "amount": ""+res.amount+"",
               "currency": "INR",
               "name": ""+res.product_name+"",
               "image": "https://dummyimage.com/600x400/000/fff",
