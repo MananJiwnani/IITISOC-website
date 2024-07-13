@@ -107,7 +107,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const paymentRoute = require('./paymentRoute');
-app.use('/', paymentRoute);
+app.use(paymentRoute);
 
 // 
 app.set('view-engine','ejs');
