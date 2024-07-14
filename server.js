@@ -140,31 +140,31 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
         receipt: 'razorUser@gmail.com'
     }
 
-    razorpayInstance.orders.create(options, 
-        (err, order)=>{
-            if(!err){
-                res.status(200).send({
-                    success:true,
-                    msg:'PAYMENT DONE',
-                    order_id:order.id,
-                    amount: amount,
-                    key_id:RAZORPAY_ID_KEY,
-                    product_name:req.body.name,
-                    contact:"9515350605",
-                    name: "Tanmai Sai",
-                    email: "tanmaisaich@gmail.com"
-                });
-            }
-            else{
-              console.error('Error creating Razorpay order:', err);
-              res.status(400).send({success:false,msg:'Something went wrong!'});
-            }
-        }
-    );
+    razorpayInstance.orders.create(options, async (err, order) => {
+      if (!err) {
+        await Property.findByIdAndUpdate(req.body.property_id, { tenant: req.user._id });
+
+        res.status(200).send({
+          success: true,
+          msg: 'PAYMENT INITIATED AND TENANT ASSIGNED',
+          order_id: order.id,
+          amount: amount, 
+          key_id: RAZORPAY_ID_KEY,
+          product_name: req.body.name,
+          contact: "9515350605",
+          name: "Tanmai Sai",
+          email: "tanmaisaich@gmail.com"
+        });
+      } else {
+        console.error('Error creating Razorpay order:', err);
+        res.status(400).send({ success: false, msg: 'Something went wrong!' });
+      }
+    });
 
   } catch (error) {
-    console.log(error.message);
-    }
+    console.error(error.message);
+    res.status(500).send({ success: false, msg: 'Internal Server Error' });
+  }
 });    
 
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
