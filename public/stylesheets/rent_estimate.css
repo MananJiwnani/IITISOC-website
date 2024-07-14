@@ -489,6 +489,7 @@ form label{
 
 select , option{
   color: black;
+  cursor: pointer;
 }
 
 input, select{
