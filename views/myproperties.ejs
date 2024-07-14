@@ -99,7 +99,7 @@
                           <%=property.address%>, <%=property.city%>, <%=property.state%>
                         </p>
                         <p class="card-price">₹<%=property.price%>/month</p>
-                        <a href="/vacancies/<%=property._id%>" class="prop"><button class="card-button">View Details</button></a>
+                        <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button class="card-button">View Details</button></a>
                       </div>
              
                   </div>
@@ -134,7 +134,7 @@
                           <%=property.address%>, <%=property.city%>, <%=property.state%>
                         </p>
                         <p class="card-price">₹<%=property.price%>/month</p>
-                        <a href="/vacancies/<%=property._id%>" class="prop"><button class="card-button">View Details</button></a>
+                        <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button class="card-button">View Details</button></a>
                         <form action="/markAsRented" method="POST" style="display:inline;">
                           <input type="hidden" name="propertyId" value="<%= property._id %>">
                          
