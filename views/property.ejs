@@ -10,150 +10,173 @@
 
 <body>
   <div class="card">
-          
 
-              <div class="box chiki">
-                <div class="decorate"></div>
-                <div class="box1"> 
 
-                  <div class="heading">
-     
-                    <div class="main_text">
-                     <h2><%= property.subCategory %> <%= property.propertyType %></h2>
-                    </div>
-     
-                    <div class="text"> <%= property.address %> <%= property.city %> <%= property.state %></div>
-                  </div>
-                    <div class="text Description"><%= property.description %></div>
-     
-                </div>
-              </div>
+    <div class="box chiki">
+      <div class="decorate"></div>
+      <div class="box1">
 
-             
-                <div class="box2">
+        <div class="heading">
 
-                  <div class="square">
-                    <!-- <div class="textbox owner">
+          <div class="main_text">
+            <h2>
+              <%= property.subCategory %>
+                <%= property.propertyType %>
+            </h2>
+          </div>
+
+          <div class="text">
+            <%= property.address %>
+              <%= property.city %>
+                <%= property.state %>
+          </div>
+        </div>
+        <div class="text Description">
+          <%= property.description %>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="box2">
+
+      <div class="square">
+        <!-- <div class="textbox owner">
                         <h3>Owner</h3>
                          <h4><%= property.ownerName %></h4>
                      </div> -->
-                      
-                   <div class="main">
-                                <div class="textbox">
-                                  <h3>Rent</h3>
-                                  <h4><%= property.price %></h4>
-                                </div>
-                  
-                                <div class="textbox">
-                                  <h3>carpetArea</h3>
-                                  <h4><%= property.carpetArea %></h4>
-                                </div>
-       
-                                <div class="textbox">
+
+        <div class="main">
+          <div class="textbox">
+            <h3>Rent</h3>
+            <h4>
+              <%= property.price %>
+            </h4>
+          </div>
+
+          <div class="textbox">
+            <h3>Carpet Area</h3>
+            <h4>
+              <%= property.carpetArea %>
+            </h4>
+          </div>
+
+          <!-- <div class="textbox">
                                   <h3>Available</h3>
                                   <h4><%= property.rentedOut ? 'Yes' : 'No' %></h4>
-                                </div>
-                  
-                      </div>  
-                      
-   
-                   <form class="pay-form" action="/createOrder" method="POST">
-                     <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
-                     <input type="hidden" name="price" value="<%=property.price%>">
-                     <input type="hidden" name="property_id" value="<%= property._id %>">
-                     <input type="submit" value="PAY NOW" class="pay">
-                     <input type="button" value="Contact Now" class="contact">
-                   </form>
-                     
-                       
-                        
-                  </div>
-   
-                   
-                     <img src="<%= property.image.path %>" alt="Property Image" class="img">
-                   
-   
-               </div>
-              
+                                </div> -->
 
-              <div class="box">
-                <div class="box3">
-
-                  <div class="feature">
-                <div class="textbox">
-                  <h3>Amenities</h3>
-                  <h4><%= property.amenities %></h4>
-                </div>
-                <div class="textbox">
-                  <h3>Pet Policy</h3>
-                  <h4><%= property.petPolicy %></h4>
-                </div>
-                  </div>
-                      <hr>
-                <div class="prop_details">
-                  <div class="textbox">
-                    <h3>Ownership Type</h3>
-                      <h4><%= property.ownershipType %></h4>
-                  </div>
-  
-                <div class="textbox">
-                   <h3>Property Age</h3>
-                    <h4> <%= property.propertyAge %> years</h4>
-                    </div>
-        
-                   <div class="textbox">
-                      <h3>Furnished Status</h3>
-                     <h4><%= property.furnishedStatus %></h4>
-                    </div>
-              
-              </div>
-  
-  
-              </div>
-              </div>
-
-          
+        </div>
 
 
-     
-        <!-- <h2>
+        <form class="pay-form" action="/createOrder" method="POST">
+          <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
+          <input type="hidden" name="price" value="<%=property.price%>">
+          <input type="hidden" name="property_id" value="<%= property._id %>">
+          <input type="submit" value="PAY NOW" class="pay">
+          <input type="button" value="Contact Now" class="contact">
+        </form>
+
+
+
+      </div>
+
+
+      <img src="<%= property.image.path %>" alt="Property Image" class="img">
+
+
+    </div>
+
+
+    <div class="box">
+      <div class="box3">
+
+        <div class="feature">
+          <div class="textbox">
+            <h3>Amenities</h3>
+            <h4>
+              <%= property.amenities %>
+            </h4>
+          </div>
+        </div>
+        <hr>
+        <div class="prop_details">
+          <div class="textbox">
+            <h3>Pet Policy</h3>
+            <h4>
+              <%= property.petPolicy %>
+            </h4>
+          </div>
+          <div class="textbox">
+            <h3>Ownership Type</h3>
+            <h4>
+              <%= property.ownershipType %>
+            </h4>
+          </div>
+
+          <div class="textbox">
+            <h3>Property Age</h3>
+            <h4>
+              <%= property.propertyAge %> years
+            </h4>
+          </div>
+
+          <div class="textbox">
+            <h3>Furnished Status</h3>
+            <h4>
+              <%= property.furnishedStatus %>
+            </h4>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+    <!-- <h2>
           <%= property.propertyType %> - <%= property.subCategory %>
         </h2> -->
-       
-        <!-- <p>Owner: <%= property.ownerName %> 
+
+    <!-- <p>Owner: <%= property.ownerName %> 
         </p> -->
-        <!-- <p>Price: <%= property.price %>
+    <!-- <p>Price: <%= property.price %>
         </p> -->
-        <!-- <p>Description: <%= property.description %>
+    <!-- <p>Description: <%= property.description %>
         </p> -->
-        <!-- <p>City: <%= property.city %>     
+    <!-- <p>City: <%= property.city %>     
         </p> -->
-        <!-- <p>State: <%= property.state %>    
+    <!-- <p>State: <%= property.state %>    
         </p> -->
-        <!-- <p>Carpet Area: <%= property.carpetArea %>
+    <!-- <p>Carpet Area: <%= property.carpetArea %>
         </p> -->
-        <!-- <p>Address: <%= property.address %>
+    <!-- <p>Address: <%= property.address %>
         </p> -->
-        <!-- <p>Ownership Type :<%= property.ownershipType %>
+    <!-- <p>Ownership Type :<%= property.ownershipType %>
         </p> -->
-        <!-- <p>Pet Policy: <%= property.petPolicy %>
+    <!-- <p>Pet Policy: <%= property.petPolicy %>
         </p> -->
-        <!-- <p>Furnished Status: <%= property.furnishedStatus %>
+    <!-- <p>Furnished Status: <%= property.furnishedStatus %>
         </p> -->
-        <!-- <p>Property Age: <%= property.propertyAge %>
+    <!-- <p>Property Age: <%= property.propertyAge %>
         </p> -->
-        <!-- <p>Amenities: <%= property.amenities %>
+    <!-- <p>Amenities: <%= property.amenities %>
         </p> -->
-        <!-- <p>Rented Out: <%= property.rentedOut ? 'Yes' : 'No' %>
+    <!-- <p>Rented Out: <%= property.rentedOut ? 'Yes' : 'No' %>
         </p> -->
-        <div>
-          <!-- <p>
+    <div>
+      <!-- <p>
           <h3>Images:</h3><a>
             <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
           </a></p> -->
 
-        </div>
-        <!-- <div>
+    </div>
+    <!-- <div>
           <form class="pay-form" action="/createOrder" method="POST">
             <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
             <input type="hidden" name="price" value="<%=property.price%>">
@@ -161,7 +184,7 @@
             <input type="submit" value="PAY NOW" class="card-button">
           </form>
         </div> -->
-     
+
 
 
 
@@ -174,49 +197,49 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-  $(document).ready(function(){
-    $('.pay-form').submit(function(e){
+  $(document).ready(function () {
+    $('.pay-form').submit(function (e) {
       e.preventDefault();
-  
+
       var formData = $(this).serialize();
-  
+
       $.ajax({
-        url:"/createOrder",
-        type:"POST",
+        url: "/createOrder",
+        type: "POST",
         data: formData,
-        success:function(res){
-          if(res.success){
+        success: function (res) {
+          if (res.success) {
             var options = {
-              "key": ""+res.key_id+"",
-              "amount": ""+res.amount+"",
+              "key": "" + res.key_id + "",
+              "amount": "" + res.amount + "",
               "currency": "INR",
-              "name": ""+res.product_name+"",
+              "name": "" + res.product_name + "",
               "image": "https://dummyimage.com/600x400/000/fff",
-              "order_id": ""+res.order_id+"",
-              "handler": function (response){
+              "order_id": "" + res.order_id + "",
+              "handler": function (response) {
                 alert("Payment Successfull");
               },
               "prefill": {
-                "contact":""+res.contact+"",
-                "name": ""+res.name+"",
-                "email": ""+res.email+""
+                "contact": "" + res.contact + "",
+                "name": "" + res.name + "",
+                "email": "" + res.email + ""
               },
               "theme": {
                 "color": "#2300a3"
               }
             };
             var razorpayObject = new Razorpay(options);
-            razorpayObject.on('payment.failed', function (response){
-                alert("Payment Failed");
+            razorpayObject.on('payment.failed', function (response) {
+              alert("Payment Failed");
             });
             razorpayObject.open();
           }
-          else{
+          else {
             alert(res.msg);
           }
         }
       })
-  
+
     });
   });  
 </script>
