@@ -93,6 +93,7 @@
 
             <% properties.forEach(property=> { %>
               <div class="card-content">
+                <img src="<%= property.image.path %>" alt="Property Image">
                 <h2 class="card-title"><%= property.subCategory %> <%= property.propertyType %></h2>
                 <p class="card-location"><%= property.address %>, <%= property.city %>, <%= property.state %></p>
                 <p class="card-price">₹<%= property.price %>/month</p>
