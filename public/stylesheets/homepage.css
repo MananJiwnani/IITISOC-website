@@ -256,18 +256,22 @@
     transition:all;
     transition-duration: 0.5s;
 }
-  .fw:hover .filter{
-    background-color: #82e8ffd4 ;
-    animation: pop 0.5s ease-in-out 0s 1; 
-    animation-fill-mode: forwards;
-   } 
- @keyframes pop {
-   from{}
-   to{
-      transform: scale(1.1);
-   }
- }
+@media screen and (min-width:890px) {
     
+    .fw:hover .filter{
+      background-color: #82e8ffd4 ;
+      animation: pop 0.5s ease-in-out 0s 1; 
+      animation-fill-mode: forwards;
+     } 
+   @keyframes pop {
+     from{}
+     to{
+        transform: scale(1.1);
+     }
+   }
+     }
+
+
 #filter {
     display: flex;
     flex-direction: row;
