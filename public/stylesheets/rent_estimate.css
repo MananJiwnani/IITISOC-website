@@ -489,11 +489,12 @@ form label{
 
 select , option{
   color: black;
+  cursor: pointer;
 }
 
 input, select{
   width: 150px;
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid black;
   color: black;
 }

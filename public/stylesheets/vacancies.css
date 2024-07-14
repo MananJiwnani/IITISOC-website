@@ -262,10 +262,11 @@ body {
     height: fit-content;
     background-color: #27C4B1;
     padding: 3px 5px;
-    padding-bottom: 3px;
+    padding-bottom: 0px;
+    height: 50px;
 }
 
-.searchtext{
+.searchtext {
     cursor: pointer;
 }
 
@@ -275,7 +276,13 @@ body {
     margin: 3px 7px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
+
+/* .fw:hover .filter{
+    background-color: #82e8ffd4 ;
+    
+  }  */
 
 #filter {
     display: flex;
@@ -291,7 +298,7 @@ body {
     width: max-content;
     background-color: #72E6DB;
     border-radius: 3px;
-    position: relative;
+
 }
 
 .search_text {
@@ -304,7 +311,10 @@ body {
     padding-left: 10px;
 }
 
-#city, #state, #min_budget, #max_budget{
+#city,
+#state,
+#min_budget,
+#max_budget {
     color: black;
 }
 
@@ -361,10 +371,11 @@ body {
     flex-direction: column;
     width: 155px;
     z-index: 10;
-    
+
 }
-.Property_type{
-    width:200px;
+
+.Property_type {
+    width: 200px;
 }
 
 .location select,
@@ -374,6 +385,7 @@ body {
     font-family: "Kameron", serif;
     font-weight: bold;
     color: #08453d;
+    cursor: pointer;
 }
 
 .location select option,
@@ -442,18 +454,18 @@ body {
     justify-content: center;
 }
 
-.card, .property-item {
+.card,
+.property-item {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 10px;
-   
     width: 250px;
     overflow: hidden;
     transition: transform 0.3s;
 }
 
-.card{
+/* .card{
     background-color: azure;
     width: 250px;
     height: fit-content;
@@ -467,64 +479,70 @@ body {
     display: flex;
     flex-direction: column;
   
-  }
-  
-  .bg{
+  } */
+
+.bg {
     background-color: aqua;
-    width:250px;
-    height:8px;
+    width: 100%;
+    height: 8px;
     position: relative;
-   
-  }
-  .img{
-    width:250px;
+
+}
+
+.img {
+    width: 100%;
     border-radius: 10px 10px 0px 0px;
-    height:160px;
-  }
-  
-  .card-content {
+    height: 160px;
+}
+
+.card-content {
     padding-top: 7px;
-  }
-  
-  .card-title {
-   font-size: 24px;
-   margin: 0;
-   color: #000000;
-   padding-left: 15px;
-  }
-  
-  .card-location,
-  .card-price {
-   color: #000000;
-   margin: 5px 0;
-   font-size: 16px;
-   padding-left: 15px;
-  }
-  .prop{
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  width:100%;
-  }
-  .propie{
+    width: 100%;
+}
+
+.card-title {
+    font-size: 24px;
+    margin: 0;
+    color: #000000;
+    padding-left: 15px;
+}
+
+.card-location,
+.card-price {
+    color: #000000;
+    margin: 5px 0;
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+.prop {
     display: flex;
     justify-content: center;
     text-decoration: none;
-    width:100%;
-  }
-  .card-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 17px;
-  font-size: 16px;
-  font-weight: bold;
-  width:100%;
-  }
-   .Contact{
+    width: 100%;
+}
+
+.propie {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.card-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 17px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.Contact {
     background-color: #19e7e7;
     color: #fff;
     border: none;
@@ -533,23 +551,25 @@ body {
     transition: background-color 0.3s;
     font-size: 16px;
     font-weight: bold;
-    width:100%;
-   }
-   
-  .card-button:hover {
-  background-color: #1e5997;
-  }
-  
-  
+    width: 100%;
+}
+
+.card-button:hover {
+    background-color: #1e5997;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    .card, .property-item {
+
+    .card,
+    .property-item {
         max-width: 90%;
     }
 
     .card-content {
-        padding: 15px;
+        padding-top: 15px;
     }
 
     .card-title {
@@ -596,7 +616,8 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 
-    .card, .property-item {
+    .card,
+    .property-item {
         width: 280px;
     }
 }
@@ -606,7 +627,8 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .card, .property-item {
+    .card,
+    .property-item {
         width: 300px;
     }
 }
@@ -638,12 +660,14 @@ body {
         width: 90%;
         transform: translateY(80%);
     }
-     .location,
+
+    .location,
     .Property_type {
         position: relative;
         width: 100%;
         margin: 0%;
     }
+
     .budget {
         margin: 0%;
         position: relative;

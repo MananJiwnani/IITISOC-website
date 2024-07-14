@@ -10,42 +10,144 @@
 
 <body>
   <div class="card">
-   
-        <h2>
-          <%= property.propertyType %> - <%= property.subCategory %>
-        </h2>
+          <div class="decorate"></div>
+
+              <div class="box">
+                <div class="box1"> 
+
+                  <div class="heading">
+     
+                    <div class="main_text">
+                     <h2><%= property.propertyType %> - <%= property.subCategory %></h2>
+                    </div>
+     
+                    <div class="text"> <%= property.address %> <%= property.city %> <%= property.state %></div>
+                  </div>
+                    <div class="text Description"><%= property.description %></div>
+     
+                </div>
+              </div>
+
+             
+                <div class="box2">
+
+                  <div class="square">
+                      
+                   <div class="main">
+                                <div class="textbox">
+                                  <h3>Rent</h3>
+                                  <h4><%= property.price %></h4>
+                                </div>
+                  
+                                <div class="textbox">
+                                  <h3>carpetArea</h3>
+                                  <h4><%= property.carpetArea %></h4>
+                                </div>
        
-        <p>Owner: <%= property.ownerName %>
-        </p>
-        <p>Price: <%= property.price %>
-        </p>
-        <p>Description: <%= property.description %>
-        </p>
-        <p>City: <%= property.city %>
-        </p>
-        <p>State: <%= property.state %>
-        </p>
-        <p>Carpet Area: <%= property.carpetArea %>
-        </p>
-        <p>Address: <%= property.address %>
-        </p>
-        <p>Ownership Type :<%= property.ownershipType %>
-        </p>
-        <p>Pet Policy: <%= property.petPolicy %>
-        </p>
-        <p>Furnished Status: <%= property.furnishedStatus %>
-        </p>
-        <p>Property Age: <%= property.propertyAge %>
-        </p>
-        <p>Amenities: <%= property.amenities %>
-        </p>
+                                <div class="textbox">
+                                  <h3>Available</h3>
+                                  <h4><%= property.rentedOut ? 'Yes' : 'No' %></h4>
+                                </div>
+                  
+                      </div>  
+                    
+                   <div class="textbox">
+                     <h3>Owner</h3>
+                     <h4><%= property.ownerName %></h4>
+                   </div>
+   
+                   <form class="pay-form">
+                     <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
+                     <input type="hidden" name="price" value="<%=property.price%>">
+                     <input type="submit" value="PAY NOW" class="card-button">
+                   </form>
+                      <button class="contact">Contact Now</button>
+                       
+                        
+                  </div>
+   
+                    <div class="image">
+                     <img src="<%= property.image.path %>" alt="Property Image" class="img">
+                    </div>
+   
+               </div>
+              
+
+              <div class="box">
+                <div class="box3">
+
+                  <div class="feature">
+                <div class="textbox">
+                  <h3></h3>
+                  <h4><%= property.amenities %></h4>
+                </div>
+                <div class="textbox">
+                  <h3></h3>
+                  <h4><%= property.petPolicy %></h4>
+                </div>
+                  </div>
+  
+                <div class="prop_details">
+                  <div class="textbox">
+                    <h3>Ownership Type</h3>
+                      <h4><%= property.ownershipType %></h4>
+                  </div>
+  
+                <div class="textbox">
+                   <h3>Property Age</h3>
+                    <h4> <%= property.propertyAge %></h4>
+                    </div>
+        
+                   <div class="textbox">
+                      <h3>Furnished Status</h3>
+                     <h4><%= property.furnishedStatus %></h4>
+                    </div>
+              
+              </div>
+  
+  
+              </div>
+              </div>
+
+          
+
+
+     
+        <!-- <h2>
+          <%= property.propertyType %> - <%= property.subCategory %>
+        </h2> -->
+       
+        <!-- <p>Owner: <%= property.ownerName %> 
+        </p> -->
+        <!-- <p>Price: <%= property.price %>
+        </p> -->
+        <!-- <p>Description: <%= property.description %>
+        </p> -->
+        <!-- <p>City: <%= property.city %>     
+        </p> -->
+        <!-- <p>State: <%= property.state %>    
+        </p> -->
+        <!-- <p>Carpet Area: <%= property.carpetArea %>
+        </p> -->
+        <!-- <p>Address: <%= property.address %>
+        </p> -->
+        <!-- <p>Ownership Type :<%= property.ownershipType %>
+        </p> -->
+        <!-- <p>Pet Policy: <%= property.petPolicy %>
+        </p> -->
+        <!-- <p>Furnished Status: <%= property.furnishedStatus %>
+        </p> -->
+        <!-- <p>Property Age: <%= property.propertyAge %>
+        </p> -->
+        <!-- <p>Amenities: <%= property.amenities %>
+        </p> -->
         <p>Rented Out: <%= property.rentedOut ? 'Yes' : 'No' %>
         </p>
         <div>
-          <p>
+          <!-- <p>
           <h3>Images:</h3><a>
             <img src="<%= property.image.path %>" alt="Property Image" class="card-img">
-          </a></p>
+          </a></p> -->
 
         </div>
         <div>
