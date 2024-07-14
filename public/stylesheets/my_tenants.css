@@ -536,13 +536,14 @@ h3 {
         margin-left: 8px;
         transition: all;
         transition-duration: 1s;
-       
+       cursor: pointer;
     }
        .sendMsg{
         position: relative;
         z-index: 2;
         margin:4px;
-             }
+         }
+         
       .sendMsg button{
         color: #ffffff00;
         font-family: "Kameron", serif;
@@ -556,6 +557,7 @@ h3 {
         margin-bottom: 5px;
         transition: all;
         transition-duration: 1s;
+        cursor: pointer;
       }
        
       .tenant_content:hover .hoverbox {

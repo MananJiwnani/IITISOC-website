@@ -383,6 +383,7 @@
       
       .card-content {
         width:100%;
+        padding-top: 10px;
       }
       
       .card-title {
