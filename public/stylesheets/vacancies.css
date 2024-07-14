@@ -275,8 +275,20 @@ body {
     margin: 3px 7px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
-
+  
+.fw:hover .filter{
+    background-color: #82e8ffd4 ;
+    animation: pop 0.5s ease-in-out 0s 1;
+    
+  } 
+   @keyframes pop {
+     from{}
+     to{
+        transform: scale(1.1);
+     }
+   }
 #filter {
     display: flex;
     flex-direction: row;

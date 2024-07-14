@@ -252,8 +252,13 @@
     margin: 3px 7px;
     display: flex;
     flex-direction: column;
+    cursor:pointer;
+    transition:all;
+    transition-duration: 0.5s;
 }
-
+  .fw:hover .filter{
+    background-color: #82e8ffd4 ;
+  }
 #filter {
     display: flex;
     flex-direction: row;
