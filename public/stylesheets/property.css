@@ -13,30 +13,38 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 35px;
+    padding-top: 5px;
 }
   .box{
     width:100%;
     position: relative;
-    height:200px;
+    height: 16vw;
+    max-height: 252px;
+    min-height: 160px;
   }
+   .chiki{
+    display: flex;
+    justify-content: center;
+   }
     .decorate{
         width:70px;
         height:70px;
         background-color: #38E1CD;
-        position: absolute;
-        left: 30vw;
-          top:1vw;
+        position: relative;
+        left:11vw;
          z-index: 5;
           opacity: 0.6;
     }
    .box1{
     width:55%;
-    height:235px;
+    height: 16vw;
+    max-height: 252px;
+    min-height: 160px;
     background-color: #c9f9f3;
     display: flex;
-    position: absolute;
-    right:11vw;
+    position: relative;
+    top:2vw;
+    left:10vw;
     z-index: 4;
      box-shadow: -9px 9px 19px #0000004a;
     justify-content: space-around;
@@ -44,14 +52,19 @@ body{
    }
     .box2{
         width:100%;
-        height: 230px;
+        height:19vw;
+         min-height: 180px;
+         max-height: 220px;
         position: relative;
         display: flex;
+        justify-content: center;
        
     } 
      .box3{
         width:53%;
-        height:125px;
+        height: 16vw;
+         max-height: 252px;
+        min-height: 160px;
         background-color: #198796;
         display: flex;
         position: absolute;
@@ -59,12 +72,14 @@ body{
         z-index: 1;
         box-shadow: 9px 9px 19px #0000004a;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
-        padding:30px;
-        padding-top: 85px;
      }
- 
+       hr{
+        width:70%;
+        border:1px solid white;
+        margin:10px 0px 0px 0px;
+       }
      .textbox{
         display: flex;
         flex-direction: column;
@@ -104,30 +119,35 @@ body{
              .square{
                 width:19vw;
                 height:19vw;
-                min-width: 250px;
-                min-height: 250px;
-                max-width: 320px;
-                max-height: 320px;
+                min-width: 220px;
+                min-height: 220px;
+                max-width: 280px;
+                max-height: 280px;
                 background-color: white;
-                position: absolute;
-                left:25vw;
                 z-index: 3;
                 box-shadow: -9px 9px 19px #0000004a;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                position: relative;
+                left:15px;
              }
               .main{
                 display:flex;
                 width:100%;
                 justify-content: space-around;
               }
+               .main h2{
+                text-align: center;
+               }
             .img{
                width:34vw;
-               height:352px;
-               position: absolute;
-               right:24vw;
+               min-width: 356px;
+               min-height: 241px;
+               max-width: 526px;
+               max-height: 326px;
+                height: 23vw;
                z-index: 2;
                box-shadow: 9px 9px 19px #0000004a;
                background-image: url('<%= property.image.path %>');
@@ -150,7 +170,7 @@ body{
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin:30px;
+            /* margin:30px; */
            }
               .main_text{
                 color: #14717d;
@@ -167,8 +187,8 @@ body{
                 .Description{
                     width: 150px;
                     height:fit-content;
-                    margin: 65px;
-                    margin-right: 160px;
+                    /* margin: 65px;
+                    margin-right: 160px; */
                 }
                  .feature{
                   width:35%;
@@ -176,7 +196,7 @@ body{
                  }
                  .prop_details{
                   width:60%;
-                  margin:20px 0px;
+                  margin:2% 0px;
                  }
             .feature , .prop_details{
                 display:flex;
@@ -188,6 +208,7 @@ body{
               font-weight: bold;
               font-style: normal;
               color: white;
+              width: max-content;
             }
             .feature .textbox h4 , .prop_details .textbox h4{
               font-family: "Kameron", serif;
@@ -195,4 +216,35 @@ body{
               color:white;
               text-align: center;
               font-weight: 600;
+              width: max-content;
             }
+             @media screen and (max-width:1130px) {
+              .box3{
+                justify-content: flex-end;
+              }
+              
+             }
+             @media screen and (max-width:1460px) {
+               .prop_details{
+                width: 100%;
+               }
+             }
+              @media screen and (max-width:970px) {
+                .prop_details{
+                  margin:7px 0px;
+                }
+                .feature{
+                  margin-right: 70px;
+                  width:60%;
+                }
+              }
+             @media screen and (max-width:850px) {
+              .box1{
+                right:0px;
+                width:75%;
+              }
+              .box3{
+                left:0px;
+                width:75%;
+              }
+             }
