@@ -246,6 +246,7 @@
           width:100%;
           display: flex;
           justify-content: center;
+          position: relative;
          }
 
 .sidebar {
@@ -356,7 +357,8 @@ h3 {
 #sidebar_icon{
   position: absolute;
   left: 20px;
-  top: 120px;
+  top: 36px;
+  z-index: 2;
   height: 40px;
   width: 40px;
 }

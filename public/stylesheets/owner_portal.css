@@ -249,6 +249,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .sidebar {
@@ -426,9 +427,7 @@ b {
     width: 230px;
   }
   
-  #mp_sidebar{
-    width: 290px;
-  }
+  
 }
 
 @media only screen and (max-width:730px) {
@@ -477,7 +476,8 @@ b {
 #sidebar_icon {
   position: absolute;
   left: 20px;
-  top: 120px;
+  top: 36px;
+  z-index: 2;
   height: 40px;
   width: 40px;
 }
@@ -616,7 +616,7 @@ b {
 
 .card-content {
  width:100%;
-
+ padding-top: 10px;
 }
 
 .card-title {
