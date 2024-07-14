@@ -13,7 +13,7 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
+    padding-top: 35px;
 }
   .box{
     width:100%;
@@ -51,7 +51,7 @@ body{
     } 
      .box3{
         width:53%;
-        height:143px;
+        height:125px;
         background-color: #198796;
         display: flex;
         position: absolute;
@@ -61,7 +61,7 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding:40px;
+        padding:30px;
         padding-top: 85px;
      }
  
@@ -102,8 +102,8 @@ body{
       }
           /* INSIDE BOX2 */
              .square{
-                width:20vw;
-                height:20vw;
+                width:19vw;
+                height:19vw;
                 background-color: white;
                 position: absolute;
                 left:25vw;
@@ -120,8 +120,8 @@ body{
                 justify-content: space-around;
               }
             .img{
-               width:35vw;
-               height:366px;
+               width:34vw;
+               height:352px;
                position: absolute;
                right:24vw;
                z-index: 2;
