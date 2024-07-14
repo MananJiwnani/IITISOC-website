@@ -104,6 +104,10 @@ body{
              .square{
                 width:19vw;
                 height:19vw;
+                min-width: 250px;
+                min-height: 250px;
+                max-width: 320px;
+                max-height: 320px;
                 background-color: white;
                 position: absolute;
                 left:25vw;
