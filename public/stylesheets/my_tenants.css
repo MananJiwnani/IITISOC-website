@@ -541,7 +541,8 @@ h3 {
        .sendMsg{
         position: relative;
         z-index: 2;
-       }
+        margin:4px;
+             }
       .sendMsg button{
         color: #ffffff00;
         font-family: "Kameron", serif;
