@@ -59,6 +59,7 @@
                    <form class="pay-form" action="/createOrder" method="POST">
                      <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
                      <input type="hidden" name="price" value="<%=property.price%>">
+                     <input type="hidden" name="property_id" value="<%= property._id %>">
                      <input type="submit" value="PAY NOW" class="pay">
                      <input type="button" value="Contact Now" class="contact">
                    </form>

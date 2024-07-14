@@ -142,7 +142,9 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
 
     razorpayInstance.orders.create(options, async (err, order) => {
       if (!err) {
-        await Property.findByIdAndUpdate(req.body.property_id, { tenant: req.user._id });
+        const userId = req.session.user_id;
+        const propertyId = req.body.property_id;
+        await Property.findByIdAndUpdate(propertyId, { tenant: userId });
 
         res.status(200).send({
           success: true,
@@ -248,8 +250,13 @@ app.get('/rent_estimate',checkAuth, (req, res) => {
   res.render('rent_estimate.ejs');
 });
 
-app.get('/tenant_properties',checkAuth, (req, res) => {
-  res.render('tenant_properties.ejs');
+app.get('/tenant_properties',checkAuth, async(req, res) => {
+  try {
+    let rentals = await Property.find({ tenant: req.session.user_id }).populate(['propertyType', 'subCategory', 'address', 'city', 'state', 'price']);
+    res.render('tenant_properties.ejs', { properties: rentals });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 app.get('/register', (req, res) => {

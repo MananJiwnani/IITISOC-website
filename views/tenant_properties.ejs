@@ -85,13 +85,23 @@
                         <p class="card-location">123 Main Street, Anytown, USA</p>
                         <p class="card-price">$1,200/month</p>
                         <a href="/property" target="_blank" class="prop"><button class="card-button">View Details</button></a>
-                   </div>      
-          </div>
-      </div>
-       </div>
-       
-    </div>
+                   </div> 
+                   
+                  </div>
+                </div>
+              </div>
+              
+            </div>
 
+            <% properties.forEach(property=> { %>
+              <div class="card-content">
+                <img src="<%= property.image.path %>" alt="Property Image">
+                <h2 class="card-title"><%= property.subCategory %> <%= property.propertyType %></h2>
+                <p class="card-location"><%= property.address %>, <%= property.city %>, <%= property.state %></p>
+                <p class="card-price">₹<%= property.price %>/month</p>
+                <a href="/property" target="_blank" class="prop"><button class="card-button">View Details</button></a>    
+              </div>            
+            <% }) %>
 
 
 
