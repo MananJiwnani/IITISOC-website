@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&family=Kumbh+Sans:wght@100..900&display=swap');
+
+
 body{
   background-color: #D4F1ED;
 }
@@ -30,12 +33,14 @@ body{
    .box1{
     width:55%;
     height:235px;
-    background-color: #A3FBF1;
+    background-color: #c9f9f3;
     display: flex;
     position: absolute;
     right:11vw;
     z-index: 4;
-    box-shadow: -9px 9px 19px #00000096;
+     box-shadow: -9px 9px 19px #0000004a;
+    justify-content: space-around;
+    align-items: center;
    }
     .box2{
         width:100%;
@@ -45,14 +50,19 @@ body{
        
     } 
      .box3{
-        width:55%;
-        height:230px;
+        width:53%;
+        height:143px;
         background-color: #198796;
         display: flex;
         position: absolute;
         left:10vw;
         z-index: 1;
-        box-shadow: 9px 9px 19px #00000096;
+        box-shadow: 9px 9px 19px #0000004a;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding:40px;
+        padding-top: 85px;
      }
  
      .textbox{
@@ -60,10 +70,35 @@ body{
         flex-direction: column;
      }
 
-
-
-
-
+    .textbox h3{
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: bold;
+      font-style: normal;
+      color: #14717d;
+    }
+     .textbox h4{
+      font-family: "Kameron", serif;
+      font-size: 17px;
+      color: #198796;
+      
+      font-weight: 600;
+     }
+      
+      .pay-form{
+        display: flex;
+        justify-content: space-around;
+        width:100%;
+      }
+      .pay , .contact{
+        background-color: #198796;
+        color:white;
+        border:none;
+        font-family: "Kameron", serif;
+        font-size: 17px;
+        font-weight: 600;
+        border-radius: 3px;
+      }
           /* INSIDE BOX2 */
              .square{
                 width:20vw;
@@ -72,35 +107,87 @@ body{
                 position: absolute;
                 left:25vw;
                 z-index: 3;
-                box-shadow: -9px 9px 19px #00000096;
+                box-shadow: -9px 9px 19px #0000004a;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
              }
               .main{
                 display:flex;
+                width:100%;
+                justify-content: space-around;
               }
             .img{
                width:35vw;
+               height:366px;
                position: absolute;
                right:24vw;
                z-index: 2;
-               box-shadow: 9px 9px 19px #00000096;
+               box-shadow: 9px 9px 19px #0000004a;
+               background-image: url('<%= property.image.path %>');
+               background-size: cover;
                 }
-
+                .owner{
+                  display: flex;
+                  flex-direction: column;
+                  width:100%;
+                  justify-content: center;
+                }
+                 .owner h3{
+                   font-size:17px;
+                 }
+                 .owner h4{
+                  font-size: 20px;
+                 }
                 /* INSIDE BOX1 */
            .heading{
             display: flex;
             flex-direction: column;
+            align-items: center;
+            margin:30px;
            }
               .main_text{
-                color: black;
+                color: #14717d;
+                font-size: 20px;
                }
              .text{
-                color: black;
+              color: #198796;
+                width:155px;
+                font-family: "Kameron", serif;
+                font-size: 14px;
+                 text-align: center;
+                font-weight: 600;
                }
                 .Description{
-                    width:100px;
-                    height:70px;
+                    width: 150px;
+                    height:fit-content;
+                    margin: 65px;
+                    margin-right: 160px;
                 }
-
+                 .feature{
+                  width:35%;
+                  margin-right: 270px;
+                 }
+                 .prop_details{
+                  width:60%;
+                  margin:20px 0px;
+                 }
             .feature , .prop_details{
                 display:flex;
+                justify-content: space-around;
+            }
+            .feature .textbox h3 , .prop_details .textbox h3{
+              font-family: "Playfair Display", serif;
+              font-optical-sizing: auto;
+              font-weight: bold;
+              font-style: normal;
+              color: white;
+            }
+            .feature .textbox h4 , .prop_details .textbox h4{
+              font-family: "Kameron", serif;
+              font-size: 17px;
+              color:white;
+              text-align: center;
+              font-weight: 600;
             }

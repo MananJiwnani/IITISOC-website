@@ -18,7 +18,7 @@
                   <div class="heading">
      
                     <div class="main_text">
-                     <h2><%= property.propertyType %> - <%= property.subCategory %></h2>
+                     <h2><%= property.subCategory %> <%= property.propertyType %></h2>
                     </div>
      
                     <div class="text"> <%= property.address %> <%= property.city %> <%= property.state %></div>
@@ -32,6 +32,10 @@
                 <div class="box2">
 
                   <div class="square">
+                    <!-- <div class="textbox owner">
+                        <h3>Owner</h3>
+                         <h4><%= property.ownerName %></h4>
+                     </div> -->
                       
                    <div class="main">
                                 <div class="textbox">
@@ -51,24 +55,21 @@
                   
                       </div>  
                     
-                   <div class="textbox">
-                     <h3>Owner</h3>
-                     <h4><%= property.ownerName %></h4>
-                   </div>
    
                    <form class="pay-form">
                      <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
                      <input type="hidden" name="price" value="<%=property.price%>">
-                     <input type="submit" value="PAY NOW" class="card-button">
+                     <input type="submit" value="PAY NOW" class="pay">
+                     <input type="button" value="Contact Now" class="contact">
                    </form>
-                      <button class="contact">Contact Now</button>
+                     
                        
                         
                   </div>
    
-                    <div class="image">
+                   
                      <img src="<%= property.image.path %>" alt="Property Image" class="img">
-                    </div>
+                   
    
                </div>
               
@@ -78,11 +79,11 @@
 
                   <div class="feature">
                 <div class="textbox">
-                  <h3></h3>
+                  <h3>Amenities</h3>
                   <h4><%= property.amenities %></h4>
                 </div>
                 <div class="textbox">
-                  <h3></h3>
+                  <h3>Pet Policy</h3>
                   <h4><%= property.petPolicy %></h4>
                 </div>
                   </div>
@@ -141,8 +142,8 @@
         </p> -->
         <!-- <p>Amenities: <%= property.amenities %>
         </p> -->
-        <p>Rented Out: <%= property.rentedOut ? 'Yes' : 'No' %>
-        </p>
+        <!-- <p>Rented Out: <%= property.rentedOut ? 'Yes' : 'No' %>
+        </p> -->
         <div>
           <!-- <p>
           <h3>Images:</h3><a>
@@ -150,13 +151,13 @@
           </a></p> -->
 
         </div>
-        <div>
+        <!-- <div>
           <form class="pay-form" action="/createOrder" method="POST">
             <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
             <input type="hidden" name="price" value="<%=property.price%>">
             <input type="submit" value="PAY NOW" class="card-button">
           </form>
-        </div>
+        </div> -->
      
 
 
