@@ -142,7 +142,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
 
     razorpayInstance.orders.create(options, async (err, order) => {
       if (!err) {
-        const userId = req.session.userId;
+        const userId = req.session.user_id;
         const propertyId = req.body.property_id;
         await Property.findByIdAndUpdate(propertyId, { tenant: userId });
 
