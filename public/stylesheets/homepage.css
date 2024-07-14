@@ -259,6 +259,7 @@
   .fw:hover .filter{
     background-color: #82e8ffd4 ;
     animation: pop 0.5s ease-in-out 0s 1; 
+    animation-fill-mode: forwards;
    } 
  @keyframes pop {
    from{}
