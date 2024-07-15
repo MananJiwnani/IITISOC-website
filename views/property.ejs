@@ -211,10 +211,10 @@
               "key": "" + res.key_id + "",
               "amount": "" + res.amount + "",
               "currency": "INR",
-              "name": "" + res.product_name + "",
-              "image": "https://dummyimage.com/600x400/000/fff",
-              "order_id": "" + res.order_id + "",
-              "handler": function (response) {
+              "name": ""+res.product_name+"",
+              "image": "+res.image+"",
+              "order_id": ""+res.order_id+"",
+              "handler": function (response){
                 alert("Payment Successfull");
               },
               "prefill": {
@@ -225,7 +225,13 @@
               "theme": {
                 "color": "#2300a3"
               },
-
+              "method": {
+                "netbanking": true,
+                "card": true,
+                "upi": true,
+                "wallet": true,
+                "paylater": true
+              }
             };
             var razorpayObject = new Razorpay(options);
             razorpayObject.on('payment.failed', function (response) {
