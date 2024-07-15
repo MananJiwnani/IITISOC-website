@@ -241,8 +241,13 @@ app.get('/my_tenants',checkAuth, (req, res) => {
   res.render('my_tenants.ejs');
 });
 
-app.get('/my_owners',checkAuth, (req, res) => {
-  res.render('my_owners.ejs');
+app.get('/my_owners',checkAuth, async(req, res) => {
+  try {
+    let rentals = await Property.find({ tenant: req.session.user_id }).populate(['propertyType', 'subCategory', 'address', 'city', 'state', 'price']);
+    res.render('my_owners.ejs', { properties: rentals });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
  
 app.get('/tenant_req',checkAuth, (req, res) => {
