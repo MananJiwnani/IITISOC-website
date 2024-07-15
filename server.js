@@ -154,9 +154,9 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
           amount: amount, 
           key_id: RAZORPAY_ID_KEY,
           product_name: req.body.name,
-          contact: "9515350605",
-          name: "tanmai_sai",
-          email: "tanmaisaich@gmail.com",
+          contact: user.contact,
+          name: user.name,
+          email: user.email,
         });
       } else {
         console.error('Error creating Razorpay order:', err);
