@@ -304,7 +304,7 @@ hr {
     font-size: 18px;
   }
 
-  .feature h3{
+  .feature .textbox h3 {
     font-size: 20px;
   }
 
@@ -316,10 +316,38 @@ hr {
 
 
 @media only screen and (max-width:670px) {
-  .decorate{
+  .decorate {
     display: none;
   }
-  .img,.box1,.box2,.box3,.square{
+
+  .main_text {
+    font-size: 18px;
+  }
+
+  .box1 {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 0 25px 30px;
+    /* gap: 5px; */
+    box-sizing: border-box;
+  }
+
+  .heading {
+    padding-left: 0;
+    gap: 5px;
+    width: 75%;
+  }
+
+  .Description {
+    padding-left: 5px;
+    width: 75%;
+  }
+
+  .img,
+  .box1,
+  .box2,
+  .box3,
+  .square {
     position: relative;
     width: 100vw;
     margin: 0;
@@ -328,5 +356,39 @@ hr {
     top: 0;
     bottom: 0;
     max-width: none;
+    min-width: 0;
+  }
+
+  .box3 {
+    height: 20vh;
+  }
+
+  .prop_details .textbox h3,
+  .textbox h3 {
+    font-size: 14px;
+  }
+
+  .feature .textbox h3 {
+    font-size: 16px;
+  }
+
+  .feature {
+    padding-left: 3%;
+  }
+
+  .feature .textbox h4,
+  .prop_details .textbox h4,
+  .text,
+  .textbox h4 {
+    font-size: 11px;
+  }
+
+  .pay,
+  .contact {
+    font-size: 16px;
+    padding: 6px 5px;
+  }
+  .img{
+    height: auto;
   }
 }
