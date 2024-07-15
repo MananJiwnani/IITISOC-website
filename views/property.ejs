@@ -204,13 +204,7 @@
               "theme": {
                 "color": "#2300a3"
               },
-              "method": {
-                "netbanking": true,
-                "card": true,
-                "upi": true,
-                "wallet": true,
-                "paylater": true
-              }
+
             };
             var razorpayObject = new Razorpay(options);
             razorpayObject.on('payment.failed', function (response){
