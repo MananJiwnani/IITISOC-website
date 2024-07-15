@@ -155,7 +155,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
           key_id: RAZORPAY_ID_KEY,
           product_name: req.body.name,
           contact: "9515350605",
-          name: "tanmaisai",
+          name: "tanmai_sai",
           email: "tanmaisaich@gmail.com",
         });
       } else {
