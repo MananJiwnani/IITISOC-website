@@ -146,7 +146,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
         const user = await User.findById(userId);
         const propertyId = req.body.property_id;
         await Property.findByIdAndUpdate(propertyId, { tenant: userId });
-        // const Property = await Property.findById(propertyId);
+        const Property = await Property.findById(propertyId);
         
         res.status(200).send({
           success: true,
