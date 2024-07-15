@@ -10,6 +10,7 @@ function toggleMenu() {
         content.classList.add("blur");
     }
 }
+  
 
 
 async function rentOutProperty(propertyId) {
@@ -42,7 +43,8 @@ async function rentOutProperty(propertyId) {
        dF.classList.toggle("display");
        sidebar.classList.toggle("animate");
        s.classList.toggle("fit");
-       i.classList.toggle("anime2");
+       nav.classList.toggle("back");
+       nav.classList.toggle("anime2");
    
     })
       const body =document.querySelector('body')
