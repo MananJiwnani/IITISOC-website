@@ -143,6 +143,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
     razorpayInstance.orders.create(options, async (err, order) => {
       if (!err) {
         const userId = req.session.user_id;
+        const user = await User.findById(userId);
         const propertyId = req.body.property_id;
         await Property.findByIdAndUpdate(propertyId, { tenant: userId });
 
@@ -153,9 +154,9 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
           amount: amount, 
           key_id: RAZORPAY_ID_KEY,
           product_name: req.body.name,
-          contact: "9515350605",
-          name: "Tanmai Sai",
-          email: "tanmaisaich@gmail.com"
+          contact: user.contact,
+          name: user.name,
+          email: user.email,
         });
       } else {
         console.error('Error creating Razorpay order:', err);
