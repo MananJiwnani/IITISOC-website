@@ -3,6 +3,9 @@
 
 body{
   background-color: #D4F1ED;
+  display: flex;
+  align-items: center;
+  height:100vh;
 }
   
  *{
