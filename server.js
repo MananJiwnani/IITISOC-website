@@ -243,10 +243,7 @@ app.get('/my_tenants',checkAuth, (req, res) => {
 
 app.get('/my_owners',checkAuth, async(req, res) => {
   try {
-    // let rentals = await Property.find({ tenant: req.session.user_id }).populate(['propertyType', 'subCategory', 'address', 'city', 'state', 'price']);
-    // res.render('my_owners.ejs', { properties: rentals });
     let rentals = await Property.find({ tenant: req.session.user_id }).exec();
-
     const ownerPromises = rentals.map(async (property) => {
       const owner = await User.findById(property.owner).exec();
       return { ...property.toObject(), owner };
