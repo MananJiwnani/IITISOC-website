@@ -117,16 +117,14 @@
 
     </div>
 
-    <!-- <% properties.forEach(property=> { %>
-      const ownerId = property.owner;
-      const owner = await User.findById(ownerID);
+    <% properties.forEach(property=> { %>
       <div class="card-content">
-        <p>owner.name</p> 
-        <p>owner.email</p>
-        <p>owner.contact</p>
-        <p>property.id</p>   
+        <p><%= property.owner.name %></p> 
+        <p><%= property.owner.emai %>l</p>
+        <p><%= property.owner.contac %>t</p>
+        <p><%= property.property.id</ %>p>   
       </div>            
-    <% }) %> -->
+    <% }) %>
   </section>
 
 
