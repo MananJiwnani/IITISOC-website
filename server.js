@@ -237,8 +237,19 @@ app.get('/message',checkAuth,async(req, res) => {
   });
 });
 
-app.get('/my_tenants',checkAuth, (req, res) => {
-  res.render('my_tenants.ejs');
+app.get('/my_tenants',checkAuth, async(req, res) => {
+  try {
+    let rentals = await Property.find({ owner: req.session.user_id }).exec();
+    const tenantPromises = rentals.map(async (property) => {
+      const tenant = await User.findById(property.tenant).exec();
+      return { ...property.toObject(), tenant };
+    });
+    const propertiesWithTenant = await Promise.all(tenantPromises);
+
+    res.render('my_tenants.ejs', { properties: propertiesWithTenant });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 app.get('/my_owners',checkAuth, async(req, res) => {
