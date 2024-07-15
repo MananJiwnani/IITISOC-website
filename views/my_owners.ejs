@@ -117,16 +117,15 @@
 
     </div>
 
-    <div>
     <% properties.forEach(property=> { %>
       <div class="card-content">
-        <!-- <p><%= property.owner.name %></p> 
-        <p><%= property.owner.email %></p>
-        <p><%= property.owner.contact %></p> -->
-        <p><%= property._id %>p>   
+        <p class="textbox"><%= property.owner.name %></p> 
+        <p class="textbox"><%= property.owner.email %></p>
+        <p class="textbox"><%= property.owner.contact %></p>
+        <p class="textbox"><%= property._id %>p>   
       </div>            
     <% }) %>
-    </div>
+
   </section>
 
 
