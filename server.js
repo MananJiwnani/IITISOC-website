@@ -146,7 +146,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
         const user = await User.findById(userId);
         const propertyId = req.body.property_id;
         await Property.findByIdAndUpdate(propertyId, { tenant: userId });
-        const Property = await Property.findById(propertyId);
+        const property = await Property.findById(propertyId);
         
         res.status(200).send({
           success: true,
@@ -155,7 +155,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
           amount: amount, 
           key_id: RAZORPAY_ID_KEY,
           product_name: req.body.name,
-          image: Property.image.path,
+          image: property.image.path,
           contact: user.contact,
           name: user.name,
           email: user.email,
