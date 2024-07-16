@@ -121,15 +121,15 @@ app.get('/vacancies',checkAuth, async(req, res) => {
   }
 });
 
-app.get('/property',checkAuth, async(req, res)=> {
-   try{
-   const properties=await Property.find();
-   res.render('property.ejs',{properties});
-   }
-   catch (error) {
-   res.status(500).send('Internal server error');
-  }
-      }  );
+// app.get('/property',checkAuth, async(req, res)=> {
+//    try{
+//    const properties=await Property.find();
+//    res.render('property.ejs',{properties});
+//    }
+//    catch (error) {
+//    res.status(500).send('Internal server error');
+//   }
+//       }  );
 
 app.post('/createOrder',checkAuth, async(req, res)=> {
   try {
