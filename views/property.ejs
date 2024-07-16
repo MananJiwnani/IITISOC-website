@@ -66,8 +66,14 @@
           <input type="button" value="Contact Owner" class="contact">
         </form>
       <% } %>
-
-
+      
+      <% if(ROLE == 'owner') { %>
+        <form action="/unRent" method="post">
+          <input type="hidden" name="property_id" value="<%= property_id%>">
+          <input type="submit" value="UNRENT">
+        </form>
+      <% } %>
+      
       </div>
 
 
