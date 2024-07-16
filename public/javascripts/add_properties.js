@@ -87,7 +87,8 @@ const dF = document.querySelector(".diff_features");
 const sidebar = document.querySelector(".sidebar");
 
 
-side_btn.addEventListener("click", ()=>{
+side_btn.addEventListener("click", () => {
+    alert("icon is clicked");
     dF.classList.toggle("display");
     sidebar.classList.toggle("dis");
 })
