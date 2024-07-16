@@ -34,14 +34,15 @@ async function rentOutProperty(propertyId) {
 }
 
 //   togglemenu for sidebar
+
 const side_btn = document.getElementById("sidebar_icon");
 const dF = document.querySelector(".diff_features");
 const sidebar = document.querySelector(".sidebar");
+
+
 side_btn.addEventListener("click", ()=>{
-    sidebar.style.display="flex";
-    sidebar.style.width="100vw";
     dF.classList.toggle("display");
-    sidebar.classList.toggle("display");
+    sidebar.classList.toggle("dis");
 })
 
 

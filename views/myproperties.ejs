@@ -31,45 +31,45 @@
     <a href="/vacancies" class="button">Vacancies</a>
   </div>
   <section class="container">
-     
+
     <div class="side fit">
 
-    <div class="sidebar" id="mp_sidebar">
-      <ul class="main_feature">
-        <a href="/owner_portal" class="feature">
-          <li id="myProfile">My Profile</li>
-        </a>
-        <a href="/myProperties" class="feature">
-          <li>My Properties</li>
-        </a>
-        <a href="/addProperties" class="feature">
-          <li>Add Properties</li>
-        </a>
-      </ul>
+      <div class="sidebar" id="mp_sidebar">
+        <ul class="main_feature">
+          <a href="/owner_portal" class="feature">
+            <li id="myProfile">My Profile</li>
+          </a>
+          <a href="/myProperties" class="feature">
+            <li>My Properties</li>
+          </a>
+          <a href="/addProperties" class="feature">
+            <li>Add Properties</li>
+          </a>
+        </ul>
 
-      <h3 class="text">~TENANTS</h3>
-      <ul class="main_feature">
-        <a href="/my_tenants" class="feature">
-          <li>My Tenants</li>
-        </a>
-        <a href="/message" class="feature">
-          <li>Messages</li>
-        </a>
-      </ul>
+        <h3 class="text">~TENANTS</h3>
+        <ul class="main_feature">
+          <a href="/my_tenants" class="feature">
+            <li>My Tenants</li>
+          </a>
+          <a href="/message" class="feature">
+            <li>Messages</li>
+          </a>
+        </ul>
 
-      <h3 class="text">~TOOLS</h3>
-      <ul class="main_feature">
-        <a href="/rent_estimate" class="feature">
-          <li>Rent Estimate</li>
-        </a>
-      </ul>
+        <h3 class="text">~TOOLS</h3>
+        <ul class="main_feature">
+          <a href="/rent_estimate" class="feature">
+            <li>Rent Estimate</li>
+          </a>
+        </ul>
+      </div>
+
+      <div id="sidebar_icon">
+        <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+      </div>
+
     </div>
-     
-    <div id="sidebar_icon">
-      <img src="/images/sidebar-icon.png" alt="error" class="icon1">
-    </div>
-  
-   </div>
 
 
 
@@ -92,7 +92,7 @@
                         <img src="<%= property.image.path %>" alt="Property Image" class="img">
                         <div class="bg"></div>
                       </div>
-                            <div class="card-content">
+                      <div class="card-content">
                         <h2 class="card-title">
                           <%=property.subCategory%>
                             <%=property.propertyType%>
@@ -101,12 +101,13 @@
                           <%=property.address%>, <%=property.city%>, <%=property.state%>
                         </p>
                         <p class="card-price">₹<%=property.price%>/month</p>
-                        <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button class="card-button">View Details</button></a>
+                        <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button
+                            class="card-button">View Details</button></a>
                       </div>
-             
-                  </div>
+
                     </div>
-                 
+                  </div>
+
                   <% } %>
                     <% }) %>
         </div>
@@ -116,41 +117,42 @@
         <div id="other-properties-list" class="listings"">
 
           <% if(properties.length==0) { %>
-            <p style="text-align: center; color: black;"> NO PROPERTIES AVAILABLE </p>
-            <% } %>
+            <p style=" text-align: center; color: black;"> NO PROPERTIES AVAILABLE </p>
+          <% } %>
 
-              <% properties.forEach(property=> { %>
-                <% if (!property.rentedOut) { %>
+            <% properties.forEach(property=> { %>
+              <% if (!property.rentedOut) { %>
 
-                  <div class="grid_item">
+                <div class="grid_item">
                   <div class="property-item">
                     <div class="img-box">
 
                       <img src="<%= property.image.path %>" alt="Property Image" class="img">
                       <div class="bg"></div>
                     </div>
-                            <div class="card-content">
-                        <h2 class="card-title">
-                          <%=property.subCategory%>
-                            <%=property.propertyType%>
-                        </h2>
-                        <p class="card-location">
-                          <%=property.address%>, <%=property.city%>, <%=property.state%>
-                        </p>
-                        <p class="card-price">₹<%=property.price%>/month</p>
-                        <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button class="card-button">View Details</button></a>
-                        <form action="/markAsRented" method="POST" style="display:inline;">
-                          <input type="hidden" name="propertyId" value="<%= property._id %>">
-                         
-                        </form>
-                      </div>
-             
-                  </div>
-                  </div>
+                    <div class="card-content">
+                      <h2 class="card-title">
+                        <%=property.subCategory%>
+                          <%=property.propertyType%>
+                      </h2>
+                      <p class="card-location">
+                        <%=property.address%>, <%=property.city%>, <%=property.state%>
+                      </p>
+                      <p class="card-price">₹<%=property.price%>/month</p>
+                      <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button
+                          class="card-button">View Details</button></a>
+                      <form action="/markAsRented" method="POST" style="display:inline;">
+                        <input type="hidden" name="propertyId" value="<%= property._id %>">
 
-                  
-                  <% } %>
-                    <% }) %>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <% } %>
+                  <% }) %>
         </div>
       </div>
     </div>
@@ -158,19 +160,19 @@
   </section>
 
   <script>
-      //  TOGGLEMENU FOR NAVBAR
-        function toggleMenu() {
-    var overlay = document.getElementById("myLinks");
-    var content = document.querySelector(".content");
-    overlay.style.paddingTop = "100px";
-    if (overlay.style.width === "30vw") {
+    //  TOGGLEMENU FOR NAVBAR
+    function toggleMenu() {
+      var overlay = document.getElementById("myLinks");
+      var content = document.querySelector(".content");
+      overlay.style.paddingTop = "100px";
+      if (overlay.style.width === "30vw") {
         overlay.style.width = "0";
         content.classList.remove("blur");
-    } else {
+      } else {
         overlay.style.width = "30vw";
         content.classList.add("blur");
+      }
     }
-}
 
 
     async function rentOutProperty(propertyId) {
@@ -201,31 +203,17 @@
     }
 
 
-      //   togglemenu for sidebar
-    const s =document.querySelector('.side');
-    const sidebar = document.querySelector('.sidebar');
-    const dF = document.querySelector('.diff_features');
-    const nav =document.getElementById('sidebar_icon');
-    const i= document.querySelector('.icon1');
-    nav.addEventListener('click', ()=>{
-       dF.classList.toggle("display");
-       sidebar.classList.toggle("animate");
-       s.classList.toggle("fit");
-       i.classList.toggle("anime2");
-   
+    //   togglemenu for sidebar
+
+    const side_btn = document.getElementById("sidebar_icon");
+    const dF = document.querySelector(".diff_features");
+    const sidebar = document.querySelector(".sidebar");
+
+
+    side_btn.addEventListener("click", () => {
+      dF.classList.toggle("display");
+      sidebar.classList.toggle("dis");
     })
-      const body =document.querySelector('body')
-
-  const x= document.querySelector('#myProfile');
-   
-
-       x.onclick = function(){  
-         sidebar.classList.remove("animate") ;
-          dF.classList.remove("display");
-           s.classList.add("fit");
-           i.classList.toggle("anime2");
-   }
-   
 
   </script>
 
