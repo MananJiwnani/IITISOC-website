@@ -188,6 +188,16 @@ app.post('/updateTenant', checkAuth, async (req, res) => {
   }
 });
 
+app.post('/unRent', checkAuth, async(req, res) => {
+  try {
+    const id = req.body.property_id;
+    await Property.findByIdAndUpdate(id, { rentedOut: false });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ success: false, msg: 'Internal Server Error' });
+  }
+});
+
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const userId = req.session.user_id;
