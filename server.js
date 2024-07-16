@@ -145,7 +145,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
         const userId = req.session.user_id;
         const user = await User.findById(userId);
         const propertyId = req.body.property_id;
-        await Property.findByIdAndUpdate(propertyId, { tenant: userId });
+        // await Property.findByIdAndUpdate(propertyId, { tenant: userId });
         const property = await Property.findById(propertyId);
         
         res.status(200).send({
@@ -171,6 +171,18 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 });    
+
+app.post('/updateTenant', checkAuth, async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const propertyId = req.body.property_id;
+    await Property.findByIdAndUpdate(propertyId, { tenant: userId });
+    res.status(200).send({ success: true, msg: 'Tenant assigned successfully' });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ success: false, msg: 'Internal Server Error' });
+  }
+});
 
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
