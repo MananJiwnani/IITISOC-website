@@ -121,15 +121,15 @@ app.get('/vacancies',checkAuth, async(req, res) => {
   }
 });
 
-// app.get('/property',checkAuth, async(req, res)=> {
-//    try{
-//    const properties=await Property.find();
-//    res.render('property.ejs',{properties});
-//    }
-//    catch (error) {
-//    res.status(500).send('Internal server error');
-//   }
-//       }  );
+app.get('/property',checkAuth, async(req, res)=> {
+   try{
+   const properties=await Property.find();
+   res.render('property.ejs',{properties});
+   }
+   catch (error) {
+   res.status(500).send('Internal server error');
+  }
+      }  );
 
 app.post('/createOrder',checkAuth, async(req, res)=> {
   try {
@@ -393,12 +393,13 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
   try {
     const propertyId = req.params.id;
     const properties = await Property.findById(propertyId);
-    
+    const role = req.user.role;
+
     if (!properties) {
       return res.status(404).send('Property not found');
     }
 
-    res.render('property.ejs', { property: properties});
+    res.render('property.ejs', { property: properties, ROLE: role});
   } catch (error) {
     res.status(500).send('Internal server error');
   }
