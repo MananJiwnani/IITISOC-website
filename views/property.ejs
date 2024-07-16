@@ -57,7 +57,7 @@
           </div>
         </div>
 
-      <% if(ROLE == "tenant") { %>
+      <% if(ROLE === "tenant") { %>
         <form class="pay-form" action="/createOrder" method="POST">
           <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
           <input type="hidden" name="price" value="<%=property.price%>">
