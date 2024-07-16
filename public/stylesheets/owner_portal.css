@@ -483,21 +483,9 @@ b {
   width: 40px;
   
 }
-  .back{
-    animation: back 1s ease-in-out  1  forwards;
-  }
 
- @keyframes back {
-  from {
-    left:83vw;
-  }
-
-  to {
-    left:2vw;
-  }
- }
 #sidebar_icon img {
-  height: 30px;
+  height: 20px;
 }
 
 
@@ -521,7 +509,7 @@ b {
   max-width: fit-content;
 }
 
-.animate {
+/* .animate {
   display: flex;
   animation-name: sidebar;
   animation-duration: 1s;
@@ -553,7 +541,7 @@ b {
   to {
     transform: translateX(80vw);
   }
-}
+} */
 
 
 /* listings starts here */

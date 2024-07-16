@@ -10,7 +10,7 @@ function toggleMenu() {
         content.classList.add("blur");
     }
 }
-  
+
 
 
 async function rentOutProperty(propertyId) {
@@ -33,32 +33,17 @@ async function rentOutProperty(propertyId) {
     }
 }
 
-    //   togglemenu for sidebar
-    const s =document.querySelector('.side');
-    const sidebar = document.querySelector('.sidebar');
-    const dF = document.querySelector('.diff_features');
-    const nav =document.getElementById('sidebar_icon');
-    const i= document.querySelector('.icon1');
-    nav.addEventListener('click', ()=>{
-       dF.classList.toggle("display");
-       sidebar.classList.toggle("animate");
-       s.classList.toggle("fit");
-       nav.classList.toggle("back");
-       nav.classList.toggle("anime2");
-   
-    })
-      const body =document.querySelector('body')
+//   togglemenu for sidebar
+const side_btn = document.getElementById("sidebar_icon");
+const dF = document.querySelector(".diff_features");
+const sidebar = document.querySelector(".sidebar");
+side_btn.addEventListener("click", ()=>{
+    sidebar.style.display="flex";
+    sidebar.style.width="100vw";
+    dF.classList.toggle("display");
+    sidebar.classList.toggle("display");
+})
 
-  const x= document.querySelector('#myProfile');
-   
-
-       x.onclick = function(){  
-         sidebar.classList.remove("animate") ;
-          dF.classList.remove("display");
-           s.classList.add("fit");
-           i.classList.toggle("anime2");
-   }
-   
 
 //    rent estimate
 document.getElementById('rent_estimate').addEventListener('submit', (e) => {
@@ -72,8 +57,8 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
     console.log(age)
     const currentPrice = parseFloat(document.getElementById('currentPrice').value);
 
-    var yield=3.0; // Default
-    console.log(typeof(yield));
+    var yield = 3.0; // Default
+    console.log(typeof (yield));
 
     if (propertyType === 'Flat') {
         if (location === 'Metropolitan City') {
@@ -153,7 +138,7 @@ document.getElementById('rent_estimate').addEventListener('submit', (e) => {
         }
     }
     console.log(yield)
-    let rent = (currentPrice* yield) / 1200;
+    let rent = (currentPrice * yield) / 1200;
     const RE = document.querySelector(".RE");
     RE.innerHTML = `Estimated Rent: ₹${rent.toFixed(0)}`;
 });

@@ -34,69 +34,75 @@
     <a href="/" class="button">Home</a>
     <a href="/vacancies" class="button">Vacancies</a>
   </div>
-  
+
   <section class="container">
 
-        <div class="side fit">
+    <div class="side fit">
 
       <div class="sidebar animate_back">
-      <ul class="main_feature">
-        <a href="#" class="feature">
-          <li id="myProfile">My Profile</li>
-        </a>
-        <a href="/myProperties" class="feature">
-          <li>My Properties</li>
-        </a>
-        <a href="/addproperties" class="feature">
-          <li>Add Properties</li>
-        </a>
-      </ul>
-      <h3 class="text">~TENANTS</h3>
-      <ul class="main_feature">
-        <a href="/my_tenants" class="feature">
-          <li>My Tenants</li>
-        </a>
-        <a href="/message" class="feature"> 
-          <li>Messages</li>
-        </a>
-      </ul>
-      <h3 class="text">~TOOLS</h3>
-      <ul class="main_feature">
-        <a href="/rent_estimate" class="feature">
-          <li>Rent Estimate</li>
-        </a>
-      </ul>
-    </div>
-
-        <div id="sidebar_icon" class="back">
-         <img src="/images/sidebar-icon.png" alt="error" class="icon1">
-       </div>
-     
+        <ul class="main_feature">
+          <a href="#" class="feature">
+            <li id="myProfile">My Profile</li>
+          </a>
+          <a href="/myProperties" class="feature">
+            <li>My Properties</li>
+          </a>
+          <a href="/addproperties" class="feature">
+            <li>Add Properties</li>
+          </a>
+        </ul>
+        <h3 class="text">~TENANTS</h3>
+        <ul class="main_feature">
+          <a href="/my_tenants" class="feature">
+            <li>My Tenants</li>
+          </a>
+          <a href="/message" class="feature">
+            <li>Messages</li>
+          </a>
+        </ul>
+        <h3 class="text">~TOOLS</h3>
+        <ul class="main_feature">
+          <a href="/rent_estimate" class="feature">
+            <li>Rent Estimate</li>
+          </a>
+        </ul>
       </div>
+
+      <div id="sidebar_icon" class="back">
+        <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+      </div>
+
+    </div>
 
 
     <div class="diff_features">
-          <!-- MY PROFILE HTML -->
+      <!-- MY PROFILE HTML -->
       <div class="myProfile">
         <div class="profile">
           <img src="/images/profile.png" alt="">
         </div>
         <div class="owner-details">
-          <div><b>Name:</b> <%= owner.name %></div>
-          <div><b>Email:</b> <%= owner.email %></div>
-          <div><b>Contact:</b> <%= owner.contact %></div>
+          <div><b>Name:</b>
+            <%= owner.name %>
+          </div>
+          <div><b>Email:</b>
+            <%= owner.email %>
+          </div>
+          <div><b>Contact:</b>
+            <%= owner.contact %>
+          </div>
           <div><b>Role:</b> Owner</div>
         </div>
       </div>
     </div>
 
     <% if (info) { %>
-    <script>
-      window.onload = function() {
-        alert('<%= info %>');
-      };
-    </script>
-  <% } %>
+      <script>
+        window.onload = function () {
+          alert('<%= info %>');
+        };
+      </script>
+      <% } %>
 
   </section>
 
