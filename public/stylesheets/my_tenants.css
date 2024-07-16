@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&family=Kumbh+Sans:wght@100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +13,8 @@
   filter: blur(8px);
   transition: filter 0.3s;
 }
-   /* navbar css */
+
+/* navbar css */
 .navbar {
   background-color: #27C4B1;
   display: flex;
@@ -35,7 +37,7 @@
 .heading {
   display: inline;
   font-size: 46px;
-  font-family:serif;
+  font-family: serif;
   font-weight: bold;
 }
 
@@ -240,14 +242,15 @@
   display: flex;
   flex-direction: row;
 }
-         /* CSS FOR SIDEBAR */
 
-         .side{
-          width:100%;
-          display: flex;
-          justify-content: center;
-          position: relative;
-         }
+/* CSS FOR SIDEBAR */
+
+.side {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
 
 .sidebar {
   height: 90vh;
@@ -324,270 +327,251 @@ h3 {
 }
 
 
-  
-@media only screen and (max-width:981px){
- 
-  .feature{
+
+@media only screen and (max-width:981px) {
+
+  .feature {
     font-size: 16px;
     width: 70%;
     margin-left: 0;
   }
-  .feature li{
+
+  .feature li {
     margin-left: 15%;
   }
-  .sidebar{
+
+  .sidebar {
     width: 230px;
   }
 }
 
 
 @media only screen and (max-width:556px) {
-  .sidebar{
+  .sidebar {
     display: none;
-    width:94%;
-    padding-top: 50px;
+    width: 100vw;
+    padding-top: 70px;
   }
-  .diff_features{
-    height:90vh;
+
+  .diff_features {
+    height: 90vh;
     padding-top: 30px;
   }
-  
+
 }
 
-#sidebar_icon{
+#sidebar_icon {
   position: absolute;
   left: 20px;
   top: 36px;
   z-index: 2;
   height: 40px;
   width: 40px;
+  cursor: pointer;
 }
-#sidebar_icon img{
-  height: 30px;
+
+#sidebar_icon img {
+  height: 20px;
 }
 
 
- @media screen and (min-width:556px){
-   #sidebar_icon{
+@media screen and (min-width:556px) {
+  #sidebar_icon {
     display: none;
-   }
- }
+  }
+}
 
- 
 
-.display{
+
+.display {
   display: none;
 }
- .dis{
+
+.dis {
   display: flex;
- }
- .fit{
+}
+
+.fit {
   max-width: fit-content;
- }
-   .animate{
-    display: flex;
-    animation-name: sidebar;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: backwards;
-    animation-delay: 0s;
-   }
-  
-@keyframes sidebar{
-  from{
-   transform: translateX(-500px);
-  }
-  to{
-   transform:translateX(0px);
+}
+
+
+/* MY TENANTS CARDS CSS */
+.myTenants {
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 3vw;
+  padding-top: 20px;
+}
+
+.tenant {
+  overflow: hidden;
+
+  width: 250px;
+  height: 250px;
+  background-image: url('/images/tenant_req_bg.svg');
+  background-repeat: no-repeat;
+  margin: 20px 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 29px -5px rgba(0, 0, 0, 0.605);
+  background-position: -22px -24px;
+  background-size: 312px;
+  transition: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+
+}
+
+.tenant_content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.circle {
+  width: 67px;
+  height: 67px;
+  border-radius: 36px;
+  background-color: #27C4B1;
+  border: 3px solid #7BE6D3;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  color: white;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.textbox {
+  margin: 1px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-left: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.textbox h3 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 16px;
+  color: black;
+  margin: 0px 6px;
+  text-align: center;
+}
+
+.textbox h4 {
+  font-family: "Kameron", serif;
+  font-size: 14px;
+  color: #164E47;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+.hoverbox {
+  width: 100%;
+  height: 52px;
+  transition: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(17, 225, 201, 0.374), rgba(17, 225, 201, 0.448));
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 197px;
+  z-index: 1;
+  clip-path: ellipse(40% 100% at 100% 100%);
+}
+
+
+.view h3 {
+  color: rgba(0, 0, 0, 0);
+  transition: all;
+  transition-duration: 1s;
+}
+
+#view {
+  color: #ffffff00;
+  background-color: #20a5ba00;
+  font-family: "Kameron", serif;
+  border: none;
+  width: 50px;
+  border-radius: 3px;
+  height: 18px;
+  margin-left: 8px;
+  transition: all;
+  transition-duration: 1s;
+  cursor: pointer;
+}
+
+.sendMsg {
+  position: relative;
+  z-index: 2;
+  margin: 4px;
+}
+
+.sendMsg button {
+  color: #ffffff00;
+  font-family: "Kameron", serif;
+  margin-left: 130px;
+  font-size: 12px;
+  background-color: #20a5ba00;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
+  height: 20px;
+  margin-bottom: 5px;
+  transition: all;
+  transition-duration: 1s;
+  cursor: pointer;
+}
+
+.tenant_content:hover .hoverbox {
+  position: absolute;
+  height: 250px;
+  transform: translateY(-198px);
+  clip-path: ellipse(136% 89% at 100% 100%);
+}
+
+.tenant_content:hover .view h3 {
+  color: black;
+}
+
+.tenant_content:hover #view {
+  color: #ffffff;
+  background-color: #20a5ba;
+}
+
+.tenant_content:hover .sendMsg button {
+  color: #ffffff;
+  background-color: #20a5ba;
+
+}
+
+@media screen and (max-width:895px) {
+  .myTenants {
+    justify-content: space-around;
   }
 }
-  .anime2{
-    animation-name: side;
-    animation: side 1s 1 forwards, rotate 1s ease-out forwards;
-   
+
+@media only screen and (max-width: 1218px) and (min-width: 895px) {
+  .tenant {
+    margin: 25px 4vw;
   }
-   @keyframes rotate{
-     from{
-     }
-     to{
-      transform: rotate(180deg) translateX(-80vw);
-     }
-   }
-   @keyframes side{
-    from{
-    }
-    to{
-   transform: translateX(-80vw);
-    }
-  }
-
-
-    /* MY TENANTS CARDS CSS */
-   .myTenants{
-    width:100%;
-    height:fit-content;
-    display: grid;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-   padding-left: 3vw;
-   padding-top: 20px;
-   }
-   .tenant{
-    overflow: hidden;
-   
-    width:250px;
-    height:250px;
-    background-image:url('/images/tenant_req_bg.svg') ;
-    background-repeat: no-repeat;
-    margin:20px 20px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 29px -5px rgba(0, 0, 0, 0.605);
-    background-position: -22px -24px;
-    background-size: 312px;
-    transition: all;
-    transition-duration: 1s;
-    transition-timing-function: ease-in;
-   
-   }
-    .tenant_content{
-       width:100%;
-       height:100%;
-       overflow: hidden;
-       position:relative;
-       display: flex;
-       flex-direction: column;
-    }
-    .circle{
-     width: 67px;
-    height: 67px;
-    border-radius: 36px;
-    background-color: #27C4B1;
-    border: 3px solid #7BE6D3;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 0px;
-    color: white;
-    font-size: 26px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    }
-    .textbox{
-      margin:1px 0px;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: baseline;
-      padding-left: 30px;
-      position: relative;
-      z-index: 2;
-    }
-     .textbox h3{
-      font-family: "Playfair Display", serif;
-      font-optical-sizing: auto;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 16px;
-      color: black;
-      margin: 0px 6px;
-      text-align: center;
-     }
-     .textbox h4{
-      font-family: "Kameron", serif;
-      font-size: 14px;
-      color: #164E47;
-      text-align: center;
-      font-weight: 500;
-     }
-
-
-       .hoverbox{
-        width:100%;
-        height:52px;
-        transition: all;
-        transition-duration: 1s;
-        transition-timing-function: ease-in;
-        background-image: linear-gradient(rgba(255, 255, 255, 0),rgba(17, 225, 201, 0.374),rgba(17, 225, 201, 0.448));
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 197px;
-        z-index: 1;
-         clip-path: ellipse(40% 100% at 100% 100%);
-       }
-
-    
-       .view h3{
-        color: rgba(0, 0, 0, 0);
-        transition: all;
-        transition-duration: 1s;
-       }
-
-      #view{
-        color: #ffffff00;
-        background-color: #20a5ba00;
-        font-family: "Kameron", serif;
-        border: none;
-        width: 50px;
-        border-radius: 3px;
-        height: 18px;
-        margin-left: 8px;
-        transition: all;
-        transition-duration: 1s;
-       cursor: pointer;
-    }
-       .sendMsg{
-        position: relative;
-        z-index: 2;
-        margin:4px;
-         }
-
-      .sendMsg button{
-        color: #ffffff00;
-        font-family: "Kameron", serif;
-        margin-left: 130px;
-        font-size: 12px;
-        background-color: #20a5ba00;
-        border: none;
-        border-radius: 3px;
-        width: 100px;
-        height: 20px;
-        margin-bottom: 5px;
-        transition: all;
-        transition-duration: 1s;
-        cursor: pointer;
-      }
-       
-      .tenant_content:hover .hoverbox {
-        position:absolute;
-        height:250px;
-        transform: translateY(-198px);
-        clip-path: ellipse(136% 89% at 100% 100%);
-      }  
-       
-       .tenant_content:hover .view h3{
-        color:black;
-       }
-        .tenant_content:hover #view{
-          color: #ffffff;
-          background-color: #20a5ba;
-        }
-        .tenant_content:hover .sendMsg button{
-          color: #ffffff;
-          background-color: #20a5ba;
-         
-        }
-        
-        @media screen and (max-width:895px){
-           .myTenants{
-            justify-content: space-around;
-           }
-        }
-        @media only screen and (max-width: 1218px) and (min-width: 895px) {
-          .tenant{
-            margin:25px 4vw;
-          }
-        }
+}
