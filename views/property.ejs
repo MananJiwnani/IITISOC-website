@@ -156,7 +156,8 @@
                 $.ajax({
                   url: "/updateTenant",
                   type: "POST",
-                  data: { property_id: formData.property_id },
+                  // data: { property_id: formData.property_id },
+                  data: { property_id: res.property_id },
                   success: function (res) {
                     if (res.success) {
                       alert("Payment successful and tenant assigned");
