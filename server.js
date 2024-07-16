@@ -180,7 +180,7 @@ app.post('/updateTenant', checkAuth, async (req, res) => {
     console.log('Updating property:', propertyId, 'with tenant:', userId);
 
     await Property.findByIdAndUpdate(propertyId, { tenant: userId });
-    console.log('Updated property:', property);
+    console.log('Updated property:', propertyId);
 
     res.status(200).send({ success: true, msg: 'Tenant assigned successfully' });
   } catch (error) {
