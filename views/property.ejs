@@ -148,11 +148,26 @@
               "key": "" + res.key_id + "",
               "amount": "" + res.amount + "",
               "currency": "INR",
-              "name": ""+res.product_name+"",
-              "image": ""+res.image+"",
-              "order_id": ""+res.order_id+"",
-              "handler": function (response){
-                alert("Payment Successfull");
+              "name": "" + res.product_name + "",
+              "image": "" + res.image + "",
+              "order_id": "" + res.order_id + "",
+              "handler": function (response) {
+                $.ajax({
+                  url: "/updateTenant",
+                  type: "POST",
+                  data: { property_id: res.property_id },
+                  success: function (updateRes) {
+                    if (updateRes.success) {
+                      alert("PAYMENT SUCCESSFULL AND TENANT ASSIGNED!");
+                    } else {
+                      alert("PAYMENT FAILED!");
+                    }
+                  },
+                  error: function (err) {
+                    console.error(err);
+                    alert("An error occurred while updating the tenant.");
+                  }
+                });
               },
               "prefill": {
                 "contact": "" + res.contact + "",

@@ -145,7 +145,6 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
         const userId = req.session.user_id;
         const user = await User.findById(userId);
         const propertyId = req.body.property_id;
-        await Property.findByIdAndUpdate(propertyId, { tenant: userId });
         const property = await Property.findById(propertyId);
         
         res.status(200).send({
@@ -159,6 +158,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
           contact: user.contact,
           name: user.name,
           email: user.email,
+          property_id: req.body.property_id,
         });
       } else {
         console.error('Error creating Razorpay order:', err);
@@ -171,6 +171,22 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 });    
+
+app.post('/updateTenant', checkAuth, async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const propertyId = req.body.property_id;
+    console.log('Updating property:', propertyId, 'with tenant:', userId);
+
+    await Property.findByIdAndUpdate(propertyId, { tenant: userId, rentedOut: true });
+    console.log('Updated property:', propertyId);
+
+    res.status(200).send({ success: true, msg: 'TENANT ASSIGNED SUCCESSFULLY' });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ success: false, msg: 'Internal Server Error' });
+  }
+});
 
 app.get('/owner_portal',checkAuth, checkRole('owner'), async (req, res) => {
   try {
