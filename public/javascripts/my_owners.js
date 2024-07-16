@@ -34,28 +34,14 @@ async function rentOutProperty(propertyId) {
     }
 }
 
-    //   togglemenu for sidebar
-    const s =document.querySelector('.side');
-    const sidebar = document.querySelector('.sidebar');
-    const dF = document.querySelector('.diff_features');
-    const nav =document.getElementById('sidebar_icon');
-    const i= document.querySelector('.icon1');
-    nav.addEventListener('click', ()=>{
-       dF.classList.toggle("display");
-       sidebar.classList.toggle("animate");
-       s.classList.toggle("fit");
-       i.classList.toggle("anime2");
-   
-    })
-      const body =document.querySelector('body')
+//   togglemenu for sidebar
 
-  const x= document.querySelector('#myProfile');
-   
+const side_btn = document.getElementById("sidebar_icon");
+const dF = document.querySelector(".diff_features");
+const sidebar = document.querySelector(".sidebar");
 
-       x.onclick = function(){  
-         sidebar.classList.remove("animate") ;
-          dF.classList.remove("display");
-           s.classList.add("fit");
-           i.classList.toggle("anime2");
-   }
-   
+
+side_btn.addEventListener("click", () => {
+    dF.classList.toggle("display");
+    sidebar.classList.toggle("dis");
+})
