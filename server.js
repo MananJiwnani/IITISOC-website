@@ -178,7 +178,7 @@ app.post('/updateTenant', checkAuth, async (req, res) => {
     const propertyId = req.body.property_id;
     console.log('Updating property:', propertyId, 'with tenant:', userId);
 
-    // await Property.findByIdAndUpdate(propertyId, { tenant: userId, rentedOut: true });
+    await Property.findByIdAndUpdate(propertyId, { tenant: userId, rentedOut: true });
     console.log('Updated property:', propertyId);
 
     res.status(200).send({ success: true, msg: 'TENANT ASSIGNED SUCCESSFULLY' });
