@@ -153,18 +153,22 @@
               "order_id": ""+res.order_id+"",
               "handler": function (response){
                 // alert("Payment Successfull");
-                $.ajax({
-                  url: "/updateTenant",
-                  type: "POST",
-                  // data: { property_id: formData.property_id },
-                  data: { property_id: res.property_id },
-                  success: function (res) {
+                // $.ajax({
+                //   url: "/updateTenant",
+                //   type: "POST",
+                //   data: { property_id: res.property_id },
+                  // success: function (res) {
                     if (res.success) {
+                      $.ajax({
+                        url: "/updateTenant",
+                        type: "POST",
+                        data: { property_id: res.property_id }, 
+                      })                   
                       alert("Payment successful and tenant assigned");
                     } else {
                       alert("Failed to assign tenant");
                     }
-                  },
+                  }
                   error: function (err) {
                     console.error(err);
                     alert("An error occurred while updating the tenant.");
