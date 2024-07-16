@@ -159,6 +159,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
           contact: user.contact,
           name: user.name,
           email: user.email,
+          property_id: req.body.property_id,
         });
       } else {
         console.error('Error creating Razorpay order:', err);
@@ -176,7 +177,11 @@ app.post('/updateTenant', checkAuth, async (req, res) => {
   try {
     const userId = req.session.user_id;
     const propertyId = req.body.property_id;
+    console.log('Updating property:', propertyId, 'with tenant:', userId);
+
     await Property.findByIdAndUpdate(propertyId, { tenant: userId });
+    console.log('Updated property:', property);
+
     res.status(200).send({ success: true, msg: 'Tenant assigned successfully' });
   } catch (error) {
     console.log(error.message);
