@@ -150,7 +150,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
         
         res.status(200).send({
           success: true,
-          msg: 'PAYMENT INITIATED AND TENANT ASSIGNED',
+          msg: 'ORDER CREATED',
           order_id: order.id,
           amount: amount, 
           key_id: RAZORPAY_ID_KEY,
