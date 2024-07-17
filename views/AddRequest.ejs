@@ -7,18 +7,41 @@
   <title>Maintenance Request</title>
   <!-- <link rel="stylesheet" href="stylesheets/rent_estimate.css"> -->
   <style>
+    body {
+      background: white;
+    }
+
     .box {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h3 {
+      font-size: 34px;
+      padding: 0;
+      margin: 10px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .form {
+      background-image: url("/images/register_bc.jpg");
       display: flex;
       flex-direction: column;
       gap: 50px;
-      margin: 50px;
+      margin: 20px 50px;
+      min-width: 700px;
+      width: 60%;
+      padding: 20px 60px;
+      box-sizing: border-box;
+      border-radius: 20px;
+      box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.25);
     }
 
-    form label {
-      font-size: 22px;
-    }
 
-    .form label,
+    form label,
     .diff_features div {
       color: black;
       font-size: 24px;
@@ -31,11 +54,17 @@
     }
 
     input,
-    select {
-      width: 150px;
-      border-radius: 3px;
-      border: 1px solid black;
-      color: black;
+    select,
+    textarea {
+      background-color: #418A7DF2;
+      color: white;
+      border-radius: 5px;
+      width: 300px;
+      height: 35px;
+      text-align: center;
+      border: none;
+      font-size: 20px;
+      font-family: "Kaisei HarunoUmi", serif;
     }
 
     input {
@@ -43,18 +72,29 @@
       box-sizing: border-box;
     }
 
+    textarea {
+      height: 50px;
+      box-sizing: border-box;
+    }
+
     button {
-      background-color: #2e8a79;
-      height: 40px;
-      width: 150px;
-      margin: 10px;
-      margin-right: 0;
-      border-radius: 5px;
+      color: white;
+      background-color: #000000B3;
       border: none;
-      align-self: flex-end;
-      font-size: 18px;
-      padding: 0 15px;
+      border-radius: 10px;
+      height: 45px;
+      width: 200px;
+      margin-top: 50px;
+      margin-right: auto;
+      font-size: 24px;
+      font-family: "Kameron", serif;
       cursor: pointer;
+    }
+
+    .submit_button {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
     }
 
     .select,
@@ -62,6 +102,9 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+      gap: 20%;
+      align-items: flex-start;
+      margin-top: 15px;
     }
 
     .RE {
@@ -71,36 +114,75 @@
 
     @media only screen and (max-width:780px) {
       form label {
-        font-size: 14px;
+        font-size: 18px;
       }
 
-      .box {
-        margin: 50px 20px;
+      h3 {
+        font-size: 28px;
+      }
+
+      .form {
+        margin: 20px 20px;
+        padding: 0 25px;
+        padding-bottom: 20px;
+        min-width: 0;
+        width: 85%;
       }
 
       input,
       select,
-      button {
-        width: 130px;
+      textarea {
+        width: 210px;
+      }
+
+      .inputs {
+        gap: 30px;
       }
     }
 
     @media only screen and (max-width:556px) {
+      h3 {
+        font-size: 20px;
+      }
+
       form label {
         font-size: 14px;
       }
 
-      .box {
-        margin: 50px 35px;
+      .form {
+        margin: 10px;
+        width: 90%;
+      }
+
+      .inputs {
+        gap: 20px;
+      }
+
+      input {
+        height: 25px;
+        width: 150px;
+      }
+
+      textarea {
+        height: 40px;
+        width: 150px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 5px 10px;
+        width: 120px;
+        height: 32px;
+
       }
     }
   </style>
 </head>
 
 <body>
-  <h3>Add Maintenance Request</h3>
   <div class="box">
     <div class="form">
+      <h3>Add Maintenance Request</h3>
 
 
       <form action="/maintenanceRequest" method="POST">
@@ -115,13 +197,13 @@
         </div>
 
         <div class="inputs">
-          <label for="subCategory">Sub Category:</label>
+          <label for="subCategory">BHK:</label>
           <input type="text" id="subCategory" name="subCategory" required>
         </div>
 
         <div class="inputs">
           <label for="address">Address:</label>
-          <input type="text" id="address" name="address" required>
+          <textarea name="address" id="address" rows="3" required></textarea>
         </div>
 
         <div class="inputs">
@@ -131,7 +213,6 @@
 
         <div class="inputs">
           <label for="description">Description:</label>
-          <!-- <input type="text" id="description" name="description" required> -->
           <textarea name="description" id="description" rows="3" required></textarea>
         </div>
 
