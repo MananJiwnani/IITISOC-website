@@ -113,7 +113,7 @@ hr {
   color: #198796;
 }
 
-.pay-form {
+.pay-form, .unrent-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -412,7 +412,7 @@ hr {
     width: 135px;
   }
   
-   .pay-form{
+   .pay-form, .unrent-form{
      flex-direction: row;
      padding: 5px;
    }
