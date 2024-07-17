@@ -401,6 +401,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
   try {
     const propertyId = req.params.id;
     const properties = await Property.findById(propertyId);
+    const rented = properties.rentedOut;
     const userId = req.session.user_id;
     const user = await User.findById(userId);
     const role = user.role;
@@ -409,7 +410,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
       return res.status(404).send('Property not found');
     }
 
-    res.render('property.ejs', { property: properties, ROLE: role});
+    res.render('property.ejs', { property: properties, ROLE: role, rented: rented});
   } catch (error) {
     res.status(500).send('Internal server error');
   }
