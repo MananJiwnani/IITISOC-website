@@ -68,7 +68,7 @@
       <% } %>
 
       <% if(ROLE == 'owner' && rented) { %>
-        <form action="/unRent"  method="post">
+        <form action="/unRent" method="post">
           <input type="hidden" name="property_id" value="<%= property._id%>">
           <input type="submit" value="UNRENT" class="unrent">
         </form>
@@ -135,11 +135,11 @@
 
 </html>
 
-<script>
-     if (req.session.unrent) {
-        alert('PROPERTY UNRENTED SUCCESSFULLY');
-     }
-</script>
+<% if (message) { %>
+  <script>
+    alert('PROPERTY UNRENTED SUCCESSFULLY');
+  </script>
+<% } %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
