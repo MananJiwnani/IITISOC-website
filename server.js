@@ -211,8 +211,9 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), async(req, res) => {
   try {
     const userId = req.session.user_id;
     const tenant = await User.findById(userId);
-   
-    res.render('tenant_portal.ejs', {tenant});
+    const message =req.session.message;
+    delete req.session.message;
+    res.render('tenant_portal.ejs', {tenant,info: message});
   } catch (error) {
       res.status(500).send('Internal server error');
     }
@@ -553,7 +554,7 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
       status: 'Pending',
     });
     await newRequest.save();
-   
+    req.session.message = 'Request Sent Successfully';
     res.redirect('/tenant_portal');
   } catch (err) {
     console.error(err);
