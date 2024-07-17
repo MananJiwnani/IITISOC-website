@@ -22,14 +22,7 @@ const mongoose = require('mongoose');
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 const connection = require("./db");
-// const upload = require("./storage");
 
-// mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
-//   console.log('Connected to MongoDB');
-// }).catch(err => {
-//   console.error('Failed to connect to MongoDB', err);
-//   process.exit(1);
-// });
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
@@ -38,6 +31,7 @@ mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
 
 const User = require('./user');
 const Property = require('./property');
+const mRequest= require('./maintenanceReq');
 
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
@@ -217,6 +211,7 @@ app.get('/tenant_portal',checkAuth, checkRole('tenant'), async(req, res) => {
   try {
     const userId = req.session.user_id;
     const tenant = await User.findById(userId);
+   
     res.render('tenant_portal.ejs', {tenant});
   } catch (error) {
       res.status(500).send('Internal server error');
@@ -357,7 +352,9 @@ app.post('/logout',checkAuth, (req, res) => {
   req.session.user_id = null;
   res.redirect('/login');
 })
-
+app.get('/maintenanceRequest',checkAuth, (req, res) => {
+  res.render('AddRequest.ejs');
+});
 
 // Adding Properties
 app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
@@ -482,16 +479,6 @@ app.post('/',checkAuth, (req, res) =>{
   }
 });
 
-// app.get('/api/vacancies',checkAuth, async (req, res) => {
-//   try {
-//     const query = req.session.query || {};
-//     const properties = await Property.find(query);
-
-//     res.status(200).json(properties);
-//   } catch (error) {
-//     res.status(404).send(error.message);
-//   }
-// });
 
 // post request in vacancies page when user selects the filter options for seeing vacancies
 app.post('/vacancies',checkAuth, (req, res) => {
@@ -521,6 +508,58 @@ app.get('/api/username', checkAuth, (req, res) => {
 });
 
 
+app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
+  try{
+    const userId= req.session.user_id;
+    const owner = await User.findById(userId);
+   const maintenanceRequests=await mRequest.find({owner: userId}).populate(['subCategory', 'propertyType', 'address', 'tenantName', 'date']);
+   res.render('request.ejs',{owner,maintenanceRequests});
+   }
+   catch (error) {
+   res.status(500).send('Internal server error');
+  }
+      }  );
+
+app.get('/request/:id', checkAuth, async (req, res) => {
+  try {
+    const maintenanceRequestId = req.params.id;
+    const maintenanceRequests = await mRequest.findById(maintenanceRequestId);
+    
+    if (!maintenanceRequests) {
+      return res.status(404).send('Request not found');
+    }
+
+    res.render('mRequest.ejs', { request:maintenanceRequests });
+  } catch (error) {
+    res.status(500).send('Internal server error');
+  }
+});
+app.post('/maintenanceRequest', checkAuth, async (req, res) => {
+  try {
+    const tenantId = req.session.user_id;
+    const tenant = await User.findById(tenantId);
+    const ownerId = tenant.owner;
+    const newRequest = new mRequest({
+      owner: ownerId,
+      tenant: tenantId,
+      tenantName: tenant.name,
+      propertyType:req.body.propertyType,
+      subCategory:req.body.subCategory,
+      address:req.body.address,
+      subject:req.body.subject,
+     
+      description :req.body.description,
+      date :req.body.date,
+      status: 'Pending',
+    });
+    await newRequest.save();
+   
+    res.redirect('/tenant_portal');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
 
 io.on("connection",function(socket) {
   
