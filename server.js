@@ -425,7 +425,7 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
     let rentals = await Property.find({ owner: req.session.user_id }).populate(['subCategory', 'propertyType', 'address', 'city', 'state', 'price']);
     // rentals = JSON.stringify(rentals);
     res.render('myproperties.ejs', { properties: rentals, message: req.session.unrented });
-    delete req.session.unrented;
+    req.session.unrented = null;
   } catch (err) {
     res.status(500).send(err);
   }
