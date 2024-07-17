@@ -186,6 +186,7 @@ app.post('/unRent', checkAuth, async(req, res) => {
   try {
     const id = req.body.property_id;
     await Property.findByIdAndUpdate(id, { rentedOut: false });
+    alert('PROPERTY UNRENTED SUCCESSFULLY');
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
