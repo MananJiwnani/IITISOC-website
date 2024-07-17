@@ -413,7 +413,9 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
       return res.status(404).send('Property not found');
     }
 
-    res.render('property.ejs', { property: properties, ROLE: role, rented: rented});
+    const message = req.session.unrented;
+    req.session.unrented = null;
+    res.render('property.ejs', { property: properties, ROLE: role, rented: rented, message: message });
   } catch (error) {
     res.status(500).send('Internal server error');
   }
