@@ -184,8 +184,8 @@ app.post('/updateTenant', checkAuth, async (req, res) => {
 
 app.post('/unRent', checkAuth, async(req, res) => {
   try {
-    const id = req.body.property_id;
-    await Property.findByIdAndUpdate(id, { rentedOut: false });
+    const propertyId = req.body.property_id;
+    await Property.findByIdAndUpdate(propertyId, { rentedOut: false });
     req.session.unrented = "unrented";
     res.redirect('/myProperties');
   } catch (error) {
