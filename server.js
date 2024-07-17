@@ -562,6 +562,32 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   }
 });
 
+app.get('/rentalIncome', checkAuth, checkRole('owner'), async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const properties = await Property.find({ owner: userId, rentedOut: true  }).populate('tenant');
+    const totalRentalIncome = properties.reduce(
+      (total, property) => total + property.price, 0);
+
+    const rentalIncome = properties.map(property => {
+      return {
+        propertyType:property.propertyType,
+        subCategory:property.subCategory,
+        address: property.address,
+        rent: property.price,
+        tenant: property.tenant.name ,
+        rentedOut: property.rentedOut
+      };
+    });
+
+    res.render('rentalIncome.ejs', { rentalIncome ,totalRentalIncome });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+
+
 io.on("connection",function(socket) {
   
   socket.on("join_room", (data) => {
