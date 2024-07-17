@@ -187,8 +187,7 @@ app.post('/unRent', checkAuth, async(req, res) => {
     const propertyId = req.body.property_id;
     await Property.findByIdAndUpdate(propertyId, { rentedOut: false });
     req.session.unrented = "unrented";
-    // res.redirect('/myProperties');
-    res.redirect(`/vacancies/${propertyId}`);
+    res.redirect('/myProperties');
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
@@ -413,9 +412,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
       return res.status(404).send('Property not found');
     }
 
-    const message = req.session.unrented;
-    req.session.unrented = null;
-    res.render('property.ejs', { property: properties, ROLE: role, rented: rented, message: message });
+    res.render('property.ejs', { property: properties, ROLE: role, rented: rented });
   } catch (error) {
     res.status(500).send('Internal server error');
   }
