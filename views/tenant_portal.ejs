@@ -86,7 +86,14 @@
       </div>
     </div>
     
-   
+    <% if (info) { %>
+      <script>
+        window.onload = function () {
+          alert('<%= info %>');
+        };
+      </script>
+      <% } %>
+
 
 
 

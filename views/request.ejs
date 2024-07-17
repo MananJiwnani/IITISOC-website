@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requests</title>
+</head>
+<body>
+  <h2>Maintenance Requests</h2>
+  <ul>
+    <% maintenanceRequests.forEach(maintenanceRequest => { %>
+      <li>
+        Tenant Name: <%= maintenanceRequest.tenantName %> 
+        Property Type:<%= maintenanceRequest.propertyType %> 
+        Sub Category:<%= maintenanceRequest.subCategory %> 
+        Address:<%= maintenanceRequest.address %> 
+        Date:<%= maintenanceRequest.date %> 
+       
+      </li>
+      <a href="/request/<%=mRequest._id%>" ><button >View </button></a>
+    <% }); %>
+  </ul>
+</body>
+</html>
