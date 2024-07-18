@@ -73,7 +73,16 @@
           <% } %>
 
       <% if(ROLE == 'tenant' && rented) { %>
-        <p>hello</p>
+        <div class="pay-form-div">
+
+          <form class="form" action="/createOrder" method="POST">
+            <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
+            <input type="hidden" name="price" value="<%=property.price%>">
+            <input type="hidden" name="property_id" value="<%= property._id %>">
+            <input type="submit" value="MAINTANCE REQUEST" class="pay">
+            
+          </form>
+        </div>
       <% } %>
 
       <% if(ROLE == 'owner' && rented) { %>
