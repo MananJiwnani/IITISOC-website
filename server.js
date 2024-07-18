@@ -434,7 +434,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
     const rented = properties.rentedOut;
     const email = properties.owner.email;
     const userId = req.session.user_id;
-    // const room_id=userId;
+    const room_id=userId;
     const tenant = await User.findById(userId);
     const user = await User.findById(userId);
     const role = user.role;
@@ -448,7 +448,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
       rented,
       tenant,
       email,
-      // room_id
+      room_id
     });
   }
    catch (error) {
