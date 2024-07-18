@@ -445,7 +445,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
     res.render('property.ejs', { 
       property: properties, 
       ROLE: role, 
-      Rented: rented,
+      rented,
       tenant,
       email,
       room_id
