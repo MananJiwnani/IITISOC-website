@@ -72,6 +72,10 @@
         </div>
           <% } %>
 
+      <% if(ROLE == 'tenant' && rented) { %>
+        <p>hello</p>
+      <% } %>
+
       <% if(ROLE == 'owner' && rented) { %>
         <form action="/unRent" method="post">
           <input type="hidden" name="property_id" value="<%= property._id%>">
