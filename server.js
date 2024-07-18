@@ -313,6 +313,8 @@ app.get('/tenant_properties/:id', checkAuth, async (req, res) => {
     const propertyId = req.params.id;
     const properties = await Property.findById(propertyId).populate('owner');
     const email = properties.owner.email;
+    const rented = properties.rentedOut;
+
     const userId = req.session.user_id;
     const room_id=userId;
     const tenant = await User.findById(userId);
@@ -327,6 +329,7 @@ app.get('/tenant_properties/:id', checkAuth, async (req, res) => {
       property: properties, 
       ROLE: role,
       tenant,
+      rented,
       email,
       room_id
     });
