@@ -59,7 +59,7 @@
         </div>
 
         <% if (ROLE == 'tenant') { %>
-          <% if (!rented) { %>
+          <% if (!Rented) { %>
             <div class="pay-form-div">
               <form class="pay-form" action="/createOrder" method="POST">
                 <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
@@ -81,7 +81,7 @@
           <% } %>
         <% } %>
 
-      <% if(ROLE == 'owner' && rented) { %>
+      <% if(ROLE == 'owner' && Rented) { %>
         <form action="/unRent" method="post">
           <input type="hidden" name="property_id" value="<%= property._id%>">
           <input type="submit" value="UNRENT" class="unrent">
