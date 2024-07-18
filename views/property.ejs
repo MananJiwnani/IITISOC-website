@@ -76,12 +76,7 @@
         </form>
       <% } %>
 
-      <% if(ROLE == 'tenant' && rented) { %>
-        <form action="/maintenanceRequest" method="post">
-          <input type="hidden" name="property_id" value="<%= property._id%>">
-          <input type="submit" value="Maintenance Request" class="unrent">
-        </form>
-      <% } %>
+     
 
       </div>
 
