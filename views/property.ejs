@@ -58,7 +58,7 @@
           </div>
         </div>
 
-      <% if(ROLE == 'tenant' && !rented) { %>
+      <% if(ROLE == 'tenant' && rented == false) { %>
         <div class="pay-form-div">
 
           <form class="pay-form" action="/createOrder" method="POST">
