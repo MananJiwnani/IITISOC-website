@@ -134,6 +134,7 @@ hr {
   padding: 7px 10px;
   margin-top: 7px;
   cursor: pointer;
+  width: 100%;
 }
 
 /* INSIDE BOX2 */
@@ -285,7 +286,7 @@ hr {
 @media screen and (max-width:850px) {
   .box1 {
     right: 0px;
-    margin-right: 10%;
+    margin-right: 5%;
     width: 70%;
   }
 
@@ -408,8 +409,8 @@ hr {
   .contact,
   .unrent {
     font-size: 16px;
-    padding: 5px 13px;
-    width: 135px;
+    padding: 5px 4px;
+    width: 145px;
   }
   
    .pay-form, .unrent-form{
