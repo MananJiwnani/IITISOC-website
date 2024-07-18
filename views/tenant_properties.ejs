@@ -37,62 +37,63 @@
 
   <section class="container">
 
-    <div class="side fit">   
+    <div class="side fit">
 
-    <div class="sidebar">
-     
-      <ul class="main_feature">
-        <a href="/tenant_portal" class="feature">
-          <li>My Profile</li>
-        </a>
-        <a href="#" class="feature">
-          <li>My Properties</li>
-        </a>
-        <a href="/vacancies" class="feature">
-          <li>Find Vacancies</li>
-        </a>
-      </ul>
+      <div class="sidebar">
 
-      <h3 class="text">~Owners</h3>
-      <ul class="main_feature">
-        <a href="/my_owners" class="feature">
-          <li>My Owners</li>
-        </a>
-        <a href="/message" class="feature"> 
-          <li>Messages</li>
-        </a>
-      </ul>
+        <ul class="main_feature">
+          <a href="/tenant_portal" class="feature">
+            <li>My Profile</li>
+          </a>
+          <a href="#" class="feature">
+            <li>My Properties</li>
+          </a>
+          <a href="/vacancies" class="feature">
+            <li>Find Vacancies</li>
+          </a>
+        </ul>
+
+        <h3 class="text">~Owners</h3>
+        <ul class="main_feature">
+          <a href="/my_owners" class="feature">
+            <li>My Owners</li>
+          </a>
+          <a href="/message" class="feature">
+            <li>Messages</li>
+          </a>
+        </ul>
+      </div>
+
+      <div id="sidebar_icon">
+        <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+      </div>
+
     </div>
-
-    <div id="sidebar_icon">
-      <img src="/images/sidebar-icon.png" alt="error" class="icon1">
-    </div>
-  
-   </div>
 
 
     <div class="diff_features">
-       <div class="listings">
-      <div class="grid_item">
-        <div class="property-item">
-                  <div class="img-box">
+      <div class="listings">
+        <% properties.forEach(property=> { %>
+          <div class="grid_item">
+            <div class="property-item">
+              <div class="img-box">
+                <img src="<%= property.image.path %>" alt="Property Image" class="img">
+                <div class="bg"></div>
+              </div>
+              <div class="card-content">
+                <h2 class="card-title"><%= property.subCategory %> <%= property.propertyType %></h2>
+                <p class="card-location"><%= property.address %>, <%= property.city %>, <%= property.state %></p>
+                <p class="card-price">₹<%= property.price %>/month</p>
+                <a href="/property" target="_blank" class="prop"><button class="card-button">View Details</button></a>
 
-                    <img src="/images/home2.jpg" class="img" alt="">
-                    <div class="bg"></div>
-                  </div>
-                       <div class="card-content">
-                        <h2 class="card-title">3 BHK Villa</h2>
-                        <p class="card-location">123 Main Street, Anytown, USA</p>
-                        <p class="card-price">$1,200/month</p>
-                        <a href="/property" target="_blank" class="prop"><button class="card-button">View Details</button></a>
-                        
-                   </div> 
-                   
-                  </div>
-                </div>
               </div>
               
             </div>
+          </div>
+          <% }) %>
+      </div>
+
+    </div>
 
 
   <% properties.forEach(property=> { %>
