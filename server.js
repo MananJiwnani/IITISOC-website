@@ -308,7 +308,33 @@ app.get('/tenant_properties',checkAuth, async(req, res) => {
   }
 });
 
+app.get('/tenant_properties/:id', checkAuth, async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    const properties = await Property.findById(propertyId).populate('owner');
+    const email = properties.owner.email;
+    const userId = req.session.user_id;
+    const room_id=userId;
+    const tenant = await User.findById(userId);
+    const user = await User.findById(userId);
+    const role = user.role;
+    
+    if (!properties) {
+      return res.status(404).send('Property not found');
+    }
 
+    res.render('property.ejs', { 
+      property: properties, 
+      ROLE: role,
+      tenant,
+      email,
+      room_id
+    });
+  }
+   catch (error) {
+    res.status(500).send('Internal server error');
+  }
+});
 
 app.get('/register', (req, res) => {
   const error = req.flash('error');
