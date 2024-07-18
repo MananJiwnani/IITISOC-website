@@ -56,10 +56,10 @@
           <a href="#" class="feature">
             <li>My Tenants</li>
           </a>
-          <a href="/message" class="feature">
+          <a href="/message" target="_blank" class="feature">
             <li>Messages</li>
           </a>
-          <a href="/request" class="feature"> 
+          <a href="/request" target="_blank" class="feature"> 
             <li>Requests</li>
           </a>
         </ul>
@@ -67,6 +67,9 @@
         <ul class="main_feature">
           <a href="/rent_estimate" class="feature">
             <li>Rent Estimate</li>
+          </a>
+          <a href="/rentalIncome" target="_blank" class="feature"> 
+            <li>Rental Income</li>
           </a>
         </ul>
       </div>
@@ -128,15 +131,17 @@
     </div>
 
     <!--<div class="tenant">  
-      <% properties.forEach(property=> { %>
+    <% properties.forEach(property=> { %>
+      <% if (property.tenant) { %>
         <div class="tenant_content">
           <p class="textbox"><%= property.tenant.name %></p> 
           <p class="textbox"><%= property.tenant.email %></p>
           <p class="textbox"><%= property.tenant.contact %></p>
           <p class="textbox"><%= property.price %></p>
           <p class="textbox" style="color: black;"><%= property._id %></p>
-        </div>            
-      <% }) %>
+        </div>
+      <% } %>
+    <% }) %>
     </div> -->
 
   </section>
