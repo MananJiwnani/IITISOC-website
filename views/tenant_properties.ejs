@@ -95,16 +95,17 @@
             </div>
 
 
-       <!-- <% properties.forEach(property=> { %>
-              <div class="card-content">
-                <img src="<%= property.image.path %>" alt="Property Image">
-                <h2 class="card-title"><%= property.subCategory %> <%= property.propertyType %></h2>
-                <p class="card-location"><%= property.address %>, <%= property.city %>, <%= property.state %></p>
-                <p class="card-price">₹<%= property.price %>/month</p>
-                <p class="card-price"> <%= property._id %> </p>
-                <a href="/property" target="_blank" class="prop"><button class="card-button">View Details</button></a>    
-              </div>            
-            <% }) %> -->
+  <% properties.forEach(property=> { %>
+      <div class="card-content">
+          <img src="<%= property.image.path %>" alt="Property Image">
+          <h2 class="card-title"><%= property.subCategory %> <%= property.propertyType %></h2>
+          <p class="card-location"><%= property.address %>, <%= property.city %>, <%= property.state %></p>
+          <p class="card-price">₹<%= property.price %>/month</p>
+          <p class="card-price"> <%= property._id %> </p>
+          <a href="/property" target="_blank" class="prop"><button class="card-button">View Details</button></a>    
+          <a href="/maintenanceRequest" target="_blank" class="prop"><button class="card-button maintenanceRequest">Maintenance Request</button></a>
+      </div>            
+  <% }) %>
 
 
 
