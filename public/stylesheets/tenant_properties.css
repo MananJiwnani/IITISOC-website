@@ -428,6 +428,9 @@ h3 {
   font-weight: bold;
   width: 100%;
 }
+.maintenanceRequest{
+  margin-top: 4px;
+}
 
 .Contact {
   background-color: #19e7e7;

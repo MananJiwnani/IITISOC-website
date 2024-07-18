@@ -321,8 +321,8 @@ app.get('/register', (req, res) => {
 
 // Saving the details and creating a new document/object in the 'User' collection
 app.post('/register', checkNotAuth, async (req, res) => {
-  const { name, email, contact,password, role } = req.body;
-  const user = new User({ name, email, contact, password, role })
+  const { name, email, contact,password, role,owner,tenant } = req.body;
+  const user = new User({ name, email, contact, password, role,owner,tenant })
   await user.save();
   req.session.ROLE= role;
   req.session.username=name;
@@ -402,21 +402,38 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
 app.get('/vacancies/:id', checkAuth, async (req, res) => {
   try {
     const propertyId = req.params.id;
-    const properties = await Property.findById(propertyId);
+    const properties = await Property.findById(propertyId).populate('owner');
     const rented = properties.rentedOut;
+    const email = properties.owner.email;
     const userId = req.session.user_id;
+    const room_id=userId;
+    const tenant = await User.findById(userId);
     const user = await User.findById(userId);
     const role = user.role;
-        
     if (!properties) {
       return res.status(404).send('Property not found');
     }
 
-    res.render('property.ejs', { property: properties, ROLE: role, rented: rented });
-  } catch (error) {
+    res.render('property.ejs', { 
+      property: properties, 
+      ROLE: role, 
+      rented: rented,
+      tenant,
+      email,
+      room_id
+    });
+  }
+   catch (error) {
     res.status(500).send('Internal server error');
   }
 });
+    
+   
+        
+    
+     
+      
+  
 
 
 // My properties page for owner to see his properties
@@ -566,6 +583,32 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+
+app.get('/rentalIncome', checkAuth, checkRole('owner'), async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const properties = await Property.find({ owner: userId, rentedOut: true  }).populate('tenant');
+    const totalRentalIncome = properties.reduce(
+      (total, property) => total + property.price, 0);
+
+    const rentalIncome = properties.map(property => {
+      return {
+        propertyType:property.propertyType,
+        subCategory:property.subCategory,
+        address: property.address,
+        rent: property.price,
+        tenant: property.tenant.name ,
+        rentedOut: property.rentedOut
+      };
+    });
+
+    res.render('rentalIncome.ejs', { rentalIncome ,totalRentalIncome });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+
 
 io.on("connection",function(socket) {
   

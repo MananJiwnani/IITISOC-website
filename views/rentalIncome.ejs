@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rents</title>
+</head>
+<body>
+  <h1>Rental Income</h1>
+  <table id="rentalIncomeTable">
+      <thead>
+          <tr>
+              <th>Property Type</th>
+              <th>Sub Category</th>
+              <th>Address</th>
+              <th>Rent</th>
+              <th>Tenant Name</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% rentalIncome.forEach(item => { %>
+              <tr>
+                  <td><%= item.propertyType %></td>
+                  <td><%= item.subCategory %></td>
+                  <td><%= item.address %></td>
+                  <td><%= item.rent %></td>
+                  <td><%= item.tenant %></td>
+                  <td><%= item.rentedOut ? 'Rented Out' : 'Vacant' %></td>
+              </tr>
+          <% }) %>
+      </tbody>
+  </table>
+  Total Rental Income: Rs.<%= totalRentalIncome %>
+</body>
+</html>

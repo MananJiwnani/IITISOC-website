@@ -2,6 +2,16 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
+
+  // owner: { 
+  //   type: mongoose.Schema.Types.ObjectId, 
+  //   ref: 'User',
+  //    },
+
+  // tenant: { 
+  //   type: mongoose.Schema.Types.ObjectId, 
+  //   ref: 'User'
+  //  },
       name: {
         type: String,
         required: [true, 'Name is required'],
