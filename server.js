@@ -582,32 +582,7 @@ app.get('/request/:id', checkAuth, async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
-// app.post('/maintenanceRequest', checkAuth, async (req, res) => {
-//   try {
-//     const tenantId = req.session.user_id;
-//     const tenant = await User.findById(tenantId);
-//     const ownerId = tenant.owner;
-//     const newRequest = new mRequest({
-//       owner: ownerId,
-//       tenant: tenantId,
-//       tenantName: tenant.name,
-//       propertyType:req.body.propertyType,
-//       subCategory:req.body.subCategory,
-//       address:req.body.address,
-//       subject:req.body.subject,
-     
-//       description :req.body.description,
-//       date :req.body.date,
-//       status: 'Pending',
-//     });
-//     await newRequest.save();
-//     req.session.message = 'Request Sent Successfully';
-//     res.redirect('/tenant_portal');
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send('Internal server error');
-//   }
-// });
+
 
 app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   try {
