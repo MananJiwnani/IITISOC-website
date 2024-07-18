@@ -308,6 +308,8 @@ app.get('/tenant_properties',checkAuth, async(req, res) => {
   }
 });
 
+
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   const uname=req.session.username;
@@ -580,7 +582,9 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   try {
     const tenantId = req.session.user_id;
     const tenant = await User.findById(tenantId);
-    const ownerId = tenant.owner;
+    const propertyId = req.body.property_id;
+    const properties = await Property.findById({ propertyId }).populate('owner');
+    const ownerId=properties.owner._id;
     const newRequest = new mRequest({
       owner: ownerId,
       tenant: tenantId,
