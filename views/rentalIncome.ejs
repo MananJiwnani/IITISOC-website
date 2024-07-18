@@ -8,6 +8,7 @@
 <body>
   <h1>Rental Income</h1>
   <table id="rentalIncomeTable">
+      <% if (totalRentalIncome > 0) { %>
       <thead>
           <tr>
               <th>Property Type</th>
@@ -18,6 +19,7 @@
               <th>Status</th>
           </tr>
       </thead>
+      <% } %>
       <tbody>
           <% rentalIncome.forEach(item => { %>
               <tr>

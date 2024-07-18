@@ -308,6 +308,8 @@ app.get('/tenant_properties',checkAuth, async(req, res) => {
   }
 });
 
+
+
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   const uname=req.session.username;
@@ -427,15 +429,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
-    
-   
-        
-    
-     
-      
-  
-
-
+ 
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
   try {
@@ -557,11 +551,40 @@ app.get('/request/:id', checkAuth, async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+// app.post('/maintenanceRequest', checkAuth, async (req, res) => {
+//   try {
+//     const tenantId = req.session.user_id;
+//     const tenant = await User.findById(tenantId);
+//     const ownerId = tenant.owner;
+//     const newRequest = new mRequest({
+//       owner: ownerId,
+//       tenant: tenantId,
+//       tenantName: tenant.name,
+//       propertyType:req.body.propertyType,
+//       subCategory:req.body.subCategory,
+//       address:req.body.address,
+//       subject:req.body.subject,
+     
+//       description :req.body.description,
+//       date :req.body.date,
+//       status: 'Pending',
+//     });
+//     await newRequest.save();
+//     req.session.message = 'Request Sent Successfully';
+//     res.redirect('/tenant_portal');
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Internal server error');
+//   }
+// });
+
 app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   try {
     const tenantId = req.session.user_id;
     const tenant = await User.findById(tenantId);
-    const ownerId = tenant.owner;
+    const propertyId = req.body.property_id;
+    const properties = await Property.findById({ propertyId }).populate('owner');
+    const ownerId=properties.owner._id;
     const newRequest = new mRequest({
       owner: ownerId,
       tenant: tenantId,
