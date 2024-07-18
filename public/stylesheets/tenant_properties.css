@@ -337,7 +337,7 @@ h3 {
   width: 100%;
   height: fit-content;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding-top: 50px;
   padding-bottom: 50px;
   grid-row-gap: 40px;
@@ -491,19 +491,19 @@ h3 {
   }
 
   .listings {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (min-width:1600px) {
   .listings {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 @media screen and (max-width:950px) {
   .listings {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .card,
@@ -519,7 +519,7 @@ h3 {
 
   .card,
   .property-item {
-    width: 270px;
+    width: 280px;
   }
 }
 
