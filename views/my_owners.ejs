@@ -15,7 +15,7 @@
 
 </head>
 
-<body>   
+<body>
 
 
   <div class="navbar">
@@ -38,102 +38,104 @@
 
   <section class="container">
 
-    <div class="side fit">   
+    <div class="side fit">
 
-    <div class="sidebar">
-    
-      <ul class="main_feature">
-        <a href="/tenant_portal" class="feature">
-          <li>My Profile</li>
-        </a>
-        <a href="/tenant_properties" class="feature">
-          <li>My Properties</li>
-        </a>
-        <a href="/vacancies" class="feature">
-          <li>Find Vacancies</li>
-        </a>
-      </ul>
+      <div class="sidebar">
 
-      <h3 class="text">~Owners</h3>
-      <ul class="main_feature">
-        <a href="#" class="feature">
-          <li>My Owners</li>
-        </a>
-        <a href="/message" target="_blank" class="feature"> 
-          <li>Messages</li>
-        </a>
-      </ul>
+        <ul class="main_feature">
+          <a href="/tenant_portal" class="feature">
+            <li>My Profile</li>
+          </a>
+          <a href="/tenant_properties" class="feature">
+            <li>My Properties</li>
+          </a>
+          <a href="/vacancies" class="feature">
+            <li>Find Vacancies</li>
+          </a>
+        </ul>
+
+        <h3 class="text">~Owners</h3>
+        <ul class="main_feature">
+          <a href="#" class="feature">
+            <li>My Owners</li>
+          </a>
+          <a href="/message" target="_blank" class="feature">
+            <li>Messages</li>
+          </a>
+        </ul>
+      </div>
+
+      <div id="sidebar_icon">
+        <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+      </div>
+
     </div>
-
-    <div id="sidebar_icon">
-      <img src="/images/sidebar-icon.png" alt="error" class="icon1">
-    </div>
-  
-   </div>
 
     <div class="diff_features">
-          <!-- MY PROFILE HTML -->
+      <!-- MY PROFILE HTML -->
       <div class="myTenants">
+        <% if(properties.length==0) { %>
+          <p style=" text-align: center; color: black;"> YOU HAVE NOT RENTED ANY PROPERTY</p>
+          <% } %>
 
-         <div class="tenant">
-          <div class="tenant_content">
-           <div class="circle">MJ</div>
 
-           <div class="textbox">
-            <h3>Name</h3>
-            <h4>Manan Jiwnani</h4>
-           </div>
+              <% properties.forEach(property=> { %>
+                <div class="tenant">
+                  <div class="tenant_content">
+                    <div class="circle"><% 
+                      var nameParts = property.owner.name.split(" ");
+                      var initials = nameParts[0].charAt(0) + nameParts[1].charAt(0);
+                    %>
+                    <%= initials %></div>
+    
+                    <div class="textbox">
+                      <h3>Name</h3>
+                      <h4><%= property.owner.name %></h4>
+                    </div>
+                    <div class="textbox">
+                      <h3>Email</h3>
+                      <h4><%= property.owner.email %></h4>
+                    </div>
+                    <div class="textbox">
+                      <h3>Contact</h3>
+                      <h4><%= property.owner.contact %></h4>
+                    </div>
+                    <div class="textbox">
+                      <h3>Rent</h3>
+                      <h4>₹<%= property.price %></h4>
+                    </div>
+                    <div class="textbox view">
+                      <h3>Property Details</h3>
+                      <button id="view">view</button>
+                    </div>
+                    <div class="hoverbox">
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="tenant_content">
+                  <p class="textbox">
+                    <%= property.owner.name %>
+                  </p>
+                  <p class="textbox">
+                    <%= property.owner.email %>
+                  </p>
+                  <p class="textbox">
+                    <%= property.owner.contact %>
+                  </p>
+                  <p class="textbox">
+                    <%= property.price %>
+                  </p>
+                  <p class="textbox" style="color: black;">
+                    <%= property._id %>
+                  </p>
+                </div> -->
+                <% }) %>
 
-           <div class="textbox">
-            <h3>Email</h3>
-            <h4>njfwe@gmail.com</h4>
-           </div>
-
-           <div class="textbox">
-            <h3>Contact</h3>
-            <h4>7984227146</h4>
-           </div>
-
-           <div class="textbox">
-            <h3>Property Id</h3>
-            <h4>1@345</h4>
-           </div>
-
-           
-           <div class="textbox view">
-             <h3>Property Details</h3>
-             <button id="view">view</button>
-            </div>
-            
-            <!-- <div class="sendMsg">
-              <button>Send Messege</button>
-            </div> -->
-            
-            <div class="hoverbox">
-              </div>
-         </div>
-      </div>
       </div>
 
     </div>
 
 
-<% if(properties.length==0) { %>
-  <p style=" text-align: center; color: black;"> YOU DON'T HAVE ANY PROPERTIES BOUGHT RENT  </p>
-<% } %> 
-<div class="tenant"> 
-
-
-    <% properties.forEach(property=> { %>
-      <div class="tenant_content">
-        <p class="textbox"><%= property.owner.name %></p> 
-        <p class="textbox"><%= property.owner.email %></p>
-        <p class="textbox"><%= property.owner.contact %></p>
-        <p class="textbox"><%= property.price %></p>
-        <p class="textbox" style="color: black;"><%= property._id %></p>
-      </div>            
-    <% }) %>
-  </div>
 
   </section>
 
