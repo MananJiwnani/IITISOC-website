@@ -559,7 +559,7 @@ app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
     const userId= req.session.user_id;
     const owner = await User.findById(userId);
     
-   const maintenanceRequests=await mRequest.find({owner: userId}).populate('tenant');
+   const maintenanceRequests=await mRequest.find({owner: userId});
    
    res.render('request.ejs',{owner,maintenanceRequests});
    }
