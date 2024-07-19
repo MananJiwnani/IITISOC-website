@@ -85,12 +85,18 @@
         <hr>
         <div id="rented-properties-list" class="listings">
 
-          <% if (!hasTenants) { %>
+          <!-- <% if (!hasTenants) { %>
             <p style="color: black;">YOU DON'T HAVE ANY OF YOUR PROPERTIES RENTED</p>
           <% } %>
 
           <% if(properties.length==0) { %>
             <p style="text-align: center; color: black;"> NO PROPERTIES AVAILABLE </p>
+            <% } %> -->
+
+            <% if (properties.length === 0) { %>
+              <p style="text-align: center; color: black;">NO PROPERTIES AVAILABLE</p>
+            <% } else if (!hasTenants) { %>
+              <p style="color: black;">YOU DON'T HAVE ANY OF YOUR PROPERTIES RENTED</p>
             <% } %>
 
               <% properties.forEach(property=> { %>
