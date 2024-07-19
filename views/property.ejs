@@ -54,11 +54,11 @@
             <h4>
               <%= property.carpetArea %>
             </h4>
-           
+
           </div>
         </div>
 
-        <% if (ROLE == 'tenant') { %>
+        <% if (ROLE=='tenant' ) { %>
           <% if (!rented) { %>
             <div class="pay-form-div">
               <form class="pay-form" action="/createOrder" method="POST">
@@ -67,36 +67,38 @@
                 <input type="hidden" name="property_id" value="<%= property._id %>">
                 <input type="submit" value="Pay Now" class="pay">
               </form>
-              <a href="mailto:<%=email%>?subject=Property%20Inquiry&body=I%20am%20interested%20in%20your%20<%=property.subCategory %>%20<%= property.propertyType %>%20located%20at%20<%= property.address %>%20.%20Kindly%20log%20in%20to%20the%20chatroom%20tomorrow%20at%209:00%20a.m.%20using%20room%20ID%20<%=room_id.substring(0, 6)%>%20for%20more%20inquiry.%0A%0A<%=tenant.name%>"><button class="contact">Contact Owner</button></a>
+              <a
+                href="mailto:<%=email%>?subject=Property%20Inquiry&body=I%20am%20interested%20in%20your%20<%=property.subCategory %>%20<%= property.propertyType %>%20located%20at%20<%= property.address %>%20.%20Kindly%20log%20in%20to%20the%20chatroom%20tomorrow%20at%209:00%20a.m.%20using%20room%20ID%20<%=room_id.substring(0, 6)%>%20for%20more%20inquiry.%0A%0A<%=tenant.name%>"><button
+                  class="contact">Contact Owner</button></a>
             </div>
-          <% } else { %>
-            <div class="pay-form-div">
-              <form class="pay-form" action="/createOrder" method="POST">
-                <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
-                <input type="hidden" name="price" value="<%=property.price%>">
-                <input type="hidden" name="property_id" value="<%= property._id %>">
-                <input type="submit" value="Pay Now" class="pay">
-              </form>
-              <a href="mailto:<%=email%>?subject=Property%20Inquiry&body=%>"><button class="contact">Contact Owner</button></a>
-             
-              <form class="form" action="/maintenanceRequest" method="GET">
-                <input type="hidden" name="property_id" value="<%= property._id %>">
-                <button type="submit" class="pay">MAINTENANCE REQUEST</button>
-              </form>
-              
-              
-            </div>
-          <% } %>
-        <% } %>
+            <% } else { %>
+              <div class="pay-form-div">
+                <form class="pay-form" action="/createOrder" method="POST">
+                  <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
+                  <input type="hidden" name="price" value="<%=property.price%>">
+                  <input type="hidden" name="property_id" value="<%= property._id %>">
+                  <input type="submit" value="Pay Now" class="pay">
+                </form>
+                <!-- <a href="mailto:<%=email%>?subject=Property%20Inquiry&body=%>"><button class="contact">Contact Owner</button></a> -->
 
-      <% if(ROLE == 'owner' && rented) { %>
-        <form action="/unRent" method="post">
-          <input type="hidden" name="property_id" value="<%= property._id%>">
-          <input type="submit" value="UNRENT" class="unrent">
-        </form>
-      <% } %>
+                <form class="form" action="/maintenanceRequest" method="GET">
+                  <input type="hidden" name="property_id" value="<%= property._id %>">
+                  <button type="submit" class="pay">Maintenance</button>
+                </form>
 
-     
+
+              </div>
+              <% } %>
+                <% } %>
+
+                  <% if(ROLE=='owner' && rented) { %>
+                    <form action="/unRent" method="post">
+                      <input type="hidden" name="property_id" value="<%= property._id%>">
+                      <input type="submit" value="UNRENT" class="unrent">
+                    </form>
+                    <% } %>
+
+
 
       </div>
 
@@ -151,7 +153,7 @@
 
 
       </div>
-    </div> 
+    </div>
 
 
   </div>
