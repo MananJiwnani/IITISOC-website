@@ -23,6 +23,14 @@
   <% } else { %>
     <p>No maintenance requests found.</p>
   <% } %>
+
+  <% if (info) { %>
+    <script>
+      window.onload = function () {
+        alert('<%= info %>');
+      };
+    </script>
+    <% } %>
   
 </body>
 </html>

@@ -560,8 +560,9 @@ app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
     const owner = await User.findById(userId);
     
    const maintenanceRequests=await mRequest.find({owner: userId});
-   
-   res.render('request.ejs',{owner,maintenanceRequests});
+   const message =req.session.message;
+   delete req.session.message;
+   res.render('request.ejs',{owner,maintenanceRequests,info:message});
    }
    catch (error) {
    res.status(500).send('Internal server error');
@@ -622,6 +623,20 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   }
 });
 
+app.post('/resolveRequest', checkAuth, checkRole('owner'), async (req, res) => {
+  try {
+    const requestId = req.body.requestId;
+    const maintenanceRequest = await mRequest.findById(requestId);
+
+    maintenanceRequest.status = 'Completed';
+    await maintenanceRequest.save();
+
+    req.session.message = 'Request resolved successfully';
+    res.redirect('/request');
+  } catch (error) {
+    res.status(500).send('Internal server error');
+  }
+});
 
 app.get('/rentalIncome', checkAuth, checkRole('owner'), async (req, res) => {
   try {
