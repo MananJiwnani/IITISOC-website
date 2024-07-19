@@ -7,21 +7,22 @@
 </head>
 <body>
   <h2>Maintenance Requests</h2>
-  <ul>
+  
+  <% if (maintenanceRequests.length > 0) { %>
     <% maintenanceRequests.forEach(maintenanceRequest => { %>
       
-        <p>Tenant Name: <%= maintenanceRequest.tenantName %> </p>
-        <p>Property Type:<%= maintenanceRequest.propertyType %> </p>
-        <p>Sub Category:<%= maintenanceRequest.subCategory %> </p>
-        <p>Address:<%= maintenanceRequest.address %> </p>
-        <p>Date:<%= maintenanceRequest.date.toDateString() %> </p>
-        
-        <a href="/request/<%=maintenanceRequest._id%>" ><button >View </button></a>
-       
-       
-
-     
+      <p>Tenant Name: <%= maintenanceRequest.tenantName %> </p>
+      <p>Property Type: <%= maintenanceRequest.propertyType %> </p>
+      <p>Sub Category: <%= maintenanceRequest.subCategory %> </p>
+      <p>Address: <%= maintenanceRequest.address %> </p>
+      <p>Date: <%= maintenanceRequest.date.toDateString() %> </p>
+      
+      <a href="/request/<%= maintenanceRequest._id %>"><button>View</button></a>
+      
     <% }); %>
-  </ul>
+  <% } else { %>
+    <p>No maintenance requests found.</p>
+  <% } %>
+  
 </body>
 </html>
