@@ -533,7 +533,9 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
     // rentals = JSON.stringify(rentals);
     const message = req.session.unrented;
     req.session.unrented = null;
-    res.render('myproperties.ejs', { properties: rentals, message: message });
+
+    const hasTenants = rentals.some(property => property.tenant);
+    res.render('myproperties.ejs', { properties: rentals, message: message, hasTenants });
   } catch (err) {
     res.status(500).send(err);
   }
