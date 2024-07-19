@@ -79,40 +79,47 @@
           <% } %>
 
 
-              <% properties.forEach(property=> { %>
-                <div class="tenant">
-                  <div class="tenant_content">
-                    <div class="circle"><% 
-                      var nameParts = property.owner.name.split(" ");
-                      var initials = nameParts[0].charAt(0) + nameParts[1].charAt(0);
+            <% properties.forEach(property=> { %>
+              <div class="tenant">
+                <div class="tenant_content">
+                  <div class="circle">
+                    <% var nameParts=property.owner.name.split(" ");
+                    var initials = nameParts[0].charAt(0) + nameParts[1].charAt(0);
                     %>
                     <%= initials %></div>
     
-                    <div class="textbox">
+                    <div class=" textbox">
                       <h3>Name</h3>
-                      <h4><%= property.owner.name %></h4>
-                    </div>
-                    <div class="textbox">
-                      <h3>Email</h3>
-                      <h4><%= property.owner.email %></h4>
-                    </div>
-                    <div class="textbox">
-                      <h3>Contact</h3>
-                      <h4><%= property.owner.contact %></h4>
-                    </div>
-                    <div class="textbox">
-                      <h3>Rent</h3>
-                      <h4>₹<%= property.price %></h4>
-                    </div>
-                    <div class="textbox view">
-                      <h3>Property Details</h3>
-                      <button id="view">view</button>
-                    </div>
-                    <div class="hoverbox">
-                    </div>
+                      <h4>
+                        <%= property.owner.name %>
+                      </h4>
+                  </div>
+                  <div class="textbox">
+                    <h3>Email</h3>
+                    <h4>
+                      <%= property.owner.email %>
+                    </h4>
+                  </div>
+                  <div class="textbox">
+                    <h3>Contact</h3>
+                    <h4>
+                      <%= property.owner.contact %>
+                    </h4>
+                  </div>
+                  <div class="textbox">
+                    <h3>Rent</h3>
+                    <h4>₹<%= property.price %>
+                    </h4>
+                  </div>
+                  <div class="textbox view">
+                    <h3>Property Details</h3>
+                    <button id="view">view</button>
+                  </div>
+                  <div class="hoverbox">
                   </div>
                 </div>
-                <!-- <div class="tenant_content">
+              </div>
+              <!-- <div class="tenant_content">
                   <p class="textbox">
                     <%= property.owner.name %>
                   </p>
@@ -129,7 +136,7 @@
                     <%= property._id %>
                   </p>
                 </div> -->
-                <% }) %>
+              <% }) %>
 
       </div>
 
