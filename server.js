@@ -388,10 +388,7 @@ app.post('/logout',checkAuth, (req, res) => {
   req.session.user_id = null;
   res.redirect('/login');
 })
-app.get('/maintenanceRequest',checkAuth, (req, res) => {
-  const propertyId = req.query.property_id;
-  res.render('AddRequest.ejs', { propertyId });
-});
+
 
 // Adding Properties
 app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
@@ -561,7 +558,10 @@ app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
   try{
     const userId= req.session.user_id;
     const owner = await User.findById(userId);
-   const maintenanceRequests=await mRequest.find({owner: userId}).populate(['subCategory', 'propertyType', 'address', 'tenantName', 'date']);
+   const maintenanceRequests=await mRequest.find({owner: userId});
+   if (!maintenanceRequests) {
+    return res.status(404).send('Request not found');
+  }
    res.render('request.ejs',{owner,maintenanceRequests});
    }
    catch (error) {
@@ -584,27 +584,35 @@ app.get('/request/:id', checkAuth, async (req, res) => {
   }
 });
 
+app.get('/maintenanceRequest',checkAuth, (req, res) => {
+  const propertyId = req.query.property_id;
+  res.render('AddRequest.ejs', { propertyId });
+});
 
 app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   try {
     const tenantId = req.session.user_id;
     const tenant = await User.findById(tenantId);
+    
     const propertyId = req.body.property_id;
-    const properties = await Property.findById(propertyId);
-    if (!properties) {
-      return res.status(404).send('Property not found');
+    const properties = await Property.findById(propertyId).populate('tenant');
+    const email= properties.tenant.email;
+    if (!email) {
+      return res.status(404).send('email not found');
     }
     const ownerId=properties.owner._id;
     const newRequest = new mRequest({
       tenant: tenantId,
       owner: ownerId,
+      
       tenantName: req.body.tenantName,
       propertyType: req.body.propertyType,
       subCategory: req.body.subCategory,
       address: req.body.address,
       subject: req.body.subject,
       description: req.body.description,
-      date: req.body.date,
+      date: Date.today,
+      email:email,
       status: 'Pending',
     });
     
@@ -612,8 +620,8 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
     req.session.message = 'Request Sent Successfully';
     res.redirect('/tenant_portal');
   } catch (err) {
-    // res.status(500).send(err);
-    console.log(err);
+    res.status(500).send(err);
+   
   }
 });
 

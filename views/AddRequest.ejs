@@ -182,6 +182,7 @@
       <h3>Add Maintenance Request</h3>
 
       <form action="/maintenanceRequest" method="POST">
+        <input type="hidden" name="property_id" value="<%= propertyId %>">
         <div class="inputs">
           <label for="tenantName">Tenant Name:</label>
           <input type="text" id="tenantName" name="tenantName" value="">
@@ -224,6 +225,18 @@
       
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var today = new Date();
+      var day = String(today.getDate()).padStart(2, '0');
+      var month = String(today.getMonth() + 1).padStart(2, '0');
+      var year = today.getFullYear();
+
+      today = year + '-' + month + '-' + day;
+      document.getElementById('date').value = today;
+    });
+  </script>
 
 </body>
 

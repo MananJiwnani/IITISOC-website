@@ -9,15 +9,17 @@
   <h2>Maintenance Requests</h2>
   <ul>
     <% maintenanceRequests.forEach(maintenanceRequest => { %>
-      <li>
-        Tenant Name: <%= maintenanceRequest.tenantName %> 
-        Property Type:<%= maintenanceRequest.propertyType %> 
-        Sub Category:<%= maintenanceRequest.subCategory %> 
-        Address:<%= maintenanceRequest.address %> 
-        Date:<%= maintenanceRequest.date %> 
+      
+        <p>Tenant Name: <%= maintenanceRequest.tenantName %> </p>
+        <p>Property Type:<%= maintenanceRequest.propertyType %> </p>
+        <p>Sub Category:<%= maintenanceRequest.subCategory %> </p>
+        <p>Address:<%= maintenanceRequest.address %> </p>
+        <p>Date:<%= maintenanceRequest.date %> </p>
+        <a href="/request/<%=maintenanceRequest._id%>" ><button >View </button></a>
        
-      </li>
-      <a href="/request/<%=mRequest._id%>" ><button >View </button></a>
+       
+
+     
     <% }); %>
   </ul>
 </body>
