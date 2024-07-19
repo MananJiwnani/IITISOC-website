@@ -1,28 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Requests</title>
+  <style>
+    body{
+      background-color: #d2f7f73b;
+      display: flex;
+      flex-direction: column;
+    }
+    h2{
+      font-size: 42px;
+      align-self: center;
+    }
+    .requests {
+      /* width: fit-content; */
+      height: fit-content;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      grid-row-gap: 50px;
+      padding-left: 30px;
+      padding-right: 30px;
+      justify-content: center;
+      position: relative;
+    }
+
+    .grid_item {
+      display: flex;
+      justify-content: center;
+    }
+
+    .req-card {
+      display: flex;
+      flex-direction: column;
+      background-image: url("/images/register_bc.jpg");
+      box-shadow: 4px 4px 8px 3px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      width: 250px;
+      padding: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      justify-content: space-between;
+      line-height: 1.5;
+    }
+    p{
+      margin: 8px;
+    }
+
+    strong {
+      font-size: 18px;
+    }
+    .view-div{
+      align-self: center;
+    }
+    .view{
+      color: white;
+      background-color: #000000B3;
+      border: none;
+      border-radius: 5px;
+      height: 33px;
+      width: 100px;
+      margin-top: 5px;
+      margin-right: auto;
+      font-size: 20px;
+      font-family: "Kameron", serif;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 1280px) and (min-width:950px) {
+      .requests {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media screen and (min-width:1600px) {
+      .requests {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+    }
+
+    @media screen and (max-width:980px) {
+      .requests {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media screen and (max-width:685px) {
+      .requests {
+        grid-template-columns: 1fr;
+      }
+      h2{
+        font-size: 34px;
+        padding: 0 10px;
+        margin-bottom: 0;
+        width: 70%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <h2>Maintenance Requests</h2>
-  
-  <% if (maintenanceRequests.length > 0) { %>
-    <% maintenanceRequests.forEach(maintenanceRequest => { %>
-      
-      <p>Tenant Name: <%= maintenanceRequest.tenantName %> </p>
-      <p>Property Type: <%= maintenanceRequest.subCategory %> BHK <%= maintenanceRequest.propertyType %> </p>
-      <p>Address: <%= maintenanceRequest.address %> </p>
-      <p>Date: <%= maintenanceRequest.date.toDateString() %> </p>
-      <p>Status: <%= maintenanceRequest.status %></p>
-      
-      <a href="/request/<%= maintenanceRequest._id %>"><button>View</button></a>
-      
-    <% }); %>
-  <% } else { %>
-    <p>No maintenance requests found.</p>
-  <% } %>
+
+  <div class="requests">
+
+
+    <% if (maintenanceRequests.length> 0) { %>
+      <% maintenanceRequests.forEach(maintenanceRequest=> { %>
+        <div class="grid_item">
+          <div class="req-card">
+            <p><strong>Tenant:</strong>
+              <%= maintenanceRequest.tenantName %>
+            </p>
+            <p><strong>Property:</strong>
+              <%= maintenanceRequest.subCategory %> BHK <%= maintenanceRequest.propertyType %>
+            </p>
+            <p><strong>Address:</strong>
+              <%= maintenanceRequest.address %>
+            </p>
+            <p><strong>Subject:</strong>
+              <%= maintenanceRequest.subject %>
+            </p>
+            <p><strong>Date:</strong>
+              <%= maintenanceRequest.date.toDateString() %>
+            </p>
+            <p><strong>Status:</strong>
+              <%= maintenanceRequest.status %>
+            </p>
+            <div class="view-div">
+
+              <a href="/request/<%= maintenanceRequest._id %>"><button class="view">View</button></a>
+            </div>
+          </div>
+        </div>
+
+        <% }); %>
+          <% } else { %>
+            <p>No maintenance requests found.</p>
+            <% } %>
+
+  </div>
 
   <% if (info) { %>
     <script>
@@ -31,6 +153,7 @@
       };
     </script>
     <% } %>
-  
+
 </body>
+
 </html>
