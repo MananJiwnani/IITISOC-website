@@ -535,7 +535,8 @@ app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
     req.session.unrented = null;
 
     const hasTenants = rentals.some(property => property.tenant);
-    res.render('myproperties.ejs', { properties: rentals, message: message, hasTenants });
+    const allHaveTenants = rentals.every(property => property.tenant);
+    res.render('myproperties.ejs', { properties: rentals, message: message, hasTenants, allHaveTenants });
   } catch (err) {
     res.status(500).send(err);
   }
