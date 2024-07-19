@@ -1,0 +1,86 @@
+RentEstate Bot (REbot) data
+
+REbot is located on the bottom right corner of homepage. Text hi to the bot to start the conversation. It can tell you anything about the website.
+
+
+
+Register as a tenant if you're looking for a property to rent.
+Register as an owner if you want to list your property for rent.
+Create a min 8 character strong password.
+
+
+
+Login with your email and password.
+
+
+
+There's a searchbar on homepage which has filtering system on the basis of 
+	1) location(city, state)
+	2) property type(flat or villa) and bhk
+	3) budget (min and max)
+Search button takes on vacancies page with the selected filters if logged in, otherwise it redirects to login page.
+
+Homepage has lock images for tenant and owner portal buttons which can be accessed when logged in.
+Only owner allowed to go in owner portal and only tenant for tenant portal.
+
+Homepage has 4 cards for features on the websites (just for design).
+
+
+
+Vacancies page also has a searchbar with the same features as homepage searchbar.
+Vacancies page cannot be accessed without loggin in.
+
+It shows properties under the searchbar which have property type and bhk, address, and rent written on them with a photo and view details button.
+The button redirects to property page in new tab which has all the details related to that property.
+
+Now if an owner visits the property page through vacancies he will get no buttons.
+But if a tenant visits the property page through vacancies he will get 2 buttons, i.e. Pay Now and Contact Owner.
+
+Pay Now button will show a razorpay popup where he can make a successful payment, wait for redirecting and he will get an alert for property rented successfully. The property will be removed from vacancies page and it will be added to the tenant portal's my properties.
+The property will also be moved from other properties to rented properties in owner portal's my properties of its owner.
+
+Contact Now button will redirect to the default mail app of the device with prefilled details which also contain a room id. Tenant have to just save the room id somewhere and click on send. Owner can reply to the mail to change the timing if they are not convenient for him. The timing is set for next day's 9 am and both have to join by clicking on the messages button in the sidebar of their respective portals. Then they have to enter the room id and click on join to discuss about the property.
+
+
+
+The property rent flow is first the tenant uses Contact Owner button in property page to contact the owner and ask whatever he wants to know about the owner and the property and whatever owner wants to know about him. Then he clicks on Pay Now button to pay his rent. That's it, the property is rented for that month!
+
+
+
+In Tenant Portal sidebar, there are My Profile, My Properties, Find Vacancies, My Owners and Messages.
+
+My Profile just shows basic information like name, email, contact and role.
+
+My Properties contain all the properties that he rented. It will be the same as in vacancies page and when accessed through here will have 3 buttons for Pay Now, Contact Owner and Maintenance Request.
+The first two are the same as mentioned above and Maintenance Request will redirect to a page with a form for tenant to make a query for any repair in the rented property.
+
+Find Vacancies will redirect to vacancies page.
+
+My Owners will have cards for owners of tenant's rented properties. It will show 2 buttons on hover, i.e. 1) view with a label of property details which will redirect to the property page of that property and 2) send message which will have the same functionality as contact owner.
+
+Messages page has been mentioned above.
+
+
+
+In Owner Portal sidebar, there are My Profile, My Properties, Add Properties, My Tenants, Messages, Requests, Rent Estimate and Rental Income.
+
+My Profile is same as that of tenant portal's my profile.
+
+My Properties has 2 sections Rented Out Properties and Other Properties. Other Properties view details property page will be same as through vacancies (no buttons). But when you go to property page through view details of rented out properties you will get a button for Unrent which will mark the property as not rented and back in vacancies.
+
+Add Properties has a form to add your property to vacancies. Filling all details is preferred.
+
+My Tenants is same as my owners in tenant portal but for owners to see their tenants (same buttons).
+
+Messages is same as in tenant portal.
+
+Requests page is to receive maintenance requests added by tenants. It will have a Resolve button to mark the query as resolved.
+
+Rent Estimate uses general rental yield data based on filters like location, type, etc to calculate rent. It takes the data and current property price to calculate and show the estimated rent.
+
+Rental Income shows the current monthly rental income of the owner from the properties rented on this page.
+
+
+
+
+This website is made by Tanmai Sai, Arjun, Vasudha Bhuva and Manan Jiwnani of IIT Indore'27 under the mentorship of Akanksha Prasad of IIT Indore'26.
