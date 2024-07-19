@@ -39,6 +39,5 @@ const sidebar = document.querySelector(".sidebar");
 
 
 side_btn.addEventListener("click", () => {
-    dF.classList.toggle("display");
     sidebar.classList.toggle("dis");
 })

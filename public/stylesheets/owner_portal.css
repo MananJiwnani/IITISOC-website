@@ -458,14 +458,20 @@ b {
 
 @media only screen and (max-width:556px) {
   .sidebar {
-    display: none;
     width: 100vw;
     padding-top: 70px;
+    transform: translateX(-556px);
+    z-index: 5;
+    transition: transform 0.8s ease;
   }
   
   .diff_features {
     height: 100%;
     padding-top: 50px;
+    position: absolute;
+  }
+  #mpdF{
+    height: fit-content;
   }
 
 }
@@ -478,6 +484,7 @@ b {
   height: 40px;
   width: 40px;
   cursor: pointer;
+  z-index: 10;
 }
 
 #sidebar_icon img {
@@ -498,7 +505,7 @@ b {
 }
 
 .dis {
-  display: flex;
+  transform: translateX(0px);
 }
 
 .fit {
