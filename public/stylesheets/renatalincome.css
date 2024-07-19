@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaisei+HarunoUmi&family=Kameron:wght@400..700&family=Kumbh+Sans:wght@100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +35,7 @@
 .heading {
   display: inline;
   font-size: 46px;
-  font-family:serif;
+  font-family: serif;
   font-weight: bold;
 }
 
@@ -320,7 +321,7 @@ h3 {
   width: 100%;
   min-height: 100vh;
   display: flex;
-  
+
 }
 
 .features_display {
@@ -366,8 +367,8 @@ h3 {
   .sidebar {
     width: 230px;
   }
-  
-  
+
+
 }
 
 @media only screen and (max-width:730px) {
@@ -375,7 +376,7 @@ h3 {
     height: 100%;
   }
 
-  .sidebar{
+  .sidebar {
     width: 180px;
   }
 
@@ -394,13 +395,14 @@ h3 {
     z-index: 5;
     transition: transform 0.8s ease;
   }
-  
+
   .diff_features {
     height: 100%;
     padding-top: 50px;
     position: absolute;
   }
-  #mpdF{
+
+  #mpdF {
     height: fit-content;
   }
 
@@ -442,96 +444,111 @@ h3 {
   max-width: fit-content;
 }
 
-/* listings starts here */
-    
-  #rentalIncomeTable{
-    margin: 10px;
-    width:100%;
-    height:fit-content;
-  }
-    h1{
-      margin: 20px 10px;
-      color: #1F5D52;
-      font-size: 38px;
-    }
-  .table{
-    /* background-image: url("/images/header_background.jpg"); */
-    width:90%;
-    max-width: 800px;
-     background-size: cover;
-     height:fit-content;
-     min-height: 450px;
-   }
-   table,th,td{
-    border: 1px solid #ACACAC;
-    border-collapse: collapse;
-   }
-   tr{
-    width: 90%;
-   }
-   th{
-    width: 23%;
-    height: 30px;
-   }
+/* income */
 
-   td{
-    height: 20px;
-   }
+#rentalIncomeTable {
+  margin: 10px;
+  width: 100%;
+  height: fit-content;
+}
 
-    th h3{
-    color: #000000;
-    font-family: "Kameron", serif;
-    font-size: 20px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: rgba(140, 255, 255, 0.68);
-   }
+h1 {
+  margin: 20px 10px;
+  color: #1F5D52;
+  font-size: 38px;
+}
 
-  td{
-    color: #000000;
-    font-family: "Kameron", serif;
-    font-size: 16px;
-    text-align: center;
-  }
- .income{
-  margin:10px;
+.table {
+  /* background-image: url("/images/header_background.jpg"); */
+  width: 90%;
+  max-width: 800px;
+  background-size: cover;
+  height: fit-content;
+  min-height: 450px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ACACAC;
+  border-collapse: collapse;
+}
+
+tr {
+  width: 90%;
+}
+
+th {
+  width: 23%;
+  height: 38px;
+}
+
+td {
+  height: 24px;
+}
+
+th h3 {
+  color: #000000;
+  font-family: "Kameron", serif;
+  font-size: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(182 244 233);
+}
+
+td {
+  color: #000000;
+  font-family: "Kameron", serif;
+  font-size: 16px;
+  text-align: center;
+  background-color: rgb(251, 251, 251);
+}
+
+.income {
+  margin: 10px;
   margin-top: 30px;
   color: #000000;
   font-family: "Kameron", serif;
   font-size: 20px;
   font-weight: normal;
- }
+}
 
 
- @media only screen and (max-width:800px) {
-  h1{
+@media only screen and (max-width:800px) {
+  h1 {
     font-size: 32px;
   }
-  th h3{
+
+  th h3 {
     font-size: 18px;
   }
-  td{
+
+  td {
     font-size: 14px;
   }
-  .income{
-    font-size:20px;
-  }
- }
 
- @media only screen and (max-width:556px) {
-  h1{
+  .income {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width:556px) {
+  h1 {
     font-size: 32px;
   }
-  th h3{
+
+  th h3 {
     font-size: 18px;
   }
-  td{
+
+  td {
     font-size: 12px;
   }
-  .income{
+
+  .income {
     font-size: 20px;
     text-align: center;
   }
- }
+}

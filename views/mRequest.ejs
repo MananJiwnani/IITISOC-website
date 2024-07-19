@@ -1,27 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .box {
+      background-image: url("/images/register_bc.jpg");
+      background-position: center;
+      border-radius: 20px;
+      width: 75vw;
+      max-width: 1100px;
+      box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.25);
+      /* margin-top: 7%; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .box>div {
+      width: 90%;
+      padding: 10px 0;
+      display: flex;
+    }
+
+    .key {
+      font-weight: bold;
+      font-size: 26px;
+      flex-basis: 30%;
+      flex-shrink: 0;
+    }
+
+    .value {
+      font-size: 22px;
+      flex-basis: 70%;
+      position: relative;
+      top: 4px;
+    }
+
+    .msg {
+      font-size: 22px;
+    }
+
+    .button {
+      margin-left: 54%;
+    }
+    .button button{
+      color: white;
+      background-color: #000000B3;
+      border: none;
+      border-radius: 10px;
+      height: 35px;
+      width: 100px;
+      /* margin-top: 10px; */
+      margin-right: auto;
+      font-size: 20px;
+      font-family: "Kameron", serif;
+    }
+
+
+    @media only screen and (max-width:1000px) {
+      .box {
+        width: 90%;
+      }
+    }
+
+    @media only screen and (max-width:800px) {
+      .key {
+        font-size: 24px;
+      }
+
+      .value {
+        font-size: 20px;
+      }
+    }
+
+    @media only screen and (max-width:675px) {
+      .key {
+        font-size: 20px;
+      }
+
+      .value {
+        font-size: 18px;
+        top: 2px;
+      }
+    }
+
+    @media only screen and (max-width:576px) {
+      .box>div {
+        flex-direction: column;
+      }
+
+      .key {
+        font-size: 18px;
+      }
+
+      .value {
+        font-size: 16px;
+        top: 2px;
+      }
+
+      .msg {
+        font-size: 18px;
+      }
+
+      .button {
+        margin-left: 0;
+
+      }
+      .button button{
+        font-size: 18px;
+        height: 33px;
+        width: 90px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <p>Tenant Name: <%= request.tenantName %></p>
-  <p>Property Type: <%= request.propertyType%></p>
-  <p>Sub Category: <%= request.subCategory %></p>
-  <p>Address: <%= request.address %></p>
-  <p>Subject: <%= request.subject %></p>
-  <p>Description: <%= request.description %></p>
-  <p>Request Date: <%= request.date.toDateString() %></p>
-  <p>Status: <%= request.status %></p>
-  <% if (request.status === 'Pending') { %>
-
-    <form action="/resolveRequest" method="POST" style="display:inline;">
-      <input type="hidden" name="requestId" value="<%= request._id %>">
-      <button type="submit">Resolve</button>
-    </form>
-
-  <% } %>
-  <p>For further details contact at: <%= request.tenant.email %></p>
+  <div class="box">
+    <div>
+      <div class="key">Tenant Name:</div>
+      <div class="value">
+        <%= request.tenantName %>
+      </div>
+    </div>
+    <div>
+      <div class="key">Property:</div>
+      <div class="value">
+        <%= request.subCategory %> BHK <%= request.propertyType %>
+      </div>
+    </div>
+    <div>
+      <div class="key">Address:</div>
+      <div class="value">
+        <%= request.address %>
+      </div>
+    </div>
+    <div>
+      <div class="key">Subject:</div>
+      <div class="value">
+        <%= request.subject %>
+      </div>
+    </div>
+    <div>
+      <div class="key">Description:</div>
+      <div class="value">
+        <%= request.description %>
+      </div>
+    </div>
+    <div>
+      <div class="key">Request Date:</div>
+      <div class="value">
+        <%= request.date.toDateString() %>
+      </div>
+    </div>
+    <div>
+      <div class="key">Status:</div>
+      <div class="value">
+        <%= request.status %>
+      </div>
+    </div>
+    <% if (request.status==='Pending' ) { %>
+      <div class="button">
+        <form action="/resolveRequest" method="POST" style="display:inline;">
+          <input type="hidden" name="requestId" value="<%= request._id %>">
+          <button type="submit">Resolve</button>
+        </form>
+      </div>
+      <% } %>
+        <div class="msg">
+          For further details contact at: <%= request.tenant.email %>
+        </div>
+  </div>
 </body>
+
 </html>

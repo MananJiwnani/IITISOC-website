@@ -12,11 +12,10 @@
     <% maintenanceRequests.forEach(maintenanceRequest => { %>
       
       <p>Tenant Name: <%= maintenanceRequest.tenantName %> </p>
-      <p>Property Type: <%= maintenanceRequest.propertyType %> </p>
-      <p>Sub Category: <%= maintenanceRequest.subCategory %> </p>
+      <p>Property Type: <%= maintenanceRequest.subCategory %> BHK <%= maintenanceRequest.propertyType %> </p>
       <p>Address: <%= maintenanceRequest.address %> </p>
       <p>Date: <%= maintenanceRequest.date.toDateString() %> </p>
-      <p>Status: <%= request.status %></p>
+      <p>Status: <%= maintenanceRequest.status %></p>
       
       <a href="/request/<%= maintenanceRequest._id %>"><button>View</button></a>
       
