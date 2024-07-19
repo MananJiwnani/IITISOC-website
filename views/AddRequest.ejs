@@ -59,10 +59,14 @@
       border-radius: 5px;
       width: 300px;
       height: 35px;
-      text-align: center;
+      text-align: left;
       border: none;
       font-size: 20px;
       font-family: "Kaisei HarunoUmi", serif;
+    }
+
+    .center{
+      text-align: center;
     }
 
     input {
@@ -73,6 +77,7 @@
     textarea {
       height: 50px;
       box-sizing: border-box;
+      padding-left: 5px;
     }
 
     button {
@@ -185,17 +190,17 @@
         <input type="hidden" name="property_id" value="<%= propertyId %>">
         <div class="inputs">
           <label for="tenantName">Tenant Name:</label>
-          <input type="text" id="tenantName" name="tenantName" value="">
+          <input type="text" class="center" id="tenantName" name="tenantName" value="">
         </div>
       
         <div class="inputs">
           <label for="propertyType">Property Type:</label>
-          <input type="text" id="propertyType" name="propertyType" value="">
+          <input type="text" class="center" id="propertyType" name="propertyType" value="">
         </div>
       
         <div class="inputs">
           <label for="subCategory">BHK:</label>
-          <input type="text" id="subCategory" name="subCategory" value="">
+          <input type="text" class="center" id="subCategory" name="subCategory" value="">
         </div>
       
         <div class="inputs">
@@ -215,7 +220,7 @@
       
         <div class="inputs">
           <label for="date">Request Date:</label>
-          <input type="text" id="date" name="date" value="">
+          <input type="text" class="center" id="date" name="date" value="">
         </div>
       
         <div class="submit_button">
