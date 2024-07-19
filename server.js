@@ -558,10 +558,9 @@ app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
   try{
     const userId= req.session.user_id;
     const owner = await User.findById(userId);
-   const maintenanceRequests=await mRequest.find({owner: userId});
-   if (!maintenanceRequests) {
-    return res.status(404).send('Request not found');
-  }
+    
+   const maintenanceRequests=await mRequest.find({owner: userId}).populate('tenant');
+   
    res.render('request.ejs',{owner,maintenanceRequests});
    }
    catch (error) {
@@ -572,7 +571,7 @@ app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
 app.get('/request/:id', checkAuth, async (req, res) => {
   try {
     const maintenanceRequestId = req.params.id;
-    const maintenanceRequests = await mRequest.findById(maintenanceRequestId);
+    const maintenanceRequests = await mRequest.findById(maintenanceRequestId).populate('tenant');
     
     if (!maintenanceRequests) {
       return res.status(404).send('Request not found');
@@ -593,26 +592,24 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   try {
     const tenantId = req.session.user_id;
     const tenant = await User.findById(tenantId);
+    const email=tenant.email;
     
     const propertyId = req.body.property_id;
-    const properties = await Property.findById(propertyId).populate('tenant');
-    const email= properties.tenant.email;
-    if (!email) {
-      return res.status(404).send('email not found');
-    }
+    const properties = await Property.findById(propertyId).populate('owner');
+    
     const ownerId=properties.owner._id;
     const newRequest = new mRequest({
       tenant: tenantId,
       owner: ownerId,
-      
+      email:email,
       tenantName: req.body.tenantName,
       propertyType: req.body.propertyType,
       subCategory: req.body.subCategory,
       address: req.body.address,
       subject: req.body.subject,
       description: req.body.description,
-      date: Date.today,
-      email:email,
+      date:req.body.date,
+      
       status: 'Pending',
     });
     

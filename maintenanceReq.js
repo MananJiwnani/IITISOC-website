@@ -45,7 +45,7 @@ const maintenanceRequestSchema = new mongoose.Schema({
 
   date: { 
     type: Date, 
-    default: Date.now
+    required: [true, 'date is required'],
   },
 
 
