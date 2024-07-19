@@ -130,22 +130,19 @@
 
     </div>
 
-    <% if (hasTenants) { %>
-      <% properties.forEach(property => { %>
-        <% if (property.tenant) { %>
-          <div class="tenant_content">
-            <p class="textbox"><%= property.tenant.name %></p> 
-            <p class="textbox"><%= property.tenant.email %></p>
-            <p class="textbox"><%= property.tenant.contact %></p>
-            <p class="textbox"><%= property.price %></p>
-            <p class="textbox" style="color: black;"><%= property._id %></p>
-          </div>
-        <% } %>
-      <% }) %>
-    <% } else { %>
-      <p style="color: black;">You don't have any tenants.</p>
-    <% } %>
-    
+    <!--<div class="tenant">  
+    <% properties.forEach(property=> { %>
+      <% if (property.tenant) { %>
+        <div class="tenant_content">
+          <p class="textbox"><%= property.tenant.name %></p> 
+          <p class="textbox"><%= property.tenant.email %></p>
+          <p class="textbox"><%= property.tenant.contact %></p>
+          <p class="textbox"><%= property.price %></p>
+          <p class="textbox" style="color: black;"><%= property._id %></p>
+        </div>
+      <% } %>
+    <% }) %>
+    </div> -->
 
   </section>
 

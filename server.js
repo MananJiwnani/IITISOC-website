@@ -269,9 +269,8 @@ app.get('/my_tenants',checkAuth, async(req, res) => {
       return { ...property.toObject(), tenant };
     });
     const propertiesWithTenant = await Promise.all(tenantPromises);
-    const hasTenants = propertiesWithTenant.length > 0;
 
-    res.render('my_tenants.ejs', { properties: propertiesWithTenant, hasTenants });
+    res.render('my_tenants.ejs', { properties: propertiesWithTenant });
   } catch (err) {
     res.status(500).send(err);
   }
