@@ -59,7 +59,7 @@
           <a href="/message" target="_blank" class="feature">
             <li>Messages</li>
           </a>
-          <a href="/request" target="_blank" class="feature"> 
+          <a href="/request" target="_blank" class="feature">
             <li>Requests</li>
           </a>
         </ul>
@@ -68,7 +68,7 @@
           <a href="/rent_estimate" class="feature">
             <li>Rent Estimate</li>
           </a>
-          <a href="/rentalIncome" target="_blank" class="feature"> 
+          <a href="/rentalIncome" target="_blank" class="feature">
             <li>Rental Income</li>
           </a>
         </ul>
@@ -84,13 +84,12 @@
       <!-- MY PROFILE HTML -->
       <div class="myTenants">
 
-        <div class="tenant">
-          <% properties.forEach(property=> { %>
-            <% if (property.tenant) { %>
-          <div class="tenant_content">
-            <div class="circle">
-              <% 
-  var nameParts = property.tenant.name.split(" ");
+        <% properties.forEach(property=> { %>
+          <% if (property.tenant) { %>
+            <div class="tenant">
+              <div class="tenant_content">
+                <div class="circle">
+                  <% var nameParts=property.tenant.name.split(" ");
   var initials = nameParts[0].charAt(0); // Get the first letter of the first word
   if (nameParts.length > 1) {
     initials += nameParts[1].charAt(0); // Add the first letter of the second word if it exists
@@ -99,45 +98,53 @@
 <%= initials %>
             </div>
 
-            <div class="textbox">
-              <h3>Name</h3>
-              <h4><%= property.tenant.name %></h4>
-            </div>
+            <div class=" textbox">
+                    <h3>Name</h3>
+                    <h4>
+                      <%= property.tenant.name %>
+                    </h4>
+                </div>
 
-            <div class="textbox">
-              <h3>Email</h3>
-              <h4><%= property.tenant.email %></h4>
-            </div>
+                <div class="textbox">
+                  <h3>Email</h3>
+                  <h4>
+                    <%= property.tenant.email %>
+                  </h4>
+                </div>
 
-            <div class="textbox">
-              <h3>Contact</h3>
-              <h4><%= property.tenant.contact %></h4>
-            </div>
+                <div class="textbox">
+                  <h3>Contact</h3>
+                  <h4>
+                    <%= property.tenant.contact %>
+                  </h4>
+                </div>
 
-            <div class="textbox">
-              <h3>Rent</h3>
-              <h4>₹<%= property.price %></h4>
-            </div>
+                <div class="textbox">
+                  <h3>Rent</h3>
+                  <h4>₹<%= property.price %>
+                  </h4>
+                </div>
 
 
-            <div class="textbox view">
-              <h3>Property Details</h3>
-              <!-- <button id="view">view</button> -->
-              <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button id="view">view</button></a>
-            </div>
+                <div class="textbox view">
+                  <h3>Property Details</h3>
+                  <!-- <button id="view">view</button> -->
+                  <a href="/vacancies/<%=property._id%>" target="_blank" class="prop"><button
+                      id="view">view</button></a>
+                </div>
 
-            <!-- <div class="sendMsg">
+                <!-- <div class="sendMsg">
               <button>Send Messege</button>
             </div> -->
 
-            <div class="hoverbox">
+                <div class="hoverbox">
+                </div>
+              </div>
             </div>
-          </div>
-          <% } %>
+              <% } %>
           <% }) %>
-        </div>
 
-        <!-- <div class="tenant">  
+            <!-- <div class="tenant">  
         <% properties.forEach(property=> { %>
           <% if (property.tenant) { %>
             <div class="tenant_content">
