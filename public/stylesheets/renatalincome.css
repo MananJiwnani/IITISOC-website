@@ -439,17 +439,22 @@ h3 {
 }
 
 /* listings starts here */
-
+    
   #rentalIncomeTable{
-    margin-top: 20px;
-   width:100%;
+    margin: 10px;
+    width:100%;
     height:fit-content;
   }
+    h1{
+      margin: 10px 10px;
+      color: #1F5D52;
+    }
   .table{
     background-image: url("/images/header_background.jpg");
     width:90%;
      background-size: cover;
-     height:450px;
+     height:fit-content;
+     min-height: 450px;
    }
     th h3{
     color: #000000;
@@ -466,3 +471,9 @@ h3 {
     font-size: 16px;
     text-align: center;
   }
+ .income{
+  margin:10px;
+  color: #000000;
+  font-family: "Kameron", serif;
+  font-size: 20px;
+ }
