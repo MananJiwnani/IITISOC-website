@@ -85,28 +85,35 @@
       <div class="myTenants">
 
         <div class="tenant">
-
+          <% properties.forEach(property=> { %>
+            <% if (property.tenant) { %>
           <div class="tenant_content">
-            <div class="circle">MJ</div>
+            <div class="circle">
+              <% 
+                      var nameParts = property.owner.name.split(" ");
+                      var initials = nameParts[0].charAt(0) + nameParts[1].charAt(0);
+                    %>
+                   <%= initials%>
+            </div>
 
             <div class="textbox">
               <h3>Name</h3>
-              <h4>Manan Jiwnani</h4>
+              <h4><%= property.tenant.name %></h4>
             </div>
 
             <div class="textbox">
               <h3>Email</h3>
-              <h4>njfwe@gmail.com</h4>
+              <h4><%= property.tenant.email %></h4>
             </div>
 
             <div class="textbox">
               <h3>Contact</h3>
-              <h4>7984227146</h4>
+              <h4><%= property.tenant.contact %></h4>
             </div>
 
             <div class="textbox">
-              <h3>Property Id</h3>
-              <h4>1@345</h4>
+              <h3>Rent</h3>
+              <h4><%= property.price %></h4>
             </div>
 
 
@@ -122,27 +129,29 @@
             <div class="hoverbox">
             </div>
           </div>
+          <% } %>
+          <% }) %>
         </div>
 
+        <!-- <div class="tenant">  
+        <% properties.forEach(property=> { %>
+          <% if (property.tenant) { %>
+            <div class="tenant_content">
+              <p class="textbox"><%= property.tenant.name %></p> 
+              <p class="textbox"><%= property.tenant.email %></p>
+              <p class="textbox"><%= property.tenant.contact %></p>
+              <p class="textbox"><%= property.price %></p>
+              <p class="textbox" style="color: black;"><%= property._id %></p>
+            </div>
+          <% } %>
+        <% }) %>
+        </div> -->
 
       </div>
 
 
     </div>
 
-    <div class="tenant">  
-    <% properties.forEach(property=> { %>
-      <% if (property.tenant) { %>
-        <div class="tenant_content">
-          <p class="textbox"><%= property.tenant.name %></p> 
-          <p class="textbox"><%= property.tenant.email %></p>
-          <p class="textbox"><%= property.tenant.contact %></p>
-          <p class="textbox"><%= property.price %></p>
-          <p class="textbox" style="color: black;"><%= property._id %></p>
-        </div>
-      <% } %>
-    <% }) %>
-    </div>
 
   </section>
 
