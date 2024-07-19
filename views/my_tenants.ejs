@@ -84,6 +84,10 @@
       <!-- MY PROFILE HTML -->
       <div class="myTenants">
 
+        <% if (properties.length == 0) { %>
+          <p>hello</p>
+        <% } %>
+
         <% properties.forEach(property=> { %>
           <% if (property.tenant) { %>
             <div class="tenant">
