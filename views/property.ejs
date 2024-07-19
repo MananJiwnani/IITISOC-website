@@ -71,12 +71,19 @@
             </div>
           <% } else { %>
             <div class="pay-form-div">
-              <form class="form" action="/maintenanceRequest" method="POST">
+              
+              <!-- <form class="form" action="/maintenanceRequest" method="POST">
                 <input type="hidden" name="name" value="<%=property.propertyType%> <%=property.subCategory%>">
                 <input type="hidden" name="price" value="<%=property.price%>">
                 <input type="hidden" name="property_id" value="<%= property._id %>">
                 <input type="submit" value="MAINTENANCE REQUEST" class="pay">
+              </form> -->
+              <form class="form" action="/maintenanceRequest" method="POST">
+                <input type="hidden" name="property_id" value="<%= property._id %>">
+                
               </form>
+              <button class="pay"><a href="/maintenanceRequest">MAINTENANCE REQUEST</a></button>
+              
             </div>
           <% } %>
         <% } %>

@@ -389,7 +389,8 @@ app.post('/logout',checkAuth, (req, res) => {
   res.redirect('/login');
 })
 app.get('/maintenanceRequest',checkAuth, (req, res) => {
-  res.render('AddRequest.ejs');
+  const propertyId = req.query.property_id;
+  res.render('AddRequest.ejs', { propertyId });
 });
 
 // Adding Properties
@@ -589,29 +590,33 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
     const tenantId = req.session.user_id;
     const tenant = await User.findById(tenantId);
     const propertyId = req.body.property_id;
-    const properties = await Property.findById({ propertyId }).populate('owner');
+    const properties = await Property.findById(propertyId);
+    if (!properties) {
+      return res.status(404).send('Property not found');
+    }
     const ownerId=properties.owner._id;
     const newRequest = new mRequest({
-      owner: ownerId,
       tenant: tenantId,
-      tenantName: tenant.name,
-      propertyType:req.body.propertyType,
-      subCategory:req.body.subCategory,
-      address:req.body.address,
-      subject:req.body.subject,
-     
-      description :req.body.description,
-      date :req.body.date,
+      owner: ownerId,
+      tenantName: req.body.tenantName,
+      propertyType: req.body.propertyType,
+      subCategory: req.body.subCategory,
+      address: req.body.address,
+      subject: req.body.subject,
+      description: req.body.description,
+      date: req.body.date,
       status: 'Pending',
     });
+    
     await newRequest.save();
     req.session.message = 'Request Sent Successfully';
     res.redirect('/tenant_portal');
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal server error');
+    // res.status(500).send(err);
+    console.log(err);
   }
 });
+
 
 app.get('/rentalIncome', checkAuth, checkRole('owner'), async (req, res) => {
   try {

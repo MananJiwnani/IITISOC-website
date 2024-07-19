@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maintenance Request</title>
-  <!-- <link rel="stylesheet" href="stylesheets/rent_estimate.css"> -->
   <style>
     body {
       background: white;
@@ -39,7 +38,6 @@
       border-radius: 20px;
       box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.25);
     }
-
 
     form label,
     .diff_features div {
@@ -112,7 +110,7 @@
       color: black;
     }
 
-    @media only screen and (max-width:780px) {
+    @media only screen and (max-width: 780px) {
       form label {
         font-size: 18px;
       }
@@ -140,7 +138,7 @@
       }
     }
 
-    @media only screen and (max-width:556px) {
+    @media only screen and (max-width: 556px) {
       h3 {
         font-size: 20px;
       }
@@ -173,7 +171,6 @@
         padding: 5px 10px;
         width: 120px;
         height: 32px;
-
       }
     }
   </style>
@@ -184,47 +181,47 @@
     <div class="form">
       <h3>Add Maintenance Request</h3>
 
-
       <form action="/maintenanceRequest" method="POST">
         <div class="inputs">
           <label for="tenantName">Tenant Name:</label>
-          <input type="text" id="tenantName" name="tenantName" required>
+          <input type="text" id="tenantName" name="tenantName" value="">
         </div>
-
+      
         <div class="inputs">
           <label for="propertyType">Property Type:</label>
-          <input type="text" id="subject" name="propertyType" required>
+          <input type="text" id="propertyType" name="propertyType" value="">
         </div>
-
+      
         <div class="inputs">
           <label for="subCategory">BHK:</label>
-          <input type="text" id="subCategory" name="subCategory" required>
+          <input type="text" id="subCategory" name="subCategory" value="">
         </div>
-
+      
         <div class="inputs">
           <label for="address">Address:</label>
-          <textarea name="address" id="address" rows="3" required></textarea>
+          <textarea name="address" id="address" rows="3"></textarea>
         </div>
-
+      
         <div class="inputs">
           <label for="subject">Subject:</label>
-          <input type="text" id="subject" name="subject" required>
+          <input type="text" id="subject" name="subject" value="">
         </div>
-
+      
         <div class="inputs">
           <label for="description">Description:</label>
-          <textarea name="description" id="description" rows="3" required></textarea>
+          <textarea name="description" id="description" rows="3"></textarea>
         </div>
-
+      
         <div class="inputs">
-          <label for="Request Date">Request Date</label>
-          <input type="text" id="Request Date" name="Request Date" required>
+          <label for="date">Request Date:</label>
+          <input type="text" id="date" name="date" value="">
         </div>
-
+      
         <div class="submit_button">
           <button type="submit">Add Request</button>
         </div>
       </form>
+      
     </div>
   </div>
 
