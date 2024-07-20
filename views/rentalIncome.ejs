@@ -1,38 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rental Income</title>
+  <title>RentEstate | Owner Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" href="stylesheets/owner_portal.css">
+
 </head>
+
 <body>
-  <h1>Rental Income</h1>
-  <table id="rentalIncomeTable">
-      <% if (totalRentalIncome > 0) { %>
-      <thead>
-          <tr>
-              <th>Property Type</th>
-              <th>Sub Category</th>
-              <th>Address</th>
-              <th>Rent</th>
-              <th>Tenant Name</th>
-              <th>Status</th>
-          </tr>
-      </thead>
-      <% } %>
-      <tbody>
-          <% rentalIncome.forEach(item => { %>
+
+  <div class="navbar">
+    <img src="/images/Logo.svg" alt="Logo">
+    <div class="heading">RentEstate</div>
+    <div class="tabs">
+      <a href="/" class="button">Home</a>
+      <a href="/vacancies" class="button">Vacancies</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      ☰
+    </a>
+  </div>
+
+  <div id="myLinks" class="overlay">
+    <a href="javascript:void(0);" class="closebtn" onclick="toggleMenu()">&times;</a>
+    <a href="/" class="button">Home</a>
+    <a href="/vacancies" class="button">Vacancies</a>
+  </div>
+
+  <section class="container">
+
+    <div class="side fit">
+
+      <div class="sidebar">
+        <ul class="main_feature">
+          <a href="#" class="feature">
+            <li id="myProfile">My Profile</li>
+          </a>
+          <a href="/myProperties" class="feature">
+            <li>My Properties</li>
+          </a>
+          <a href="/addproperties" class="feature">
+            <li>Add Properties</li>
+          </a>
+        </ul>
+        <h3 class="text">~TENANTS</h3>
+        <ul class="main_feature">
+          <a href="/my_tenants" class="feature">
+            <li>My Tenants</li>
+          </a>
+          <a href="/message" target="_blank" class="feature">
+            <li>Messages</li>
+          </a>
+          <a href="/request" target="_blank" class="feature"> 
+            <li>Requests</li>
+          </a>
+        </ul>
+        <h3 class="text">~TOOLS</h3>
+        <ul class="main_feature">
+          <a href="/rent_estimate" class="feature">
+            <li>Rent Estimate</li>
+          </a>
+          <a href="/rentalIncome" target="_blank" class="feature"> 
+            <li>Rental Income</li>
+          </a>
+        </ul>
+      </div>
+
+      <div id="sidebar_icon" class="back">
+        <img src="/images/sidebar-icon.png" alt="error" class="icon1">
+      </div>
+
+    </div>
+
+
+    <div class="diff_features" style="flex-direction: column; align-items: center;">
+      <!-- MY PROFILE HTML -->
+      <h1>Rental Income</h1>
+      <div class="table">
+      <table id="rentalIncomeTable">
+          <% if (totalRentalIncome > 0) { %>
+          <thead>
               <tr>
-                  <td><%= item.propertyType %></td>
-                  <td><%= item.subCategory %></td>
-                  <td><%= item.address %></td>
-                  <td><%= item.rent %></td>
-                  <td><%= item.tenant %></td>
-                  <td><%= item.rentedOut ? 'Rented Out' : 'Vacant' %></td>
+                  <th><h3>Property Type</h3></th>
+                  <th><h3>Sub Category</h3></th>
+                  <th><h3>Address</h3></th>
+                  <th><h3>Rent</h3></th>
+                  <th><h3>Tenant Name</h3></th>
+                  <th><h3>Status</h3></th>
               </tr>
-          <% }) %>
-      </tbody>
-  </table>
-  Total Rental Income: Rs.<%= totalRentalIncome %>
+          </thead>
+          <% } %>
+          <tbody>
+              <% rentalIncome.forEach(item => { %>
+                  <tr>
+                      <td><%= item.propertyType %></td>
+                      <td><%= item.subCategory %></td>
+                      <td><%= item.address %></td>
+                      <td><%= item.rent %></td>
+                      <td><%= item.tenant %></td>
+                      <td><%= item.rentedOut ? 'Rented Out' : 'Vacant' %></td>
+                  </tr>
+              <% }) %>
+          </tbody>
+      </table>
+      </div>
+      Total Rental Income: Rs.<%= totalRentalIncome %>
+    </div>
+
+   
+
+  </section>
+
+  <script src="javascripts/owner_portal.js"></script>
 </body>
+
 </html>
+ 
