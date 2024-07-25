@@ -80,6 +80,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
+const userRoutes = require('./userRoute');
+app.use('/',userRoutes);
+
 // Authentication
 // function which returns next if the user is authenticated
 const checkAuth = (req, res, next) => {
