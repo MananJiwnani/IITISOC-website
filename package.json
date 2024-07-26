@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js -e js,ejs"
+    "devStart": "nodemon server.js -e js,ejs",
+    "build": "tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css",
+    "watch": "tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
   },
   "author": "",
   "license": "ISC",
