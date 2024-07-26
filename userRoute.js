@@ -36,4 +36,8 @@ router.get('/success', userController.successGoogleLogin);
 // failure 
 router.get('/failure', userController.failureGoogleLogin);
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> 4083743e8417361b3604dadc9ee16a34d4fb7233

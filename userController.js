@@ -26,4 +26,8 @@ module.exports = {
     homepage,
     successGoogleLogin,
     failureGoogleLogin
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4083743e8417361b3604dadc9ee16a34d4fb7233
