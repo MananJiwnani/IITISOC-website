@@ -13,10 +13,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Authentication](#authentication)
-- [Possible Improvements](#possible-improvements)
 - [Conclusion](#conclusion)
-- [Contributing](#contributing)
-- [License](#license)
 
 
 ## Introduction
