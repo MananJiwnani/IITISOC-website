@@ -3,7 +3,7 @@ module.exports = {
   content: ['./views/*.ejs'],
   theme: {
     extend: {},
-    colors: {"input-bg":"rgba(39,196,177,0.3)"}
+    colors: {"input-bg":"rgba(167, 241, 241, 0.8)"}
   },
   plugins: [],
 }
