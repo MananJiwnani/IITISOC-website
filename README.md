@@ -1,11 +1,87 @@
 # Property Rental and Management System
-
 ## PS-7
 
 Mentor: Akanksha Prasad
 
 Team members: Tanmai, Arjun, Vasudha, Manan
 
-Designing 70% done
+# Property Rental and Management Web Application
 
-Frontend 20% done
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Authentication](#authentication)
+- [Possible Improvements](#possible-improvements)
+- [Conclusion](#conclusion)
+- [Contributing](#contributing)
+- [License](#license)
+
+
+## Introduction
+
+The Property Rental and Management Web Application is a comprehensive platform designed to simplify property rental processes for owners and tenants. The application allows property owners to list their properties, manage rental activities, and communicate with tenants, while tenants can search for properties, book rentals, and make payments.
+
+
+## Features
+
+- **Property Listing**: Owners can add and manage property details, amenities, images, and pricing.
+- **Search and Filtering**: Tenants can find properties based on location, price range, and other criteria.
+- **Booking and Payment**: Tenants can reserve and pay for rentals online.
+- **Tenant Management**: Owners can view and manage tenant details.
+- **Property Management Dashboard**: Provides analytics on rental income, occupancy rates, and maintenance requests.
+- **Secure Authentication**: Supports both traditional email/password login and Google OAuth.
+- **Communication Channels**: Facilitates interactions between owners and tenants.
+
+
+## Technologies Used
+
+- **Frontend**: EJS, CSS, JavaScript, Bootstrap
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Passport.js (Local Strategy and Google OAuth)
+- **Other**: Multer for file uploads, Mongoose for MongoDB interactions
+
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/MananJiwnani/IITISOC-website.git
+
+2. Navigate to the project directory:
+   ```bash
+   cd property-rental-management
+
+3. Install Dependencies:
+   ```bash
+   npm install
+
+4. Set up environment variables in a .env file:
+   ```bash 
+   MONGO_URI=mongodb://localhost:27017/userDb
+   PORT=3000
+   SESSION_SECRET=4b3403665fea6b5d60eddf678e1ce5fba12da6b3a23c62e1e8b6d4e56af5a067
+   RAZORPAY_ID_KEY="rzp_test_B4gf8bb7o4SxQp"
+   RAZORPAY_SECRET_KEY="4FXYXKopTTS26DxV7xNJbvHM"
+
+5. Start the application:
+   ```bash
+   npm start
+
+
+## Usage
+
+- **Property Listing**: Owners can add properties through the /addproperties page.
+- **Search and Filtering**: Tenants can search for properties on the homepage.
+- **Booking and Payment**: Tenants can book properties and make payments through the 
+                           /vacancies page.
+- **Tenant Management**: Owners can view tenants through the /my_tenants page.
+
+
+## Conclusion
+
+The Property Rental and Management Web Application is designed to streamline property rental and management processes for both property owners and tenants. With ongoing improvements and feature enhancements, the platform aims to provide a seamless and efficient user experience.
