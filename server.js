@@ -80,34 +80,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-const userRoutes = require('./userRoute');
-app.use('/login',userRoutes);
-app.use('/home',userRoutes);
-app.use('/login',userRoutes);
-app.use('/auth/google',userRoutes);
-app.use('/auth/google/callback',userRoutes);
-
-app.get('/auth/google' , passport.authenticate('google', { scope: 
-	[ 'email', 'profile' ] 
-}));
-
-app.get( '/auth/google/callback', 
-	passport.authenticate( 'google', { 
-		successRedirect: '/success', 
-		failureRedirect: '/failure'
-}));
-
-app.get('/success', (req, res) => {
-	if(!req.user) {
-		res.redirect('/failure');
-  }
-  res.redirect('/');
-});
-
-app.get('/failure', (req, res) => {
-  res.send("ERROR");
-});
-
 // Authentication
 // function which returns next if the user is authenticated
 const checkAuth = (req, res, next) => {
