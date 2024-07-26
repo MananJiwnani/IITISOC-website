@@ -29,21 +29,8 @@ passport.use(new GoogleStrategy({
 	callbackURL:"http://localhost:3000/auth/google/callback", 
 	passReqToCallback:true
 }, 
-// function(request, accessToken, refreshToken, profile, done) { 
-// 	return done(null, profile); 
-// } 
-// ));
-async (request, accessToken, refreshToken, profile, done) => { 
-	try {
-	  // Find or create a user in your database
-	  let user = await User.findOne({ googleId: profile.id });
-  
-	  if (!user) {
-		return done(null, false, { message: 'No user found  please register first.' });
-	  }
-  
-	  return done(null, user); 
-	} catch (err) {
-	  return done(err, null);
-	}
-}));
+function(request, accessToken, refreshToken, profile, done) { 
+	return done(null, profile); 
+} 
+));
+

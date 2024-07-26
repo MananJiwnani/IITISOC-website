@@ -97,18 +97,11 @@ app.get('/auth/google' , passport.authenticate('google', { scope:
 // 		failureRedirect: '/failure'
 // }));
 
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/failure' }), 
-  (req, res) => {
-    // Store the user ID in the session
-    if (req.user) {
-      req.session.user_id = req.user._id;
-      res.redirect('/');
-    } else {
-      res.redirect('/register');
-    }
-  }
-);
+app.get( '/auth/google/callback', 
+	passport.authenticate( 'google', { 
+		successRedirect: '/success', 
+		failureRedirect: '/failure'
+}));
 
 app.get('/success', (req, res) => {
 	if(!req.user) {
