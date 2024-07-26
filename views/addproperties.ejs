@@ -12,6 +12,7 @@
 
 
   <link rel="stylesheet" href="/stylesheets/addProperties.css">
+  <link rel="stylesheet" href="/stylesheets/output.css">
 
 </head>
 
@@ -91,37 +92,37 @@
 
             <div class="inputs">
               <label for="ownerName">Owner Name</label>
-              <input type="text" name="ownerName" id="ownerName" value="">
+              <input type="text" name="ownerName" class="bg-input-bg" id="ownerName" value="">
             </div>
             <div class="inputs">
               <label for="photo">Upload Image</label>
-              <input type="file" id="photo" name="image" value="">
+              <input type="file" id="photo" name="image" class="bg-input-bg" value="">
             </div>
             <div class="inputs">
               <label for="rent">Rent</label>
-              <input type="number" name="price" id="rent" value="">
+              <input type="number" name="price" id="rent" class="bg-input-bg" placeholder="₹" value="">
             </div>
             <div class="inputs">
               <label for="address">Address</label>
               <!-- <input type="text" name="address" id="address"> -->
-              <textarea name="address" id="address" rows="3"></textarea>
+              <textarea name="address" id="address" class="bg-input-bg" rows="3"></textarea>
             </div>
             <div class="select end">
 
-              <input type="text" name="city" id="city" placeholder="City">
-              <input type="text" name="state" id="state" placeholder="State">
+              <input type="text" name="city" id="city" class="bg-input-bg" placeholder="City">
+              <input type="text" name="state" id="state" class="bg-input-bg" placeholder="State">
 
             </div>
 
             <div class="inputs">
               <label for="type">Property type</label>
               <div class="select">
-                <select class="pclass" name="propertyType" id="type">
+                <select class="pclass bg-input-bg" name="propertyType" id="type">
                   <option value="" selected>Select Type</option>
                   <option value="Flat">Flat</option>
                   <option value="Villa">Villa</option>
                 </select>
-                <select name="subCategory" id="bhk">
+                <select name="subCategory" class="bg-input-bg" id="bhk">
                   <option value="" selected>Select BHK</option>
                   <option value="1 BHK">1 BHK</option>
                   <option value="2 BHK">2 BHK</option>
@@ -133,36 +134,34 @@
             </div>
             <div class="inputs">
               <label for="carpetArea">Carpet Area<br>
-                <div id="small">(sq ft)</div>
               </label>
-              <input type="number" name="carpetArea" value="" id="carpetArea">
+              <input type="number" name="carpetArea" class="bg-input-bg" value="" placeholder="sq ft" id="carpetArea">
             </div>
             <div class="inputs">
               <label for="amenities">Amenities</label>
-              <input type="text" name="amenities" id="amenities" value="">
+              <input type="text" name="amenities" class="bg-input-bg" id="amenities" value="">
             </div>
             <div class="inputs">
               <label for="description">Description</label>
               <!-- <input type="text" name="description" id="description" value=""> -->
-              <textarea name="description" id="description" rows="3"></textarea>
+              <textarea name="description" class="bg-input-bg" id="description" rows="3"></textarea>
             </div>
             <div class="inputs">
               <label for="propertyAge">Property Age<br>
-                <div id="small">(in years)</div>
               </label>
-              <input type="number" name="propertyAge" id="propertyAge" value="">
+              <input type="number" name="propertyAge" id="propertyAge" class="bg-input-bg" placeholder="years" value="">
             </div>
             <div class="inputs">
               <label for="ownershipType">Type of Ownership</label>
-              <input type="text" name="ownershipType" id="ownershipType" value="">
+              <input type="text" name="ownershipType" id="ownershipType" class="bg-input-bg" placeholder="freehold/commonhold" value="">
             </div>
             <div class="inputs">
               <label for="furnishedStatus">Furnished Status </label>
-              <input type="text" name="furnishedStatus" id="furnishedStatus" value="">
+              <input type="text" name="furnishedStatus" id="furnishedStatus" class="bg-input-bg" placeholder="full/semi/unfurnished" value="">
             </div>
             <div class="inputs">
               <label for="petPolicy">Pet policy </label>
-              <input type="petPolicy" name="petPolicy" id="petPolicy" value="">
+              <input type="petPolicy" name="petPolicy" id="petPolicy" class="bg-input-bg" placeholder="allowed/not allowed" value="">
             </div>
             <div class="submit_button">
               <button type="submit" id="submit">Submit</button>
