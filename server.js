@@ -102,6 +102,7 @@ app.get('/success', (req, res) => {
 		res.redirect('/failure');
   }
 	// res.send("Welcome " + req.user.email);
+  req.session.user_id = user._id;
   res.redirect('/');
 });
 
