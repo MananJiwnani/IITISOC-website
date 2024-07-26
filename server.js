@@ -101,8 +101,6 @@ app.get('/success', (req, res) => {
 	if(!req.user) {
 		res.redirect('/failure');
   }
-	// res.send("Welcome " + req.user.email);
-  req.session.user_id = req.user._id;
   res.redirect('/');
 });
 
