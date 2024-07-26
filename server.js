@@ -81,7 +81,11 @@ app.use(passport.session());
 app.use(methodOverride('_method'));
 
 const userRoutes = require('./userRoute');
-// app.use('/login',userRoutes);
+app.use('/login',userRoutes);
+app.use('/home',userRoutes);
+app.use('/login',userRoutes);
+app.use('/auth/google',userRoutes);
+app.use('/auth/google/callback',userRoutes);
 
 // Authentication
 // function which returns next if the user is authenticated
