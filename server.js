@@ -22,6 +22,7 @@ const mongoose = require('mongoose');
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 
+//connecting to MongoDB
 mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
@@ -61,7 +62,6 @@ const razorpayInstance = new Razorpay({
     key_secret: RAZORPAY_SECRET_KEY
 });
 
-// 
 app.set('view-engine','ejs');
 app.set('views','views');
 app.use(express.static(path.join(__dirname,'public')));
@@ -102,7 +102,6 @@ app.get('/', (req, res) => {
 });
 
 
-
 app.get('/register', (req, res) => {
   const error = req.flash('error');
   const uname=req.session.username;
@@ -114,7 +113,8 @@ app.get('/register', (req, res) => {
   });
 });
 
-// Saving the details and creating a new document/object in the 'User' collection
+
+// Saving the details and creating a new object in the 'User' collection
 app.post('/register', checkNotAuth, async (req, res) => {
   const { name, email, contact,password, role,owner,tenant } = req.body;
   const user = new User({ name, email, contact, password, role,owner,tenant })
@@ -152,7 +152,7 @@ app.get('/login', (req, res) => {
   });
 });
 
-// Verifying the details filled by user in logi page using "findAndValidate"
+// Verifying the details filled by user in login page using "findAndValidate"
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const foundUser = await User.findAndValidate(email, password);
@@ -226,6 +226,8 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
     }
 });
 
+// Fetches and displays the available vacant properties
+// based on the search filters selected by tenant
 app.get('/vacancies',checkAuth, async(req, res) => {
   try{
     const query = req.session.query || {};
@@ -239,6 +241,7 @@ app.get('/vacancies',checkAuth, async(req, res) => {
   }
 });
 
+// Getting a detailed information about a property
 app.get('/property',checkAuth, async(req, res)=> {
    try{
    const properties=await Property.find();
@@ -463,6 +466,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
   }
 });
 
+// creating an order when a tenant does a successfull payment on a property
 app.post('/createOrder',checkAuth, async(req, res)=> {
   try {
     const amount = req.body.price*100
@@ -504,6 +508,7 @@ app.post('/createOrder',checkAuth, async(req, res)=> {
   }
 });    
 
+// When a user does the payment assiging him as the tenant to that property
 app.post('/updateTenant', checkAuth, async (req, res) => {
   try {
     const userId = req.session.user_id;
@@ -520,6 +525,7 @@ app.post('/updateTenant', checkAuth, async (req, res) => {
   }
 });
 
+// Unrentting a rented property
 app.post('/unRent', checkAuth, async(req, res) => {
   try {
     const propertyId = req.body.property_id;
@@ -531,8 +537,6 @@ app.post('/unRent', checkAuth, async(req, res) => {
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 });
-
-
  
 // My properties page for owner to see his properties
 app.get('/myProperties',checkAuth, checkRole('owner'), async(req, res) => {
@@ -631,7 +635,7 @@ app.get('/api/username', checkAuth, (req, res) => {
   res.json({ uname });
 });
 
-
+// To view the maintance requests of the properties of an owner
 app.get('/request',checkAuth,checkRole('owner'), async(req, res)=> {
   try{
     const userId= req.session.user_id;
@@ -667,6 +671,7 @@ app.get('/maintenanceRequest',checkAuth, (req, res) => {
   res.render('AddRequest.ejs', { propertyId });
 });
 
+// For Posting a maintance request to a property by tenants
 app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   try {
     const tenantId = req.session.user_id;
@@ -701,6 +706,7 @@ app.post('/maintenanceRequest', checkAuth, async (req, res) => {
   }
 });
 
+// Resolving of a Maintance request by an owner
 app.post('/resolveRequest', checkAuth, checkRole('owner'), async (req, res) => {
   try {
     const requestId = req.body.requestId;
