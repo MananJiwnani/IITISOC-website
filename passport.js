@@ -6,11 +6,21 @@ const User = require('./user');
 const GoogleStrategy = require('passport-google-oauth2').Strategy; 
 
 passport.serializeUser((user , done) => { 
-	done(null , user); 
+	done(null, user._id); 
 }) 
-passport.deserializeUser(function(user, done) { 
-	done(null, user); 
-}); 
+
+// passport.deserializeUser(function(user, done) { 
+// 	done(null, user); 
+// }); 
+
+passport.deserializeUser(async (id, done) => {
+	try {
+	  const user = await User.findById(id);
+	  done(null, user);
+	} catch (err) {
+	  done(err, null);
+	}
+});
 
 passport.use(new GoogleStrategy({ 
 	clientID:process.env.CLIENT_ID,  
