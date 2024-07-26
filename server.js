@@ -87,6 +87,9 @@ app.use('/login',userRoutes);
 app.use('/auth/google',userRoutes);
 app.use('/auth/google/callback',userRoutes);
 
+app.get('/auth/google' , passport.authenticate('google', { scope: 
+	[ 'email', 'profile' ] 
+}));
 // Authentication
 // function which returns next if the user is authenticated
 const checkAuth = (req, res, next) => {
