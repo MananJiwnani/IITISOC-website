@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
-  
-  googleId: {
-    type: String,
-    unique: true,
-  },
 
   owner: { 
     type: mongoose.Schema.Types.ObjectId, 
@@ -29,26 +24,17 @@ const userSchema = new mongoose.Schema({
       },
       contact: {
         type: Number,
-        // required: [true, 'Contact is required'],
-        required: function() {
-          return !this.googleId;
-        },
+        required: [true, 'Contact is required'],
         unique: true,
       },
       password: {
         type: String,
-        // required: [true, 'Password is required'],
-        required: function() {
-          return !this.googleId;
-        },
+        required: [true, 'Password is required'],
         minlength: [6, 'Password must be at least 6 characters long'],
       },
       role: {
         type: String,
-        // required: [true, 'Role is required'],
-        required: function() {
-          return !this.googleId;
-        },
+        required: [true, 'Role is required'],
         enum: ['owner', 'tenant'],
       }
       
