@@ -90,6 +90,12 @@ app.use('/auth/google/callback',userRoutes);
 app.get('/auth/google' , passport.authenticate('google', { scope: 
 	[ 'email', 'profile' ] 
 }));
+
+app.get( '/auth/google/callback', 
+	passport.authenticate( 'google', { 
+		successRedirect: '/success', 
+		failureRedirect: '/failure'
+}));
 // Authentication
 // function which returns next if the user is authenticated
 const checkAuth = (req, res, next) => {
