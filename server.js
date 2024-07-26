@@ -23,7 +23,7 @@ const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 const connection = require("./db");
 
-mongoose.connect('mongodb+srv://jonty:ic1HDE142HxSTHZf@cluster0.tluj8rn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect('mongodb://localhost:27017/userDb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('Failed to connect to MongoDB', err);
