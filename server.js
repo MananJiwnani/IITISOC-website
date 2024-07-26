@@ -91,20 +91,11 @@ app.get('/auth/google' , passport.authenticate('google', { scope:
 	[ 'email', 'profile' ] 
 }));
 
-// app.get( '/auth/google/callback', 
-// 	passport.authenticate( 'google', { 
-// 		successRedirect: '/success', 
-// 		failureRedirect: '/failure'
-// }));
-
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/failure' }), 
-  (req, res) => {
-    // Store the user ID in the session
-    req.session.user_id = req.user._id;
-    res.redirect('/');
-  }
-);
+app.get( '/auth/google/callback', 
+	passport.authenticate( 'google', { 
+		successRedirect: '/success', 
+		failureRedirect: '/failure'
+}));
 
 app.get('/success', (req, res) => {
 	if(!req.user) {

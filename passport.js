@@ -9,18 +9,9 @@ passport.serializeUser((user , done) => {
 	done(null, user); 
 }) 
 
-// passport.deserializeUser(function(user, done) { 
-// 	done(null, user); 
-// }); 
-
-passport.deserializeUser(async (id, done) => {
-	try {
-	  const user = await User.findById(id);
-	  done(null, user);
-	} catch (err) {
-	  done(err, null);
-	}
-});
+passport.deserializeUser(function(user, done) { 
+	done(null, user); 
+}); 
 
 passport.use(new GoogleStrategy({ 
 	clientID:process.env.CLIENT_ID,  
