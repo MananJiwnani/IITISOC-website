@@ -7,7 +7,7 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 passport.serializeUser((user , done) => { 
 	// done(null , user); 
-	done(null, user._id);
+	done(null, user);
 }); 
 
 // passport.deserializeUser(function(user, done) { 
