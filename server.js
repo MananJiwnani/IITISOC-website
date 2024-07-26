@@ -96,6 +96,19 @@ app.get( '/auth/google/callback',
 		successRedirect: '/success', 
 		failureRedirect: '/failure'
 }));
+
+app.get('/success', (req, res) => {
+	if(!req.user) {
+		res.redirect('/failure');
+  }
+	// res.send("Welcome " + req.user.email);
+  res.redirect('/');
+});
+
+app.get('/failure', (req, res) => {
+  res.send("ERROR");
+});
+
 // Authentication
 // function which returns next if the user is authenticated
 const checkAuth = (req, res, next) => {
