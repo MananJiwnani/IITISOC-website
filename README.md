@@ -76,11 +76,12 @@ The Property Rental and Management Web Application is a comprehensive platform d
 - **Property Listing**: Owners can add properties through the /addproperties page.
 - **Owner Portal**: Portal for owners to view the status of their properties.
 - **Owner Dashboard**: For owners to track their rental income and maintainance requests.
+- **Rent Estimate Page**: A page for owners where they can get the approx. estimated rent for their property based on the Property Type, Location, Property Age and Price of their property.
 - **Search and Filtering**: Tenants can search for properties on both homepage and vacancies page.
 - **Booking and Payment**: Tenants can book properties and make payments through the 
                            /vacancies page.
 - **Tenant Management**: Owners can view tenants through the /my_tenants page.
-- **Tenant Portal**: Portal for tenants to view the properties bought rent by them, details of their owners
+- **Tenant Portal**: Portal for tenants to view the properties bought rent by them, details of their owners.
 
 
 ## Conclusion
