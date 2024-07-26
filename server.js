@@ -101,8 +101,12 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/failure' }), 
   (req, res) => {
     // Store the user ID in the session
-    req.session.user_id = req.user._id;
-    res.redirect('/');
+    if (req.user) {
+      req.session.user_id = req.user._id;
+      res.redirect('/');
+    } else {
+      res.redirect('/register');
+    }
   }
 );
 

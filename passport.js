@@ -39,12 +39,7 @@ async (request, accessToken, refreshToken, profile, done) => {
 	  let user = await User.findOne({ googleId: profile.id });
   
 	  if (!user) {
-		user = new User({
-		  googleId: profile.id,
-		  email: profile.emails[0].value,
-		  name: profile.displayName
-		});
-		await user.save();
+		return done(null, false, { message: 'No user found  please register first.' });
 	  }
   
 	  return done(null, user); 
