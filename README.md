@@ -1,11 +1,9 @@
-# Property Rental and Management System
+# Property Rental and Management Web Application
 ## PS-7
 
-Mentor: Akanksha Prasad
+## Mentor: Akanksha Prasad
 
-Team members: Tanmai, Arjun, Vasudha, Manan
-
-# Property Rental and Management Web Application
+## Team members: Tanmai, Arjun, Vasudha, Manan
 
 ## Table of Contents
 
@@ -15,10 +13,7 @@ Team members: Tanmai, Arjun, Vasudha, Manan
 - [Installation](#installation)
 - [Usage](#usage)
 - [Authentication](#authentication)
-- [Possible Improvements](#possible-improvements)
 - [Conclusion](#conclusion)
-- [Contributing](#contributing)
-- [License](#license)
 
 
 ## Introduction
@@ -30,20 +25,20 @@ The Property Rental and Management Web Application is a comprehensive platform d
 
 - **Property Listing**: Owners can add and manage property details, amenities, images, and pricing.
 - **Search and Filtering**: Tenants can find properties based on location, price range, and other criteria.
+- **CHAT BOT**: An assistant chat bot which can assist and guide the newly joined users.
 - **Booking and Payment**: Tenants can reserve and pay for rentals online.
 - **Tenant Management**: Owners can view and manage tenant details.
 - **Property Management Dashboard**: Provides analytics on rental income, occupancy rates, and maintenance requests.
-- **Secure Authentication**: Supports both traditional email/password login and Google OAuth.
+- **Secure Authentication**: Secure Authentication is done based on the role of the user to maintain the security of the website.
 - **Communication Channels**: Facilitates interactions between owners and tenants.
-
 
 ## Technologies Used
 
-- **Frontend**: EJS, CSS, JavaScript, Bootstrap
+- **Frontend**: EJS, CSS, JavaScript
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
-- **Authentication**: Passport.js (Local Strategy and Google OAuth)
-- **Other**: Multer for file uploads, Mongoose for MongoDB interactions
+- **Authentication**: Passport.js
+- **Other**: Multer for file uploads, Mongoose for MongoDB interactions, RazorPay API for payments.
 
 
 ## Installation
@@ -76,10 +71,14 @@ The Property Rental and Management Web Application is a comprehensive platform d
 ## Usage
 
 - **Property Listing**: Owners can add properties through the /addproperties page.
-- **Search and Filtering**: Tenants can search for properties on the homepage.
+- **Owner Portal**: Portal for owners to view the status of their properties.
+- **Owner Dashboard**: For owners to track their rental income and maintainance requests.
+- **Rent Estimate Page**: A page for owners where they can get the approx. estimated rent for their property based on the Property Type, Location, Property Age and Price of their property.
+- **Search and Filtering**: Tenants can search for properties on both homepage and vacancies page.
 - **Booking and Payment**: Tenants can book properties and make payments through the 
                            /vacancies page.
 - **Tenant Management**: Owners can view tenants through the /my_tenants page.
+- **Tenant Portal**: Portal for tenants to view the properties bought rent by them, details of their owners.
 
 
 ## Conclusion
