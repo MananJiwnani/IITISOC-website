@@ -12,7 +12,7 @@
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Authentication](#authentication)
+- [Possible Improvements](#possible-improvements)
 - [Conclusion](#conclusion)
 
 
@@ -79,6 +79,15 @@ The Property Rental and Management Web Application is a comprehensive platform d
                            /vacancies page.
 - **Tenant Management**: Owners can view tenants through the /my_tenants page.
 - **Tenant Portal**: Portal for tenants to view the properties bought rent by them, details of their owners.
+
+
+## Possible Improvements
+
+- **Enhanced Search and Filtering System**: Add more criteria such as property type, number of bedrooms, and additional amenities.
+- **Automated Maintenance Requests**: Allow tenants to submit maintenance requests with automated notifications to property owners.
+- **Improved Security Features**: Add two-factor authentication (2FA) and conduct regular security audits.
+Multilingual Support: Add support for multiple languages.
+- **User Feedback System**: Integrate a system for user feedback and issue reporting.
 
 
 ## Conclusion
