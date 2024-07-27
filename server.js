@@ -121,13 +121,14 @@ app.get('/register', (req, res) => {
 
 // Saving the details and creating a new object in the 'User' collection
 app.post('/register', checkNotAuth, async (req, res) => {
-  const { name, email, contact,password, role,owner,tenant } = req.body;
-  const user = new User({ name, email, contact, password, role,owner,tenant })
+  var { name, email, contact, password, role, owner, tenant } = req.body;
+  email = email.toLowerCase(); // Correctly assigning the lowercased email to a variable
+  const user = new User({ name, email, contact, password, role, owner, tenant });
   await user.save();
-  req.session.ROLE= role;
-  req.session.username=name;
+  req.session.ROLE = role;
+  req.session.username = name;
   res.redirect('/');
-})
+});
 
 // Authorization 
 // function which checks the role of user (owner/ tenant)
@@ -159,7 +160,8 @@ app.get('/login', (req, res) => {
 
 // Verifying the details filled by user in login page using "findAndValidate"
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  var { email, password } = req.body;
+  email = email.toLowerCase();
   const foundUser = await User.findAndValidate(email, password);
   if (foundUser) {
       req.session.user_id = foundUser._id;
@@ -169,7 +171,7 @@ app.post('/login', async (req, res) => {
       res.redirect('/');
   }
   else {
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email});
     if (userExists) {
       req.flash('error', 'Incorrect password');
       res.redirect('/login');
