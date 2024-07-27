@@ -22,10 +22,11 @@ const mongoose = require('mongoose');
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 
-mongoose.connect('mongodb+srv://jonty:ic1HDE142HxSTHZf@cluster0.tluj8rn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect('mongodb+srv://mananjiwnani:lPaA0j2dwHmWfPnc@cluster0.ltqj549.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('Failed to connect to MongoDB', err);
+  process.exit(1);
 });
 
 const User = require('./user');
@@ -470,6 +471,7 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
   }
    catch (error) {
     res.status(500).send('Internal server error');
+    console.log(error);
   }
 });
 
