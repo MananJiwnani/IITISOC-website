@@ -34,7 +34,7 @@ The Property Rental and Management Web Application is a comprehensive platform d
 
 ## Technologies Used
 
-- **Frontend**: EJS, CSS, JavaScript
+- **Frontend**: EJS, CSS, JavaScript, Tailwind CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Authentication**: Passport.js
