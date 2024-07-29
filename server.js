@@ -237,7 +237,7 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
 
 (async () => {
   const { Octokit } = await import('@octokit/rest');
-  const mySecret = process.env.NEW_GITHUB_TOKEN;
+  const mySecret = process.secret.yaml.env.MY_TOKEN;
   const octokit = new Octokit({
     auth: mySecret,
   });
