@@ -237,9 +237,9 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
 
 (async () => {
   const { Octokit } = await import('@octokit/rest');
-
+  const mySecret = process.env.NEW_GITHUB_TOKEN;
   const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
+    auth: mySecret,
   });
 app.post('/addproperties', upload.single('image'), async (req, res, next) => {
   try {
