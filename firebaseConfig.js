@@ -4,14 +4,15 @@ const path=require('path');
 const fs = require('fs');
 
 const fstorage = require("firebase/storage");
+require('dotenv').config();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDclS5pkqPiDVUkccwOZcLsKX5XpDHx0LA",
-  authDomain: "rent-ccc00.firebaseapp.com",
-  projectId: "rent-ccc00",
-  storageBucket: "rent-ccc00.appspot.com",
-  messagingSenderId: "679046848096",
-  appId: "1:679046848096:web:799ef644fefcf9b1ccad05"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID
 };
 
 // Initialize Firebase
