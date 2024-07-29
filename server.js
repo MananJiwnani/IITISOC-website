@@ -21,7 +21,6 @@ const mongoose = require('mongoose');
 
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
-let Octokit;
 
 mongoose.connect('mongodb+srv://mananjiwnani:lPaA0j2dwHmWfPnc@cluster0.ltqj549.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
   console.log('Connected to MongoDB');
@@ -200,99 +199,40 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
   res.render('addproperties.ejs');
 });
 
-// app.post('/addproperties', upload.single('image'), async (req, res, next) => {
-//     try {
-//         const filePath = path.join(__dirname, 'uploads', req.file.filename);
-        
-//         var obj = {
-//             owner: req.session.user_id,
-//             ownerName: req.body.ownerName,
-//             price: req.body.price,
-//             address: req.body.address,
-//             city: req.body.city.toUpperCase(),
-//             state: req.body.state.toUpperCase(),
-//             propertyType: req.body.propertyType.toUpperCase(),
-//             subCategory: req.body.subCategory.toUpperCase(),
-//             carpetArea: req.body.carpetArea,
-//             amenities: req.body.amenities,
-//             description: req.body.description,
-//             propertyAge: req.body.propertyAge,
-//             ownershipType: req.body.ownershipType,
-//             furnishedStatus: req.body.furnishedStatus,
-//             petPolicy: req.body.petPolicy,
-//             image: {
-//                 data: fs.readFileSync(filePath),
-//                 contentType: req.file.mimetype,
-//                 path: `/uploads/${req.file.filename}`
-//             }
-//         };
-//         await Property.create(obj);
-//         req.session.message = 'Property saved successfully';
-//         res.redirect('/owner_portal');
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).send("Error saving property.");
-//     }
-// });
-
-(async () => {
-  const { Octokit } = await import('@octokit/rest');
-  const mySecret = process.secret.yaml.env.MY_TOKEN;
-  const octokit = new Octokit({
-    auth: mySecret,
-  });
 app.post('/addproperties', upload.single('image'), async (req, res, next) => {
-  try {
-      const filePath = req.file.path;
-      const fileName = req.file.filename;
-      const fileContent = fs.readFileSync(filePath, { encoding: 'base64' });
-      const repoOwner = 'MananJiwnani';
-      const repoName = 'IITISOC-website';
-      const branch = 'master';
-
-      // Commit the file to the repository
-      const response = await octokit.repos.createOrUpdateFileContents({
-          owner: repoOwner,
-          repo: repoName,
-          path: `uploads/${fileName}`,
-          message: `add ${fileName}`,
-          content: fileContent,
-          branch: branch,
-      });
-
-      const imageUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/${branch}/uploads/${fileName}`;
-
-      // Save property with image URL
-      var obj = {
-          owner: req.session.user_id,
-          ownerName: req.body.ownerName,
-          price: req.body.price,
-          address: req.body.address,
-          city: req.body.city.toUpperCase(),
-          state: req.body.state.toUpperCase(),
-          propertyType: req.body.propertyType.toUpperCase(),
-          subCategory: req.body.subCategory.toUpperCase(),
-          carpetArea: req.body.carpetArea,
-          amenities: req.body.amenities,
-          description: req.body.description,
-          propertyAge: req.body.propertyAge,
-          ownershipType: req.body.ownershipType,
-          furnishedStatus: req.body.furnishedStatus,
-          petPolicy: req.body.petPolicy,          
-          image: {
-              url: imageUrl,
-              contentType: req.file.mimetype
-          }
-      };
-      await Property.create(obj);
-      req.session.message = 'Property saved successfully';
-      res.redirect('/owner_portal');
-  } catch (err) {
-      console.log(err);
-      res.status(500).send("Error saving property.");
-  }
+    try {
+        const filePath = path.join(__dirname, 'uploads', req.file.filename);
+        
+        var obj = {
+            owner: req.session.user_id,
+            ownerName: req.body.ownerName,
+            price: req.body.price,
+            address: req.body.address,
+            city: req.body.city.toUpperCase(),
+            state: req.body.state.toUpperCase(),
+            propertyType: req.body.propertyType.toUpperCase(),
+            subCategory: req.body.subCategory.toUpperCase(),
+            carpetArea: req.body.carpetArea,
+            amenities: req.body.amenities,
+            description: req.body.description,
+            propertyAge: req.body.propertyAge,
+            ownershipType: req.body.ownershipType,
+            furnishedStatus: req.body.furnishedStatus,
+            petPolicy: req.body.petPolicy,
+            image: {
+                data: fs.readFileSync(filePath),
+                contentType: req.file.mimetype,
+                path: `/uploads/${req.file.filename}`
+            }
+        };
+        await Property.create(obj);
+        req.session.message = 'Property saved successfully';
+        res.redirect('/owner_portal');
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error saving property.");
+    }
 });
-})();
 
 // Fetches and displays the available vacant properties
 // based on the search filters selected by tenant
