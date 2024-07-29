@@ -22,11 +22,10 @@ const mongoose = require('mongoose');
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require('multer-gridfs-storage');
 
-mongoose.connect('mongodb+srv://mananjiwnani:lPaA0j2dwHmWfPnc@cluster0.ltqj549.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect('mongodb+srv://RentEstate:1ZmrB96uByNghgmZ@rentestatefb.iassgzv.mongodb.net/?retryWrites=true&w=majority&appName=Rentestatefb').then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('Failed to connect to MongoDB', err);
-  process.exit(1);
 });
 
 const User = require('./user');
@@ -46,14 +45,19 @@ var storage = multer.diskStorage({
         cb(null, 'uploads')
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
+        cb(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname))
     }
 });
  
 var upload = multer({ storage: storage });
+// const { Octokit } = require('@octokit/rest');
+// const octokit = new Octokit({ auth: `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` });
+
+
 
 const paymentRoute = require('./paymentRoute');
 const Razorpay = require('razorpay');
+const { uploadImage } = require('./firebaseConfig');
 app.use('/vacancies', paymentRoute);
 
 const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
@@ -122,14 +126,13 @@ app.get('/register', (req, res) => {
 
 // Saving the details and creating a new object in the 'User' collection
 app.post('/register', checkNotAuth, async (req, res) => {
-  var { name, email, contact, password, role, owner, tenant } = req.body;
-  email = email.toLowerCase(); // Correctly assigning the lowercased email to a variable
-  const user = new User({ name, email, contact, password, role, owner, tenant });
+  const { name, email, contact,password, role,owner,tenant } = req.body;
+  const user = new User({ name, email, contact, password, role,owner,tenant })
   await user.save();
-  req.session.ROLE = role;
-  req.session.username = name;
+  req.session.ROLE= role;
+  req.session.username=name;
   res.redirect('/');
-});
+})
 
 // Authorization 
 // function which checks the role of user (owner/ tenant)
@@ -161,8 +164,7 @@ app.get('/login', (req, res) => {
 
 // Verifying the details filled by user in login page using "findAndValidate"
 app.post('/login', async (req, res) => {
-  var { email, password } = req.body;
-  email = email.toLowerCase();
+  const { email, password } = req.body;
   const foundUser = await User.findAndValidate(email, password);
   if (foundUser) {
       req.session.user_id = foundUser._id;
@@ -172,7 +174,7 @@ app.post('/login', async (req, res) => {
       res.redirect('/');
   }
   else {
-    const userExists = await User.findOne({ email});
+    const userExists = await User.findOne({ email });
     if (userExists) {
       req.flash('error', 'Incorrect password');
       res.redirect('/login');
@@ -201,7 +203,8 @@ app.get('/addproperties',checkAuth, checkRole('owner'), (req, res)=>{
 
 app.post('/addproperties', upload.single('image'), async (req, res, next) => {
     try {
-        const filePath = path.join(__dirname, 'uploads', req.file.filename);
+        const url = await uploadImage(req.file);
+        
         
         var obj = {
             owner: req.session.user_id,
@@ -220,9 +223,8 @@ app.post('/addproperties', upload.single('image'), async (req, res, next) => {
             furnishedStatus: req.body.furnishedStatus,
             petPolicy: req.body.petPolicy,
             image: {
-                data: fs.readFileSync(filePath),
-                contentType: req.file.mimetype,
-                path: `/uploads/${req.file.filename}`
+               
+                path: url
             }
         };
         await Property.create(obj);
@@ -471,7 +473,6 @@ app.get('/vacancies/:id', checkAuth, async (req, res) => {
   }
    catch (error) {
     res.status(500).send('Internal server error');
-    console.log(error);
   }
 });
 

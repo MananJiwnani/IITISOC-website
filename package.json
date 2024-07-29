@@ -19,6 +19,7 @@
     "express": "^4.19.2",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.0",
+    "firebase": "^10.12.4",
     "gridfs-storage-engine": "^0.2.2",
     "gridfs-stream": "^1.1.1",
     "method-override": "^3.0.0",
@@ -30,7 +31,8 @@
     "passport-google-oauth2": "^0.2.0",
     "passport-local": "^1.0.0",
     "razorpay": "^2.9.4",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "streamifier": "^0.1.1"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",
