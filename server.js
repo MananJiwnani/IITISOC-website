@@ -126,7 +126,8 @@ app.get('/register', (req, res) => {
 
 // Saving the details and creating a new object in the 'User' collection
 app.post('/register', checkNotAuth, async (req, res) => {
-  const { name, email, contact,password, role,owner,tenant } = req.body;
+  var { name, email, contact,password, role,owner,tenant } = req.body;
+  email = email.toLowerCase();
   const user = new User({ name, email, contact, password, role,owner,tenant })
   await user.save();
   req.session.ROLE= role;
@@ -164,7 +165,8 @@ app.get('/login', (req, res) => {
 
 // Verifying the details filled by user in login page using "findAndValidate"
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  var { email, password } = req.body;
+  email = email.toLowerCase();
   const foundUser = await User.findAndValidate(email, password);
   if (foundUser) {
       req.session.user_id = foundUser._id;
